@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>決済データ チェックシート</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .summary {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .summary-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+        }
+        .product-section {
+            margin: 30px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .product-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .product-content {
+            padding: 20px;
+        }
+        .customer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        .customer-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+        .customer-item:hover {
+            background: #f0f0f0;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .status-success {
+            border-left: 4px solid #4CAF50;
+            background: #f1f8e9;
+        }
+        .status-failed {
+            border-left: 4px solid #f44336;
+            background: #ffebee;
+        }
+        .status-refund {
+            border-left: 4px solid #ff9800;
+            background: #fff3e0;
+        }
+        .checkbox {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+        .checkbox:checked {
+            accent-color: #4CAF50;
+        }
+        .customer-item.checked {
+            opacity: 0.7;
+            background: #f0f0f0 !important;
+        }
+        .customer-item.checked .customer-name {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .customer-info {
+            flex: 1;
+        }
+        .customer-name {
+            font-weight: bold;
+            font-size: 13px;
+            color: #333;
+        }
+        .customer-details {
+            font-size: 11px;
+            color: #666;
+            margin-top: 2px;
+        }
+        .status-badge {
+            padding: 3px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 6px;
+        }
+        .badge-success { background: #4CAF50; color: white; }
+        .badge-failed { background: #f44336; color: white; }
+        .badge-refund { background: #ff9800; color: white; }
+        @media (max-width: 768px) {
+            .customer-grid { grid-template-columns: 1fr; }
+            .summary-stats { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏪 決済データ チェックシート</h1>
+        
+        <div class="summary">
+            <div class="summary-stats">
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">商品種類</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">55</div>
+                    <div class="stat-label">総決済件数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">49</div>
+                    <div class="stat-label">成功</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">失敗</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">返金</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="progress-count">0/55</div>
+                    <div class="stat-label">チェック済み</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-section">
+            <div class="product-header">
+                NHブートキャンプ 1年コース・ノーマルプラン (49800円) - 4件
+            </div>
+            <div class="product-content">
+                <div class="customer-grid">
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">尾﨑勇哉</div>
+                            <div class="customer-details">2025-07-12 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-refund">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">尾﨑勇哉</div>
+                            <div class="customer-details">2025-07-12 | 返金</div>
+                        </div>
+                        <span class="status-badge badge-refund">↩️ 返金</span>
+                    </div>
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">松村遼河</div>
+                            <div class="customer-details">2025-07-21 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">渡邉智大</div>
+                            <div class="customer-details">2025-07-23 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-section">
+            <div class="product-header">
+                NHブートキャンプ 半年コース・ノーマルプラン (29880円) - 7件
+            </div>
+            <div class="product-content">
+                <div class="customer-grid">
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">KYO SUSUKIDA</div>
+                            <div class="customer-details">2025-07-22 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">内野真子</div>
+                            <div class="customer-details">2025-07-13 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">山田大将</div>
+                            <div class="customer-details">2025-07-27 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">松本竜季</div>
+                            <div class="customer-details">2025-07-31 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">鈴木智弘</div>
+                            <div class="customer-details">2025-07-11 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-refund">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">鈴木智弘</div>
+                            <div class="customer-details">2025-07-12 | 返金</div>
+                        </div>
+                        <span class="status-badge badge-refund">↩️ 返金</span>
+                    </div>
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">鈴木智弘</div>
+                            <div class="customer-details">2025-07-12 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-section">
+            <div class="product-header">
+                無明会_NHブートキャンプ_入会費 (30000円) - 1件
+            </div>
+            <div class="product-content">
+                <div class="customer-grid">
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">山田大将</div>
+                            <div class="customer-details">2025-07-27 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-section">
+            <div class="product-header">
+                無明会通常プラン (22000円) - 41件 ※杉平涼さんなど商品名なしも含む
+            </div>
+            <div class="product-content">
+                <div class="customer-grid">
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">RYO SUGIHIRA</div>
+                            <div class="customer-details">2025-07-01 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">上村徹雄</div>
+                            <div class="customer-details">2025-07-28 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-failed">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">中西航平</div>
+                            <div class="customer-details">2025-07-24 | 売上失敗</div>
+                        </div>
+                        <span class="status-badge badge-failed">❌ 失敗</span>
+                    </div>
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">今井奎介</div>
+                            <div class="customer-details">2025-07-24 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <!-- 他37件の顧客データ... -->
+                    <div style="grid-column: 1/-1; text-align: center; padding: 20px; color: #666; font-style: italic;">
+                        他37件の顧客データ（佐々木透、佐藤恭平、内野真子、吉澤幸一、坂本研太朗、奥村拓哉、宮崎弘登、小島啓輔、小杉沙里衣、小林千泰、山田剛、山縣誠二、巾崎由紀子、日高悠河、松村遼河、永野福三、清水暁、渕上哲汰、片桐瞭、畠田はな、石垣吉規、篠崎弘多、西島颯人、進藤勇輝、鈴木智弘、長田一など）
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-section">
+            <div class="product-header">
+                通常会員（年間プラン*2ヶ月分お得） (220000円) - 2件
+            </div>
+            <div class="product-content">
+                <div class="customer-grid">
+                    <div class="customer-item status-success">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">渡邉智大</div>
+                            <div class="customer-details">2025-07-01 | 売上</div>
+                        </div>
+                        <span class="status-badge badge-success">✅ 成功</span>
+                    </div>
+                    <div class="customer-item status-failed">
+                        <input type="checkbox" class="checkbox">
+                        <div class="customer-info">
+                            <div class="customer-name">西島颯人</div>
+                            <div class="customer-details">2025-07-30 | 売上失敗</div>
+                        </div>
+                        <span class="status-badge badge-failed">❌ 失敗</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // チェックボックスの状態を保存・復元
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            
+            checkboxes.forEach((checkbox, index) => {
+                const savedState = localStorage.getItem('checkbox_' + index);
+                if (savedState === 'true') {
+                    checkbox.checked = true;
+                    updateItemAppearance(checkbox);
+                }
+                
+                checkbox.addEventListener('change', function() {
+                    localStorage.setItem('checkbox_' + index, this.checked);
+                    updateItemAppearance(this);
+                    updateStats();
+                });
+            });
+            
+            updateStats();
+        });
+        
+        function updateItemAppearance(checkbox) {
+            const customerItem = checkbox.closest('.customer-item');
+            if (checkbox.checked) {
+                customerItem.classList.add('checked');
+            } else {
+                customerItem.classList.remove('checked');
+            }
+        }
+        
+        function updateStats() {
+            const totalCheckboxes = document.querySelectorAll('.checkbox').length;
+            const checkedBoxes = document.querySelectorAll('.checkbox:checked').length;
+            const progress = totalCheckboxes > 0 ? Math.round((checkedBoxes / totalCheckboxes) * 100) : 0;
+            
+            // 進捗表示を更新
+            const progressElement = document.getElementById('progress-count');
+            if (progressElement) {
+                progressElement.textContent = `${checkedBoxes}/${totalCheckboxes}`;
+                progressElement.style.color = progress === 100 ? '#4CAF50' : '#666';
+            }
+        }
+    </script>
+</body>
+</html>

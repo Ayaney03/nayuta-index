@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 月次収支報告生成ツール</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #f8f6f3 0%, #fff8dc 50%, #f5e6a3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f5e6a3 0%, #d4af37 50%, #b8860b 100%);
+            color: #8b6914;
+            padding: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-text {
+            text-align: left;
+        }
+
+        .header-actions {
+            text-align: right;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #8b6914;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+
+        .input-section {
+            padding: 40px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .output-section {
+            padding: 40px;
+            background: white;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .member-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .date-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .date-inputs select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .date-inputs select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .output-area {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 400px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+            overflow-y: auto;
+        }
+
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #218838;
+        }
+
+        .save-btn {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-left: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .save-btn:hover {
+            background: #138496;
+        }
+
+        .transfer-btn {
+            background: #6f42c1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-left: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .transfer-btn:hover {
+            background: #5a32a3;
+        }
+
+        /* 比較分析セクション */
+        .comparison-section {
+            background: white;
+            padding: 40px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .comparison-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .comparison-card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+        }
+
+        .comparison-content {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        /* 履歴・グラフセクション */
+        .history-section {
+            background: #f8f9fa;
+            padding: 40px;
+        }
+
+        .history-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: #e9ecef;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab-btn.active {
+            background: #d4af37;
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #dee2e6;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .history-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .export-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .export-btn:hover {
+            background: #218838;
+        }
+
+        .history-list {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 200px;
+            border: 2px solid #e9ecef;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid #e9ecef;
+        }
+
+        /* 履歴表示のスタイル */
+        .history-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .history-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .history-item:hover {
+            border-color: #d4af37;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.1);
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .history-details {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
+        }
+
+        .comparison-item {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #d4af37;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .help-text {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-section {
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .member-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .date-inputs {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .header-text {
+                text-align: center;
+            }
+
+            .header-actions {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>📊 無明会収支報告生成ツール</h1>
+                    <p>Discordで報告する月次の収支報告を自動生成します</p>
+                </div>
+                <div class="header-actions">
+                    <a href="売上経費集計ツール.html" class="back-btn">🔄 集計ツールに戻る</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="input-section">
+                <h2 class="section-title">📝 データ入力</h2>
+                
+                <form id="reportForm">
+                    <div class="form-group">
+                        <label>1. 対象年月</label>
+                        <div class="date-inputs">
+                            <div>
+                                <label for="targetYear">年</label>
+                                <select id="targetYear" required>
+                                    <option value="">年を選択</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="targetMonth">月</label>
+                                <select id="targetMonth" required>
+                                    <option value="">月を選択</option>
+                                    <option value="1">1月</option>
+                                    <option value="2">2月</option>
+                                    <option value="3">3月</option>
+                                    <option value="4">4月</option>
+                                    <option value="5">5月</option>
+                                    <option value="6">6月</option>
+                                    <option value="7">7月</option>
+                                    <option value="8">8月</option>
+                                    <option value="9">9月</option>
+                                    <option value="10">10月</option>
+                                    <option value="11">11月</option>
+                                    <option value="12">12月</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="help-text">対象となる年と月を選択してください</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sales">2. 売上金額</label>
+                        <input type="text" id="sales" placeholder="例：1234567 または 1,234,567" required>
+                        <div class="help-text">¥記号不要、カンマありでもOK</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expenses">3. 経費金額</label>
+                        <input type="text" id="expenses" placeholder="例：234567 または 234,567" required>
+                        <div class="help-text">¥記号不要、カンマありでもOK</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="waypoint">4. waypoint負担金額</label>
+                        <input type="text" id="waypoint" placeholder="例：50000 または 50,000" required>
+                        <div class="help-text">¥記号不要、カンマありでもOK</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>5. 会員数（月末時点）</label>
+                        <div class="member-inputs">
+                            <div>
+                                <label for="yearlyMembers">年間</label>
+                                <input type="number" id="yearlyMembers" placeholder="0" min="0" required>
+                            </div>
+                            <div>
+                                <label for="regularMembers">通常</label>
+                                <input type="number" id="regularMembers" placeholder="0" min="0" required>
+                            </div>
+                            <div>
+                                <label for="trialMembers">体験</label>
+                                <input type="number" id="trialMembers" placeholder="0" min="0" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="noteDonation">6. note布施金額（任意）</label>
+                        <input type="text" id="noteDonation" placeholder="例：10000 または 10,000（ない場合は0）" value="0">
+                        <div class="help-text">ない場合は0を入力</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialNotes">7. 特記事項（任意）</label>
+                        <textarea id="specialNotes" placeholder="特記事項があれば入力してください（なければ「特記事項なし」と入力）">特記事項なし</textarea>
+                    </div>
+
+                    <button type="submit" class="generate-btn">📊 収支報告を生成</button>
+                </form>
+                </form>
+            </div>
+
+            <div class="output-section">
+                <h2 class="section-title">📋 生成結果</h2>
+                <div id="outputArea" class="output-area">
+                    データを入力して「収支報告を生成」ボタンを押してください。
+                </div>
+                <button id="copyBtn" class="copy-btn" style="display: none;">📋 クリップボードにコピー</button>
+                <button id="saveBtn" class="save-btn" style="display: none;">💾 データを保存</button>
+                <button id="transferBtn" class="transfer-btn" style="display: none;">📥 集計ツールからデータ転送</button>
+                <button class="test-btn" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 0.9em; cursor: pointer; margin-top: 15px; margin-left: 10px; transition: background-color 0.2s ease;">🧪 テストデータ一括保存</button>
+            </div>
+        </div>
+
+        <!-- 比較分析セクション -->
+        <div class="comparison-section">
+            <h2 class="section-title">📊 比較分析</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>📈 前月比較</h3>
+                    <div id="monthComparison" class="comparison-content">
+                        データを保存すると前月比較が表示されます
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <h3>📅 前年同月比較</h3>
+                    <div id="yearComparison" class="comparison-content">
+                        データを保存すると前年同月比較が表示されます
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 履歴・グラフセクション -->
+        <div class="history-section">
+            <h2 class="section-title">📚 履歴・分析</h2>
+            <div class="history-tabs">
+                <button class="tab-btn active" data-tab="history">📋 履歴一覧</button>
+                <button class="tab-btn" data-tab="charts">📊 グラフ分析</button>
+            </div>
+            
+            <div id="historyTab" class="tab-content active">
+                <div class="history-controls">
+                    <input type="text" id="searchInput" placeholder="年月で検索..." class="search-input">
+                    <button id="exportBtn" class="export-btn">📥 エクスポート</button>
+                </div>
+                <div id="historyList" class="history-list">
+                    保存されたデータがここに表示されます
+                </div>
+            </div>
+            
+            <div id="chartsTab" class="tab-content">
+                <div class="chart-container">
+                    <canvas id="salesChart" width="400" height="200"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="membersChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('reportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            generateReport();
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            copyToClipboard();
+        });
+
+        document.getElementById('saveBtn').addEventListener('click', function() {
+            saveMonthlyData();
+        });
+
+        document.getElementById('transferBtn').addEventListener('click', function() {
+            transferDataFromAggregation();
+        });
+
+        // テストデータ一括保存ボタンのイベントリスナー
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('test-btn')) {
+                loadTestDataToReport();
+            }
+        });
+
+        // タブ切り替え
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabName = this.dataset.tab;
+                switchTab(tabName);
+            });
+        });
+
+        // 検索機能
+        document.getElementById('searchInput').addEventListener('input', function() {
+            filterHistory(this.value);
+        });
+
+        // エクスポート機能
+        document.getElementById('exportBtn').addEventListener('click', function() {
+            exportData();
+        });
+
+        function generateReport() {
+            // 入力値を取得
+            const targetYear = document.getElementById('targetYear').value;
+            const targetMonth = document.getElementById('targetMonth').value;
+            const targetMonthText = targetYear + '年' + targetMonth + '月';
+            const sales = parseNumber(document.getElementById('sales').value);
+            const expenses = parseNumber(document.getElementById('expenses').value);
+            const waypoint = parseNumber(document.getElementById('waypoint').value);
+            const yearlyMembers = parseInt(document.getElementById('yearlyMembers').value) || 0;
+            const regularMembers = parseInt(document.getElementById('regularMembers').value) || 0;
+            const trialMembers = parseInt(document.getElementById('trialMembers').value) || 0;
+            const noteDonation = parseNumber(document.getElementById('noteDonation').value) || 0;
+            const specialNotes = document.getElementById('specialNotes').value || '特記事項なし';
+
+            // 計算
+            const profit = sales - expenses;
+            const profitRate = sales > 0 ? (profit / sales) * 100 : 0;
+            const profitHalf = profit / 2;
+            const waypointHalf = waypoint / 2;
+            const noteDonationHalf = noteDonation / 2;
+            const totalTransfer = profitHalf + waypointHalf + noteDonationHalf;
+            const totalMembers = yearlyMembers + regularMembers + trialMembers;
+
+            // フォーマット関数
+            function formatCurrency(amount) {
+                return '¥' + amount.toLocaleString();
+            }
+
+            function formatPercentage(rate) {
+                return rate.toFixed(2) + '％';
+            }
+
+            // 報告文を生成
+            const report = `@ryu.takami @ny8888  
+【${targetMonthText}の収支＆振り込み報告です】
+
+■ 会員数（${targetMonthText}月末時点）  
+合計：${totalMembers}名  
+└ 年間：${yearlyMembers}名  
+└ 通常：${regularMembers}名  
+└ 体験：${trialMembers}名
+
+■ 収支サマリ  
+売上　　：${formatCurrency(sales)}  
+経費　　：${formatCurrency(expenses)}  
+────────────  
+利益　　：${formatCurrency(profit)}  
+利益率　：${formatPercentage(profitRate)}
+
+■ 折半・送金金額  
+利益折半　　　　　：${formatCurrency(profitHalf)}  
+waypoint負担折半　：${formatCurrency(waypointHalf)}  
+note布施折半　　　：${formatCurrency(noteDonationHalf)}
+
+→ **送金額合計：${formatCurrency(totalTransfer)}**  
+（利益折半 + waypoint負担折半 + 布施折半）  
+※会計に共有済みです。
+
+---
+
+【特記事項】  
+${specialNotes}
+
+---
+
+📎 元データ  
+・収支一覧：<https://docs.google.com/spreadsheets/d/1LIrr7KrhtJtjNqODprvcVcw8W8WrmAQ80UJHK962G5k/edit?usp=sharing>  
+・売上・手数料：<https://docs.google.com/spreadsheets/d/1FYBDB1npx0ggRmAcTpqtyZsPXkOuzUKrQ0UoUVhKIXM/edit?usp=sharing>  
+・note・徹底精進売上：<https://docs.google.com/spreadsheets/d/1I6A4M3MPf1qMZqJjq6KOkmRbwTbvw0jG8CdHmHwT_Ck/edit?usp=sharing>`;
+
+            // 出力エリアに表示
+            document.getElementById('outputArea').textContent = report;
+            document.getElementById('copyBtn').style.display = 'block';
+            document.getElementById('saveBtn').style.display = 'inline-block';
+            document.getElementById('transferBtn').style.display = 'inline-block';
+        }
+
+        // 集計ツールからデータを転送
+        function transferDataFromAggregation() {
+            const tempSales = localStorage.getItem('temp_sales');
+            const tempExpenses = localStorage.getItem('temp_expenses');
+            
+            if (tempSales && tempExpenses) {
+                // フォームに自動入力
+                document.getElementById('sales').value = parseInt(tempSales).toLocaleString();
+                document.getElementById('expenses').value = parseInt(tempExpenses).toLocaleString();
+                
+                // 自動で報告を生成
+                generateReport();
+                
+                // 一時データをクリア
+                localStorage.removeItem('temp_sales');
+                localStorage.removeItem('temp_expenses');
+                
+                alert('集計ツールからデータを転送しました！');
+            } else {
+                alert('集計ツールからのデータが見つかりません。先に集計ツールでデータを転送してください。');
+            }
+        }
+
+        // 月次データを保存
+        function saveMonthlyData() {
+            const targetYear = document.getElementById('targetYear').value;
+            const targetMonth = document.getElementById('targetMonth').value;
+            const sales = parseNumber(document.getElementById('sales').value);
+            const expenses = parseNumber(document.getElementById('expenses').value);
+            const waypoint = parseNumber(document.getElementById('waypoint').value);
+            const yearlyMembers = parseInt(document.getElementById('yearlyMembers').value) || 0;
+            const regularMembers = parseInt(document.getElementById('regularMembers').value) || 0;
+            const trialMembers = parseInt(document.getElementById('trialMembers').value) || 0;
+            const noteDonation = parseNumber(document.getElementById('noteDonation').value) || 0;
+            const specialNotes = document.getElementById('specialNotes').value || '特記事項なし';
+
+            const data = {
+                year: parseInt(targetYear),
+                month: parseInt(targetMonth),
+                sales: sales,
+                expenses: expenses,
+                waypoint: waypoint,
+                profit: sales - expenses,
+                profitRate: sales > 0 ? ((sales - expenses) / sales) * 100 : 0,
+                yearlyMembers: yearlyMembers,
+                regularMembers: regularMembers,
+                trialMembers: trialMembers,
+                totalMembers: yearlyMembers + regularMembers + trialMembers,
+                noteDonation: noteDonation,
+                specialNotes: specialNotes,
+                timestamp: new Date().toISOString()
+            };
+
+            const key = `monthly_report_${targetYear}_${targetMonth}`;
+            localStorage.setItem(key, JSON.stringify(data));
+            
+            alert('データを保存しました！');
+            updateComparison();
+            updateHistory();
+        }
+
+        // 比較分析を更新
+        function updateComparison() {
+            const currentYear = parseInt(document.getElementById('targetYear').value);
+            const currentMonth = parseInt(document.getElementById('targetMonth').value);
+            
+            // 前月のデータを取得
+            let prevMonth = currentMonth - 1;
+            let prevYear = currentYear;
+            if (prevMonth === 0) {
+                prevMonth = 12;
+                prevYear = currentYear - 1;
+            }
+            
+            const prevKey = `monthly_report_${prevYear}_${prevMonth}`;
+            const prevData = JSON.parse(localStorage.getItem(prevKey) || 'null');
+            
+            // 前年同月のデータを取得
+            const prevYearKey = `monthly_report_${currentYear - 1}_${currentMonth}`;
+            const prevYearData = JSON.parse(localStorage.getItem(prevYearKey) || 'null');
+            
+            // 前月比較を表示
+            if (prevData) {
+                const salesGrowth = ((currentData.sales - prevData.sales) / prevData.sales * 100).toFixed(1);
+                const profitGrowth = ((currentData.profit - prevData.profit) / prevData.profit * 100).toFixed(1);
+                const membersGrowth = ((currentData.totalMembers - prevData.totalMembers) / prevData.totalMembers * 100).toFixed(1);
+                
+                document.getElementById('monthComparison').innerHTML = `
+                    <div class="comparison-item">
+                        <strong>売上:</strong> ${salesGrowth > 0 ? '+' : ''}${salesGrowth}%
+                    </div>
+                    <div class="comparison-item">
+                        <strong>利益:</strong> ${profitGrowth > 0 ? '+' : ''}${profitGrowth}%
+                    </div>
+                    <div class="comparison-item">
+                        <strong>会員数:</strong> ${membersGrowth > 0 ? '+' : ''}${membersGrowth}%
+                    </div>
+                `;
+            } else {
+                document.getElementById('monthComparison').innerHTML = '前月データがありません';
+            }
+            
+            // 前年同月比較を表示
+            if (prevYearData) {
+                const salesGrowth = ((currentData.sales - prevYearData.sales) / prevYearData.sales * 100).toFixed(1);
+                const profitGrowth = ((currentData.profit - prevYearData.profit) / prevYearData.profit * 100).toFixed(1);
+                const membersGrowth = ((currentData.totalMembers - prevYearData.totalMembers) / prevYearData.totalMembers * 100).toFixed(1);
+                
+                document.getElementById('yearComparison').innerHTML = `
+                    <div class="comparison-item">
+                        <strong>売上:</strong> ${salesGrowth > 0 ? '+' : ''}${salesGrowth}%
+                    </div>
+                    <div class="comparison-item">
+                        <strong>利益:</strong> ${profitGrowth > 0 ? '+' : ''}${profitGrowth}%
+                    </div>
+                    <div class="comparison-item">
+                        <strong>会員数:</strong> ${membersGrowth > 0 ? '+' : ''}${membersGrowth}%
+                    </div>
+                `;
+            } else {
+                document.getElementById('yearComparison').innerHTML = '前年同月データがありません';
+            }
+        }
+
+        function parseNumber(value) {
+            if (!value) return 0;
+            return parseInt(value.replace(/[^\d]/g, ''));
+        }
+
+        function copyToClipboard() {
+            const outputArea = document.getElementById('outputArea');
+            const text = outputArea.textContent;
+            
+            navigator.clipboard.writeText(text).then(function() {
+                const copyBtn = document.getElementById('copyBtn');
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = '✅ コピー完了！';
+                copyBtn.style.background = '#28a745';
+                
+                setTimeout(function() {
+                    copyBtn.textContent = originalText;
+                    copyBtn.style.background = '#28a745';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('コピーに失敗しました:', err);
+                alert('コピーに失敗しました。手動でコピーしてください。');
+            });
+        }
+
+        // 入力値の自動フォーマット
+        function addNumberFormatting() {
+            const numberInputs = ['sales', 'expenses', 'waypoint', 'noteDonation'];
+            
+            numberInputs.forEach(id => {
+                const input = document.getElementById(id);
+                input.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/[^\d]/g, '');
+                    if (value) {
+                        value = parseInt(value).toLocaleString();
+                    }
+                    e.target.value = value;
+                });
+            });
+        }
+
+        // 年の選択肢を生成
+        function generateYearOptions() {
+            const yearSelect = document.getElementById('targetYear');
+            const currentYear = new Date().getFullYear();
+            
+            // 過去5年から未来2年まで生成
+            for (let year = currentYear - 5; year <= currentYear + 2; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year + '年';
+                yearSelect.appendChild(option);
+            }
+        }
+
+        // 現在の年月をデフォルトで選択
+        function setDefaultDate() {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth() + 1; // 0ベースなので+1
+            
+            document.getElementById('targetYear').value = currentYear;
+            document.getElementById('targetMonth').value = currentMonth;
+        }
+
+        // 履歴を更新
+        function updateHistory() {
+            const historyList = document.getElementById('historyList');
+            const keys = Object.keys(localStorage).filter(key => key.startsWith('monthly_report_'));
+            
+            if (keys.length === 0) {
+                historyList.innerHTML = '保存されたデータがありません';
+                return;
+            }
+            
+            // 年月順にソート
+            keys.sort((a, b) => {
+                const [, yearA, monthA] = a.split('_');
+                const [, yearB, monthB] = b.split('_');
+                return parseInt(yearB) - parseInt(yearA) || parseInt(monthB) - parseInt(monthA);
+            });
+            
+            let html = '<div class="history-items">';
+            keys.forEach(key => {
+                const data = JSON.parse(localStorage.getItem(key));
+                const [, year, month] = key.split('_');
+                html += `
+                    <div class="history-item">
+                        <div class="history-header">
+                            <strong>${year}年${month}月</strong>
+                            <button onclick="deleteData('${key}')" class="delete-btn">🗑️</button>
+                        </div>
+                        <div class="history-details">
+                            売上: ¥${data.sales.toLocaleString()} | 利益: ¥${data.profit.toLocaleString()} | 会員数: ${data.totalMembers}名
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            
+            historyList.innerHTML = html;
+        }
+
+        // データを削除
+        function deleteData(key) {
+            if (confirm('このデータを削除しますか？')) {
+                localStorage.removeItem(key);
+                updateHistory();
+                updateComparison();
+            }
+        }
+
+        // タブを切り替え
+        function switchTab(tabName) {
+            // 全てのタブを非アクティブに
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // 選択されたタブをアクティブに
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.getElementById(tabName + 'Tab').classList.add('active');
+        }
+
+        // 履歴を検索・フィルタリング
+        function filterHistory(searchTerm) {
+            const historyItems = document.querySelectorAll('.history-item');
+            historyItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm.toLowerCase())) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // データをエクスポート
+        function exportData() {
+            const keys = Object.keys(localStorage).filter(key => key.startsWith('monthly_report_'));
+            const data = keys.map(key => JSON.parse(localStorage.getItem(key)));
+            
+            const csv = [
+                ['年', '月', '売上', '経費', '利益', '利益率', '会員数', 'waypoint', 'note布施', '特記事項'],
+                ...data.map(item => [
+                    item.year,
+                    item.month,
+                    item.sales,
+                    item.expenses,
+                    item.profit,
+                    item.profitRate.toFixed(2),
+                    item.totalMembers,
+                    item.waypoint,
+                    item.noteDonation,
+                    item.specialNotes
+                ])
+            ].map(row => row.join(',')).join('\n');
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `無明会月次収支報告_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        // テストデータ一括保存機能
+        function loadTestDataToReport() {
+            const testData = [
+                {
+                    year: 2024,
+                    month: 12,
+                    sales: 1135000,
+                    expenses: 528500,
+                    waypoint: 50000,
+                    yearlyMembers: 2,
+                    regularMembers: 5,
+                    trialMembers: 0,
+                    noteDonation: 10000,
+                    specialNotes: '事業開始月'
+                },
+                {
+                    year: 2025,
+                    month: 1,
+                    sales: 1736000,
+                    expenses: 650000,
+                    waypoint: 55000,
+                    yearlyMembers: 5,
+                    regularMembers: 13,
+                    trialMembers: 0,
+                    noteDonation: 15000,
+                    specialNotes: '新年スタート'
+                },
+                {
+                    year: 2025,
+                    month: 2,
+                    sales: 2380000,
+                    expenses: 770000,
+                    waypoint: 60000,
+                    yearlyMembers: 8,
+                    regularMembers: 25,
+                    trialMembers: 0,
+                    noteDonation: 20000,
+                    specialNotes: '順調な成長'
+                },
+                {
+                    year: 2025,
+                    month: 3,
+                    sales: 3390000,
+                    expenses: 880000,
+                    waypoint: 65000,
+                    yearlyMembers: 13,
+                    regularMembers: 40,
+                    trialMembers: 0,
+                    noteDonation: 25000,
+                    specialNotes: '春の成長期'
+                },
+                {
+                    year: 2025,
+                    month: 4,
+                    sales: 4616000,
+                    expenses: 992000,
+                    waypoint: 70000,
+                    yearlyMembers: 19,
+                    regularMembers: 58,
+                    trialMembers: 0,
+                    noteDonation: 30000,
+                    specialNotes: '急成長期'
+                }
+            ];
+
+            let savedCount = 0;
+            testData.forEach(data => {
+                const key = `monthly_report_${data.year}_${data.month}`;
+                const reportData = {
+                    year: data.year,
+                    month: data.month,
+                    sales: data.sales,
+                    expenses: data.expenses,
+                    waypoint: data.waypoint,
+                    profit: data.sales - data.expenses,
+                    profitRate: data.sales > 0 ? ((data.sales - data.expenses) / data.sales) * 100 : 0,
+                    yearlyMembers: data.yearlyMembers,
+                    regularMembers: data.regularMembers,
+                    trialMembers: data.trialMembers,
+                    totalMembers: data.yearlyMembers + data.regularMembers + data.trialMembers,
+                    noteDonation: data.noteDonation,
+                    specialNotes: data.specialNotes,
+                    timestamp: new Date().toISOString()
+                };
+                
+                localStorage.setItem(key, JSON.stringify(reportData));
+                savedCount++;
+            });
+
+            alert(`${savedCount}ヶ月分のテストデータを保存しました！\n\n保存されたデータ:\n- 2024年12月\n- 2025年1月\n- 2025年2月\n- 2025年3月\n- 2025年4月\n\n履歴タブで確認できます。`);
+            updateHistory();
+        }
+
+
+
+        // ページ読み込み時に初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            generateYearOptions();
+            setDefaultDate();
+            addNumberFormatting();
+            updateHistory();
+        });
+    </script>
+</body>
+</html>

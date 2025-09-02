@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2509恋愛note - 無明会第6期募集レター</title>
+    <link rel="stylesheet" href="letter_styles.css">
+    <style>
+        /* 2509専用スタイル */
+        .letter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+        }
+        
+        .main-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .countdown-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .countdown-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .countdown-display {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .countdown-item {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 60px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #d4af37;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #e17055;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .countdown-display {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                min-width: 50px;
+                padding: 10px;
+            }
+            
+            .letter-container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container fade-in-up">
+        <!-- ヘッダーセクション -->
+        <div class="header-section fade-in-up delay-1">
+            <h1 class="main-title">2509恋愛note</h1>
+            <p class="subtitle">〜 真の愛を育む無明会の教え 〜</p>
+            <p>無明会第6期メンバー募集</p>
+        </div>
+
+        <!-- カウントダウンセクション -->
+        <div class="countdown-section fade-in-scale delay-2">
+            <h2 class="countdown-title">募集終了まで</h2>
+            <div class="countdown-display" id="countdown-timer">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">日</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">時間</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">分</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">秒</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 問題提起セクション -->
+        <div class="content-section fade-in-left delay-3">
+            <h2 class="section-title">なぜ恋愛で苦しむのか？</h2>
+            <p>多くの人が恋愛で同じような悩みを抱えています...</p>
+            
+            <div class="highlight-box">
+                <ul>
+                    <li>パートナーとの関係がうまくいかない</li>
+                    <li>相手の気持ちがわからない</li>
+                    <li>同じパターンを繰り返してしまう</li>
+                    <li>一人では解決できない</li>
+                </ul>
+            </div>
+            
+            <p>これらの問題の根本的な原因は...</p>
+        </div>
+
+        <!-- 解決策セクション -->
+        <div class="content-section fade-in-right delay-4">
+            <h2 class="section-title">無明会のアプローチ</h2>
+            <p>無明会では、仏教の智慧を現代の恋愛に活かす独自のメソッドを提供しています。</p>
+            
+            <div class="highlight-box">
+                <h3>六波羅蜜による恋愛実践法</h3>
+                <p>布施・持戒・忍辱・精進・禅定・智慧の六つの実践を通じて、真の愛を育みます。</p>
+            </div>
+        </div>
+
+        <!-- 実績セクション -->
+        <div class="content-section fade-in-up delay-5">
+            <h2 class="section-title">メンバーの変化</h2>
+            
+            <div class="highlight-box">
+                <h4>Tさん（30代女性）の変化</h4>
+                <p>「パートナーとの関係が劇的に改善しました。無明会で学んだ智慧のおかげで、相手を理解し、自分も成長できています。」</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>Kさん（20代男性）の変化</h4>
+                <p>「恋愛で悩むことがなくなりました。仏教の教えを実践することで、心が安定し、自然と良い関係を築けるようになりました。」</p>
+            </div>
+        </div>
+
+        <!-- CTA セクション -->
+        <div class="cta-section fade-in-scale delay-6">
+            <h2>無明会第6期で一緒に学びませんか？</h2>
+            <p>真の愛を育み、幸せな恋愛を実現するための環境がここにあります。</p>
+            
+            <a href="#" class="cta-button">
+                今すぐ参加する
+            </a>
+            
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                ※ 募集は期間限定です。お早めにご検討ください。
+            </p>
+        </div>
+
+        <!-- 最終メッセージ -->
+        <div class="content-section fade-in-up delay-7">
+            <h2 class="section-title">最後に</h2>
+            <p>恋愛の悩みは一人で抱え込む必要はありません。無明会という環境で、同じ志を持つ仲間と共に成長していきましょう。</p>
+            
+            <p style="text-align: center; margin-top: 30px; font-weight: bold; color: #d4af37;">
+                あなたの参加をお待ちしています。
+            </p>
+        </div>
+    </div>
+
+    <script src="letter_scripts.js"></script>
+    <script src="timer_controller.js"></script>
+</body>
+</html>

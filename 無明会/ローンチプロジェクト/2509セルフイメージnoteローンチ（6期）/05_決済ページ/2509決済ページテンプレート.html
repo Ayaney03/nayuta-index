@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会第6期 - お申し込み</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Mincho ProN', serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .payment-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .payment-content {
+            padding: 40px 30px;
+        }
+        
+        .price-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-radius: 10px;
+        }
+        
+        .original-price {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .current-price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #e17055;
+            margin-bottom: 10px;
+        }
+        
+        .price-note {
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+        
+        .benefits-section {
+            margin-bottom: 40px;
+        }
+        
+        .benefits-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #00b894;
+        }
+        
+        .benefit-icon {
+            color: #00b894;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        .payment-form {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .payment-button {
+            width: 100%;
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            padding: 18px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,184,148,0.3);
+        }
+        
+        .payment-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,184,148,0.4);
+        }
+        
+        .security-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .countdown-mini {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .countdown-mini h3 {
+            margin-bottom: 10px;
+        }
+        
+        .countdown-display-mini {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .countdown-item-mini {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 8px;
+            min-width: 50px;
+        }
+        
+        .countdown-number-mini {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .countdown-label-mini {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .payment-container {
+                margin: 20px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .payment-content {
+                padding: 30px 20px;
+            }
+            
+            .current-price {
+                font-size: 2.5rem;
+            }
+            
+            .countdown-display-mini {
+                gap: 10px;
+            }
+            
+            .countdown-item-mini {
+                min-width: 40px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <!-- ヘッダー -->
+        <div class="header">
+            <h1>無明会第6期</h1>
+            <p>真の愛を育む仏教的恋愛実践コミュニティ</p>
+        </div>
+        
+        <div class="payment-content">
+            <!-- カウントダウン -->
+            <div class="countdown-mini">
+                <h3>募集終了まで</h3>
+                <div class="countdown-display-mini" id="countdown-payment">
+                    <div class="countdown-item-mini">
+                        <span class="countdown-number-mini" id="days-mini">00</span>
+                        <span class="countdown-label-mini">日</span>
+                    </div>
+                    <div class="countdown-item-mini">
+                        <span class="countdown-number-mini" id="hours-mini">00</span>
+                        <span class="countdown-label-mini">時間</span>
+                    </div>
+                    <div class="countdown-item-mini">
+                        <span class="countdown-number-mini" id="minutes-mini">00</span>
+                        <span class="countdown-label-mini">分</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 価格セクション -->
+            <div class="price-section">
+                <div class="original-price">通常価格: ¥50,000</div>
+                <div class="current-price">¥29,800</div>
+                <div class="price-note">期間限定特別価格</div>
+            </div>
+            
+            <!-- 特典セクション -->
+            <div class="benefits-section">
+                <h2 class="benefits-title">参加特典</h2>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>月2回のオンライン勉強会参加権</span>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>専用Discord コミュニティアクセス</span>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>恋愛実践ワークブック（PDF）</span>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>個別相談セッション（月1回）</span>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <span>過去セミナー動画アーカイブ</span>
+                </div>
+            </div>
+            
+            <!-- 決済フォーム -->
+            <div class="payment-form">
+                <div class="form-group">
+                    <label class="form-label" for="name">お名前 *</label>
+                    <input type="text" id="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">メールアドレス *</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="phone">電話番号 *</label>
+                    <input type="tel" id="phone" class="form-input" required>
+                </div>
+                
+                <button class="payment-button" onclick="processPayment()">
+                    今すぐ参加する（¥29,800）
+                </button>
+                
+                <div class="security-note">
+                    🔒 SSL暗号化により安全に決済されます<br>
+                    決済完了後、すぐにアクセス情報をお送りします
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // カウントダウンタイマー（簡易版）
+        function updateCountdown() {
+            const now = new Date();
+            const endDate = new Date(now.getTime() + (3 * 24 * 60 * 60 * 1000)); // 3日後
+            const distance = endDate.getTime() - now.getTime();
+            
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('days-mini').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours-mini').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes-mini').textContent = minutes.toString().padStart(2, '0');
+            }
+        }
+        
+        // 1分ごとに更新
+        setInterval(updateCountdown, 60000);
+        updateCountdown();
+        
+        // 決済処理（実際の決済システムに接続する必要があります）
+        function processPayment() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!name || !email || !phone) {
+                alert('すべての項目を入力してください。');
+                return;
+            }
+            
+            // 実際の決済処理をここに実装
+            alert('決済システムに接続します。\n\n※ 実際の運用時は決済代行サービス（Stripe、PayPal等）と連携してください。');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五大資産ライフスタイル設計レッスン - なゆたコーチング</title>
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #C9A961;
+            --secondary-gold: #D4B772;
+            --accent-pearl: #F8F6F0;
+            --dark-elegance: #1A1A1A;
+            --soft-platinum: #E8E6E1;
+            --deep-navy: #1E2A3A;
+            --luxury-gradient: linear-gradient(135deg, #C9A961 0%, #D4B772 50%, #E8D5A3 100%);
+            --shadow-luxury: 0 12px 40px rgba(201, 169, 97, 0.15);
+            --text-primary: #2C2C2C;
+            --text-secondary: #5A5A5A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(ellipse at top, #F8F6F0 0%, #E8E6E1 50%, #DDD9D0 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* 優雅なヘッダー */
+        .header {
+            background: var(--luxury-gradient);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-luxury);
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="golden-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1.5" fill="%23FFFFFF" opacity="0.2"/><circle cx="10" cy="30" r="1" fill="%23FFD700" opacity="0.3"/><circle cx="30" cy="10" r="0.8" fill="%23FFFFFF" opacity="0.15"/></pattern></defs><rect width="200" height="200" fill="url(%23golden-pattern)"/></svg>') repeat;
+            animation: shimmer 30s infinite linear;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-20px) translateY(-20px); }
+            100% { transform: translateX(20px) translateY(20px); }
+        }
+        
+        .header h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            font-size: 22px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        /* エレガントなセクション */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 50px 0;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(201, 169, 97, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--luxury-gradient);
+            border-radius: 0 0 0 20px;
+        }
+        
+        .section h2 {
+            color: var(--deep-navy);
+            font-family: 'Crimson Text', serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-gold);
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-gold);
+        }
+        
+        .section h3 {
+            color: var(--primary-gold);
+            font-size: 24px;
+            font-weight: 500;
+            margin: 35px 0 20px 0;
+        }
+
+        .section p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        /* 動画セクション */
+        .video-section {
+            background: linear-gradient(135deg, #1E2A3A 0%, #2C3E50 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="1" fill="%23C9A961" opacity="0.3"/><circle cx="75" cy="75" r="1.5" fill="%23D4B772" opacity="0.2"/><circle cx="50" cy="80" r="0.8" fill="%23FFFFFF" opacity="0.1"/></svg>') repeat;
+            animation: float 40s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+        
+        .video-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .video-button {
+            display: inline-block;
+            background: var(--luxury-gradient);
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(201, 169, 97, 0.3);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .video-button:hover::before {
+            left: 100%;
+        }
+        
+        .video-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(201, 169, 97, 0.4);
+        }
+        
+        /* 洗練された五大資産カード */
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .asset-card {
+            background: linear-gradient(135deg, rgba(248, 246, 240, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+            padding: 40px 30px;
+            border-radius: 18px;
+            text-align: center;
+            border: 2px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .asset-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--luxury-gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .asset-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .asset-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(201, 169, 97, 0.2);
+            border-color: var(--primary-gold);
+        }
+        
+        .asset-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(201, 169, 97, 0.3));
+        }
+        
+        .asset-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--deep-navy);
+            margin-bottom: 15px;
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .asset-description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* 高級感のあるポイントボックス */
+        .point-box {
+            background: var(--luxury-gradient);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-weight: 500;
+            text-align: center;
+            box-shadow: var(--shadow-luxury);
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .point-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: sparkle 20s infinite linear;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* エレガントなステップリスト */
+        .step-list {
+            counter-reset: step;
+            margin: 40px 0;
+        }
+        
+        .step-item {
+            counter-increment: step;
+            background: linear-gradient(135deg, rgba(248, 246, 240, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+            margin: 25px 0;
+            padding: 35px 30px 35px 80px;
+            border-radius: 15px;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .step-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.15);
+        }
+        
+        .step-item::before {
+            content: counter(step);
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--luxury-gradient);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+        }
+        
+        /* 洗練された実例ボックス */
+        .example-box {
+            background: linear-gradient(135deg, rgba(30, 42, 58, 0.05) 0%, rgba(201, 169, 97, 0.05) 100%);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .example-box:hover {
+            box-shadow: 0 8px 25px rgba(201, 169, 97, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .example-title {
+            color: var(--primary-gold);
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-family: 'Crimson Text', serif;
+        }
+        
+        /* プレミアムCTAボタン */
+        .cta-button {
+            display: inline-block;
+            background: var(--luxury-gradient);
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-luxury);
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(201, 169, 97, 0.4);
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 60px 30px;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .header p {
+                font-size: 18px;
+            }
+            
+            .section {
+                padding: 35px 25px;
+            }
+            
+            .section h2 {
+                font-size: 26px;
+            }
+            
+            .assets-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .step-item {
+                padding: 25px 20px 25px 65px;
+            }
+            
+            .video-section {
+                padding: 30px 15px !important;
+            }
+            
+            .video-section .video-content {
+                margin: 0;
+            }
+            
+            .video-section h2 {
+                font-size: 24px !important;
+                padding: 15px !important;
+            }
+            
+            .video-section p {
+                font-size: 18px !important;
+                padding: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- エレガントなヘッダー -->
+        <div class="header">
+            <h1>五大資産ライフスタイル設計法</h1>
+            <p>「お金を追わずに、お金に追われる」持続可能な人生設計</p>
+        </div>
+
+        <!-- 動画セクション -->
+        <div class="section video-section">
+            <div class="video-content">
+                <h2 style="color: white; text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7); background: rgba(0, 0, 0, 0.4); padding: 20px; border-radius: 15px; margin-bottom: 30px;">🎥 セミナー動画で深く学ぶ</h2>
+                <p style="color: white; font-size: 20px; margin-bottom: 25px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; line-height: 1.6;">
+                    このレッスンの内容をより深く理解するために、<br>
+                    なゆた氏による実際のセミナー動画をこちらでご視聴いただけます
+                </p>
+                
+                <!-- 動画埋め込みエリア -->
+                <div style="position: relative; width: 100%; max-width: 900px; margin: 0 auto; background: rgba(0, 0, 0, 0.3); border-radius: 15px; padding: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
+                        <iframe 
+                            src="https://utage-system.com/video/996tKmRuYVbD" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 10px;"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                
+                <p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin-top: 20px; text-align: center;">
+                    ※ 動画が表示されない場合は、
+                    <a href="https://utage-system.com/video/996tKmRuYVbD" target="_blank" style="color: var(--primary-gold); text-decoration: underline;">
+                        こちらのリンク
+                    </a>
+                    から直接ご視聴ください
+                </p>
+            </div>
+        </div>
+
+        <!-- イントロセクション -->
+        <div class="section">
+            <h2>🌟 このレッスンで学べること</h2>
+            <p>なゆたコーチングのセミナーから抽出した、人生を根本から変える「五大資産」の概念と実践方法を学びます。</p>
+            
+            <div class="point-box">
+                💡 重要なポイント：お金を追いかけるのではなく、<br>
+                「お金が追いかけてくる」ライフスタイルを設計する
+            </div>
+        </div>
+
+        <!-- 五大資産の説明 -->
+        <div class="section">
+            <h2>📊 五大資産とは</h2>
+            <p>理想のライフスタイルを実現するために必要な5つの資産があります。これらが循環することで、持続可能な豊かさが生まれます。</p>
+            
+            <div class="assets-grid">
+                <div class="asset-card">
+                    <span class="asset-icon">⏰</span>
+                    <div class="asset-title">時間</div>
+                    <div class="asset-description">自分で時間をコントロールできる自由な時間の確保</div>
+                </div>
+                
+                <div class="asset-card">
+                    <span class="asset-icon">💪</span>
+                    <div class="asset-title">健康</div>
+                    <div class="asset-description">心身ともに健康で、エネルギーに満ちた状態</div>
+                </div>
+                
+                <div class="asset-card">
+                    <span class="asset-icon">🤝</span>
+                    <div class="asset-title">仲間</div>
+                    <div class="asset-description">価値観を共有し、互いに高め合える人間関係</div>
+                </div>
+                
+                <div class="asset-card">
+                    <span class="asset-icon">📚</span>
+                    <div class="asset-title">知識</div>
+                    <div class="asset-description">継続的な学習と成長による専門性の向上</div>
+                </div>
+                
+                <div class="asset-card">
+                    <span class="asset-icon">💰</span>
+                    <div class="asset-title">富</div>
+                    <div class="asset-description">やりたいことを実現できる経済的な豊かさ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ライフスタイル設計法 -->
+        <div class="section">
+            <h2>🎯 ライフスタイル設計の6ステップ</h2>
+            <p>五大資産を活用した持続可能なライフスタイルを設計する具体的な手順をご紹介します。</p>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <h3>アイデンティティの発見</h3>
+                    <p>自分が何者で、どういう形で人に貢献できるかを深く理解する。誘導瞑想などを活用して自己理解を深める。</p>
+                </div>
+                
+                <div class="step-item">
+                    <h3>働き方のロードマップ作成</h3>
+                    <p>1年後、3年後、10年後の理想の五大資産状態を具体的に描き、実現までの道筋を明確にする。</p>
+                </div>
+                
+                <div class="step-item">
+                    <h3>コンセプト・エントリーポイント決定</h3>
+                    <p>自分のアイデンティティから導かれる具体的なビジネスコンセプトと開始点を決定する。</p>
+                </div>
+                
+                <div class="step-item">
+                    <h3>プロセス具現化とブロック解除</h3>
+                    <p>全体像を俯瞰しながら実行し、出てくるメンタルブロックを適切に解決していく。</p>
+                </div>
+                
+                <div class="step-item">
+                    <h3>才能発揮とマーケティング実行</h3>
+                    <p>自分の才能が最大化される働き方を見つけ、マーケティングを通じて価値を提供する。</p>
+                </div>
+                
+                <div class="step-item">
+                    <h3>三つのスタイルへの再投資</h3>
+                    <p>ライフスタイル・ワークスタイル・ビジネススタイルに獲得したリソースを再投資し、循環を作る。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 実例紹介 -->
+        <div class="section">
+            <h2>✨ 実際の成果事例</h2>
+            
+            <div class="example-box">
+                <div class="example-title">🔥 あやねえ（火山型）の事例</div>
+                <p><strong>アイデンティティ：</strong>火山のように高いエネルギーを持つ人<br>
+                <strong>働き方：</strong>オンライン秘書 → 時短コンサル<br>
+                <strong>成果：</strong>月収500万円達成（意図せず自然に）</p>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">💼 広告代理店の事例</div>
+                <p><strong>課題：</strong>月収100万前後で伸び悩み<br>
+                <strong>解決：</strong>親子関係のワークで自己受容を高める<br>
+                <strong>成果：</strong>月収200万円のクライアントワークを獲得</p>
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">🎨 UI/UXデザイナーの事例</div>
+                <p><strong>転換：</strong>コンテンツビジネス → クライアントワーク<br>
+                <strong>強み：</strong>職人気質を活かした専門性<br>
+                <strong>成果：</strong>副業で月50-100万円の安定収入</p>
+            </div>
+        </div>
+
+        <!-- 重要なマインドセット -->
+        <div class="section">
+            <h2>💭 重要なマインドセット</h2>
+            
+            <h3>🔄 「お金も稼げる」働き方</h3>
+            <p>「お金を稼ぐ」ではなく「お金も稼げる」働き方を目指します。お金以外の価値（やりがい、成長、貢献）を追求した結果として、自然とお金もついてくる状態を作ります。</p>
+            
+            <div class="point-box">
+                やることをやっていたら、収入が何かついてきた
+            </div>
+            
+            <h3>🌱 持続可能性を最優先</h3>
+            <p>短期的な成果よりも、長期間にわたって続けられるビジネス・ライフスタイルを重視します。自分のエネルギーに嘘をつかない働き方を選択することが重要です。</p>
+            
+            <h3>🤝 対等な関係性</h3>
+            <p>メンター・クライアント、上司・部下といった上下関係ではなく、お互いの強みを活かし合う対等なパートナーシップを築きます。</p>
+        </div>
+
+        <!-- 実践ワーク -->
+        <div class="section">
+            <h2>📝 今すぐできる実践ワーク</h2>
+            
+            <h3>ワーク1：五大資産の現状チェック</h3>
+            <p>現在の自分の五大資産を10点満点で評価してみましょう：</p>
+            <ul>
+                <li>時間の自由度：___点</li>
+                <li>健康状態：___点</li>
+                <li>理想的な仲間関係：___点</li>
+                <li>知識・スキルレベル：___点</li>
+                <li>経済的余裕：___点</li>
+            </ul>
+            
+            <h3>ワーク2：理想のライフスタイル描写</h3>
+            <p>1年後の理想的な1日を具体的に文章で書いてみましょう：</p>
+            <ul>
+                <li>何時に起きて、どんな朝を過ごしているか</li>
+                <li>どんな仕事をして、誰と関わっているか</li>
+                <li>どんな場所で、どんな活動をしているか</li>
+                <li>どれくらいの収入があり、どう使っているか</li>
+            </ul>
+            
+            <h3>ワーク3：アイデンティティ発見質問</h3>
+            <p>以下の質問に正直に答えてみましょう：</p>
+            <ul>
+                <li>人から「あなたらしい」と言われるのはどんな時ですか？</li>
+                <li>あなたが自然にできて、他の人が難しく感じることは何ですか？</li>
+                <li>どんな人の、どんな悩みを解決したいと思いますか？</li>
+            </ul>
+        </div>
+
+        <!-- 次のステップ -->
+        <div class="section">
+            <h2>🚀 次のステップ</h2>
+            <p>このレッスンで学んだ概念を実際に活用するためには、より深い自己分析と具体的な行動計画が必要です。</p>
+            
+            <div class="point-box">
+                一人でやるには難易度が高いため、<br>
+                適切なメンターやコミュニティとの関わりが重要です
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="#" class="cta-button">
+                    📞 個別相談を申し込む
+                </a>
+            </div>
+        </div>
+
+        <!-- エレガントなフッター -->
+        <div style="text-align: center; margin: 60px 0; padding: 40px; border-top: 2px solid var(--soft-platinum); color: var(--text-secondary);">
+            <p style="font-size: 16px; margin-bottom: 10px;">© 2024 なゆたコーチング - 五大資産ライフスタイル設計法</p>
+            <p style="font-size: 14px; opacity: 0.8;">このレッスンは「五大資産再構築６ステップセミナー（後編）」から抽出・再構成されました</p>
+        </div>
+    </div>
+</body>
+</html>

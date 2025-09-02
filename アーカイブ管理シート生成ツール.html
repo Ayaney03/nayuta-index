@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アーカイブ管理シート生成ツール - あやねえ専用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .form-container {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .result-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #4facfe;
+            display: none;
+        }
+
+        .result-container.show {
+            display: block;
+        }
+
+        .result-container h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .download-btn {
+            background: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #218838;
+            transform: translateY(-1px);
+        }
+
+        .copy-btn {
+            background: #17a2b8;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #138496;
+            transform: translateY(-1px);
+        }
+
+        .quick-templates {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .quick-templates h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .template-btn {
+            background: #6c757d;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .template-btn:hover {
+            background: #5a6268;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 アーカイブ管理シート生成ツール</h1>
+            <p>ボタンひとつで秒速作成 - あやねえ専用</p>
+        </div>
+
+        <div class="form-container">
+            <!-- クイックテンプレート -->
+            <div class="quick-templates">
+                <h3>🚀 クイックテンプレート</h3>
+                <button class="template-btn" onclick="loadTemplate('utopia')">ユートピア集会</button>
+                <button class="template-btn" onclick="loadTemplate('secretary')">秘書力講座</button>
+                <button class="template-btn" onclick="loadTemplate('mumyokai')">無明会セミナー</button>
+                <button class="template-btn" onclick="loadTemplate('client')">クライアントワーク術</button>
+            </div>
+
+            <form id="archiveForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="title">📋 セミナータイトル *</label>
+                        <input type="text" id="title" name="title" required placeholder="例：AIクライアントワーク術セミナー">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">📅 開催日時 *</label>
+                        <input type="text" id="date" name="date" required placeholder="例：2025年1月15日">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="speakers">🎤 講師名 *</label>
+                        <input type="text" id="speakers" name="speakers" required placeholder="例：あやねえ、なゆたさん">
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">⏱️ 録画時間</label>
+                        <input type="text" id="duration" name="duration" placeholder="例：約60分">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="url">🔗 録画URL</label>
+                    <input type="url" id="url" name="url" placeholder="https://www.youtube.com/watch?v=...">
+                </div>
+
+                <div class="form-group">
+                    <label for="participants">👥 参加者</label>
+                    <input type="text" id="participants" name="participants" placeholder="例：ユートピアサロンメンバー、30名">
+                </div>
+
+                <div class="form-group">
+                    <label for="mainTheme">🎯 メインテーマ *</label>
+                    <textarea id="mainTheme" name="mainTheme" required placeholder="セミナーのメインテーマを記入してください"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="targetAudience">👤 対象者（1行1項目）</label>
+                    <textarea id="targetAudience" name="targetAudience" placeholder="AI活用に興味があるビジネスパーソン&#10;効率化を求める起業家・フリーランス&#10;クライアントワークで収入を上げたい人"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="learningObjectives">🎓 学習目標（1行1項目）</label>
+                    <textarea id="learningObjectives" name="learningObjectives" placeholder="AIツールの実践的な活用方法を学ぶ&#10;ワークフローの効率化手法を身につける&#10;クライアントワークでの成果向上を実現する"></textarea>
+                </div>
+
+                <button type="submit" class="generate-btn">
+                    ✨ アーカイブ管理シートを生成する
+                </button>
+            </form>
+
+            <div id="resultContainer" class="result-container">
+                <h3>🎉 生成完了！</h3>
+                <p>アーカイブ管理シートが生成されました。</p>
+                <div style="margin-top: 15px;">
+                    <button class="download-btn" onclick="downloadFile()">📥 ダウンロード</button>
+                    <button class="copy-btn" onclick="copyToClipboard()">📋 コピー</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let generatedContent = '';
+
+        // テンプレート読み込み
+        function loadTemplate(type) {
+            const templates = {
+                utopia: {
+                    title: 'ユートピア集会〜あやねえゲスト「最新AIクライアントワーク術」',
+                    speakers: 'あやねえ（ゲスト）、なゆたさん（ホスト）',
+                    participants: 'ユートピアサロンメンバー',
+                    mainTheme: 'AIを「加速装置」として活用し、週3-4稼働で月収100-300万円を実現するクライアントワーク術',
+                    targetAudience: 'AI活用に興味があるビジネスパーソン\nクライアントワークで収入を上げたい人\n効率化を求める起業家・フリーランス\nユートピアサロンメンバー',
+                    learningObjectives: 'AIは「加速装置」であることを理解する\n具体的なAI活用ツール（Cursor、アクアボイス等）の使い方を学ぶ\nクライアントワークでの実践的な活用法を身につける'
+                },
+                secretary: {
+                    title: '秘書力マスター講座〜プロ秘書のスキルアップセミナー',
+                    speakers: 'あやねえ',
+                    participants: '秘書力マスター講座受講生',
+                    mainTheme: 'プロ秘書として必要なスキルと心構え、クライアントとの効果的なコミュニケーション術',
+                    targetAudience: '秘書業務に従事している方\nクライアントワークを向上させたい方\nコミュニケーションスキルを高めたい方',
+                    learningObjectives: 'プロ秘書としての基本スキルを身につける\n効果的なクライアントコミュニケーションを学ぶ\n業務効率化のテクニックを習得する'
+                },
+                mumyokai: {
+                    title: '無明会セミナー〜ビジネス成功の秘訣',
+                    speakers: 'あやねえ、なゆたさん',
+                    participants: '無明会メンバー',
+                    mainTheme: 'ビジネスで成功するためのマインドセットと実践的な手法',
+                    targetAudience: 'ビジネス成功を目指す起業家\n収入向上を求める会社員\n自己成長に興味がある方',
+                    learningObjectives: '成功するためのマインドセットを理解する\n実践的なビジネス手法を学ぶ\n継続的な成長のための仕組みを構築する'
+                },
+                client: {
+                    title: 'AIを活用したクライアントワーク効率化術',
+                    speakers: 'あやねえ',
+                    participants: 'クライアントワーカー',
+                    mainTheme: 'AI技術を活用してクライアントワークの効率を劇的に向上させる実践的手法',
+                    targetAudience: 'フリーランス・個人事業主\nクライアントワークに従事する方\nAI活用で業務効率化を図りたい方',
+                    learningObjectives: 'AI技術の基本的な活用方法を学ぶ\nクライアントワークでの実践的な応用を身につける\n効率化による収入向上を実現する'
+                }
+            };
+
+            const template = templates[type];
+            if (template) {
+                document.getElementById('title').value = template.title;
+                document.getElementById('speakers').value = template.speakers;
+                document.getElementById('participants').value = template.participants;
+                document.getElementById('mainTheme').value = template.mainTheme;
+                document.getElementById('targetAudience').value = template.targetAudience;
+                document.getElementById('learningObjectives').value = template.learningObjectives;
+                
+                // 今日の日付を設定
+                const today = new Date();
+                const dateStr = `${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日`;
+                document.getElementById('date').value = dateStr;
+            }
+        }
+
+        // フォーム送信処理
+        document.getElementById('archiveForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // アーカイブシート生成
+            generatedContent = generateArchiveSheet(data);
+            
+            // 結果表示
+            document.getElementById('resultContainer').classList.add('show');
+            document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // アーカイブシート生成関数
+        function generateArchiveSheet(data) {
+            const targetAudienceList = data.targetAudience ? 
+                data.targetAudience.split('\n').filter(item => item.trim()).map(item => `・${item.trim()}`).join('\n') : 
+                '・対象者を記入してください';
+            
+            const learningObjectivesList = data.learningObjectives ? 
+                data.learningObjectives.split('\n').filter(item => item.trim()).map(item => `- ${item.trim()}`).join('\n') : 
+                '- 学習目標を記入してください';
+
+            return `# セミナーアーカイブ管理シート
+
+## 📝 基本情報
+
+| 項目 | 内容 |
+|------|------|
+| セミナータイトル | ${data.title || ''} |
+| 開催日時 | ${data.date || ''} |
+| 講師 | ${data.speakers || ''} |
+| 参加者数 | ${data.participants || ''} |
+| 録画時間 | ${data.duration || ''} |
+| ファイル形式 | YouTube動画 |
+| 保存場所 | ${data.url || ''} |
+
+---
+
+## 🎯 セミナー概要
+
+### メインテーマ
+\`\`\`
+${data.mainTheme || 'メインテーマを記入してください'}
+\`\`\`
+
+### 対象者
+\`\`\`
+${targetAudienceList}
+\`\`\`
+
+### 学習目標
+${learningObjectivesList}
+
+---
+
+## 📋 文字起こし
+
+### 導入部分（0:00-XX:XX）
+\`\`\`
+・導入内容を記入
+・重要ポイントを箇条書き
+・印象的な発言
+\`\`\`
+
+**重要なポイント：**
+- ポイント1
+- ポイント2
+- ポイント3
+
+### セクション2（XX:XX-XX:XX）
+\`\`\`
+・セクション内容を記入
+・重要ポイントを箇条書き
+・具体的な事例
+\`\`\`
+
+**重要なポイント：**
+- ポイント1
+- ポイント2
+- ポイント3
+
+---
+
+## 🎬 YouTube活用情報
+
+### 動画タイトル案
+1. 【キーワード】${data.title || 'メインタイトル'}
+2. 【実践術】${data.mainTheme ? data.mainTheme.substring(0, 30) + '...' : 'サブタイトル'}
+3. 【完全解説】${data.speakers || '講師名'}が教える実践的手法
+
+### サムネイル用キーワード
+- AI活用
+- 効率化
+- 実践術
+- ${data.speakers || '講師名'}
+
+### 概要欄テンプレート
+\`\`\`
+🎥${data.title || 'セミナータイトル'}
+
+▶︎ この動画（音声）について
+${data.mainTheme || 'セミナーの概要説明をここに記入'}
+
+✔︎ 学べること1
+✔︎ 学べること2
+✔︎ 学べること3
+
+▶︎ この動画で学べること
+
+✅ ポイント1の詳細説明
+✅ ポイント2の詳細説明
+✅ ポイント3の詳細説明
+
+⏰ タイムスタンプ
+00:00 導入
+XX:XX セクション1
+XX:XX セクション2
+XX:XX まとめ
+
+📚 関連リンク
+・関連リンク1
+・関連リンク2
+
+💡 講師について
+【${data.speakers || '講師名'}】
+・プロフィール情報
+・実績
+・専門分野
+
+🏷️ #AI活用 #効率化 #実践術 #${data.speakers || '講師名'}
+\`\`\`
+
+---
+
+## 💎 名言・印象的なフレーズ
+
+### 引用可能な名言
+1. "名言1をここに記入"
+2. "名言2をここに記入"
+3. "名言3をここに記入"
+
+### SNS投稿用ショートクリップ候補
+| 時間 | 内容 | 投稿文案 |
+|------|------|----------|
+| XX:XX-XX:XX | クリップ内容1 | 【キーワード】投稿文案1 |
+| XX:XX-XX:XX | クリップ内容2 | 【キーワード】投稿文案2 |
+| XX:XX-XX:XX | クリップ内容3 | 【キーワード】投稿文案3 |
+
+---
+
+## 📊 コンテンツ展開アイデア
+
+### ブログ記事化
+- [ ] 記事タイトル：「${data.title || 'タイトル'}」から学ぶ実践的手法
+- [ ] 構成案：マインド編→ツール編→実践編→事例編
+- [ ] 公開予定日：${new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString('ja-JP')}
+
+### LINE配信活用
+- [ ] 配信タイトル：【実践動画あり】${data.mainTheme ? data.mainTheme.substring(0, 20) + '...' : '内容'}
+- [ ] 配信内容：セミナー要約＋関連講座案内
+- [ ] 配信予定日：${new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toLocaleDateString('ja-JP')}
+
+### note記事化
+- [ ] noteタイトル：${data.title || 'タイトル'}完全解説
+- [ ] 価格設定：1,980円
+- [ ] 公開予定日：${new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toLocaleDateString('ja-JP')}
+
+### 講座コンテンツ化
+- [ ] レッスンタイトル：${data.mainTheme ? data.mainTheme.substring(0, 30) : 'レッスンタイトル'}
+- [ ] 対象講座：秘書力マスター講座
+- [ ] 追加予定日：次期開始時
+
+---
+
+## ✅ 作業チェックリスト
+
+### 文字起こし作業
+- [ ] 音声ファイルの準備
+- [ ] AIツールでの一次起こし
+- [ ] 手動での校正・編集
+- [ ] 重要ポイントの抽出
+- [ ] タイムスタンプの追加
+
+### YouTube準備
+- [ ] 動画編集
+- [ ] サムネイル作成
+- [ ] 概要欄作成
+- [ ] タイトル決定
+- [ ] 公開設定
+
+### 二次活用
+- [ ] ブログ記事作成
+- [ ] SNS投稿準備
+- [ ] LINE配信準備
+- [ ] 講座コンテンツ化
+
+---
+
+## 📝 メモ・その他
+
+\`\`\`
+・特記事項やメモをここに記入
+・改善点や気づき
+・次回への申し送り事項
+\`\`\`
+
+---
+
+## 🔗 関連ファイル・リンク
+
+- 録画ファイル：${data.url || '（追加予定）'}
+- 資料ファイル：（追加予定）
+- YouTube URL：（公開後追加）
+- ブログ記事URL：（作成予定）
+- 関連コンテンツ：（関連ファイル名）
+
+---
+
+## 📄 文字起こし原文
+
+\`\`\`
+（文字起こし原文をここに貼り付け）
+\`\`\``;
+        }
+
+        // ダウンロード機能
+        function downloadFile() {
+            const title = document.getElementById('title').value || 'セミナー';
+            const safeTitle = title.replace(/[\/\\:*?"<>|]/g, '_').substring(0, 50);
+            const filename = `${safeTitle}_アーカイブ管理シート.md`;
+            
+            const blob = new Blob([generatedContent], { type: 'text/markdown;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // クリップボードにコピー
+        function copyToClipboard() {
+            navigator.clipboard.writeText(generatedContent).then(function() {
+                alert('📋 アーカイブ管理シートをクリップボードにコピーしました！');
+            }).catch(function(err) {
+                console.error('コピーに失敗しました:', err);
+                alert('❌ コピーに失敗しました。手動でコピーしてください。');
+            });
+        }
+
+        // 今日の日付を自動設定
+        window.addEventListener('load', function() {
+            const today = new Date();
+            const dateStr = `${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日`;
+            document.getElementById('date').value = dateStr;
+        });
+    </script>
+</body>
+</html>
+

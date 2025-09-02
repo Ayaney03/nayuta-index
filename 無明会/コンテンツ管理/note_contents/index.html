@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 ノートコンテンツ一覧</title>
+    
+    <style>
+        /* 基本フォント設定 */
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'Yu Mincho', 'YuMincho', 'MS PMincho', 'Noto Serif JP', serif;
+            font-size: 18px;
+            line-height: 1.9;
+            color: #1a202c;
+            font-feature-settings: 'palt';
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0;
+            background: #f8f6f3;
+        }
+
+        /* カラーパレット */
+        :root {
+            --primary-gold: #d4af37;
+            --dark-gold: #8b6914;
+            --light-gold: #f5e6a3;
+            --brown-gradient-1: #8b7355;
+            --brown-gradient-2: #6b5b47;
+            --text-dark: #2d3748;
+            --text-light: #f7fafc;
+            --background-light: #f8f6f3;
+            --background-white: #ffffff;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: linear-gradient(135deg, #f5e6a3 0%, #d4af37 50%, #b8860b 100%);
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--dark-gold);
+            margin: 0 0 16px 0;
+            text-shadow: 2px 2px 4px rgba(139, 105, 20, 0.2);
+        }
+
+        .header p {
+            font-size: 18px;
+            color: var(--dark-gold);
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* コンテナ */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 48px 20px;
+        }
+
+        /* ノート一覧 */
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .note-card {
+            background: var(--background-white);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(139, 105, 20, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .note-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(139, 105, 20, 0.2);
+            border-color: var(--primary-gold);
+        }
+
+        .note-number {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            word-break: keep-all;
+        }
+
+        .note-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-gold);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .note-subtitle {
+            font-size: 14px;
+            color: var(--text-dark);
+            opacity: 0.7;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .container {
+                padding: 32px 16px;
+            }
+            
+            .notes-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .note-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>無明会 ノートコンテンツ</h1>
+        <p>人生変革のための知識体系</p>
+    </header>
+
+    <div class="container">
+        <div class="notes-grid">
+            <a href="mn01c.html" class="note-card">
+                <div class="note-number">Note 01：なぜ人は変われないのか？</div>
+                <h3 class="note-title">なぜ人は変われないのか？</h3>
+                <p class="note-subtitle">〜自分の決意を裏切ってしまうメカニズム「傲慢」と「痴」〜</p>
+            </a>
+
+            <a href="mn02c.html" class="note-card">
+                <div class="note-number">Note 02：どうすれば人は変われるのか？</div>
+                <h3 class="note-title">どうすれば人は変われるのか？</h3>
+                <p class="note-subtitle">〜強い心を手に入れる6つの鉄則「六波羅蜜」〜</p>
+            </a>
+
+            <a href="mn03c.html" class="note-card">
+                <div class="note-number">Note 03：人生を破壊する病</div>
+                <h3 class="note-title">人生を破壊する病</h3>
+                <p class="note-subtitle">〜幼稚さ、軽薄さの脱却〜</p>
+            </a>
+
+            <a href="mn04c.html" class="note-card">
+                <div class="note-number">Note 04：言い訳と行動の間にある壁</div>
+                <h3 class="note-title">言い訳と行動の間にある壁</h3>
+                <p class="note-subtitle">〜「雑魚性」のメカニズム〜</p>
+            </a>
+
+            <a href="mn05c.html" class="note-card">
+                <div class="note-number">Note 05：『奴隷人生』をやめるためには？</div>
+                <h3 class="note-title">『奴隷人生』をやめるためには？</h3>
+                <p class="note-subtitle">〜周りに流されず、自分軸を持って生きる原理原則〜</p>
+            </a>
+
+            <a href="mn06c.html" class="note-card">
+                <div class="note-number">Note 06：同じ失敗を繰り返す人に潜む根本的無意識</div>
+                <h3 class="note-title">同じ失敗を繰り返す人に潜む根本的無意識</h3>
+                <p class="note-subtitle">〜かまってちゃんと甘えん坊〜</p>
+            </a>
+
+            <a href="mn07c.html" class="note-card">
+                <div class="note-number">Note 07：結果が出ない根本原因とすべての原因は我である</div>
+                <h3 class="note-title">結果が出ない根本原因とすべての原因は我である</h3>
+                <p class="note-subtitle">〜我執の正体〜</p>
+            </a>
+
+            <a href="mn08c.html" class="note-card">
+                <div class="note-number">Note 08：幸せな恋愛をするには</div>
+                <h3 class="note-title">幸せな恋愛をするには</h3>
+                <p class="note-subtitle">〜二度と同じ失敗を繰り返さないために恋愛のパターンを変える超実践ワーク〜</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

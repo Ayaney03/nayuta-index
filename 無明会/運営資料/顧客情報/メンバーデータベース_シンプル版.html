@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👥 無明会 メンバーデータベース</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #f8f6f3 0%, #fff8dc 50%, #f5e6a3 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .member-list {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .member-header {
+            background: #2c3e50;
+            color: white;
+            padding: 10px 15px;
+            display: grid;
+            grid-template-columns: 50px 150px 80px 80px 100px 100px;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+
+        .member-item {
+            padding: 8px 15px;
+            border-bottom: 1px solid #e9ecef;
+            display: grid;
+            grid-template-columns: 50px 150px 80px 80px 100px 100px;
+            gap: 10px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .member-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status-年間 { color: #28a745; font-weight: bold; }
+        .status-通常 { color: #17a2b8; font-weight: bold; }
+        .status-体験終了 { color: #ffc107; }
+        .status-退会 { color: #dc3545; }
+
+        .team-貪欲 { background: #ffc107; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.7em; }
+        .team-瞋恚 { background: #dc3545; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.7em; }
+        .team-愚痴 { background: #28a745; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.7em; }
+        .team-なし { background: #6c757d; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.7em; }
+        .team-未設定 { background: #e9ecef; color: #666; padding: 2px 6px; border-radius: 3px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>👥 無明会 メンバーデータベース</h1>
+            <p>メンバー管理・LTV分析システム</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="total-members">0</div>
+                <div class="stat-label">👥 総メンバー</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="annual-members">0</div>
+                <div class="stat-label">💎 年間会員</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="regular-members">0</div>
+                <div class="stat-label">⭐ 通常会員</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="active-members">0</div>
+                <div class="stat-label">🟢 現役会員</div>
+            </div>
+        </div>
+
+        <div class="member-list">
+            <div class="member-header">
+                <div>ID</div>
+                <div>名前</div>
+                <div>ステータス</div>
+                <div>チーム</div>
+                <div>基本LTV</div>
+                <div>総LTV</div>
+            </div>
+            <div id="memberGrid">
+                <!-- メンバー一覧がここに表示されます -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // シンプルなメンバーデータ
+        const members = [
+            { id: 'M001', name: '藤澤秀彰', status: '退会', team: '未設定', ltv: 650000 },
+            { id: 'M002', name: '鈴木裕介', status: '体験終了', team: '未設定', ltv: 9800 },
+            { id: 'M003', name: '福井康大', status: '年間', team: '貪欲', ltv: 720000 },
+            { id: 'M004', name: '俵健太郎', status: '年間', team: '瞋恚', ltv: 620000 },
+            { id: 'M005', name: '進藤勇輝', status: '通常', team: '愚痴', ltv: 780000 },
+            { id: 'M006', name: '佐藤諒駿', status: '体験終了', team: '未設定', ltv: 540000 },
+            { id: 'M007', name: '杉平涼', status: '通常', team: '愚痴', ltv: 320000 },
+            { id: 'M008', name: '松本和久', status: '退会', team: '未設定', ltv: 150000 },
+            { id: 'M009', name: '松田陽平', status: '通常', team: '瞋恚', ltv: 280000 },
+            { id: 'M010', name: '井上純也', status: '退会', team: '未設定', ltv: 90000 }
+        ];
+
+        console.log('メンバーデータ読み込み完了:', members.length, '名');
+
+        // 統計の計算
+        function updateStats() {
+            const total = members.length;
+            const annual = members.filter(m => m.status === '年間').length;
+            const regular = members.filter(m => m.status === '通常').length;
+            const active = annual + regular;
+
+            document.getElementById('total-members').textContent = total;
+            document.getElementById('annual-members').textContent = annual;
+            document.getElementById('regular-members').textContent = regular;
+            document.getElementById('active-members').textContent = active;
+
+            console.log('統計更新完了 - 総数:', total, '年間:', annual, '通常:', regular, '現役:', active);
+        }
+
+        // メンバーカードの作成
+        function createMemberCard(member) {
+            return `
+                <div class="member-item">
+                    <div>${member.id}</div>
+                    <div>${member.name}</div>
+                    <div class="status-${member.status}">${member.status}</div>
+                    <div class="team-${member.team}">${member.team}</div>
+                    <div>¥${member.ltv.toLocaleString()}</div>
+                    <div>¥${member.ltv.toLocaleString()}</div>
+                </div>
+            `;
+        }
+
+        // メンバー一覧の表示
+        function renderMembers() {
+            console.log('メンバー表示開始:', members.length, '名');
+            const grid = document.getElementById('memberGrid');
+            const html = members.map(createMemberCard).join('');
+            grid.innerHTML = html;
+            console.log('メンバー表示完了');
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('ページ初期化開始');
+            updateStats();
+            renderMembers();
+            console.log('ページ初期化完了');
+        });
+
+        // 即座にテスト実行
+        console.log('JavaScript読み込み完了');
+    </script>
+</body>
+</html>

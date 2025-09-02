@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1章：講座の使い方＆ガイダンス | 秘書力マスター講座</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+            line-height: 1.8;
+            color: #2d3748;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 25%, #bae6fd 50%, #7dd3fc 75%, #38bdf8 100%);
+            min-height: 100vh;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(30, 58, 138, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(251, 191, 36, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ヘッダー */
+        .header {
+            text-align: center;
+            margin: 40px 30px;
+            padding: 40px 0;
+            border-bottom: 4px solid #2563eb;
+        }
+
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1e3a8a;
+            letter-spacing: 0.5px;
+        }
+
+        .header .chapter-title {
+            font-size: 1rem;
+            color: #d97706;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #fbbf24;
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #64748b;
+            margin-top: 15px;
+        }
+
+        /* 動画セクション */
+        .video-section {
+            padding: 40px 30px;
+            margin: 30px 0;
+            border-bottom: 3px solid #fbbf24;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-bottom: 25px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #2563eb;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .video-link a {
+            color: #1e3a8a;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .video-link a:hover {
+            color: #2563eb;
+        }
+
+        /* コンテンツセクション */
+        .content-section {
+            padding: 40px 30px;
+            margin-bottom: 0;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1e3a8a;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #fbbf24;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .section-number {
+            background: #1e3a8a;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .subsection {
+            margin-bottom: 35px;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .subsection p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .subsection h4 {
+            color: #1e3a8a;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .subsection h4::before {
+            content: "◆";
+            color: #fbbf24;
+            margin-right: 15px;
+            font-size: 1.4rem;
+        }
+
+        .highlight {
+            padding: 25px 0;
+            padding-left: 25px;
+            border-left: 4px solid #fbbf24;
+            margin: 25px 0;
+            background: rgba(251, 191, 36, 0.1);
+        }
+
+        .highlight p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .highlight h4 {
+            color: #1e3a8a;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .point-list {
+            padding: 20px 0;
+            margin: 20px 0;
+            border-top: 1px solid rgba(37, 99, 235, 0.3);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .point-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .point-list li {
+            padding: 12px 0;
+            position: relative;
+            padding-left: 30px;
+            font-weight: 500;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .point-list li::before {
+            content: "✓";
+            color: #fbbf24;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .action-steps {
+            background: rgba(30, 58, 138, 0.08);
+            color: #2d3748;
+            padding: 30px;
+            margin: 40px 0;
+            border-left: 4px solid #2563eb;
+            border-top: 2px solid rgba(37, 99, 235, 0.3);
+            border-bottom: 2px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .action-steps h4 {
+            color: #1e3a8a;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .action-steps li {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .action-steps p {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .action-steps ol {
+            padding-left: 25px;
+        }
+
+        .action-steps li {
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .next-step {
+            background: rgba(251, 191, 36, 0.1);
+            color: #2d3748;
+            padding: 40px 30px;
+            text-align: center;
+            margin: 30px 0;
+            border-top: 3px solid #fbbf24;
+            border-bottom: 3px solid #fbbf24;
+        }
+
+        .next-step h3 {
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            color: #1e3a8a;
+            font-weight: 700;
+        }
+
+        .next-step p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .diamond-icon {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: #fbbf24;
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+
+            .header {
+                padding: 30px 0;
+                margin: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header .chapter-title {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                padding: 20px;
+            }
+
+            .section-number {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .subsection {
+                padding: 20px;
+            }
+
+            .video-section,
+            .content-section,
+            .next-step {
+                margin: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+        <div class="header">
+            <div class="chapter-title">第1章：講座の使い方＆ガイダンス</div>
+            <h1>秘書力マスター講座</h1>
+            <div class="subtitle">コミュニティ活用方法</div>
+        </div>
+
+        <!-- 動画セクション -->
+        <div class="video-section">
+            <div class="video-container">
+                <iframe src="https://utage-system.com/video/sbH2syxpztaY" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-link">
+                <a href="https://utage-system.com/video/sbH2syxpztaY" target="_blank">
+                    動画を新しいタブで開く
+                </a>
+            </div>
+        </div>
+
+        <!-- コンテンツセクション -->
+        <div class="content-section">
+            <h2 class="section-title">
+                <span class="section-number">1</span>
+                コミュニティの目的とスタンス
+            </h2>
+            
+            <div class="subsection">
+                <h4>基本方針</h4>
+                <p>私のコミュニティは「慣れ合い」や「雑談目的」ではありません。</p>
+            </div>
+
+            <div class="subsection">
+                <h4>参加メンバーの目標</h4>
+                <div class="point-list">
+                    <ul>
+                        <li><strong>右腕秘書</strong>を目指す</li>
+                        <li>クライアントにしっかり貢献して、収入アップにつなげたい</li>
+                        <li>在宅でも<strong>かえの効かない存在</strong>として活躍したい</li>
+                    </ul>
+                </div>
+                <p>という、意欲が高いメンバーばかりです。</p>
+            </div>
+
+            <div class="highlight">
+                <h4>環境づくりの考え方</h4>
+                <p>「モチベーション上げ合う雑談」よりも、<strong>図書館や自習室</strong>のような集中できる環境を目指しています。</p>
+                <p>同じフェーズ同士で集まっても成果には繋がりにくいことを、私自身いろいろ見てきました。</p>
+                
+                <div class="point-list">
+                    <h5>ポイント</h5>
+                    <ul>
+                        <li>雑談なし＝冷たいわけではなく、<strong>お互い集中して淡々と行動できる空間</strong>にする</li>
+                        <li>本当に必要な情報交換や相談はいつでも大歓迎</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                <span class="section-number">2</span>
+                Discordの構成
+            </h2>
+            
+            <p style="margin-bottom: 25px; padding: 20px 0; border-bottom: 1px solid rgba(37, 99, 235, 0.3);">今回のコミュニティはDiscordというアプリ（PC/スマホ両対応）を使います。Discord内にはいくつか「部屋」（チャンネル）があります。</p>
+
+            <div class="subsection">
+                <h4>お知らせチャンネル</h4>
+                <div class="point-list">
+                    <ul>
+                        <li>コンテンツのみプランの方も含め、<strong>全員がアクセスできる部屋</strong></li>
+                        <li>新着情報やスケジュール、講座に関するアナウンスを随時投稿</li>
+                        <li>見逃さないように、アプリの通知をONにしておくのがおすすめ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h4>コラボチャンネル</h4>
+                <div class="point-list">
+                    <ul>
+                        <li>他のインフルエンサーさんやクライアントさんとコラボした内容</li>
+                        <li>普段SNSには出していないような限定コンテンツをシェア</li>
+                        <li><strong>全プラン共通で閲覧OK</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h4>グルコン（グループコンサル）のお知らせチャンネル</h4>
+                <div class="point-list">
+                    <ul>
+                        <li>次回のグルコン日時、Zoomリンクや作業会の開催情報を共有</li>
+                        <li>コンテンツのみプランの方もスケジュールは確認できる</li>
+                        <li>実際の参加やフィードバックはプランによって異なる</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h4>個別チャット（個室チャンネル）</h4>
+                <p><strong>通常プラン／ダイヤモンドプラン限定</strong></p>
+                <div class="point-list">
+                    <ul>
+                        <li>例：「Aさん専用の部屋」など、他のメンバーからは見えない個室</li>
+                        <li>困っていることや実務の相談、案件相談などを遠慮なく書き込める</li>
+                        <li>私と一部の講師・スタッフだけが閲覧可能なので安心</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h4>音声通話・ビデオ通話部屋</h4>
+                <div class="point-list">
+                    <ul>
+                        <li>Discord内の「ボイスチャンネル」機能を活用</li>
+                        <li>グルコンや作業会を行う際に使用</li>
+                        <li>Zoomリンクを貼って行う場合もある</li>
+                        <li>今後はDiscord内ボイスチャットでリアルタイムの勉強会も予定</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                <span class="section-number">3</span>
+                基本ルールと推奨の使い方
+            </h2>
+
+            <div class="subsection">
+                <h4>通知はON</h4>
+                <p>新しいお知らせや大事な連絡を見逃さないよう、スマホのDiscordアプリをインストール＆通知をONにしておきましょう。</p>
+            </div>
+
+            <div class="subsection">
+                <h4>スタンプ活用</h4>
+                <p>長文のやり取りが必要ない時は、スタンプやリアクションで「見たよ」「ありがとう」「ナイス！」といった意思表示をサクッとできます。</p>
+                <div class="highlight">
+                    <p><strong>時短＆ストレスフリー</strong>でコミュニケーションを図るのに便利です。</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h4>気軽に相談する</h4>
+                <p>せっかくの個別チャットやコミュニティ機能を使わないとモッタイナイ！</p>
+                <div class="point-list">
+                    <ul>
+                        <li>「こんなこと質問していいのかな？」と思わずに書き込んでOK</li>
+                        <li>私が見落としていたら、スタンプで再度呼びかけてください</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h4>クライアントワークへの応用</h4>
+                <p>Discordはクライアントとのやり取りにも活用できます。</p>
+                <div class="point-list">
+                    <ul>
+                        <li>とくに<strong>フルリモートチーム</strong>や<strong>海外在住クライアント</strong>などとも相性抜群</li>
+                        <li>自分が秘書として管理しやすい環境を提案してあげると喜ばれるケース多数</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                <span class="section-number">4</span>
+                実行あるのみ！コミュニティが強い味方になる
+            </h2>
+
+            <div class="subsection">
+                <h4>雑談部屋を作らない理由</h4>
+                <div class="point-list">
+                    <ul>
+                        <li><strong>集中する空間</strong>をつくるため</li>
+                        <li>お互いが行動と成果にフォーカスするため</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h4>成果報告や質問は大歓迎！</h4>
+                <div class="point-list">
+                    <ul>
+                        <li>成果をシェアすると、他の人の学びにもなる</li>
+                        <li>何かを「人に伝える・教える」過程で自分の理解が深まり、さらなる秘書力アップ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h4>自習室感覚の効果</h4>
+                <p>自習室感覚で黙々と作業しているメンバーが多い＝刺激を受けやすい</p>
+                <div class="point-list">
+                    <ul>
+                        <li>一人でやっているときよりも<strong>良い緊張感</strong>が保てる</li>
+                        <li>時短×集中で結果を出すための環境づくりがここで完成</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                <span class="section-number">5</span>
+                まとめ＆次へのステップ
+            </h2>
+
+            <div class="highlight">
+                <p>在宅秘書で大きく成果を上げる人の共通点は、「適切な環境を手に入れ、そこで集中して行動し続けること」。</p>
+                <p>このDiscordコミュニティは、あなたが<strong>かえの効かない神サポート力</strong>を身につけるための自習室です。</p>
+            </div>
+
+            <div class="action-steps">
+                <h4>行動ステップ</h4>
+                <ol>
+                    <li>通知をONにして、まずは各チャンネルをチェック</li>
+                    <li>わからないことは個室チャンネルですぐ質問</li>
+                    <li>スタンプやリアクションで簡潔にコミュニケーション</li>
+                    <li>実務に役立つアイデアはどんどんクライアントワークで試す</li>
+                </ol>
+                <p style="margin-top: 20px; font-weight: bold;">これらを意識して、あなたの秘書力を最速でアップさせていきましょう！</p>
+            </div>
+        </div>
+
+        <!-- 次のステップ -->
+        <div class="next-step">
+            <h3>次のステップ</h3>
+            <p>次のコンテンツでは、<strong>ビジョン策定</strong>に入ります。</p>
+            <p>「ゆるふわ低単価で終わらないために、あなた自身が何を目指すのか」を一緒に深掘りします。</p>
+            <br>
+            <p>右腕秘書として、クライアントに貢献しながら自分の理想も叶えていく…<br>
+            そのための具体的な指針を作っていきましょう！</p>
+            <br>
+            <p><strong>それでは、Discordでお会いしましょう！</strong></p>
+        </div>
+</body>
+</html>

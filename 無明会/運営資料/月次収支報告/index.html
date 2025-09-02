@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 運営ツール</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .tool-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .tool-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .tool-description {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tool-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .tool-features li {
+            padding: 5px 0;
+            color: #495057;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .tool-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .open-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 100%;
+        }
+
+        .open-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .welcome-text {
+            text-align: center;
+            color: #6c757d;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 月次収支報告管理</h1>
+            <p>月次収支データの管理と報告書生成システム</p>
+        </div>
+        
+        <div class="content">
+            <h2 class="section-title">📅 月次データ</h2>
+            <p class="welcome-text">
+                各月の収支データと生成された報告書をご確認いただけます。<br>
+                新しい月のデータは順次追加されます。
+            </p>
+            
+            <div class="tools-grid">
+                <a href="2507/" class="tool-card">
+                    <span class="tool-icon">📊</span>
+                    <h3 class="tool-title">2025年7月（2507）</h3>
+                    <p class="tool-description">
+                        2025年7月分の収支データと月次報告書です。
+                        売上¥1,687,500、利益¥1,039,559（利益率61.59%）
+                    </p>
+                    <ul class="tool-features">
+                        <li>収支データメモ</li>
+                        <li>月次収支報告HTML</li>
+                        <li>会員数：52名（年間20名、通常32名）</li>
+                        <li>特記：年間更新・NH新規入会が貢献</li>
+                    </ul>
+                    <button class="open-btn">📊 データを確認</button>
+                </a>
+
+                <a href="2508/" class="tool-card" style="opacity: 0.6;">
+                    <span class="tool-icon">📈</span>
+                    <h3 class="tool-title">2025年8月（2508）</h3>
+                    <p class="tool-description">
+                        2025年8月分の収支データ。
+                        データ準備中です。
+                    </p>
+                    <ul class="tool-features">
+                        <li>データ準備中</li>
+                        <li>収支集計作業中</li>
+                        <li>報告書生成予定</li>
+                        <li>月末に完成予定</li>
+                    </ul>
+                    <button class="open-btn" disabled>🚧 準備中</button>
+                </a>
+                
+
+            </div>
+
+            <h2 class="section-title">🛠️ 共通ツール</h2>
+            <div class="tools-grid">
+                <a href="tools/月次収支報告生成ツール.html" class="tool-card">
+                    <span class="tool-icon">📊</span>
+                    <h3 class="tool-title">月次収支報告生成ツール</h3>
+                    <p class="tool-description">
+                        Discord用の月次収支報告を自動生成します。売上、経費、会員数などのデータを入力するだけで、
+                        正確な計算とフォーマットされた報告文を作成できます。
+                    </p>
+                    <ul class="tool-features">
+                        <li>自動計算機能（利益、利益率、折半金額）</li>
+                        <li>金額の自動フォーマット</li>
+                        <li>ワンクリックコピー機能</li>
+                        <li>レスポンシブデザイン</li>
+                    </ul>
+                    <button class="open-btn">📊 ツールを開く</button>
+                </a>
+
+                <a href="tools/売上経費集計ツール.html" class="tool-card">
+                    <span class="tool-icon">🧮</span>
+                    <h3 class="tool-title">売上経費集計ツール</h3>
+                    <p class="tool-description">
+                        複数のデータソースから売上・経費を自動集計します。CSVファイルのアップロードと手動入力を組み合わせて、
+                        正確な月次データを作成できます。
+                    </p>
+                    <ul class="tool-features">
+                        <li>CSVファイル自動解析</li>
+                        <li>複数データソース対応</li>
+                        <li>カテゴリ別経費分類</li>
+                        <li>収支報告ツールと連携</li>
+                    </ul>
+                    <button class="open-btn">🧮 ツールを開く</button>
+                </a>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 20px; background: #e3f2fd; border-radius: 8px; border-left: 4px solid #2196f3;">
+                <h3 style="color: #1976d2; margin-bottom: 10px;">📋 使用方法</h3>
+                <p style="color: #424242; line-height: 1.6;">
+                    各月のフォルダには収支データメモと生成された報告書が保存されています。<br>
+                    新しい月のデータを作成する際は、共通ツールを使用して報告書を生成し、該当月のフォルダに保存してください。
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

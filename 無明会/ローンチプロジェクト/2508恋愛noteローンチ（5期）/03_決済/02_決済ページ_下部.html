@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 - 注意事項</title>
+    
+    <style>
+        /* 基本フォント設定 */
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'Yu Mincho', 'YuMincho', 'MS PMincho', 'Noto Serif JP', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a202c;
+            font-feature-settings: 'palt';
+            letter-spacing: 0.03em;
+            margin: 0;
+            padding: 0;
+            background: #f8f6f3;
+            position: relative;
+        }
+
+        /* カラーパレット */
+        :root {
+            --primary-gold: #c4a484;
+            --dark-gold: #8b7355;
+            --light-gold: #f0e6d2;
+            --text-dark: #2d3748;
+            --background-white: #ffffff;
+            --accent-red: #ff4757;
+            --pink-accent: #ec4899;
+            --cream: #fff8dc;
+            --shadow-gold: rgba(196, 164, 132, 0.15);
+            --background-cream: #f8f6f3;
+        }
+
+        /* メインコンテナ */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 16px;
+            min-height: 100vh;
+        }
+
+        /* 注意事項 */
+        .disclaimer-section {
+            background: var(--background-white);
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .disclaimer-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .disclaimer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .disclaimer-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .disclaimer-item:last-child {
+            border-bottom: none;
+        }
+
+        .disclaimer-icon {
+            font-size: 16px;
+            margin-right: 12px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            color: var(--primary-gold);
+            font-weight: bold;
+        }
+
+        .disclaimer-text {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 16px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- 注意事項 -->
+        <div class="disclaimer-section">
+            <h3 class="disclaimer-title">お申込みに関するご案内</h3>
+            <div class="disclaimer-content">
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">•</span>
+                    <span class="disclaimer-text">上記フォームにクレジットカード情報をご入力の上、決済を完了してください</span>
+                </div>
+                </div>
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">•</span>
+                    <span class="disclaimer-text">決済完了後、コミュニティへのアクセス方法をメールにてご案内いたします</span>
+                </div>
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">•</span>
+                    <span class="disclaimer-text">体験期間（1ヶ月）中に正規入会をお申込みの場合、体験金額は返金いたします</span>
+                </div>
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">•</span>
+                    <span class="disclaimer-text">上記以外の場合、体験金額の返金はいかなる理由があっても受け付けません</span>
+                </div>
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">•</span>
+                    <span class="disclaimer-text">決済は安全なSSL暗号化通信により保護されています</span>
+                </div>
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">•</span>
+                    <span class="disclaimer-text">ご不明な点がございましたら事務局までお問い合わせください</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

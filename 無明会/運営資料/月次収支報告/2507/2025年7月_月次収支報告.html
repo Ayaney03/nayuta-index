@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 2025年7月 月次収支報告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #f8f6f3 0%, #fff8dc 50%, #f5e6a3 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f5e6a3 0%, #d4af37 50%, #b8860b 100%);
+            color: #8b6914;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.4em;
+            margin-bottom: 3px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 15px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 15px;
+            border-left: 3px solid #d4af37;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 5px;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+        }
+
+        .executive-title {
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #f39c12;
+            border-bottom: 1px solid #f39c12;
+            padding-bottom: 6px;
+        }
+
+        .key-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .key-metric {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 10px;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+        }
+
+        .key-metric.primary {
+            background: rgba(243, 156, 18, 0.2);
+            border-color: #f39c12;
+        }
+
+        .key-metric h3 {
+            font-size: 0.7em;
+            margin-bottom: 4px;
+            color: #ecf0f1;
+            font-weight: 600;
+        }
+
+        .key-metric .value {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .key-metric.primary .value {
+            font-size: 1.3em;
+            color: #fff;
+        }
+
+        .secondary-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .secondary-metric {
+            text-align: center;
+            padding: 4px;
+        }
+
+        .secondary-metric .label {
+            font-size: 0.7em;
+            color: #bdc3c7;
+            margin-bottom: 2px;
+        }
+
+        .secondary-metric .value {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 4px;
+            padding: 10px;
+            border: 1px solid #e9ecef;
+        }
+
+        .detail-card h4 {
+            font-size: 0.75em;
+            color: #2c3e50;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 3px;
+        }
+
+        .breakdown {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .breakdown h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            background: #f8f9fa;
+            margin: 5px -15px -15px -15px;
+            padding: 10px 15px;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.85em;
+        }
+
+        .payment-info {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            border: 2px solid #ff9800;
+        }
+
+        .payment-info h4 {
+            color: #f57c00;
+            margin-bottom: 10px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .payment-item {
+            background: white;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ffb74d;
+        }
+
+        .payment-item .label {
+            font-size: 0.8em;
+            color: #f57c00;
+            margin-bottom: 3px;
+        }
+
+        .payment-item .amount {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #e65100;
+        }
+
+        .special-notes {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .special-notes h4 {
+            color: #f57c00;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .special-notes ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .special-notes li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #424242;
+            line-height: 1.6;
+        }
+
+        .special-notes li:before {
+            content: "📌";
+            position: absolute;
+            left: 0;
+        }
+
+        .expense-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .expense-category {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .expense-category h5 {
+            color: #e91e63;
+            margin-bottom: 15px;
+            font-size: 1em;
+            border-bottom: 1px solid #f8bbd9;
+            padding-bottom: 5px;
+        }
+
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            font-size: 0.8em;
+        }
+
+        .date-stamp {
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            color: #6c757d;
+            font-size: 0.8em;
+        }
+
+        .compact-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            font-size: 0.7em;
+        }
+
+        .compact-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1px 0;
+            border-bottom: 1px dotted #dee2e6;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .expense-breakdown {
+                grid-template-columns: 1fr;
+            }
+            
+            .distribution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 無明会 月次収支報告</h1>
+            <p>2025年7月 財務パフォーマンス報告書</p>
+        </div>
+        
+        <div class="content">
+            <!-- 経営陣向けエグゼクティブサマリー -->
+            <div class="executive-summary">
+                <div class="executive-title">📊 2025年7月 エグゼクティブサマリー</div>
+                
+                <!-- 最重要指標 -->
+                <div class="key-metrics">
+                    <div class="key-metric primary">
+                        <h3>総売上</h3>
+                        <div class="value">¥1,687,500</div>
+                    </div>
+                    <div class="key-metric primary">
+                        <h3>総経費</h3>
+                        <div class="value">¥647,941</div>
+                    </div>
+                    <div class="key-metric primary">
+                        <h3>純利益</h3>
+                        <div class="value">¥1,039,559</div>
+                    </div>
+                </div>
+
+                <!-- 副次指標 -->
+                <div class="secondary-metrics">
+                    <div class="secondary-metric">
+                        <span class="label">利益率</span>
+                        <span class="value">61.59%</span>
+                    </div>
+                    <div class="secondary-metric">
+                        <span class="label">総会員数</span>
+                        <span class="value">52名</span>
+                    </div>
+                    <div class="secondary-metric">
+                        <span class="label">年間会員</span>
+                        <span class="value">20名</span>
+                    </div>
+                    <div class="secondary-metric">
+                        <span class="label">通常会員</span>
+                        <span class="value">32名</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 支払い通知 -->
+            <div style="background: #e91e63; color: white; padding: 12px; border-radius: 6px; margin-bottom: 12px; text-align: center; box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);">
+                <div style="font-size: 0.9em; margin-bottom: 3px;">💸 8月末支払い</div>
+                <div style="font-size: 1.1em; font-weight: bold;">天郷株式会社からwaypoint株式会社に ¥442,410 を送金します</div>
+            </div>
+
+            <!-- 利益配分・支払い計算 -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                <!-- 計算根拠 -->
+                <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; border-left: 2px solid #2196f3;">
+                    <h5 style="color: #1976d2; margin-bottom: 6px; font-size: 0.75em;">📊 利益計算</h5>
+                    <div style="font-size: 0.7em; line-height: 1.3;">
+                        <div>売上：¥1,687,500</div>
+                        <div>経費：¥647,941</div>
+                        <div style="border-top: 1px solid #dee2e6; padding-top: 3px; margin-top: 3px; font-weight: bold;">純利益：¥1,039,559</div>
+                        <div style="color: #f57c00; margin-top: 3px;">内部留保：¥300,000</div>
+                        <div style="color: #2196f3; font-weight: bold;">折半対象：¥739,559</div>
+                    </div>
+                </div>
+
+                <!-- 支払い内訳 -->
+                <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; border-left: 2px solid #e91e63;">
+                    <h5 style="color: #c2185b; margin-bottom: 6px; font-size: 0.75em;">💰 支払い内訳</h5>
+                    <div style="font-size: 0.7em; line-height: 1.3;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>利益折半分</span>
+                            <span style="font-weight: bold;">¥369,780</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 2px;">
+                            <span>会場費負担分</span>
+                            <span style="font-weight: bold;">¥72,630</span>
+                        </div>
+                        <div style="border-top: 1px solid #dee2e6; padding-top: 3px; margin-top: 3px; display: flex; justify-content: space-between; font-weight: bold; color: #c2185b;">
+                            <span>支払い合計</span>
+                            <span>¥442,410</span>
+                        </div>
+                        <div style="font-size: 0.6em; color: #666; margin-top: 3px;">※会場費¥145,260をwaypoint先払い、折半</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 詳細データ -->
+            <div class="details-grid">
+                <!-- 売上詳細 -->
+                <div class="detail-card">
+                    <h4>💰 売上内訳</h4>
+                    <div class="compact-list">
+                        <div class="compact-item">
+                            <span>年間会員更新</span>
+                            <span>¥220,000</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>月額会員売上</span>
+                            <span>¥704,000</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>徹底精進コース</span>
+                            <span>¥420,000</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>NHブートキャンプ</span>
+                            <span>¥339,000</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>note売上</span>
+                            <span>¥4,500</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 会員数詳細 -->
+                <div class="detail-card">
+                    <h4>👥 会員数（7月末）</h4>
+                    <div style="text-align: center; margin: 6px 0;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: #d4af37;">52名</div>
+                        <div style="font-size: 0.6em; color: #6c757d;">総会員数</div>
+                    </div>
+                    <div class="compact-list">
+                        <div class="compact-item">
+                            <span>年間会員</span>
+                            <span>20名</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>通常会員</span>
+                            <span>32名</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>体験会員</span>
+                            <span>0名</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 経費詳細 -->
+                <div class="detail-card">
+                    <h4>💸 主要経費</h4>
+                    <div class="compact-list">
+                        <div class="compact-item">
+                            <span>人件費合計</span>
+                            <span>¥423,000</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>会場費用</span>
+                            <span>¥145,260</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>決済手数料</span>
+                            <span>¥57,609</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>ツール代</span>
+                            <span>¥18,365</span>
+                        </div>
+                        <div class="compact-item">
+                            <span>その他</span>
+                            <span>¥3,707</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 戦略的特記事項 -->
+            <div class="section" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-left: 5px solid #ff9800;">
+                <h2 style="color: #f57c00;">🎯 戦略的ハイライト</h2>
+                <div style="background: white; padding: 15px; border-radius: 6px; font-size: 0.85em; line-height: 1.6; color: #333;">
+                    <p style="margin-bottom: 12px;">
+                        <strong>【売上貢献要因】</strong><br>
+                        7月の売上は168.7万円となり、前年同期比で大幅な成長を記録した。特に年間会員の更新（22万円）とNHブートキャンプの新規入会（33.9万円）が売上を牽引し、利益率61.59%という高収益性を実現している。会員数も52名に達し、安定的な事業基盤が確立されつつある。
+                    </p>
+                    <p style="margin-bottom: 12px;">
+                        <strong>【マーケティング投資】</strong><br>
+                        今回のローンチに伴うクリエイティブ制作・ホームページ作成等のマーケティング投資として約20万円が発生している。当該費用の支払いは9月を予定しており、内部留保30万円から充当する計画である。
+                    </p>
+                    <p style="margin-bottom: 0;">
+                        <strong>【今後の戦略】</strong><br>
+                        今回のローンチで入会した新規メンバーとの関係構築を重点的に進めるとともに、徹底精進2期の展開により更なる売上拡大を目指す。また、安定した収益基盤を活用し、継続的な成長軌道の確立に注力していく。
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="date-stamp">
+            <p>📅 作成日時：2025年1月20日</p>
+            <p>📊 データ基準：2025年7月末時点</p>
+            <p>💼 責任者：無明会運営チーム</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART WOMAN LIFESTYLE - 理想のライフスタイルを手に入れる</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f9f9f9;
+            min-height: 100vh;
+        }
+
+        /* UTAGEメール用 - 外部スタイルに依存しない */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .email-header {
+            background: linear-gradient(135deg, #4682B4 0%, #1E90FF 50%, #FFD700 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .email-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="30" r="2" fill="%23FFD700" opacity="0.3"/><circle cx="70" cy="60" r="1.5" fill="%23FFA500" opacity="0.4"/><circle cx="40" cy="80" r="1" fill="%23FFFFFF" opacity="0.6"/><circle cx="85" cy="25" r="1" fill="%23FFD700" opacity="0.5"/></svg>') repeat;
+            animation: float 25s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .email-header h1 {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .email-header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .email-content {
+            padding: 30px 20px;
+        }
+
+        .email-greeting {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .email-greeting h2 {
+            color: #1E90FF;
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .email-greeting p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .email-section {
+            margin-bottom: 30px;
+        }
+
+        .email-section h3 {
+            color: #1E90FF;
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FFD700;
+        }
+
+        .email-pain-points {
+            background: linear-gradient(135deg, #E6F3FF 0%, #F0F8FF 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #1E90FF;
+        }
+
+        .email-pain-points ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-pain-points li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            margin: 0;
+        }
+
+        .email-pain-points li::before {
+            content: '💭';
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .email-results-list {
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFFACD 50%, #F0F8FF 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #FFD700;
+        }
+
+        .email-results-list ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-results-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            margin: 0;
+        }
+
+        .email-results-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .email-success-stories {
+            margin: 20px 0;
+        }
+
+        .email-story {
+            background: linear-gradient(135deg, #F8F8FF 0%, #F0F8FF 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #FFD700;
+        }
+
+        .email-story .title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .email-story .detail {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .email-cta-section {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+            color: #333;
+        }
+
+        .email-cta-section h3 {
+            color: #8B4513;
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .email-gift-items {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .email-gift-items ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-gift-items li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 25px;
+            border-bottom: 1px solid #f0f0f0;
+            margin: 0;
+        }
+
+        .email-gift-items li:last-child {
+            border-bottom: none;
+        }
+
+        .email-gift-items li::before {
+            content: '🎁';
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .email-steps {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #ffeaa7;
+        }
+
+        .email-steps ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .email-steps li {
+            padding: 5px 0;
+            font-weight: 500;
+        }
+
+        .email-profile {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .email-profile h4 {
+            color: #1E90FF;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .email-profile p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            margin: 0;
+        }
+
+        .email-next-preview {
+            background: linear-gradient(135deg, #4682B4 0%, #1E90FF 50%, #20B2AA 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .email-next-preview h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .email-highlight {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #8B4513;
+            display: inline;
+        }
+
+        .email-divider {
+            height: 3px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #1E90FF 100%);
+            margin: 30px 0;
+            border-radius: 2px;
+        }
+
+        /* UTAGEテンプレート変数（差し込み用） */
+        .utage-variable {
+            color: #1E90FF;
+            font-weight: bold;
+        }
+
+        /* レスポンシブ対応 */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            .email-header {
+                padding: 30px 15px !important;
+            }
+            
+            .email-header h1 {
+                font-size: 24px !important;
+            }
+            
+            .email-content {
+                padding: 20px 15px !important;
+            }
+            
+            .email-cta-section {
+                padding: 20px 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1>SMART WOMAN LIFESTYLE</h1>
+            <p class="subtitle">理想のライフスタイルを手に入れる</p>
+        </div>
+
+        <div class="email-content">
+            <div class="email-greeting">
+                <h2>「理想のライフスタイル」を手に入れたあなたへ</h2>
+                <p><span class="email-highlight">%%NAME%%さん</span>、こんにちは。<br>
+                <span class="email-highlight">なゆたこと、永世豊と申します</span>。</p>
+            </div>
+
+            <div class="email-section">
+                <p>「SMART WOMAN LIFESTYLE」メルマガコミュニティへようこそ。</p>
+                <p>今日は第%%MAIL_NUMBER%%回目のメッセージをお届けします。</p>
+            </div>
+
+            <div class="email-section">
+                <h3>%%NAME%%さんも、こんなことを感じていませんか？</h3>
+                <div class="email-pain-points">
+                    <ul>
+                        <li>仕事は順調だけど、この先のキャリアが見えない</li>
+                        <li>収入はそれなりにあるけど、本当にやりたいことがわからない</li>
+                        <li>プライベートも充実させたいけど、時間が足りない</li>
+                        <li>将来の不安から、今を楽しめずにいる</li>
+                    </ul>
+                </div>
+                <p>30代という人生の分岐点で、多くの女性がこうした悩みを抱えています。</p>
+            </div>
+
+            <div class="email-section">
+                <h3>私自身も、同じような迷いの中にいました</h3>
+                <p>外資系企業で順調にキャリアを積み、周りからは「成功している」と言われていたものの、心の奥底では満たされない何かを感じていた日々。</p>
+                <p>朝から晩まで仕事に追われ、気がつけば週末も疲れ果てて家でNetflixを見るだけ。</p>
+                <p><strong>「このまま10年後、20年後も同じ毎日を繰り返すのかな」</strong></p>
+                <p>そんな漠然とした不安を抱えながら過ごしていました。</p>
+            </div>
+
+            <div class="email-section">
+                <h3>でも、人生は大きく変わりました</h3>
+                <p>「私が本当に欲しいのは、もっと自由で、もっと自分らしい生き方だった」</p>
+                <p>そう気づいてから、私の人生は変わりました。</p>
+                
+                <div class="email-results-list">
+                    <p><strong>今では：</strong></p>
+                    <ul>
+                        <li>自分のペースで仕事ができる環境を構築</li>
+                        <li>年収は会社員時代の3倍に</li>
+                        <li>月の半分は好きな場所で仕事（パリ、バリ、軽井沢など）</li>
+                        <li>朝ヨガ、オーガニック料理、アート鑑賞など趣味の時間も確保</li>
+                        <li>大切な人との時間を優先できるライフスタイル</li>
+                    </ul>
+                </div>
+                <p>何より、毎日が充実していて<span class="email-highlight">「今日も良い一日だった」</span>と思えるようになりました。</p>
+            </div>
+
+            <div class="email-section">
+                <h3>これは私だけの話ではありません</h3>
+                <p>これまで<strong>14年間で1000名以上の方</strong>の人生再構築をサポートしてきました。</p>
+                
+                <div class="email-success-stories">
+                    <div class="email-story">
+                        <div class="title">お子様3人を独力で育て上げたシングルマザー</div>
+                        <div class="detail">自分らしく輝くことを決意</div>
+                    </div>
+                    <div class="email-story">
+                        <div class="title">精神病棟から復活した起業家</div>
+                        <div class="detail">多くのクライアントを導く存在に</div>
+                    </div>
+                    <div class="email-story">
+                        <div class="title">家庭の暴力から海外留学した高卒の方</div>
+                        <div class="detail">自分の道で生きることを誓った</div>
+                    </div>
+                    <div class="email-story">
+                        <div class="title">世界有数の大企業で競争人生を極めた企業戦士</div>
+                        <div class="detail">人生に疲れ果てた状態からの再生</div>
+                    </div>
+                    <div class="email-story">
+                        <div class="title">愛犬と健やかに生きたいと願った看護師</div>
+                        <div class="detail">その自由を求めた人生の選択</div>
+                    </div>
+                </div>
+
+                <p>皆さんに共通しているのは：</p>
+                <p><span class="email-highlight">「自分らしい働き方で、経済的にも精神的にも豊かになった」</span></p>
+                <p>ということです。</p>
+            </div>
+
+            <div class="email-section">
+                <h3>私がお伝えしている5つのポイント</h3>
+                <div class="email-results-list">
+                    <ul>
+                        <li>自分の強み・価値を明確にする方法</li>
+                        <li>市場のニーズと自分の価値をマッチングさせる戦略</li>
+                        <li>持続可能な収入源を構築するビジネスモデル</li>
+                        <li>時間と場所に縛られない働き方の実現法</li>
+                        <li>理想のライフスタイルを維持するマインドセット</li>
+                    </ul>
+                </div>
+                <p>これらを体系的に学び、実践していただける内容を、このメルマガでお届けしていきます。</p>
+            </div>
+
+            <div class="email-next-preview">
+                <h4>次回予告 ✨</h4>
+                <p>「30代女性が陥りがちなキャリアの罠」について詳しくお話しします。</p>
+                <p><strong>明日の夜19時にお届け</strong>しますので、お楽しみに。</p>
+            </div>
+
+            <div class="email-divider"></div>
+
+            <div class="email-cta-section">
+                <h3>特別プレゼント 🎁</h3>
+                <p>ここまでお読みいただいた%%NAME%%さんに、特別なプレゼントをご用意しました。</p>
+                
+                <div class="email-gift-items">
+                    <p><strong>私の有料コンサルティングで実際に使用している3つのツール：</strong></p>
+                    <ul>
+                        <li>理想のライフスタイル設計シート</li>
+                        <li>自分の市場価値診断チェックリスト</li>
+                        <li>収入源多様化のための戦略マップ</li>
+                    </ul>
+                </div>
+
+                <div class="email-steps">
+                    <p><strong>受け取り方法：</strong></p>
+                    <ol>
+                        <li>公式LINE（%%LINE_URL%%）に登録</li>
+                        <li>「プレゼント」とメッセージを送信</li>
+                    </ol>
+                    <p><strong>48時間以内</strong>にダウンロードリンクをお送りします。</p>
+                </div>
+
+                <p>ぜひ活用して、理想のライフスタイル実現の第一歩を踏み出してくださいね。</p>
+            </div>
+
+            <div class="email-profile">
+                <h4>永世豊プロフィール</h4>
+                <p>2017年からビジネスコンサルタント・人生相談として活動を続け、一人で1億の事業となっておりましたが、私が最も大切にしているのは、その方の素晴らしい志を誰かが歩める「道」にするお手伝いをすることです。</p>
+                <br>
+                <p>古今東西から継がれてきた普遍の資産を築く叡智と現代の文明に合わせた合理的で最も簡単な商売の構築を、その方の状況・人格に合わせてお伝えしています。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あやねえの業務改善コンサル - バックオフィス顧問サービス</title>
+    <style>
+        /* 基本フォント設定 */
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'Yu Mincho', 'YuMincho', 'MS PMincho', 'Noto Serif JP', serif;
+            font-size: 18px;
+            line-height: 1.9;
+            color: #1a202c;
+            font-feature-settings: 'palt';
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* カラーパレット - あやねえブランドのインテリジェントブルー */
+        :root {
+            --primary-blue: #2563eb;
+            --dark-blue: #1e40af;
+            --light-blue: #dbeafe;
+            --navy-blue: #1e3a8a;
+            --sky-blue: #0ea5e9;
+            --text-dark: #1f2937;
+            --text-light: #f8fafc;
+            --background-light: #f1f5f9;
+            --background-white: #ffffff;
+            --accent-blue: #06b6d4;
+            --soft-gray: #f3f4f6;
+            --business-blue: #2563eb;
+            --business-green: #059669;
+            --intelligent-blue: #1d4ed8;
+            --fresh-blue: #3b82f6;
+        }
+
+        /* ヒーローセクション */
+        .hero-section {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--intelligent-blue) 50%, var(--dark-blue) 100%);
+            padding: 48px 0 32px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(30, 64, 175, 0.25);
+            letter-spacing: 0.08em;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: clamp(18px, 4vw, 24px);
+            color: var(--text-light);
+            margin-bottom: 28px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            line-height: 1.4;
+        }
+
+        /* セクションスタイル */
+        .section-dark {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--dark-blue) 100%);
+            color: var(--text-light);
+            padding: 48px 0;
+        }
+
+        .section-light {
+            background: var(--background-light);
+            padding: 48px 0;
+        }
+
+        .section-white {
+            background: var(--background-white);
+            padding: 48px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 5vw, 32px);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 48px;
+            text-align: center;
+            letter-spacing: 0.03em;
+        }
+
+        /* プランカード */
+        .plan-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+
+        .plan-card {
+            background: var(--background-white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--light-blue);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, var(--intelligent-blue), var(--business-green));
+            color: white;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.4);
+        }
+
+        .plan-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .plan-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--intelligent-blue);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .plan-price-note {
+            font-size: 14px;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 32px;
+            opacity: 0.8;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 32px;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            color: var(--text-dark);
+            position: relative;
+            padding-left: 24px;
+            line-height: 1.6;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            color: var(--business-green);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .plan-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--intelligent-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+        }
+
+        .plan-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(29, 78, 216, 0.4);
+        }
+
+        /* 実績・資格セクション */
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
+        }
+
+        .credential-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid var(--light-blue);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(45, 55, 72, 0.1);
+        }
+
+        .credential-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .credential-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* 事例セクション */
+        .case-study {
+            background: var(--background-white);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid var(--intelligent-blue);
+        }
+
+        .case-study-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--intelligent-blue);
+            margin-bottom: 16px;
+        }
+
+        .case-study-company {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .case-study-content {
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* プロフィールセクション */
+        .profile-section {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 32px;
+            align-items: start;
+            margin: 48px 0;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--intelligent-blue);
+            box-shadow: 0 8px 16px rgba(29, 78, 216, 0.3);
+        }
+
+        .profile-content h3 {
+            font-size: 28px;
+            color: var(--intelligent-blue);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .profile-content p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        /* 新しい強みセクション */
+        .strength-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
+        }
+
+        .strength-card {
+            background: var(--background-white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--intelligent-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .strength-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .strength-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .strength-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--intelligent-blue);
+            margin-bottom: 12px;
+        }
+
+        .strength-description {
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .plan-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .profile-image {
+                margin: 0 auto;
+            }
+            
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .strength-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-container {
+                padding: 0 12px;
+            }
+            
+            .plan-card {
+                padding: 24px;
+            }
+            
+            body {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヒーローセクション -->
+    <div class="hero-section">
+        <div class="hero-container">
+            <h1 class="main-title">業務改善コンサルティング</h1>
+            <p class="subtitle">組織運営・業務効率化の総合顧問サービス<br>〜マーケティングから管理業務まで一貫サポート〜</p>
+        </div>
+    </div>
+
+    <!-- 問題提起セクション -->
+    <div class="section-dark">
+        <div class="container">
+            <h2 class="section-title">こんなお悩みはありませんか？</h2>
+            
+            <div class="credential-card">
+                <div class="credential-description">
+                    ✓ 業務が属人化していて、誰かが休むと回らなくなる<br>
+                    ✓ ファイル管理がバラバラで、必要な書類がすぐに見つからない<br>
+                    ✓ オフィスが散らかっていて、作業効率が悪い<br>
+                    ✓ 業務フローが整備されておらず、無駄な作業が多い<br>
+                    ✓ スタッフの時間管理ができていない<br>
+                    ✓ 移転やオフィス改善をしたいが、何から手をつけていいかわからない<br>
+                    ✓ システム導入したいが、設定や運用が分からない<br>
+                    ✓ AI活用に興味があるが、どこから始めればいいか分からない
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 32px;">
+                <p style="font-size: 20px; color: var(--text-light); font-weight: 600;">
+                    そのお悩み、あやねえが解決します！
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- あやねえの強み -->
+    <div class="section-light">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--text-dark);">あやねえの3つの強み</h2>
+            
+            <div class="strength-grid">
+                <div class="strength-card">
+                    <span class="strength-icon">🏢</span>
+                    <h3 class="strength-title">大企業での管理経験</h3>
+                    <p class="strength-description">
+                        任天堂株式会社で10年間、営業管理・経営管理・内部監査を担当。
+                        大規模組織での業務プロセス設計と管理の実務経験を持ちます。
+                    </p>
+                </div>
+                
+                <div class="strength-card">
+                    <span class="strength-icon">🚀</span>
+                    <h3 class="strength-title">ベンチャーでの経営経験</h3>
+                    <p class="strength-description">
+                        年商7億グループベンチャーでCFOとして2年間従事。
+                        スピード感のある意思決定と実行力を身につけました。
+                    </p>
+                </div>
+                
+                <div class="strength-card">
+                    <span class="strength-icon">⚡</span>
+                    <h3 class="strength-title">実践的な改善スキル</h3>
+                    <p class="strength-description">
+                        整理収納アドバイザー・ライフオーガナイザー資格を活かし、
+                        物理的環境から業務フローまで総合的に改善します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- サービス概要 -->
+    <div class="section-white">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--text-dark);">2つのプランをご用意</h2>
+            
+            <div class="plan-container">
+                <!-- CAO代行プラン -->
+                <div class="plan-card">
+                    <div class="plan-badge">実働型</div>
+                    <h3 class="plan-title">CAO代行プラン</h3>
+                    <div style="font-size: 14px; color: var(--text-dark); text-align: center; margin-bottom: 16px; opacity: 0.8;">
+                        ※CAO = Chief Administrative Officer（最高管理責任者）
+                    </div>
+                    <div class="plan-price">50万円<span style="font-size: 18px; font-weight: 400;">（税抜）</span></div>
+                    <div class="plan-price-note">※ 3ヶ月間の料金</div>
+                    
+                    <ul class="plan-features">
+                        <li>組織の中にがっつり入って実務を代行</li>
+                        <li>ファイル整理・データ入力まで全て対応</li>
+                        <li>業務フロー構築と実装</li>
+                        <li>スタッフ教育・指導</li>
+                        <li>オフィス環境の物理的改善</li>
+                        <li>システム導入・設定サポート（UTAGE等）</li>
+                        <li>AI活用による業務効率化の実装</li>
+                        <li>移転・レイアウト設計の実行</li>
+                        <li>一時的にスタッフとして業務を担当</li>
+                        <li>3ヶ月間チャット相談無制限</li>
+                        <li>出張対応可能（新幹線距離の場合のみ交通費別途）</li>
+                    </ul>
+                    
+                    <div style="margin-top: 20px; padding: 16px; background: rgba(34, 197, 94, 0.1); border-radius: 8px; border-left: 4px solid #22c55e;">
+                        <h5 style="color: #16a34a; margin: 0 0 12px 0; font-size: 16px; font-weight: 600;">✓ 実作業まで全て対応：</h5>
+                        <ul style="margin: 0; padding-left: 20px; color: #16a34a; font-size: 14px;">
+                            <li>手を動かす作業も全て代行</li>
+                            <li>システム構築・設定も実施</li>
+                            <li>貴社スタッフの一員として稼働</li>
+                            <li>「やり方を教える」ではなく「やってしまう」</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#contact" class="plan-button">詳細を相談する</a>
+                </div>
+
+                <!-- コンサルプラン -->
+                <div class="plan-card">
+                    <div class="plan-badge">アドバイス型</div>
+                    <h3 class="plan-title">コンサルプラン</h3>
+                    <div class="plan-price">30万円<span style="font-size: 18px; font-weight: 400;">（税抜）</span></div>
+                    <div class="plan-price-note">※ 3ヶ月間の料金</div>
+                    
+                    <ul class="plan-features">
+                        <li>月2回のセッション（90〜120分）× 3ヶ月間</li>
+                        <li>業務改善の方向性をアドバイス</li>
+                        <li>ひな形・テンプレート提供</li>
+                        <li>改善計画の立案サポート</li>
+                        <li>UTAGE設定・効率化のアドバイス</li>
+                        <li>AI活用方法の指導</li>
+                        <li>3ヶ月間チャット相談無制限</li>
+                        <li>出張対応可能（新幹線距離の場合のみ交通費別途）</li>
+                        <li>最低1回のオフィス訪問</li>
+                    </ul>
+                    
+                    <div style="margin-top: 20px; padding: 16px; background: rgba(255, 107, 107, 0.1); border-radius: 8px; border-left: 4px solid #ff6b6b;">
+                        <h5 style="color: #dc2626; margin: 0 0 12px 0; font-size: 16px; font-weight: 600;">このプランに含まれないもの：</h5>
+                        <ul style="margin: 0; padding-left: 20px; color: #dc2626; font-size: 14px;">
+                            <li>実際のデータ入力・ファイル整理作業</li>
+                            <li>システム設定・構築の実作業</li>
+                            <li>スタッフとしての業務代行</li>
+                            <li>実装作業は貴社スタッフが担当</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#contact" class="plan-button">詳細を相談する</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 32px; padding: 24px; background: rgba(29, 78, 216, 0.1); border-radius: 12px;">
+                <p style="color: var(--text-dark); font-size: 16px; line-height: 1.8; margin: 0;">
+                    <strong>CAOとは？</strong><br>
+                    CMO（マーケティング）やCOO（執行）はいても、管理業務を統括できる人材は意外と少ないもの。<br>
+                    マーケティングから管理業務まで、外部顧問としてその役割を代行いたします。<br><br>
+                    
+                    <strong>どちらのプランも：</strong><br>
+                    基本的にオンライン対応ですが、行ける範囲での出張も可能です。<br><br>
+                    
+                    <strong>最低1回はオフィス訪問をする理由：</strong><br>
+                    オンラインでは見えない「物の配置」「動線の問題」「探し物に時間がかかる原因」など、<br>
+                    実際に現場を見ることで初めて分かる業務効率の阻害要因があります。<br>
+                    パソコンの設定確認や直接対話により、根本的な改善策を見つけることができます。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 専門分野 -->
+    <div class="section-dark">
+        <div class="container">
+            <h2 class="section-title">対応可能な業務領域</h2>
+            
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div class="credential-card" style="margin-bottom: 0;">
+                    <div class="credential-description" style="font-size: 16px; line-height: 1.8;">
+                        <strong>組織運営全般</strong>：業務フロー構築・スタッフ教育・オフィス環境改善<br>
+                        <strong>システム・デジタル化</strong>：UTAGE設定・AI活用・効率化ツール導入<br>
+                        <strong>財務・管理</strong>：収支管理・経理業務フロー・内部統制<br>
+                        <strong>マーケティング</strong>：戦略立案・実行サポート・分析改善<br>
+                        <strong>秘書・アシスタント業務</strong>：業務代行・スケジュール管理・資料作成
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 改善事例 -->
+    <div class="section-light">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--text-dark);">改善事例</h2>
+            
+            <div class="case-study">
+                <h4 class="case-study-title">株式会社ノーガード様</h4>
+                <p class="case-study-company">せどりスクール「アパリセ」運営（渋谷）</p>
+                <div class="case-study-content">
+                    <strong>改善内容：</strong><br>
+                    ・オフィス移転に伴う全体設計<br>
+                    ・シェアオフィスの手続きサポート<br>
+                    ・デスク・収納の最適配置<br>
+                    ・ファイル管理システムの統一<br>
+                    ・契約書・請求書の分類ルール策定<br><br>
+                    
+                    <strong>結果：</strong><br>
+                    業務効率が大幅に向上し、必要な書類がすぐに見つかる環境を実現。
+                    スタッフの作業時間を30%短縮することができました。
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4 class="case-study-title">株式会社SHIFT AI様</h4>
+                <p class="case-study-company">AI活用コミュニティ運営（渋谷）</p>
+                <div class="case-study-content">
+                    <strong>改善内容：</strong><br>
+                    ・オフィス環境の最適化<br>
+                    ・収納棚の設計・設置<br>
+                    ・備品管理システムの構築<br>
+                    ・イベント運営の進捗管理システム構築<br>
+                    ・イベント用品の効率的な管理方法<br>
+                    ・持ち出し・返却フローの整備と改善<br>
+                    ・現場とトップの板挟みになるCOO・MGの壁打ち相手<br>
+                    ・思考整理のお手伝い<br><br>
+                    
+                    <strong>結果：</strong><br>
+                    頻繁なイベント開催に伴う備品管理の課題を解決。
+                    準備時間を大幅に短縮し、スムーズな運営を実現しました。
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4 class="case-study-title">合同会社Atlantica様</h4>
+                <p class="case-study-company">女性起業家塾運営（100名以上所属）</p>
+                <div class="case-study-content">
+                    <strong>改善内容：</strong><br>
+                    ・スタッフや講師の連携ミス防止システム構築<br>
+                    ・タスク漏れ防止のフロー改善<br>
+                    ・生徒向けコンテンツの整理・体系化<br>
+                    ・Discordコミュニティの整理<br>
+                    ・入会後のフロー改善<br><br>
+                    
+                    <strong>結果：</strong><br>
+                    100名以上の大規模コミュニティでも円滑な運営を実現。
+                    スタッフ間の連携ミスやタスク漏れが大幅に減少しました。
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4 class="case-study-title">株式会社waypoint様</h4>
+                <p class="case-study-company">事業運営サポート</p>
+                <div class="case-study-content">
+                    <strong>改善内容：</strong><br>
+                    ・収支管理システムの構築<br>
+                    ・経理業務フローの整備<br>
+                    ・UTAGE（ウタゲ）システム構築<br>
+                    ・業務プロセスの標準化<br><br>
+                    
+                    <strong>結果：</strong><br>
+                    経理業務の効率化と収支の見える化を実現。
+                    システム構築により業務の自動化を推進しました。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- プロフィール -->
+    <div class="section-white">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--text-dark);">代表プロフィール</h2>
+            
+            <div class="profile-section">
+                <img src="https://via.placeholder.com/200x200" alt="あやねえのプロフィール画像" class="profile-image">
+                <div class="profile-content">
+                    <h3>あやねえ</h3>
+                    <p style="font-size: 16px; color: var(--intelligent-blue); font-weight: 600; margin-bottom: 24px;">
+                        業務改善・組織運営のプロフェッショナル<br>
+                        秘書力マスター講座 代表
+                    </p>
+                    
+                    <div style="margin-bottom: 24px;">
+                        <h4 style="color: var(--intelligent-blue); font-size: 18px; margin-bottom: 12px; border-bottom: 2px solid var(--light-blue); padding-bottom: 4px;">主要経歴</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb; position: relative; padding-left: 20px;">
+                                <span style="position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: var(--intelligent-blue); border-radius: 50%;"></span>
+                                <strong>任天堂株式会社</strong>（10年間）<br>
+                                <span style="color: #6b7280; font-size: 14px;">営業管理・経営管理・内部監査</span>
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb; position: relative; padding-left: 20px;">
+                                <span style="position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: var(--intelligent-blue); border-radius: 50%;"></span>
+                                <strong>年商7億グループベンチャー CFO</strong>（2年間）<br>
+                                <span style="color: #6b7280; font-size: 14px;">財務・経営管理全般</span>
+                            </li>
+                            <li style="padding: 8px 0; position: relative; padding-left: 20px;">
+                                <span style="position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: var(--intelligent-blue); border-radius: 50%;"></span>
+                                <strong>業務改善・オンライン秘書講座運営法人</strong>（4年目）<br>
+                                <span style="color: #6b7280; font-size: 14px;">代表として事業運営</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 24px;">
+                        <h4 style="color: var(--intelligent-blue); font-size: 18px; margin-bottom: 12px; border-bottom: 2px solid var(--light-blue); padding-bottom: 4px;">保有資格・実績</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 4px 0; position: relative; padding-left: 20px;">
+                                <span style="position: absolute; left: 0; top: 8px; width: 6px; height: 6px; background: var(--business-green); border-radius: 50%;"></span>
+                                整理収納アドバイザー・ライフオーガナイザー資格
+                            </li>
+                            <li style="padding: 4px 0; position: relative; padding-left: 20px;">
+                                <span style="position: absolute; left: 0; top: 8px; width: 6px; height: 6px; background: var(--business-green); border-radius: 50%;"></span>
+                                「時間管理術」Amazonカテゴリー1位 Kindle本著者
+                            </li>
+                            <li style="padding: 4px 0; position: relative; padding-left: 20px;">
+                                <span style="position: absolute; left: 0; top: 8px; width: 6px; height: 6px; background: var(--business-green); border-radius: 50%;"></span>
+                                クライアント企業で30%以上の業務効率化を達成
+                            </li>
+                            <li style="padding: 4px 0; position: relative; padding-left: 20px;">
+                                <span style="position: absolute; left: 0; top: 8px; width: 6px; height: 6px; background: var(--business-green); border-radius: 50%;"></span>
+                                秘書力マスター講座運営（4年目）
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(29, 78, 216, 0.05); padding: 16px; border-radius: 8px; border-left: 4px solid var(--intelligent-blue);">
+                        <p style="margin: 0; font-style: italic; color: var(--text-dark);">
+                            <strong style="color: var(--intelligent-blue);">「大企業での管理経験」×「ベンチャーでの経営経験」×「実践的な改善スキル」</strong><br>
+                            この3つの視点から、組織の真の課題を見抜き、実効性の高い改善策を提供いたします。<br><br>
+                            
+                            <strong style="color: var(--intelligent-blue);">秘書・コンサルティングサービスの特徴：</strong><br>
+                            単なる業務代行ではなく、「知的で洗練された」サポートを提供。
+                            クライアント様の事業成長を支える、信頼できるパートナーとして活動しています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- お問い合わせ -->
+    <div class="section-dark" id="contact">
+        <div class="container">
+            <h2 class="section-title">まずはお気軽にご相談ください</h2>
+            
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <div class="credential-card" style="margin-bottom: 32px;">
+                    <div class="credential-description">
+                        現在の課題をお聞かせください。<br>
+                        どちらのプランが最適か、一緒に検討いたします。<br><br>
+                        
+                        <strong>初回相談（60分）は無料です</strong><br>
+                        オンライン・対面どちらでも対応可能<br><br>
+                        
+                        <strong>こんな方におすすめ：</strong><br>
+                        ・業務効率化を本気で取り組みたい経営者<br>
+                        ・システム導入を検討している企業<br>
+                        ・オフィス環境を改善したい組織<br>
+                        ・信頼できる外部パートナーをお探しの方
+                    </div>
+                </div>
+                
+                <a href="mailto:contact@example.com" class="plan-button" style="display: inline-block; width: auto; padding: 20px 40px; font-size: 20px;">
+                    無料相談を申し込む
+                </a>
+                
+                <p style="color: var(--text-light); margin-top: 16px; font-size: 14px;">
+                    ※ メールにて詳細をお送りください
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

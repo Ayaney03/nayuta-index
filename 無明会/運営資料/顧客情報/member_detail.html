@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メンバー詳細 - 無明会</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #f8f6f3 0%, #fff8dc 50%, #f5e6a3 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .member-info {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+
+        .info-section h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 1.2em;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: #6c757d;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .monthly-sales {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+        }
+
+        .monthly-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .monthly-table th,
+        .monthly-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+
+        .monthly-table th {
+            background: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .monthly-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #6c757d;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-btn:hover {
+            background: #5a6268;
+        }
+
+        .status-年間 {
+            background: #d4edda;
+            color: #155724;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+        }
+
+        .status-通常 {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+        }
+
+        .status-退会, .status-体験終了 {
+            background: #495057;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+        }
+
+        .upsale-info {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .upsale-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+
+        /* 三毒チームの色分け */
+        .team-貪欲 { 
+            background: #fff9c4; 
+            color: #795548; 
+            border: 1px solid #ffeb3b;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .team-瞋恚 { 
+            background: #ffebee; 
+            color: #b71c1c; 
+            border: 1px solid #f44336;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .team-愚痴 { 
+            background: #e8f5e8; 
+            color: #2e7d32; 
+            border: 1px solid #4caf50;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .team-なし { 
+            background: #e9ecef; 
+            color: #6c757d; 
+            border: 1px solid #6c757d;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .team-未設定 { 
+            background: #fff; 
+            color: #999; 
+            border: 1px solid #dee2e6;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        /* 購入履歴スタイル */
+        .purchase-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 8px;
+            display: grid;
+            grid-template-columns: 80px 1fr 100px 80px;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .purchase-date {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .purchase-product {
+            color: #212529;
+        }
+
+        .purchase-amount {
+            text-align: right;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .purchase-type {
+            text-align: center;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .purchase-type.basic {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .purchase-type.upsell {
+            background: #ff6b35;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="メンバーデータベース.html" class="back-btn">← 一覧に戻る</a>
+
+    <div class="container">
+        <div class="header">
+            <h1 id="memberName">メンバー詳細</h1>
+            <p id="memberId"></p>
+        </div>
+
+        <!-- 検索機能 -->
+        <div style="background: #f8f9fa; padding: 15px; margin: 15px 0; border-radius: 8px; border-left: 4px solid #007bff;">
+            <h3 style="color: #007bff; margin-bottom: 10px; font-size: 1em;">🔍 メンバー検索</h3>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <input type="text" id="searchInput" placeholder="名前・読み仮名・Discord名で検索..." 
+                       style="flex: 1; min-width: 200px; padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.9em;">
+                <button onclick="searchMembers()" style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">検索</button>
+                <button onclick="clearSearch()" style="padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">クリア</button>
+            </div>
+            <div id="searchResults" style="margin-top: 10px; max-height: 200px; overflow-y: auto;"></div>
+        </div>
+
+        <div class="member-info">
+            <!-- 基本情報 -->
+            <div class="info-section">
+                <h3>📋 基本情報</h3>
+                <div class="info-row">
+                    <span class="info-label">読み仮名</span>
+                    <span class="info-value" id="furigana"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">ステータス</span>
+                    <span class="info-value" id="status"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">三毒チーム</span>
+                    <span class="info-value" id="team"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">入会日</span>
+                    <span class="info-value" id="joinDate"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">正規開始日</span>
+                    <span class="info-value" id="regularJoinDate"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">最終活動</span>
+                    <span class="info-value" id="lastActive"></span>
+                </div>
+            </div>
+
+            <!-- LTV詳細情報 -->
+            <div class="info-section">
+                <h3>💰 LTV詳細内訳</h3>
+                <div id="ltvBreakdown" style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                    <!-- LTV内訳がここに表示されます -->
+                </div>
+                <div class="info-row" style="border-top: 2px solid #007bff; margin-top: 10px; padding-top: 10px;">
+                    <span class="info-label" style="font-weight: bold; font-size: 1.1em;">総LTV</span>
+                    <span class="info-value" id="totalLTV" style="font-weight: bold; color: #007bff; font-size: 1.2em;"></span>
+                </div>
+            </div>
+
+            <!-- アップセル詳細 -->
+            <div id="upsaleDetails" class="info-section" style="display: none;">
+                <h3>🛒 アップセル詳細</h3>
+                <div id="upsaleContent"></div>
+            </div>
+
+            <!-- Discord情報 -->
+            <div class="info-section">
+                <h3>💬 Discord情報</h3>
+                <div class="info-row">
+                    <span class="info-label">Discord名</span>
+                    <span class="info-value" id="discordName"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Discord ID</span>
+                    <span class="info-value" id="discordId"></span>
+                </div>
+            </div>
+
+            <!-- 購入履歴 -->
+            <div class="info-section">
+                <h3>🛒 購入履歴</h3>
+                <div id="purchaseHistory" style="margin-top: 10px;">
+                    <!-- 購入履歴がここに表示されます -->
+                </div>
+            </div>
+
+            <!-- 売上履歴 -->
+            <div class="monthly-sales">
+                <div class="info-section">
+                    <h3>📊 売上履歴（日別）</h3>
+                    <div style="margin-bottom: 15px;">
+                        <button onclick="addSalesRecord()" style="background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">+ 売上記録追加</button>
+                        <button onclick="toggleView()" id="viewToggle" style="background: #6c757d; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; margin-left: 10px;">月別表示</button>
+                    </div>
+                    
+                    <!-- 日別詳細表示 -->
+                    <div id="dailyView">
+                        <table class="monthly-table">
+                            <thead>
+                                <tr>
+                                    <th>日付</th>
+                                    <th>売上種別</th>
+                                    <th>金額</th>
+                                    <th>内容</th>
+                                    <th>支払方法</th>
+                                    <th>備考</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dailyData">
+                                <!-- 日別データがここに動的生成されます -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 月別サマリー表示 -->
+                    <div id="monthlyView" style="display: none;">
+                        <table class="monthly-table">
+                            <thead>
+                                <tr>
+                                    <th>年月</th>
+                                    <th>基本料金</th>
+                                    <th>アップセル</th>
+                                    <th>その他</th>
+                                    <th>月計</th>
+                                    <th>詳細</th>
+                                </tr>
+                            </thead>
+                            <tbody id="monthlyData">
+                                <!-- 月別データがここに動的生成されます -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="three_poisons_team_mapping.js"></script>
+    <script>
+        // URLパラメータからメンバーIDを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const memberId = urlParams.get('id');
+
+        // メンバーデータを読み込み（実際のアプリでは外部ファイルから）
+        let memberData = null;
+
+        // ページ読み込み時にメンバー詳細を表示
+        document.addEventListener('DOMContentLoaded', function() {
+            if (memberId) {
+                // 実際のアプリでは、ここでメンバーデータを取得
+                loadMemberData(memberId);
+            } else {
+                alert('メンバーIDが指定されていません');
+                window.location.href = 'メンバーデータベース.html';
+            }
+        });
+
+        // メンバーデータを読み込み（簡易版）
+        function loadMemberData(id) {
+            // 実際にはメンバーデータベースから取得（localStorage利用想定）
+            const memberFromDB = localStorage.getItem(`member_${id}`);
+            if (memberFromDB) {
+                const member = JSON.parse(memberFromDB);
+                displayMemberDetail(member);
+                return;
+            }
+            
+            // 仮のデータ（実際のアプリでは API やローカルストレージから取得）
+            const sampleData = {
+                id: id,
+                name: '松田陽平',
+                currentStatus: '通常',
+                threePoisonsTeam: '瞋恚',
+                joinDate: '2024-07-01',
+                regularJoinDate: '2024-02-29',
+                lastActive: '2025-07-29',
+                baseLTV: 154000,
+                upsaleLTV: 380000,
+                totalLTV: 534000,
+                discord: '松田',
+                discordId: 'matsuda123',
+                upsales: [
+                    {
+                        name: '徹底精進',
+                        totalAmount: 330000,
+                        purchaseDate: '2025-06',
+                        installments: 3,
+                        monthlyAmount: 110000,
+                        paidInstallments: 2,
+                        remainingAmount: 110000,
+                        nextPaymentDate: '2025-08-31',
+                        status: '分割中'
+                    },
+                    {
+                        name: 'NHBC1年VIP',
+                        totalAmount: 50000,
+                        purchaseDate: '2025-07-16',
+                        installments: 1,
+                        monthlyAmount: 50000,
+                        paidInstallments: 1,
+                        remainingAmount: 0,
+                        nextPaymentDate: null,
+                        status: '完済'
+                    }
+                ],
+                salesHistory: [
+                    { date: '2024-07-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '入会', id: 1 },
+                    { date: '2024-08-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 2 },
+                    { date: '2024-09-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 3 },
+                    { date: '2024-10-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 4 },
+                    { date: '2024-11-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 5 },
+                    { date: '2024-12-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 6 },
+                    { date: '2025-01-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 7 },
+                    { date: '2025-02-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 8 },
+                    { date: '2025-03-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 9 },
+                    { date: '2025-04-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 10 },
+                    { date: '2025-05-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 11 },
+                    { date: '2025-06-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 12 },
+                    { date: '2025-06-15', type: 'アップセル', amount: 110000, content: '徹底精進', method: 'クレジット', note: '分割 1/3', id: 13 },
+                    { date: '2025-07-01', type: '基本料金', amount: 22000, content: '通常会員', method: 'クレジット', note: '', id: 14 },
+                    { date: '2025-07-16', type: 'アップセル', amount: 50000, content: 'NHBC1年VIP', method: 'クレジット', note: '一括', id: 15 },
+                    { date: '2025-07-31', type: 'アップセル', amount: 110000, content: '徹底精進', method: 'クレジット', note: '分割 2/3', id: 16 },
+                ]
+            };
+
+            displayMemberDetail(sampleData);
+        }
+
+        // メンバー詳細を表示
+        function displayMemberDetail(member) {
+            memberData = member;
+
+            // 基本情報
+            document.getElementById('memberName').textContent = member.name;
+            document.getElementById('memberId').textContent = `ID: ${member.id}`;
+            document.getElementById('status').innerHTML = `<span class="status-${member.currentStatus}">${member.currentStatus}</span>`;
+            document.getElementById('team').innerHTML = `<span class="team-${member.threePoisonsTeam}">${member.threePoisonsTeam}</span>`;
+            document.getElementById('joinDate').textContent = member.joinDate;
+            document.getElementById('regularJoinDate').textContent = member.regularJoinDate;
+            document.getElementById('lastActive').textContent = member.lastActive;
+
+            // LTV詳細内訳表示
+            displayLTVBreakdown(member);
+
+            // Discord情報
+            document.getElementById('discordName').textContent = member.discord || '-';
+            document.getElementById('discordId').textContent = member.discordId || '-';
+
+            // 購入履歴表示
+            displayPurchaseHistory(member);
+
+            // アップセル詳細
+            if (member.upsales && member.upsales.length > 0) {
+                const upsaleSection = document.getElementById('upsaleDetails');
+                const upsaleContent = document.getElementById('upsaleContent');
+                
+                upsaleSection.style.display = 'block';
+                
+                member.upsales.forEach(upsale => {
+                    const upsaleDiv = document.createElement('div');
+                    upsaleDiv.className = 'upsale-info';
+                    upsaleDiv.innerHTML = `
+                        <div class="upsale-title">${upsale.name}</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9em;">
+                            <div>購入日: ${upsale.purchaseDate}</div>
+                            <div>総額: ¥${upsale.totalAmount.toLocaleString()}</div>
+                            <div>分割: ${upsale.installments}回</div>
+                            <div>月額: ¥${upsale.monthlyAmount.toLocaleString()}</div>
+                            <div>支払済: ${upsale.paidInstallments}/${upsale.installments}回</div>
+                            <div>残額: ¥${upsale.remainingAmount.toLocaleString()}</div>
+                            <div>次回: ${upsale.nextPaymentDate}</div>
+                            <div>状態: ${upsale.status}</div>
+                        </div>
+                    `;
+                    upsaleContent.appendChild(upsaleDiv);
+                });
+            }
+
+            // 日別売上履歴を表示
+            displaySalesHistory();
+        }
+
+        // 表示切り替え
+        let isMonthlyView = false;
+        function toggleView() {
+            const dailyView = document.getElementById('dailyView');
+            const monthlyView = document.getElementById('monthlyView');
+            const toggleBtn = document.getElementById('viewToggle');
+            
+            isMonthlyView = !isMonthlyView;
+            
+            if (isMonthlyView) {
+                dailyView.style.display = 'none';
+                monthlyView.style.display = 'block';
+                toggleBtn.textContent = '日別表示';
+                generateMonthlySummary();
+            } else {
+                dailyView.style.display = 'block';
+                monthlyView.style.display = 'none';
+                toggleBtn.textContent = '月別表示';
+            }
+        }
+
+        // 日別売上履歴を表示
+        function displaySalesHistory() {
+            const dailyTable = document.getElementById('dailyData');
+            dailyTable.innerHTML = '';
+            
+            // 日付でソート（新しい順）
+            const sortedHistory = memberData.salesHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            sortedHistory.forEach(record => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${record.date}</td>
+                    <td><span style="background: ${getTypeColor(record.type)}; padding: 2px 6px; border-radius: 3px; color: white; font-size: 0.8em;">${record.type}</span></td>
+                    <td style="font-weight: bold;">¥${record.amount.toLocaleString()}</td>
+                    <td>${record.content}</td>
+                    <td>${record.method}</td>
+                    <td>${record.note}</td>
+                    <td>
+                        <button onclick="editSalesRecord(${record.id})" style="background: #ffc107; color: black; border: none; padding: 3px 8px; border-radius: 3px; cursor: pointer; margin-right: 5px;">編集</button>
+                        <button onclick="deleteSalesRecord(${record.id})" style="background: #dc3545; color: white; border: none; padding: 3px 8px; border-radius: 3px; cursor: pointer;">削除</button>
+                    </td>
+                `;
+                dailyTable.appendChild(row);
+            });
+        }
+
+        // 売上種別の色分け
+        function getTypeColor(type) {
+            switch (type) {
+                case '基本料金': return '#007bff';
+                case 'アップセル': return '#28a745';
+                case '年間料金': return '#6f42c1';
+                case 'その他': return '#6c757d';
+                default: return '#6c757d';
+            }
+        }
+
+        // 月別サマリーを生成
+        function generateMonthlySummary() {
+            const monthlyTable = document.getElementById('monthlyData');
+            monthlyTable.innerHTML = '';
+            
+            // 月ごとにグループ化
+            const monthlyData = {};
+            memberData.salesHistory.forEach(record => {
+                const month = record.date.substring(0, 7); // YYYY-MM
+                if (!monthlyData[month]) {
+                    monthlyData[month] = { base: 0, upsale: 0, other: 0, details: [] };
+                }
+                
+                if (record.type === '基本料金' || record.type === '年間料金') {
+                    monthlyData[month].base += record.amount;
+                } else if (record.type === 'アップセル') {
+                    monthlyData[month].upsale += record.amount;
+                } else {
+                    monthlyData[month].other += record.amount;
+                }
+                
+                monthlyData[month].details.push(record);
+            });
+            
+            // 月別データを表示（新しい順）
+            const sortedMonths = Object.keys(monthlyData).sort().reverse();
+            sortedMonths.forEach(month => {
+                const data = monthlyData[month];
+                const total = data.base + data.upsale + data.other;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${month}</td>
+                    <td>¥${data.base.toLocaleString()}</td>
+                    <td>¥${data.upsale.toLocaleString()}</td>
+                    <td>¥${data.other.toLocaleString()}</td>
+                    <td style="font-weight: bold;">¥${total.toLocaleString()}</td>
+                    <td><button onclick="showMonthDetail('${month}')" style="background: #007bff; color: white; border: none; padding: 3px 8px; border-radius: 3px; cursor: pointer;">詳細</button></td>
+                `;
+                monthlyTable.appendChild(row);
+            });
+        }
+
+        // 売上記録追加
+        function addSalesRecord() {
+            const date = prompt('日付を入力してください (YYYY-MM-DD):');
+            if (!date) return;
+            
+            const type = prompt('売上種別を入力してください (基本料金/アップセル/年間料金/その他):');
+            if (!type) return;
+            
+            const amount = prompt('金額を入力してください:');
+            if (!amount || isNaN(amount)) return;
+            
+            const content = prompt('内容を入力してください:');
+            if (!content) return;
+            
+            const method = prompt('支払方法を入力してください (クレジット/銀行振込/現金/その他):');
+            if (!method) return;
+            
+            const note = prompt('備考を入力してください (任意):') || '';
+            
+            const newRecord = {
+                id: Math.max(...memberData.salesHistory.map(r => r.id)) + 1,
+                date: date,
+                type: type,
+                amount: parseInt(amount),
+                content: content,
+                method: method,
+                note: note
+            };
+            
+            memberData.salesHistory.push(newRecord);
+            displaySalesHistory();
+            
+            // LTV再計算
+            recalculateLTV();
+        }
+
+        // 売上記録編集
+        function editSalesRecord(id) {
+            const record = memberData.salesHistory.find(r => r.id === id);
+            if (!record) return;
+            
+            const newDate = prompt('日付:', record.date) || record.date;
+            const newType = prompt('売上種別:', record.type) || record.type;
+            const newAmount = prompt('金額:', record.amount) || record.amount;
+            const newContent = prompt('内容:', record.content) || record.content;
+            const newMethod = prompt('支払方法:', record.method) || record.method;
+            const newNote = prompt('備考:', record.note) || record.note;
+            
+            record.date = newDate;
+            record.type = newType;
+            record.amount = parseInt(newAmount);
+            record.content = newContent;
+            record.method = newMethod;
+            record.note = newNote;
+            
+            displaySalesHistory();
+            recalculateLTV();
+        }
+
+        // 売上記録削除
+        function deleteSalesRecord(id) {
+            if (!confirm('この売上記録を削除しますか？')) return;
+            
+            memberData.salesHistory = memberData.salesHistory.filter(r => r.id !== id);
+            displaySalesHistory();
+            recalculateLTV();
+        }
+
+        // LTV再計算
+        function recalculateLTV() {
+            let baseLTV = 0;
+            let upsaleLTV = 0;
+            
+            memberData.salesHistory.forEach(record => {
+                if (record.type === '基本料金' || record.type === '年間料金') {
+                    baseLTV += record.amount;
+                } else if (record.type === 'アップセル') {
+                    upsaleLTV += record.amount;
+                }
+            });
+            
+            memberData.baseLTV = baseLTV;
+            memberData.upsaleLTV = upsaleLTV;
+            memberData.totalLTV = baseLTV + upsaleLTV;
+            
+            // 表示更新
+            document.getElementById('baseLTV').textContent = `¥${baseLTV.toLocaleString()}`;
+            document.getElementById('upsaleLTV').textContent = `¥${upsaleLTV.toLocaleString()}`;
+            document.getElementById('totalLTV').textContent = `¥${memberData.totalLTV.toLocaleString()}`;
+        }
+
+        // 月詳細表示
+        function showMonthDetail(month) {
+            const records = memberData.salesHistory.filter(r => r.date.startsWith(month));
+            let detail = `${month}の売上詳細:\n\n`;
+            
+            records.forEach(record => {
+                detail += `${record.date} - ${record.type}: ¥${record.amount.toLocaleString()} (${record.content})\n`;
+            });
+            
+            alert(detail);
+        }
+
+        // LTV詳細内訳計算と表示
+        function displayLTVBreakdown(member) {
+            const breakdown = calculateLTVBreakdown(member);
+            const container = document.getElementById('ltvBreakdown');
+            
+            let html = '<div style="font-size: 0.9em;">';
+            
+            // 体験期間
+            if (breakdown.trial.months > 0) {
+                html += `
+                    <div style="margin-bottom: 8px; display: flex; justify-content: space-between;">
+                        <span>🔸 体験期間 (${breakdown.trial.period})</span>
+                        <span style="font-weight: bold;">¥${breakdown.trial.amount.toLocaleString()}</span>
+                    </div>
+                `;
+            }
+            
+            // 通常会員期間
+            if (breakdown.regular.months > 0) {
+                html += `
+                    <div style="margin-bottom: 8px; display: flex; justify-content: space-between;">
+                        <span>⭐ 通常会員 ${breakdown.regular.months}ヶ月 (${breakdown.regular.period})</span>
+                        <span style="font-weight: bold;">¥${breakdown.regular.amount.toLocaleString()}</span>
+                    </div>
+                `;
+            }
+            
+            // 年間会員期間
+            if (breakdown.annual.years > 0) {
+                html += `
+                    <div style="margin-bottom: 8px; display: flex; justify-content: space-between;">
+                        <span>💎 年間会員 ${breakdown.annual.years}年 (${breakdown.annual.period})</span>
+                        <span style="font-weight: bold;">¥${breakdown.annual.amount.toLocaleString()}</span>
+                    </div>
+                `;
+            }
+            
+            // 小計
+            html += `
+                <div style="border-top: 1px solid #dee2e6; padding-top: 8px; margin-top: 8px; display: flex; justify-content: space-between;">
+                    <span><strong>基本料金小計</strong></span>
+                    <span style="font-weight: bold; color: #17a2b8;">¥${breakdown.basicTotal.toLocaleString()}</span>
+                </div>
+            `;
+            
+            // アップセル
+            if (breakdown.upsell.total > 0) {
+                html += `
+                    <div style="margin-top: 8px; margin-bottom: 8px; display: flex; justify-content: space-between;">
+                        <span>🛒 アップセル売上</span>
+                        <span style="font-weight: bold; color: #ff6b35;">¥${breakdown.upsell.total.toLocaleString()}</span>
+                    </div>
+                `;
+            }
+            
+            html += '</div>';
+            container.innerHTML = html;
+            
+            // 総LTV表示
+            document.getElementById('totalLTV').textContent = `¥${breakdown.grandTotal.toLocaleString()}`;
+        }
+
+        // LTV内訳計算ロジック
+        function calculateLTVBreakdown(member) {
+            const now = new Date();
+            const joinDate = new Date(member.joinDate);
+            const regularJoinDate = member.regularJoinDate ? new Date(member.regularJoinDate) : null;
+            const annualPaymentDate = member.annualPaymentDate ? new Date(member.annualPaymentDate) : null;
+            
+            let breakdown = {
+                trial: { months: 0, amount: 0, period: '' },
+                regular: { months: 0, amount: 0, period: '' },
+                annual: { years: 0, amount: 0, period: '' },
+                upsell: { total: member.upsell || 0 },
+                basicTotal: 0,
+                grandTotal: 0
+            };
+            
+            // 現在のステータスに基づく計算
+            if (member.status === '体験終了') {
+                // 体験のみ
+                breakdown.trial.months = 1;
+                breakdown.trial.amount = 3000;
+                breakdown.trial.period = member.joinDate;
+                
+            } else if (member.status === '通常' || member.status === '退会') {
+                // 体験期間
+                breakdown.trial.months = 1;
+                breakdown.trial.amount = 3000;
+                breakdown.trial.period = member.joinDate;
+                
+                // 通常会員期間
+                const regularStart = regularJoinDate || joinDate;
+                const endDate = member.status === '退会' ? now : now; // 実際は退会日が必要
+                const monthsActive = Math.max(0, Math.floor((endDate - regularStart) / (1000 * 60 * 60 * 24 * 30)));
+                
+                breakdown.regular.months = monthsActive;
+                breakdown.regular.amount = monthsActive * 22000;
+                breakdown.regular.period = `${regularStart.toISOString().split('T')[0]} 〜 現在`;
+                
+            } else if (member.status === '年間') {
+                // 体験期間
+                breakdown.trial.months = 1;
+                breakdown.trial.amount = 3000;
+                breakdown.trial.period = member.joinDate;
+                
+                if (annualPaymentDate) {
+                    // 年間切り替え前の通常期間
+                    const regularStart = regularJoinDate || joinDate;
+                    if (annualPaymentDate > regularStart) {
+                        const monthsRegular = Math.floor((annualPaymentDate - regularStart) / (1000 * 60 * 60 * 24 * 30));
+                        breakdown.regular.months = monthsRegular;
+                        breakdown.regular.amount = monthsRegular * 22000;
+                        breakdown.regular.period = `${regularStart.toISOString().split('T')[0]} 〜 ${annualPaymentDate.toISOString().split('T')[0]}`;
+                    }
+                    
+                    // 年間期間
+                    const yearsActive = Math.max(1, Math.ceil((now - annualPaymentDate) / (1000 * 60 * 60 * 24 * 365)));
+                    breakdown.annual.years = yearsActive;
+                    breakdown.annual.amount = yearsActive * 220000;
+                    breakdown.annual.period = `${annualPaymentDate.toISOString().split('T')[0]} 〜 現在`;
+                } else {
+                    // 年間決済日不明の場合は全期間を年間として計算
+                    const yearsActive = Math.max(1, Math.ceil((now - joinDate) / (1000 * 60 * 60 * 24 * 365)));
+                    breakdown.annual.years = yearsActive;
+                    breakdown.annual.amount = yearsActive * 220000;
+                    breakdown.annual.period = `${member.joinDate} 〜 現在（推定）`;
+                }
+            }
+            
+            breakdown.basicTotal = breakdown.trial.amount + breakdown.regular.amount + breakdown.annual.amount;
+            breakdown.grandTotal = breakdown.basicTotal + breakdown.upsell.total;
+            
+            return breakdown;
+        }
+
+        // 購入履歴表示関数
+        function displayPurchaseHistory(member) {
+            const container = document.getElementById('purchaseHistory');
+            
+            if (!member.purchaseHistory || member.purchaseHistory.length === 0) {
+                container.innerHTML = '<p style="color: #6c757d; font-style: italic;">購入履歴がありません</p>';
+                return;
+            }
+
+            // 購入履歴を日付順でソート（新しい順）
+            const sortedHistory = [...member.purchaseHistory].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            let html = '';
+            sortedHistory.forEach(purchase => {
+                html += `
+                    <div class="purchase-item">
+                        <div class="purchase-date">${purchase.date}</div>
+                        <div class="purchase-product">${purchase.product}</div>
+                        <div class="purchase-amount">¥${purchase.amount.toLocaleString()}</div>
+                        <div class="purchase-type ${purchase.type === '基本' ? 'basic' : 'upsell'}">${purchase.type}</div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【30代女性限定】お金に追われない理想のライフスタイル設計法</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f9f9f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4682B4 0%, #1E90FF 50%, #FFD700 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="30" r="2" fill="%23FFD700" opacity="0.3"/><circle cx="70" cy="60" r="1.5" fill="%23FFA500" opacity="0.4"/><circle cx="40" cy="80" r="1" fill="%23FFFFFF" opacity="0.6"/><circle cx="85" cy="25" r="1" fill="%23FFD700" opacity="0.5"/></svg>') repeat;
+            animation: float 25s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.4;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 10px;
+        }
+
+        .header .description {
+            font-size: 16px;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-section {
+            padding: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #E6F3FF 0%, #F0F8FF 100%);
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 360px;
+            border: none;
+        }
+
+        .video-title {
+            color: #1E90FF;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #E6F3FF 0%, #F0F8FF 100%);
+            border-radius: 15px;
+            border-left: 5px solid #1E90FF;
+        }
+
+        .intro-section h2 {
+            color: #1E90FF;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .comparison-box {
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .old-way {
+            background: linear-gradient(135deg, #FFF0F0 0%, #FFE8E8 100%);
+            border: 2px solid #FF6B6B;
+        }
+
+        .new-way {
+            background: linear-gradient(135deg, #F0FFF0 0%, #E8FFE8 100%);
+            border: 2px solid #4CAF50;
+        }
+
+        .old-way h3 {
+            color: #D32F2F;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .new-way h3 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h3 {
+            color: #1E90FF;
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFD700;
+            position: relative;
+        }
+
+        .section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #1E90FF;
+        }
+
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .asset-card {
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%);
+            padding: 20px 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #FFD700;
+            transition: transform 0.3s ease;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .asset-card .icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .asset-card h4 {
+            color: #8B4513;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .asset-card p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .steps-container {
+            background: linear-gradient(135deg, #F8F8FF 0%, #F0F8FF 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #1E90FF;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #1E90FF 0%, #4682B4 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: #1E90FF;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .success-story {
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFFACD 50%, #F0F8FF 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px solid #FFD700;
+            position: relative;
+        }
+
+        .success-story::before {
+            content: '✨';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #FFD700;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .success-story h4 {
+            color: #8B4513;
+            font-size: 18px;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .result-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #E0E0E0;
+        }
+
+        .result-item .number {
+            color: #1E90FF;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .result-item .label {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .benefit-list {
+            background: linear-gradient(135deg, #E6F3FF 0%, #F0F8FF 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #1E90FF;
+        }
+
+        .benefit-list ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .benefit-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .benefit-list li::before {
+            content: '🌟';
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .quote-box {
+            background: #F8F9FA;
+            padding: 20px;
+            border-left: 4px solid #FFD700;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 40px;
+            color: #FFD700;
+            position: absolute;
+            top: -5px;
+            left: 15px;
+            line-height: 1;
+        }
+
+        .quote-text {
+            margin-left: 25px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #1E90FF;
+            font-size: 14px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+            color: #333;
+        }
+
+        .cta-section h3 {
+            color: #8B4513;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #1E90FF 0%, #4682B4 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 144, 255, 0.6);
+        }
+
+        .divider {
+            height: 3px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #1E90FF 100%);
+            margin: 35px 0;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .video-section, .content {
+                padding: 25px 20px;
+            }
+            
+            .video-container iframe {
+                height: 250px;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .assets-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .results-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <div class="header">
+            <h1>【30代女性限定】<br>お金に追われない理想のライフスタイル設計法</h1>
+            <div class="subtitle">五大資産を循環させる持続可能な働き方</div>
+            <div class="description">月収100万円超えでも満足できないあなたへ</div>
+        </div>
+
+        <!-- 動画セクション -->
+        <div class="video-section">
+            <div class="video-title">📹 五大資産再構築6ステップセミナー【前編】</div>
+            <div class="video-container">
+                <iframe src="https://utage-system.com/video/996tKmRuYVbD" allowfullscreen></iframe>
+            </div>
+            <p style="margin-top: 15px; color: #666; font-size: 14px;">
+                なゆたコーチ×あやねえの特別対談動画をご覧ください
+            </p>
+        </div>
+
+        <!-- メインコンテンツ -->
+        <div class="content">
+            <!-- イントロダクション -->
+            <div class="intro-section">
+                <h2>あなたは今、どちらの働き方をしていますか？</h2>
+                <p>多くの30代女性が気づかずに陥っている「お金を稼ぐ」働き方から、<br>本当に豊かな「お金も稼げる」働き方への転換点がここにあります。</p>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-box old-way">
+                        <h3>❌ お金を稼ぐ働き方</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li>💰 お金がメイン目標</li>
+                            <li>⏰ 時間に追われる毎日</li>
+                            <li>😰 ストレス・疲労の蓄積</li>
+                            <li>😔 人間関係の悩み</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-box new-way">
+                        <h3>✅ お金も稼げる働き方</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li>💝 やりたいことが主軸</li>
+                            <li>🕰️ 時間の余裕がある</li>
+                            <li>✨ 健康的なライフスタイル</li>
+                            <li>🤝 良質な人間関係</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 五大資産の説明 -->
+            <div class="section">
+                <h3>人生を豊かにする「五大資産」とは？</h3>
+                <p>真の豊かさは、お金だけでは手に入りません。5つの資産をバランスよく循環させることで、持続可能で充実したライフスタイルが実現します。</p>
+                
+                <div class="assets-grid">
+                    <div class="asset-card">
+                        <div class="icon">⏰</div>
+                        <h4>時間</h4>
+                        <p>自分らしい時間の使い方</p>
+                    </div>
+                    <div class="asset-card">
+                        <div class="icon">💪</div>
+                        <h4>健康</h4>
+                        <p>心身の健やかさ</p>
+                    </div>
+                    <div class="asset-card">
+                        <div class="icon">👥</div>
+                        <h4>仲間</h4>
+                        <p>支え合える人間関係</p>
+                    </div>
+                    <div class="asset-card">
+                        <div class="icon">📚</div>
+                        <h4>知識</h4>
+                        <p>成長し続ける学び</p>
+                    </div>
+                    <div class="asset-card">
+                        <div class="icon">💰</div>
+                        <h4>富</h4>
+                        <p>経済的な余裕</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 6ステップの詳細 -->
+            <div class="section">
+                <h3>理想のライフスタイルを実現する6ステップ</h3>
+                
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>アイデンティティの発見</h4>
+                            <p>誘導瞑想を通じて、あなたが何者でどういう形で人に貢献できるかを深く理解します。自分の本質的なあり方を知ることで、持続可能な働き方の基盤を作ります。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>ロードマップの作成</h4>
+                            <p>1年後、3年後、10年後の理想の働き方を明確化。五大資産がどのような状態になっているかを具体的に描き、実現可能なロードマップを作成します。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>コンセプトの決定</h4>
+                            <p>あなたらしいエントリーポイントを決定。どこから始めれば最も自然に理想の働き方に近づけるかを見つけます。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>ブロックの解消</h4>
+                            <p>実践する中で現れるメンタルブロックや過去のトラウマを丁寧に解消。本来の力を発揮できる状態を整えます。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>才能の発揮</h4>
+                            <p>マーケティングとビジネスモデルを活用して、あなたの才能が最大限発揮される働き方を実現します。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>ライフスタイルの完成</h4>
+                            <p>得られた資産を3つのスタイル（ライフ・ワーク・ビジネス）に再投資し、持続可能で充実した人生を構築します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 成功事例 -->
+            <div class="section">
+                <h3>実際の変化・成功事例</h3>
+                
+                <div class="success-story">
+                    <h4>あやねえさんの場合：秘書業務で月500万円達成</h4>
+                    <p>「私も正直やるつもりなかったんです。でも、やりたいことがあったんですよね。秘書を目指してるフォロワーさんと経営者さんの両方を助けたい。それを意図せずに、さらっと500万行ったんです。」</p>
+                    
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="number">500万円</div>
+                            <div class="label">月収達成</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="number">自然体</div>
+                            <div class="label">無理のない働き方</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="number">貢献</div>
+                            <div class="label">人を助ける喜び</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit-list">
+                    <h4>🌟 その他の驚くべき変化</h4>
+                    <ul>
+                        <li><strong>健康面の改善：</strong>花粉症の軽減、AGAの解決、原因不明の痛みの消失</li>
+                        <li><strong>人間関係の向上：</strong>親子関係の改善、パートナーとの関係性向上</li>
+                        <li><strong>多様な働き方：</strong>UIデザイナーで副業50-100万円、タクシードライバーで安定収入</li>
+                        <li><strong>環境の最適化：</strong>書斎のコーディネート変更で集中力向上、家族関係も改善</li>
+                    </ul>
+                </div>
+
+                <div class="quote-box">
+                    <div class="quote-text">
+                        楽しそうなことやってたら、月500万いっちゃいました。お金を追うのではなく、お金が追ってくるような生き方をしていたら、お金を追わなくていい。
+                    </div>
+                    <div class="quote-author">- なゆたコーチ</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 重要なポイント -->
+            <div class="section">
+                <h3>このアプローチが特別な理由</h3>
+                
+                <div class="benefit-list">
+                    <h4>💡 一般的なコーチングとの違い</h4>
+                    <ul>
+                        <li><strong>ビジネス×人生相談：</strong>単なるビジネススキルではなく、人生の根深い悩みも解決</li>
+                        <li><strong>対等な関係：</strong>上下関係ではなく、一緒に正解を見つけていくスタイル</li>
+                        <li><strong>持続可能性重視：</strong>一時的な成果ではなく、長期的に続く働き方を構築</li>
+                        <li><strong>総合的アプローチ：</strong>仕事だけでなく、健康・人間関係・ライフスタイル全体を改善</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-list">
+                    <h4>🎯 このような方におすすめです</h4>
+                    <ul>
+                        <li>月100万円稼いでいても満足感がない方</li>
+                        <li>時間に追われる働き方から脱却したい方</li>
+                        <li>本当の意味での豊かさを求めている方</li>
+                        <li>自分らしい働き方を見つけたい方</li>
+                        <li>五大資産をバランスよく充実させたい方</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h3>あなたも理想のライフスタイルを手に入れませんか？</h3>
+                <p>「お金を稼ぐ」働き方から「お金も稼げる」働き方へ。<br>五大資産が循環する持続可能なライフスタイルを一緒に築いていきましょう。</p>
+                
+                <a href="#" class="cta-button">詳細を確認する</a>
+                
+                <p style="margin-top: 20px; font-size: 15px;">
+                    まずは感想フォームからあなたの想いをお聞かせください。<br>
+                    熱量や内容に応じて、体験セッションのご案内をいたします。
+                </p>
+            </div>
+
+            <!-- 最終メッセージ -->
+            <div class="intro-section">
+                <h2>発信・表明・合流</h2>
+                <p>これは単なるDRM（集客・教育・販売）ではありません。<br>私たちは「発信・表明・合流」のスタイルを大切にしています。</p>
+                <p style="margin-top: 15px;">
+                    あなたがこの内容に共鳴したなら、ぜひその想いを言葉にして発信してください。<br>そこから本当のシナジーが生まれ、一緒に豊かな未来を創っていけるのです。
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

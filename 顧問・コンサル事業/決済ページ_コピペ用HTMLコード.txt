@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【限定3000円】理想のライフスタイル設計セッション - SMART WOMAN LIFESTYLE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #87CEEB 0%, #FFE4B5 30%, #F0F8FF 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4682B4 0%, #1E90FF 50%, #FFD700 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="30" r="2" fill="%23FFD700" opacity="0.3"/><circle cx="70" cy="60" r="1.5" fill="%23FFA500" opacity="0.4"/><circle cx="40" cy="80" r="1" fill="%23FFFFFF" opacity="0.6"/><circle cx="85" cy="25" r="1" fill="%23FFD700" opacity="0.5"/></svg>') repeat;
+            animation: float 25s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .urgency-banner {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .content {
+            padding: 3rem 2rem;
+        }
+
+        .price-section {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-section::before {
+            content: '💫';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 3rem;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            color: #8B4513;
+            text-decoration: line-through;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .current-price {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #8B4513;
+            margin: 1rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #FF4757 0%, #FF3742 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .session-details {
+            background: linear-gradient(135deg, #E6F3FF 0%, #F0F8FF 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid #1E90FF;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.1);
+        }
+
+        .session-details h3 {
+            color: #1E90FF;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .session-details ul {
+            list-style: none;
+        }
+
+        .session-details li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .session-details li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFFACD 50%, #F0F8FF 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid #FFD700;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .testimonial .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial .author {
+            text-align: right;
+            color: #1E90FF;
+            font-weight: bold;
+        }
+
+        .payment-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            border: 2px solid #FFD700;
+        }
+
+        .payment-form h3 {
+            color: #1E90FF;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.6rem;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-option {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .payment-option:hover {
+            border-color: #FFD700;
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%);
+        }
+
+        .payment-option.selected {
+            border-color: #1E90FF;
+            background: linear-gradient(135deg, #E6F3FF 0%, #F0F8FF 100%);
+        }
+
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+
+        .payment-option .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1E90FF;
+        }
+
+        .credit-card-fields {
+            display: none;
+        }
+
+        .credit-card-fields.active {
+            display: block;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+
+        .bank-transfer-info {
+            display: none;
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .bank-transfer-info.active {
+            display: block;
+        }
+
+        .bank-details {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #1E90FF;
+            margin: 1rem 0;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #8B4513;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+        }
+
+        .guarantee {
+            background: linear-gradient(135deg, #E8F5E8 0%, #F0FFF0 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+            border: 2px solid #28a745;
+        }
+
+        .guarantee h4 {
+            color: #28a745;
+            margin-bottom: 0.5rem;
+        }
+
+        .timer {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .countdown-item {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .current-price {
+                font-size: 2.8rem;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .card-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="urgency-banner">
+            🔥 期間限定特別価格！残り48時間で終了します 🔥
+        </div>
+
+        <div class="header">
+            <h1>【限定3000円】理想のライフスタイル設計セッション</h1>
+            <p class="subtitle">あなただけの人生再構築プランを90分で設計します</p>
+        </div>
+
+        <div class="content">
+            <div class="timer">
+                ⏰ 特別価格終了まで
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">47</div>
+                        <div class="countdown-label">時間</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">23</div>
+                        <div class="countdown-label">分</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">45</div>
+                        <div class="countdown-label">秒</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-section">
+                <h2>💎 今だけ特別価格 💎</h2>
+                <div class="original-price">通常価格：19,800円</div>
+                <div class="current-price">3,000円</div>
+                <div class="discount-badge">85%OFF！</div>
+                <p>メルマガ読者様限定の特別価格です</p>
+            </div>
+
+            <div class="session-details">
+                <h3>✨ 90分間の個別セッション内容</h3>
+                <ul>
+                    <li>現在の状況と理想のギャップ分析</li>
+                    <li>あなただけの強み・価値の明確化</li>
+                    <li>市場ニーズとのマッチング戦略</li>
+                    <li>収入源構築の具体的ロードマップ</li>
+                    <li>時間と場所の自由を実現する働き方設計</li>
+                    <li>継続可能なライフスタイル維持法</li>
+                    <li>30日間の行動計画作成</li>
+                </ul>
+            </div>
+
+            <div class="testimonial">
+                <div class="quote">
+                    「90分のセッションで、今まで漠然としていた理想が具体的な行動計画に変わりました。3ヶ月後には副収入月20万円を達成！本当に人生が変わりました。」
+                </div>
+                <div class="author">- 田中美咲さん（34歳・会社員）</div>
+            </div>
+
+            <div class="payment-form">
+                <h3>💳 お支払い方法を選択してください</h3>
+                
+                <form id="payment-form">
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="selectPayment('credit')">
+                            <input type="radio" name="payment" value="credit" id="credit">
+                            <div class="icon">💳</div>
+                            <div>クレジットカード</div>
+                            <small>即座に予約確定</small>
+                        </div>
+                        <div class="payment-option" onclick="selectPayment('bank')">
+                            <input type="radio" name="payment" value="bank" id="bank">
+                            <div class="icon">🏦</div>
+                            <div>銀行振込</div>
+                            <small>振込確認後に予約確定</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">お名前 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">メールアドレス *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">電話番号 *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="credit-card-fields" id="credit-fields">
+                        <div class="form-group">
+                            <label for="card-number">カード番号 *</label>
+                            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456">
+                        </div>
+                        
+                        <div class="card-row">
+                            <div class="form-group">
+                                <label for="expiry">有効期限 *</label>
+                                <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">セキュリティコード *</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="card-name">カード名義人 *</label>
+                            <input type="text" id="card-name" name="card-name" placeholder="YAMADA HANAKO">
+                        </div>
+                    </div>
+
+                    <div class="bank-transfer-info" id="bank-info">
+                        <h4>振込先口座</h4>
+                        <div class="bank-details">
+                            <strong>銀行名：</strong> ○○銀行<br>
+                            <strong>支店名：</strong> ○○支店<br>
+                            <strong>口座種別：</strong> 普通預金<br>
+                            <strong>口座番号：</strong> 1234567<br>
+                            <strong>口座名義：</strong> ナガセ ユタカ
+                        </div>
+                        <p style="color: #FF6B6B; font-weight: bold;">
+                            ※ 振込手数料はお客様負担となります<br>
+                            ※ 振込確認後、24時間以内にセッション予約のご連絡をいたします
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferred-date">希望セッション日時（第1希望）*</label>
+                        <input type="datetime-local" id="preferred-date" name="preferred-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferred-date2">希望セッション日時（第2希望）</label>
+                        <input type="datetime-local" id="preferred-date2" name="preferred-date2">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goals">現在のお悩みや目標（簡単にお聞かせください）</label>
+                        <textarea id="goals" name="goals" rows="4" placeholder="例：転職を考えているが方向性が見えない、副業を始めたいがスキルに自信がない等"></textarea>
+                    </div>
+
+                    <div class="guarantee">
+                        <h4>🛡️ 100% 満足保証</h4>
+                        <p>セッション内容にご満足いただけない場合は、全額返金いたします。</p>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        💎 今すぐ3,000円で申し込む 💎
+                    </button>
+                </form>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0; color: #666; font-size: 0.9rem;">
+                <p>お申し込み完了後、24時間以内にセッション詳細のご連絡をいたします。</p>
+                <p>ご不明な点がございましたら、お気軽にお問い合わせください。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 支払い方法選択
+        function selectPayment(type) {
+            // すべての選択を解除
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // 選択した項目をアクティブに
+            event.currentTarget.classList.add('selected');
+            document.getElementById(type).checked = true;
+            
+            // フィールドの表示切り替え
+            const creditFields = document.getElementById('credit-fields');
+            const bankInfo = document.getElementById('bank-info');
+            
+            if (type === 'credit') {
+                creditFields.classList.add('active');
+                bankInfo.classList.remove('active');
+            } else {
+                creditFields.classList.remove('active');
+                bankInfo.classList.add('active');
+            }
+        }
+
+        // カウントダウンタイマー
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const endTime = now + (48 * 60 * 60 * 1000); // 48時間後
+            
+            function update() {
+                const currentTime = new Date().getTime();
+                const timeLeft = endTime - currentTime;
+                
+                if (timeLeft <= 0) {
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
+                
+                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            update();
+            setInterval(update, 1000);
+        }
+
+        // フォーム送信処理
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const paymentMethod = document.querySelector('input[name="payment"]:checked');
+            if (!paymentMethod) {
+                alert('お支払い方法を選択してください。');
+                return;
+            }
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!name || !email || !phone) {
+                alert('必須項目をすべて入力してください。');
+                return;
+            }
+            
+            // ここで実際の決済処理やデータ送信を行う
+            alert('お申し込みありがとうございます！24時間以内にご連絡いたします。');
+        });
+
+        // カード番号の自動フォーマット
+        document.getElementById('card-number').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+
+        // 有効期限の自動フォーマット
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // ページ読み込み時にカウントダウン開始
+        updateCountdown();
+    </script>
+</body>
+</html>
+

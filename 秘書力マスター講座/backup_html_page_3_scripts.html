@@ -1,0 +1,284 @@
+<!-- フッター部分 -->
+<footer class="footer mt-auto py-3" style="z-index: 100;">
+    <div class="container">
+        <span> 株式会社フルガード </span>
+    </div>
+</footer>
+
+<div id="div-lightbox"></div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.utage-system.com/app/js/htmllesson.js?id=71f227c765cb90726e51"></script>
+<script type="text/javascript">
+    $(window).on('load', function() {
+        const url = $(location).attr('href');
+        const headerHeight = $('header nav').outerHeight() + 20;
+        if (url.indexOf('hash=') !== -1) {
+            const anchor = url.split('hash=');
+            const target = $('#' + anchor[anchor.length - 1]);
+            if (target) {
+                const position = Math.floor(target.offset().top) - headerHeight;
+                $('html, body').scrollTop(position);
+            }
+        }
+    });
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        if ($('a.nav-link.active') && $('a.nav-link.active').position()) {
+            $('.sidebar-sticky').scrollTop($('a.nav-link.active').position().top);
+        }
+
+        $('body').on('click', '.btn-complete', function () {
+            const button = $(this);
+            $(this).prop('disabled', true);
+            const url = 'https://utage-system.com/members/ul2PNPeEIJPR/course/NHE98KdqaBC7/lesson/p7zgCnsxmX9D/completeLesson';
+            axios.post(url).then(res => {
+                if (res.data.status === 'success') {
+                    $('.div-complete').hide();
+                    $('.div-cancel-complete').show();
+                    $('li.nav-item .active i').removeClass('bi-circle').addClass('bi-check-circle');
+                    if (res.data.course_style === 'one_by_one') {
+                        const activeLesson = $('li.nav-item .active');
+                        let nextLesson = getNextLesson(activeLesson);
+                        if (res.data.completed_lesson_urls.length > 0) {
+                            //受講済みのレッスンが複数続いている場合
+                            res.data.completed_lesson_urls.forEach((lesson_url, index) => {
+                                nextLesson.removeClass('prev-uncomplete');
+                                nextLesson.find('i').removeClass('bi-lock').addClass('bi-check-circle');
+                                nextLesson.attr('href', lesson_url);
+                                nextLesson = getNextLesson(nextLesson.closest('li.nav-item'));
+                            })
+                            nextLesson.removeClass('prev-uncomplete');
+                            if (!nextLesson.attr('data-release-date')) {
+                                nextLesson.find('i').removeClass('bi-lock').addClass('bi-circle');
+                                nextLesson.attr('href', res.data.completed_next_lesson_url);
+                            }
+                            // 次へボタンを作成
+                            let nextButtonHtml = `<a class="btn btn-primary btn-next" href="${res.data.next_button_url}">`;
+                            nextButtonHtml += '次へ <i class="bi bi-chevron-right"></i></a>';
+                            $('#next_btn').html(nextButtonHtml);
+                        } else {
+                            if (nextLesson.length > 0) {
+                                nextLesson.removeClass('prev-uncomplete');
+                                if (!nextLesson.attr('data-release-date')) {
+                                    if (res.data.next_lesson_is_completed) {
+                                        nextLesson.find('i').removeClass('bi-lock').addClass('bi-check-circle');
+                                    } else {
+                                        nextLesson.find('i').removeClass('bi-lock').addClass('bi-circle');
+                                    }
+                                    nextLesson.attr('href', res.data.next_button_url);
+                                    // 次へボタンを作成
+                                    let nextButtonHtml = `<a class="btn btn-primary btn-next" href="${res.data.next_button_url}">`;
+                                    nextButtonHtml += '次へ <i class="bi bi-chevron-right"></i></a>';
+                                    $('#next_btn').html(nextButtonHtml);
+                                }
+                            } else if (res.data.next_lesson_is_available && res.data.next_button_url) {
+                                // 次へボタンを作成
+                                let nextButtonHtml = `<a class="btn btn-primary btn-next" href="${res.data.next_button_url}">`;
+                                    nextButtonHtml += '次へ <i class="bi bi-chevron-right"></i></a>';
+                                    $('#next_btn').html(nextButtonHtml);
+                            }
+                        }
+                    }
+                }
+            }).finally(() => {
+                button.prop('disabled', false);
+            });
+        });
+
+        $('body').on('click', '.btn-complete-next', function () {
+            const url = 'https://utage-system.com/members/ul2PNPeEIJPR/course/NHE98KdqaBC7/lesson/p7zgCnsxmX9D/completeLesson';
+            axios.post(url).then(res => {
+                if (res.data.status === 'success') {
+                    if (res.data.course_style === 'one_by_one') {
+                        const activeLesson = $('li.nav-item .active');
+                        const nextLesson = getNextLesson(activeLesson);
+                        if (nextLesson.length > 0) {
+                            nextLesson.removeClass('prev-uncomplete');
+                            if (nextLesson.attr('data-release-date') || !res.data.next_button_url) {
+                                //次のレッスンが開放されていない場合
+                                $('.div-complete-next').hide();
+                                $('.div-cancel-complete').show();
+                                $('li.nav-item .active i').removeClass('bi-circle').addClass('bi-check-circle');
+                            } else {
+                                location.href = res.data.next_button_url;
+                            }
+                        } else if (res.data.next_button_url) {
+                            location.href = res.data.next_button_url;
+                        }
+                    } else {
+                        const nextUrl = $('a.btn-next').attr('href');
+                        if (nextUrl) {
+                            location.href = nextUrl;
+                        } else {
+                            $('.div-complete-next').hide();
+                            $('.div-cancel-complete').show();
+                            $('li.nav-item .active i').removeClass('bi-circle').addClass('bi-check-circle');
+                        }
+                    }
+                }
+            });
+        });
+
+        $('body').on('click', '.btn-cancel-complete', function () {
+            const url = 'https://utage-system.com/members/ul2PNPeEIJPR/course/NHE98KdqaBC7/lesson/p7zgCnsxmX9D/cancelCompleteLesson';
+            axios.post(url).then(res => {
+                if (res.data.status === 'success') {
+                    $('.div-complete').show();
+                    $('.div-complete-next').show();
+                    $('.div-cancel-complete').hide();
+                    $('li.nav-item .active i').removeClass('bi-check-circle').addClass('bi-circle');
+                }
+                if(res.data.course_style === 'one_by_one') {
+                    const activeLesson = $('li.nav-item .active');
+                    const activeListItem = activeLesson.closest('li.nav-item');
+                    const allLessons = $('li.nav-item');
+                    const activeIndex = allLessons.index(activeListItem);
+                    allLessons.each(function(index) {
+                        if (index > activeIndex) {
+                            // 選択中のレッスンより後ろのレッスンに対する処理
+                            let iconElement = $(this).find('i');
+                            let linkElement = $(this).find('a.nav-link');
+                            if (iconElement.hasClass('bi-circle')) {
+                                iconElement.removeClass('bi-circle').addClass('bi-lock');
+                            } else if (iconElement.hasClass('bi-check-circle')) {
+                                iconElement.removeClass('bi-check-circle').addClass('bi-lock');
+                            }
+                            linkElement.removeAttr('href');
+                            linkElement.addClass('prev-uncomplete');
+                        }
+                    });
+                    var nextButtonHtml = `<button class="btn btn-primary" disabled>`;
+                    nextButtonHtml += '次へ <i class="bi bi-chevron-right"></i></button>';
+                    $('#next_btn').html(nextButtonHtml);
+                }
+            });
+        });
+
+        $(document).on('click', '[data-release-date]', function() {
+            if ($(this).is('.prev-uncomplete')) {
+                return
+            }
+            alert($(this).attr('data-release-date') + 'より閲覧が可能です。')
+        });
+
+        $(document).on('click', '.prev-uncomplete', function() {
+            alert('１つ前のレッスンが受講済みの場合に閲覧が可能です。')
+        });
+
+        $('.form-comment').on('submit', function (event) {
+            event.preventDefault();
+            const $self = $(this);
+            if (!$self.find('.textarea-comment').val()) {
+                return;
+            }
+            $self.find('.spinner').show();
+            const formData = new FormData($(this).get(0));
+            axios.post($(this).attr('action'), formData).then(res => {
+                if (!res.data) {
+                    alert('送信に失敗しました。');
+                }
+                if (res.data.status !== 'success') {
+                    alert(res.data.message);
+                    return;
+                }
+                                const $newComment = $('.div-comment-base .div-comment').eq(0).clone();
+                $newComment.find('.img-profile').attr('src', $self.find('.img-profile').attr('src'));
+                $newComment.find('.span-nickname').text($self.find('.span-nickname').text());
+                if ($self.find('.input-name').val()) {
+                    $newComment.find('.span-nickname').text($self.find('.input-name').val());
+                }
+                $newComment.find('.p-content').html($self.find('.textarea-comment').val().replace(/\r?\n/g, '<br>').replace(/https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+/g, '<a href="$&" target="_blank">$&</a>'));
+                $newComment.find('textarea.textarea-content').val($self.find('.textarea-comment').val());
+                $newComment.attr('data-comment-id', res.data.comment_id);
+
+                for (let i = 0; i < res.data.images.length; i++) {
+                    let $img = $('<img class="pr-2 mt-1">');
+                    $img.attr('src', res.data.images[i]);
+                    $img.attr('src_original', res.data.images[i]);
+                    $newComment.find('.div-upload-images').append($img);
+                }
+
+                $('.div-comments').prepend($newComment);
+                $('.comment-not-exists').remove();
+                $self.find('.textarea-comment').val('');
+                $self.find('.div-image-preview img').remove();
+                $self.find('.div-image-preview input').remove();
+                $('[data-toggle="tooltip"]').tooltip();
+                $self.find('.spinner').hide();
+            }).catch(error => {
+                $self.find('.spinner').hide();
+                alert('送信に失敗しました。');
+            });
+        });
+        
+        // 追加のスクリプト続く...
+    });
+</script>
+
+<script>
+  setTimeout(function () {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .album {
+        background-image: url("https://utagesystem.s3.ap-northeast-1.amazonaws.com/WLEY1RuU1kHB/iSqDV5HkqxfNnY9sYCcu4JtThW4vf0iCFmb30Uhy.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: transparent !important;
+      }
+    `;
+    document.body.appendChild(style);
+  }, 100);
+</script>
+
+<script>
+(function(){
+  const style = document.createElement('style');
+  style.innerHTML = `
+    section.jumbotron.text-center{
+      background-color:transparent !important;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; padding:0; /* PCも左右余白なし */
+      box-sizing:border-box;
+    }
+    .utg-hero-wrap{
+      --bg:url('https://utagesystem.s3.ap-northeast-1.amazonaws.com/WLEY1RuU1kHB/nnL7a9u8zHoCxcqXpAYWSET7RJT74MKsBcc2LJn3.png'); /* 背景 */
+      background:center/cover no-repeat var(--bg);
+      display:inline-block;
+      line-height:0;
+      max-width:1400px; /* PC 横幅広く */
+      width:100%;
+    }
+    .utg-hero-wrap > img.utg-hero__img{
+      display:block;
+      width:100%;
+      height:auto;           /* 画像高さに背景完全追従 */
+      object-fit:contain;
+      filter:drop-shadow(0 14px 32px rgba(0,0,0,.18));
+    }
+    @media (max-width: 768px) {
+      .utg-hero-wrap{ max-width:560px; }
+    }
+  `;
+  document.head.appendChild(style);
+
+  const heroSection = document.querySelector('section.jumbotron.text-center');
+  if(heroSection){
+    heroSection.innerHTML = `
+      <div class="utg-hero-wrap">
+        <img class="utg-hero__img"
+             src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/WLEY1RuU1kHB/cB3AqAT5eGBli6eHZdgYR4sU47xkLy9HI3t5mmfA.png"
+             alt="メイン画像">
+      </div>`;
+  }
+})();
+</script>
+    
+</body>
+</html>
+
+

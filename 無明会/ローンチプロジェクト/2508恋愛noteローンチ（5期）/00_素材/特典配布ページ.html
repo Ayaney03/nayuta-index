@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>親子関係改善ワーク - 結婚と親との関係</title>
+    
+    <style>
+        /* 基本フォント設定 */
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'Yu Mincho', 'YuMincho', 'MS PMincho', 'Noto Serif JP', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a202c;
+            font-feature-settings: 'palt';
+            letter-spacing: 0.03em;
+            margin: 0;
+            padding: 0;
+            background: var(--background-cream);
+            position: relative;
+        }
+
+        /* カラーパレット */
+        :root {
+            --primary-gold: #d4af37;
+            --dark-gold: #8b6914;
+            --brown-base: #8b7355;
+            --brown-dark: #6b5b47;
+            --light-gold: #f5e6a3;
+            --text-dark: #2d3748;
+            --background-cream: #f8f6f3;
+            --background-light: #ede8dc;
+            --accent-brown: #8b4513;
+            --pink-accent: #ec4899;
+            --cream: #fff8dc;
+            --shadow-gold: rgba(139, 105, 20, 0.25);
+        }
+
+        /* メインコンテナ */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 16px;
+            min-height: 100vh;
+        }
+
+        /* ヒーローセクション */
+        .hero-section {
+            background: linear-gradient(135deg, var(--brown-base) 0%, var(--brown-dark) 100%);
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            color: #f7fafc;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 32px rgba(139, 115, 85, 0.3);
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+            margin-bottom: 8px;
+        }
+
+        /* セクション基本スタイル */
+        .section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 16px rgba(139, 105, 20, 0.08);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--dark-gold);
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 8px;
+        }
+
+        /* 音声セクション */
+        .video-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .video-container {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .video-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--dark-gold);
+            margin-bottom: 16px;
+        }
+
+        .video-url {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary-gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .video-url:hover {
+            background: var(--dark-gold);
+            transform: translateY(-2px);
+        }
+
+        /* ポイントカード */
+        .point-card {
+            background: linear-gradient(135deg, var(--background-light) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            border-left: 5px solid var(--accent-brown);
+        }
+
+        .point-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        /* リスト */
+        .key-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-points li {
+            background: white;
+            margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-gold);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* ワークセクション */
+        .work-section {
+            background: linear-gradient(135deg, var(--background-cream) 0%, var(--background-light) 100%);
+            border: 2px solid var(--primary-gold);
+        }
+
+        .work-item {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            border-left: 5px solid var(--dark-gold);
+        }
+
+        .work-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--dark-gold);
+            margin-bottom: 8px;
+        }
+
+        .work-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* 強調テキスト */
+        .highlight {
+            background: linear-gradient(transparent 60%, var(--light-gold) 60%);
+            font-weight: bold;
+            padding: 2px 4px;
+        }
+
+        .important-note {
+            background: var(--cream);
+            border: 2px solid var(--primary-gold);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-weight: bold;
+            color: var(--dark-gold);
+        }
+
+        /* アップロードセクション */
+        .upload-section {
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border: 2px solid var(--primary-gold);
+            text-align: center;
+        }
+
+        .upload-instruction {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--dark-gold);
+            margin-bottom: 16px;
+        }
+
+        .upload-note {
+            color: var(--text-dark);
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 600px) {
+            .main-container {
+                padding: 16px 12px;
+            }
+            
+            .hero-title {
+                font-size: 24px;
+            }
+            
+            .section {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- ヒーローセクション -->
+        <div class="hero-section">
+            <h1 class="hero-title">親子関係改善ワーク</h1>
+            <p class="hero-subtitle">結婚と親との関係 - 実践ガイド</p>
+            <p class="hero-subtitle">〜責任を取れる大人として、幸せな家族関係を築く〜</p>
+        </div>
+
+        <!-- 動画セクション -->
+        <div class="video-section">
+            <div class="video-container">
+                <h2 class="video-title">🎧 結婚と親との関係（音声コンテンツ）</h2>
+                <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin: 20px 0;">
+                    <iframe 
+                        src="https://www.youtube.com/embed/yoZuK1cJ_c8" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 8px;"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p style="text-align: center; margin-top: 12px; color: #666; font-size: 14px;">
+                    音声を聞いてから、以下のワークに取り組んでください<br>
+                    <small>※画面は黒いですが、重要な音声コンテンツです</small>
+                </p>
+            </div>
+        </div>
+
+        <!-- 核心メッセージ -->
+        <div class="section">
+            <h2 class="section-title">💡 核心メッセージ</h2>
+            <div class="important-note">
+                <span class="highlight">親子関係で責任を取らない人は、パートナーとの関係でも責任を取れない</span>
+            </div>
+        </div>
+
+        <!-- 主要な問題点 -->
+        <div class="section">
+            <h2 class="section-title">🔍 主要な問題点</h2>
+            
+            <div class="point-card">
+                <div class="point-title">1. 甘えの構造</div>
+                <ul class="key-points">
+                    <li>子供は親に責任を取ってもらおうとする（取ろうとしない）</li>
+                    <li>「理想の関係を親が作れ」という甘えがある</li>
+                    <li>結婚相手に対しても「私を気持ちよくさせなさい」という態度として現れる</li>
+                </ul>
+            </div>
+
+            <div class="point-card">
+                <div class="point-title">2. 与えられ待ちの関係性</div>
+                <ul class="key-points">
+                    <li>いつも与えられるのを待っている状態</li>
+                    <li>責任を取らない同士がくっつく</li>
+                    <li>関係が浅い時は良いが、深くなると頼りなくなって嫌になる</li>
+                </ul>
+            </div>
+
+            <div class="point-card">
+                <div class="point-title">3. 見たくないものからの逃避</div>
+                <ul class="key-points">
+                    <li>「親と仲良いから大丈夫」と言う人ほど要注意</li>
+                    <li>うまく説明しようとして本当の気持ちを隠している</li>
+                    <li>表面的な「仲良し」で済ませている</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 解決の方向性 -->
+        <div class="section">
+            <h2 class="section-title">✨ 解決の方向性</h2>
+            
+            <div class="point-card">
+                <div class="point-title">1. 自分がリーダーになる</div>
+                <ul class="key-points">
+                    <li><strong>親と理想の関係を作るのは自分</strong></li>
+                    <li>親のリーダーであるという意識を持つ</li>
+                    <li>親に期待しすぎない（「親は産んで終わり」という考え方）</li>
+                </ul>
+            </div>
+
+            <div class="point-card">
+                <div class="point-title">2. 本音をぶつける勇気</div>
+                <ul class="key-points">
+                    <li>本当に嫌だったことをちゃんと伝える</li>
+                    <li>「あなたとの関係を良くしたい」という前提で話す</li>
+                    <li>うまく喋ろうとせず、正直な気持ちを表現する</li>
+                </ul>
+            </div>
+
+            <div class="point-card">
+                <div class="point-title">3. 感謝と不満の両立</div>
+                <ul class="key-points">
+                    <li>育ててくれたことへの感謝</li>
+                    <li>同時に嫌いな部分や改善してほしい点も伝える</li>
+                    <li>「好きだけど嫌いな部分もある」を受け入れる</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 実践ワーク -->
+        <div class="section work-section">
+            <h2 class="section-title">📝 実践ワーク</h2>
+            
+            <div class="work-item">
+                <div class="work-number">ワーク① 音声を聞いて感じたこと</div>
+                <div class="work-description">
+                    音声コンテンツを聞いて自分の親子関係について感じたことを正直に書き出してください。<br>
+                    特に「責任を取ってもらおう」としていた場面があれば、具体的に振り返ってみましょう。
+                </div>
+            </div>
+
+            <div class="work-item">
+                <div class="work-number">ワーク② 親との理想の関係はどんな関係か？</div>
+                <div class="work-description">
+                    これまで親に期待していることと、自分が本当に作りたい関係性を明確にしてください。<br>
+                    「親がこうしてくれれば」から「自分がこうする」への転換を意識して書いてみましょう。
+                </div>
+            </div>
+
+            <div class="work-item">
+                <div class="work-number">ワーク③ それを叶えるためにどうするか？</div>
+                <div class="work-description">
+                    本当の気持ちを伝える準備をしてください。<br>
+                    • 感謝と不満を両方表現する具体的な方法<br>
+                    • 自分がリーダーとして関係を築く具体的ステップ<br>
+                    • まず最初に取り組むべき小さな行動
+                </div>
+            </div>
+        </div>
+
+        <!-- 重要な気づき -->
+        <div class="section">
+            <h2 class="section-title">🌟 重要な気づき</h2>
+            <div class="important-note">
+                「親もまた、自分と同じように完璧ではない人間である」<br>
+                親だけが大人になれると期待するのではなく、自分が先に責任を取れる大人になることで、<br>
+                家族全体の関係性が変化していきます。
+            </div>
+        </div>
+
+        <!-- シェア・入会促進セクション -->
+        <div class="section upload-section">
+            <h2 class="section-title">📢 ワーク体験をシェアしよう</h2>
+            <div class="upload-instruction">
+                このワークで得た気づきを、SNSでシェアしてみませんか？
+            </div>
+            
+            <!-- シェア提案 -->
+            <div style="background: #ffffff; border-radius: 12px; padding: 20px; margin: 20px 0; border: 2px dashed var(--primary-gold);">
+                <h3 style="font-size: 16px; font-weight: bold; color: var(--dark-gold); margin-bottom: 12px; text-align: center;">
+                    💭 無明会のXポストに引用リポストでシェアしよう
+                </h3>
+                <div style="background: var(--background-light); padding: 16px; border-radius: 8px; margin-bottom: 16px;">
+                    <p style="font-size: 14px; color: var(--dark-gold); font-weight: bold; margin-bottom: 8px;">🐦 無明会公式Xアカウント</p>
+                    <a href="https://x.com/mumyokai" target="_blank" style="color: var(--primary-gold); text-decoration: underline; font-size: 13px; word-break: break-all;">
+                        https://x.com/mumyokai
+                    </a>
+                </div>
+                <div style="background: var(--background-light); padding: 16px; border-radius: 8px; font-size: 14px; line-height: 1.6; color: var(--text-dark);">
+                    <strong>シェア例：</strong><br>
+                    「親子関係のワークをやってみました。<br>
+                    今まで親に○○してもらおうと思っていたけど、<br>
+                    自分から関係を作っていくことが大切だと気づきました。」
+                </div>
+                <p style="font-size: 12px; color: var(--text-dark); margin-top: 12px; text-align: center; opacity: 0.8;">
+                    無明会の関連ポストを引用リポストしてシェアしてください
+                </p>
+            </div>
+            
+            <!-- 入会促進 -->
+            <div style="background: linear-gradient(135deg, var(--brown-base) 0%, var(--brown-dark) 100%); color: #f7fafc; padding: 24px; border-radius: 12px; margin: 20px 0; text-align: center;">
+                <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 12px; color: #f5e6a3;">
+                    🌟 もっと深く学びたい方へ
+                </h3>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 16px; opacity: 0.9;">
+                    このようなワークを定期的に行い、同じ志を持つ仲間と共に<br>
+                    本質的な成長を続けられるのが「無明会」です
+                </p>
+                <div style="background: rgba(245, 230, 163, 0.2); padding: 12px; border-radius: 8px; margin: 12px 0;">
+                    <p style="font-size: 13px; margin: 0; line-height: 1.5;">
+                        ✓ 月1回のオフライン交流会<br>
+                        ✓ 実践的な人生改善ワーク<br>
+                        ✓ 同じ悩みを持つ仲間との深いつながり
+                    </p>
+                </div>
+
+            </div>
+            
+            <div class="upload-note">
+                あなたの体験談が、他の誰かの勇気と希望になります。<br>
+                ぜひ気軽にシェアしてみてください。
+            </div>
+        </div>
+
+        <!-- フッター -->
+        <div class="section">
+            <div style="text-align: center; color: #666; font-size: 14px;">
+                <p>無明会 恋愛ノート特典コンテンツ</p>
+                <p>幸せな家族関係を築くための実践ワークシート</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

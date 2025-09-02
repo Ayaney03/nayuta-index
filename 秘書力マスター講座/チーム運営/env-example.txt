@@ -1,0 +1,51 @@
+# 🔐 環境変数設定ファイル（例）
+# このファイルをコピーして .env ファイルを作成し、実際の値を設定してください
+
+# Notion API設定
+NOTION_API_KEY=secret_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+NOTION_DAILY_TASKS_DB=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+NOTION_TEAM_MEMBERS_DB=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+NOTION_KPI_TRACKING_DB=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+NOTION_CONTENT_BANK_DB=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+# Slack連携設定
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+SLACK_CHANNEL_GENERAL=#general
+SLACK_CHANNEL_PROGRESS=#progress-reports
+SLACK_CHANNEL_ALERTS=#alerts
+
+# Discord連携設定（オプション）
+DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/000000000000000000/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# タイムゾーン設定
+TIMEZONE=Asia/Tokyo
+
+# デバッグ設定
+DEBUG=true
+LOG_LEVEL=info
+
+# 自動化設定
+AUTO_CREATE_DAILY_TASKS=true
+AUTO_SEND_PROGRESS_REPORTS=true
+AUTO_SYNC_CONTENT=true
+
+# KPI目標値設定
+TARGET_X_FOLLOWERS=5000
+TARGET_LINE_SUBSCRIBERS=5000
+TARGET_APPLICATIONS=18
+
+# 作業時間設定（分）
+DEFAULT_TASK_DURATION=30
+X_POST_DURATION=30
+LINE_MESSAGE_DURATION=60
+STANDBY_SCRIPT_DURATION=45
+
+# チーム設定
+DEFAULT_ASSIGNEE=運営チーム
+CONTENT_TEAM_LEAD=コンテンツチーム
+DESIGN_TEAM_LEAD=デザインチーム
+
+# セキュリティ設定
+RATE_LIMIT_REQUESTS_PER_MINUTE=60
+MAX_RETRY_ATTEMPTS=3
+BACKUP_ENABLED=true

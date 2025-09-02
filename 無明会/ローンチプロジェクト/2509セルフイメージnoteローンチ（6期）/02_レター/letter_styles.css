@@ -1,0 +1,278 @@
+/* 無明会 レターページ全体用スタイル */
+
+/* ===== 基本レイアウト ===== */
+body {
+    font-family: 'Hiragino Mincho ProN', serif;
+    line-height: 1.8;
+    color: #1a202c;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== アニメーション定義 ===== */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.05);
+    }
+}
+
+@keyframes button-pulse {
+    0%, 100% { 
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.03);
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== アニメーションクラス ===== */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-left.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-right.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-scale.animate-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ===== 遅延アニメーション ===== */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+.delay-4 { transition-delay: 0.8s; }
+.delay-5 { transition-delay: 1.0s; }
+
+/* ===== カウントダウンタイマー ===== */
+.countdown-floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+/* ===== CTAボタン ===== */
+.cta-button {
+    animation: button-pulse 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    animation: none;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(139, 105, 20, 0.4);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+/* ===== 吹き出しアニメーション ===== */
+.speech-bubble {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.speech-bubble.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== セクション区切り ===== */
+.section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 48px auto;
+    max-width: 200px;
+}
+
+/* ===== ホバー効果 ===== */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== レスポンシブ対応 ===== */
+@media (max-width: 768px) {
+    .fade-in-up, .fade-in-left, .fade-in-right, .fade-in-scale {
+        transition-duration: 0.6s;
+    }
+    
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    
+    .cta-button {
+        animation: button-pulse 1.5s ease-in-out infinite;
+    }
+}
+
+@media (max-width: 480px) {
+    .fade-in-up, .fade-in-left, .fade-in-right, .fade-in-scale {
+        transition-duration: 0.5s;
+    }
+    
+    .cta-button {
+        animation: button-pulse 1.2s ease-in-out infinite;
+    }
+}
+
+/* ===== スクロールバーカスタマイズ ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8b6914;
+}
+
+/* ===== ページ遷移アニメーション ===== */
+.page-transition {
+    opacity: 0;
+    animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+/* ===== 特別な強調要素 ===== */
+.highlight-text {
+    background: linear-gradient(120deg, rgba(245, 230, 163, 0.3), rgba(212, 175, 55, 0.2));
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-left: 3px solid #d4af37;
+}
+
+/* ===== カウントダウン強化 ===== */
+.countdown-emphasis {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.countdown-emphasis:hover {
+    animation: none;
+    transform: scale(1.02);
+}

@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINE bot構想：いつでも瞑想見守るくん | 脱スマホ瞑想プログラム</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #2d3748;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h3 {
+            color: #4a5568;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+            padding-left: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "🤖";
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .tech-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .workflow-step {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .workflow-step:before {
+            content: attr(data-step);
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .priority-high {
+            border-left: 5px solid #e53e3e;
+            background: #fed7d7;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .priority-medium {
+            border-left: 5px solid #dd6b20;
+            background: #feebc8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .priority-low {
+            border-left: 5px solid #38a169;
+            background: #c6f6d5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+        }
+
+        .alert {
+            background: #bee3f8;
+            border: 1px solid #90cdf4;
+            color: #2a69ac;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        /* スマホモックアップのスタイル */
+        .phone-mockup {
+            max-width: 375px;
+            margin: 20px auto;
+            background: #000;
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .phone-header {
+            background: #f8f9fa;
+            border-radius: 22px 22px 0 0;
+            padding: 10px 20px;
+        }
+
+        .phone-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .phone-battery {
+            width: 24px;
+            height: 12px;
+            border: 1px solid #333;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .phone-battery:after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 3px;
+            width: 2px;
+            height: 6px;
+            background: #333;
+            border-radius: 0 1px 1px 0;
+        }
+
+        .battery-level {
+            background: #4caf50;
+            height: 100%;
+            width: 80%;
+            border-radius: 1px;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .bot-avatar {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .bot-info h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .online-status {
+            font-size: 12px;
+            color: #4caf50;
+        }
+
+        .chat-messages {
+            background: white;
+            height: 500px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .bot-message {
+            justify-content: flex-start;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .message-avatar {
+            font-size: 20px;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            max-width: 70%;
+            position: relative;
+        }
+
+        .bot-message .message-content {
+            background: #f1f3f4;
+            padding: 12px 16px;
+            border-radius: 18px 18px 18px 4px;
+        }
+
+        .user-message .message-content {
+            background: #007bff;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 18px 18px 4px 18px;
+        }
+
+        .message-content p {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message-content p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: #666;
+            margin-top: 8px;
+            text-align: right;
+        }
+
+        .user-message .message-time {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 12px 0 8px 0;
+        }
+
+        .quick-reply {
+            background: white;
+            border: 1px solid #007bff;
+            color: #007bff;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-reply:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        .progress-bar-container {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0 8px 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            margin: 12px 0 8px 0;
+        }
+
+        .achievement-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .achievement-info h5 {
+            margin: 0 0 4px 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .achievement-info p {
+            margin: 0;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .cta-button {
+            margin: 12px 0 8px 0;
+        }
+
+        .consultation-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .consultation-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .chat-input {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 0 0 22px 22px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .send-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+
+            .phone-mockup {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* フローティングボタンのスタイル */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            min-width: 140px;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            text-decoration: none;
+            color: white;
+        }
+
+        .hub-btn {
+            background: linear-gradient(45deg, #e67e22, #d35400);
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .hub-btn:hover {
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.6);
+        }
+        
+        .back-to-top {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+        }
+        
+        .back-to-top:hover {
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.6);
+        }
+
+        .back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floating-btn {
+                padding: 10px 16px;
+                font-size: 13px;
+                min-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="top">
+        <a href="00_脱スマホ瞑想プログラム_ハブ.html" class="back-button">← ハブに戻る</a>
+        
+        <div class="header">
+            <div class="status-badge">🚀 設計フェーズ</div>
+            <h1>🤖 LINE bot構想</h1>
+            <div class="subtitle">「いつでも瞑想見守るくん」設計書</div>
+            <p>脱スマホ瞑想プログラムの24時間サポートシステム</p>
+        </div>
+
+        <!-- プロジェクト概要 -->
+        <div class="section">
+            <h2>📋 プロジェクト概要</h2>
+            <p>脱スマホ瞑想プログラムの参加者を24時間サポートするLINE botシステム。ワークの進行支援から個別面談への誘導まで、包括的なユーザーサポートを提供します。</p>
+            
+            <div class="alert">
+                <strong>💡 コンセプト：</strong> 「いつでも瞑想見守るくん」として、ユーザーの瞑想習慣化を温かく見守り、適切なタイミングでサポートを提供する親しみやすいAIアシスタント
+            </div>
+        </div>
+
+        <!-- 主要機能 -->
+        <div class="section">
+            <h2>🎯 主要機能</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📝 ワークサポート機能</h4>
+                    <ul class="feature-list">
+                        <li>3章構成のワーク進行管理</li>
+                        <li>各章10分コンテンツの理解度確認</li>
+                        <li>ワークシート記入のガイダンス</li>
+                        <li>進捗状況の可視化</li>
+                        <li>つまずきポイントでのヒント提供</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🧘‍♀️ 瞑想習慣化サポート</h4>
+                    <ul class="feature-list">
+                        <li>毎日の瞑想リマインダー</li>
+                        <li>瞑想記録の管理</li>
+                        <li>継続日数の表示・褒め機能</li>
+                        <li>瞑想体験のフィードバック収集</li>
+                        <li>習慣化のコツやアドバイス</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💬 インタラクティブ対話</h4>
+                    <ul class="feature-list">
+                        <li>自然な会話形式でのサポート</li>
+                        <li>ユーザーの状況に応じた返答</li>
+                        <li>励ましメッセージの自動送信</li>
+                        <li>質問への即座の回答</li>
+                        <li>感情に寄り添った対応</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📈 セールス・誘導機能</h4>
+                    <ul class="feature-list">
+                        <li>適切なタイミングでの個別面談提案</li>
+                        <li>バックエンド商品への自然な誘導</li>
+                        <li>ユーザーの関心度に応じた提案</li>
+                        <li>購買意欲を高める情報提供</li>
+                        <li>申込みフォームへの誘導</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ユーザーフロー -->
+        <div class="section">
+            <h2>🔄 ユーザーフロー</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>1. 初回登録・挨拶</h4>
+                    <p>LINE友達追加後、自己紹介と使い方ガイダンス。ユーザーの目標設定をサポート。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>2. 第1章ワークサポート</h4>
+                    <p>スマホ使用状況の認識ワークをガイド。スクリーンタイム確認から代替行動の検討まで。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>3. 第2章ワークサポート</h4>
+                    <p>瞑想実践の基礎をサポート。呼吸法の練習から習慣化のコツまで丁寧にガイド。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>4. 第3章ワークサポート</h4>
+                    <p>長期的な習慣化戦略の構築。個人に合わせた瞑想プランの作成をサポート。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>5. 継続サポート・誘導</h4>
+                    <p>日々の瞑想習慣をサポートしながら、適切なタイミングで個別面談を提案。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 技術仕様 -->
+        <div class="section">
+            <h2>⚙️ 技術仕様</h2>
+            
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <h4>🔧 開発プラットフォーム</h4>
+                    <p>LINE Messaging API<br>Node.js / Python</p>
+                </div>
+                
+                <div class="tech-item">
+                    <h4>🧠 AI エンジン</h4>
+                    <p>OpenAI GPT-4<br>カスタムプロンプト設計</p>
+                </div>
+                
+                <div class="tech-item">
+                    <h4>💾 データベース</h4>
+                    <p>ユーザー進捗管理<br>Firebase / MongoDB</p>
+                </div>
+                
+                <div class="tech-item">
+                    <h4>📊 分析機能</h4>
+                    <p>ユーザー行動分析<br>コンバージョン追跡</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 画面イメージ -->
+        <div class="section">
+            <h2>📱 LINE bot画面イメージ</h2>
+            
+            <div class="phone-mockup">
+                <div class="phone-header">
+                    <div class="phone-status">
+                        <span>9:41</span>
+                        <div class="phone-battery">
+                            <div class="battery-level"></div>
+                        </div>
+                    </div>
+                    <div class="chat-header">
+                        <div class="bot-avatar">🤖</div>
+                        <div class="bot-info">
+                            <h4>いつでも瞑想見守るくん</h4>
+                            <span class="online-status">オンライン</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-messages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>こんにちは！「いつでも瞑想見守るくん」です🧘‍♀️</p>
+                            <p>脱スマホ瞑想プログラムへのご参加、ありがとうございます！</p>
+                            <div class="message-time">9:30</div>
+                        </div>
+                    </div>
+                    
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>現在のスマホとの関係について、どんなことでお悩みですか？</p>
+                            <div class="quick-replies">
+                                <button class="quick-reply">時間を無駄に使ってしまう</button>
+                                <button class="quick-reply">集中力が続かない</button>
+                                <button class="quick-reply">寝る前についつい見てしまう</button>
+                            </div>
+                            <div class="message-time">9:30</div>
+                        </div>
+                    </div>
+                    
+                    <div class="message user-message">
+                        <div class="message-content">
+                            <p>時間を無駄に使ってしまう</p>
+                            <div class="message-time">9:32</div>
+                        </div>
+                    </div>
+                    
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>そうですね、多くの方が同じお悩みを持っていらっしゃいます👍</p>
+                            <p>まずは現状を把握することから始めましょう。スクリーンタイムを確認してみませんか？</p>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">第1章進捗</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                                <div class="progress-text">20% 完了</div>
+                            </div>
+                            <div class="message-time">9:33</div>
+                        </div>
+                    </div>
+                    
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>素晴らしい！3週間連続で瞑想を続けられていますね🎉</p>
+                            <div class="achievement-card">
+                                <div class="achievement-icon">🏆</div>
+                                <div class="achievement-info">
+                                    <h5>継続の達人</h5>
+                                    <p>21日間連続達成！</p>
+                                </div>
+                            </div>
+                            <div class="cta-button">
+                                <button class="consultation-btn">個別面談について聞いてみる</button>
+                            </div>
+                            <div class="message-time">10:15</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input">
+                    <input type="text" placeholder="メッセージを入力...">
+                    <button class="send-btn">送信</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 会話シナリオ例 -->
+        <div class="section">
+            <h2>💬 会話シナリオ例</h2>
+            
+            <h3>初回登録時</h3>
+            <div class="code-block">
+🤖 いつでも瞑想見守るくん：
+こんにちは！「いつでも瞑想見守るくん」です🧘‍♀️
+脱スマホ瞑想プログラムへのご参加、ありがとうございます！
+
+私はあなたの瞑想習慣化を24時間サポートする専属コーチです。
+一緒に素晴らしい変化を作っていきましょう✨
+
+まずは簡単な質問から始めさせてください。
+現在のスマホとの関係について、どんなことでお悩みですか？
+
+1️⃣ 時間を無駄に使ってしまう
+2️⃣ 集中力が続かない  
+3️⃣ 寝る前についつい見てしまう
+4️⃣ その他
+            </div>
+
+            <h3>ワーク進行中</h3>
+            <div class="code-block">
+🤖 いつでも瞑想見守るくん：
+第1章のワーク、お疲れ様でした！
+スクリーンタイムの確認はいかがでしたか？
+
+多くの方が「こんなに使っていたなんて...」と驚かれます。
+でも大丈夫、気づくことが変化の第一歩です👍
+
+次は不要なアプリの特定に進みましょう。
+理想の人生に本当に必要なアプリを見極めていきます。
+
+何か質問があれば、いつでも聞いてくださいね！
+            </div>
+
+            <h3>個別面談への誘導</h3>
+            <div class="code-block">
+🤖 いつでも瞑想見守るくん：
+素晴らしい！3週間連続で瞑想を続けられていますね🎉
+本当によく頑張っていらっしゃいます。
+
+ところで、最近の瞑想体験はいかがですか？
+もしより深い変化を求めていらっしゃるなら...
+
+なゆたさんとの個別面談で、あなた専用の
+瞑想プランを作ってみませんか？
+
+多くの方が面談後に「人生が変わった」と
+おっしゃっています✨
+
+詳細を聞いてみる → [リンク]
+            </div>
+        </div>
+
+        <!-- 開発優先度 -->
+        <div class="section">
+            <h2>🎯 開発優先度</h2>
+            
+            <div class="priority-high">
+                <h4>🔴 最優先（8月末まで）</h4>
+                <ul>
+                    <li>基本的な会話機能の実装</li>
+                    <li>3章ワークサポート機能</li>
+                    <li>ユーザー進捗管理システム</li>
+                    <li>LINE Messaging API連携</li>
+                </ul>
+            </div>
+
+            <div class="priority-medium">
+                <h4>🟡 中優先（9月末まで）</h4>
+                <ul>
+                    <li>瞑想リマインダー機能</li>
+                    <li>継続日数表示・褒め機能</li>
+                    <li>個別面談誘導ロジック</li>
+                    <li>ユーザー行動分析機能</li>
+                </ul>
+            </div>
+
+            <div class="priority-low">
+                <h4>🟢 低優先（10月以降）</h4>
+                <ul>
+                    <li>高度なAI会話機能</li>
+                    <li>詳細な分析レポート</li>
+                    <li>グループ機能</li>
+                    <li>音声メッセージ対応</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 成功指標 -->
+        <div class="section">
+            <h2>📊 成功指標（KPI）</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📈 エンゲージメント</h4>
+                    <ul class="feature-list">
+                        <li>日次アクティブユーザー率: 70%以上</li>
+                        <li>ワーク完了率: 80%以上</li>
+                        <li>継続利用率（30日）: 60%以上</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💰 コンバージョン</h4>
+                    <ul class="feature-list">
+                        <li>個別面談申込率: 15%以上</li>
+                        <li>バックエンド商品成約率: 5%以上</li>
+                        <li>LTV向上: 現状比150%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 開発体制 -->
+        <div class="section">
+            <h2>👥 開発体制</h2>
+            
+            <div class="workflow-step" data-step="企画">
+                <h4>なゆたさん・あやねえ</h4>
+                <p>コンセプト設計、会話シナリオ作成、ユーザー体験設計</p>
+            </div>
+
+            <div class="workflow-step" data-step="開発">
+                <h4>こーでぃーさん（メイン開発者）</h4>
+                <p>LINE bot開発、AI機能実装、システム構築</p>
+            </div>
+
+            <div class="workflow-step" data-step="サポート">
+                <h4>タスカルさん（実装サポート）</h4>
+                <p>技術的サポート、テスト、デバッグ支援</p>
+            </div>
+
+            <div class="workflow-step" data-step="運用">
+                <h4>あやねえ（運用管理）</h4>
+                <p>ユーザーサポート、効果測定、改善提案</p>
+            </div>
+        </div>
+
+        <!-- 次のアクション -->
+        <div class="section">
+            <h2>🚀 次のアクション</h2>
+            
+            <div class="alert">
+                <strong>📅 今週中に実行すべきタスク：</strong>
+            </div>
+            
+            <ol style="padding-left: 20px; line-height: 2;">
+                <li><strong>こーでぃーさんとの打ち合わせ設定</strong> - 技術要件の詳細確認</li>
+                <li><strong>会話シナリオの詳細作成</strong> - 各章ごとの対話フロー設計</li>
+                <li><strong>ユーザーデータ設計</strong> - 管理すべき情報の整理</li>
+                <li><strong>開発スケジュールの確定</strong> - 8月末リリースに向けた工程表作成</li>
+                <li><strong>テストユーザーの選定</strong> - β版テスト協力者の確保</li>
+            </ol>
+        </div>
+
+        <!-- フッター -->
+        <div class="section" style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h3 style="color: white; border: none; margin-bottom: 10px;">🎯 プロジェクト目標</h3>
+            <p style="font-size: 1.1em; font-weight: bold;">
+                「いつでも瞑想見守るくん」で、ユーザーの瞑想習慣化を徹底サポート！<br>
+                24時間365日、温かく見守る最高のAIパートナーを作り上げよう！
+            </p>
+            <p style="margin-top: 15px; opacity: 0.9;">
+                最終更新: <span id="lastUpdated"></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- フローティングボタン -->
+    <div class="floating-buttons">
+        <a href="#top" class="floating-btn back-to-top">
+            ⬆️ トップへ
+        </a>
+        <a href="00_脱スマホ瞑想プログラム_ハブ.html" class="floating-btn hub-btn">
+            🏠 ハブに戻る
+        </a>
+    </div>
+
+    <script>
+        // 最終更新日時を表示
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleString('ja-JP');
+        
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // スクロール時のボタン表示制御
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.visibility = 'visible';
+            } else {
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.visibility = 'hidden';
+            }
+        });
+    </script>
+</body>
+</html>

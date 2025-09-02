@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 - 公式ハブ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .header .description {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quick-access {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .quick-access h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .quick-access h2::before {
+            content: "⚡";
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-link {
+            display: block;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .quick-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
+        }
+
+        .status-banner {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+        }
+
+        .status-banner h3 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .status-banner p {
+            opacity: 0.9;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .section-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #2c3e50, #34495e);
+        }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-right: 20px;
+        }
+
+        .card-info h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .card-status {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #27ae60;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .card-status.launch {
+            background: #e74c3c;
+        }
+
+        .card-status.development {
+            background: #f39c12;
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .card-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border-left: 4px solid #2c3e50;
+        }
+
+        .card-link:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .card-link-icon {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .card-link-text {
+            flex: 1;
+        }
+
+        .card-link-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .card-link-desc {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .stats-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .stats-section h2::before {
+            content: "📊";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-info h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .section-card {
+                padding: 20px;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌙 無明会</h1>
+            <p class="subtitle">なゆた × あやねえ 共同運営コミュニティ</p>
+            <p class="description">恋愛・セルフイメージ・人生設計に関する学びと実践の場</p>
+        </div>
+
+        <div class="status-banner">
+            <h3>🚀 現在進行中: 2509セルフイメージnoteローンチ（6期）</h3>
+            <p>メンバー向け特別コンテンツ配信中 | 次回ローンチ準備進行中</p>
+        </div>
+
+        <div class="quick-access">
+            <h2>クイックアクセス</h2>
+            <div class="quick-links">
+                <a href="https://x.com/mumyokai0201" class="quick-link" target="_blank">🐦 公式X</a>
+                <a href="#launch-projects" class="quick-link">🚀 ローンチ管理</a>
+                <a href="#member-management" class="quick-link">👥 メンバー管理</a>
+                <a href="#content-management" class="quick-link">📝 コンテンツ管理</a>
+                <a href="#financial-reports" class="quick-link">💰 収支報告</a>
+                <a href="#operations" class="quick-link">⚙️ 運営資料</a>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2>運営状況</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">進行中プロジェクト</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">完了ローンチ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">noteコンテンツ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">アクティブメンバー</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <!-- ローンチプロジェクト -->
+            <div class="section-card" id="launch-projects">
+                <div class="card-header">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-info">
+                        <h3>ローンチプロジェクト</h3>
+                        <span class="card-status launch">進行中</span>
+                    </div>
+                </div>
+                <div class="card-description">
+                    恋愛note・セルフイメージnoteのローンチ管理。各期のプロジェクト進捗、コンテンツ制作、配信管理を統合的に行います。
+                </div>
+                <div class="card-links">
+                    <a href="無明会/ローンチプロジェクト/2509セルフイメージnoteローンチ（6期）/" class="card-link">
+                        <div class="card-link-icon">🎯</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">2509セルフイメージnote（6期）</div>
+                            <div class="card-link-desc">現在進行中のローンチプロジェクト</div>
+                        </div>
+                    </a>
+                    <a href="無明会/ローンチプロジェクト/2508恋愛noteローンチ（5期）/" class="card-link">
+                        <div class="card-link-icon">💕</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">2508恋愛note（5期）</div>
+                            <div class="card-link-desc">完了プロジェクト・振り返り資料</div>
+                        </div>
+                    </a>
+                    <a href="無明会/ローンチテンプレート/" class="card-link">
+                        <div class="card-link-icon">📋</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">ローンチテンプレート</div>
+                            <div class="card-link-desc">配信・ページ・プロジェクト管理テンプレート</div>
+                        </div>
+                    </a>
+                    <a href="無明会/無明会ローンチ統一仕様書.md" class="card-link">
+                        <div class="card-link-icon">📖</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">ローンチ統一仕様書</div>
+                            <div class="card-link-desc">標準化されたローンチプロセス</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- メンバー管理 -->
+            <div class="section-card" id="member-management">
+                <div class="card-header">
+                    <div class="card-icon">👥</div>
+                    <div class="card-info">
+                        <h3>メンバー管理</h3>
+                        <span class="card-status">運営中</span>
+                    </div>
+                </div>
+                <div class="card-description">
+                    メンバーデータベース、顧客分析、決済管理など、メンバーに関する全ての情報を一元管理します。
+                </div>
+                <div class="card-links">
+                    <a href="無明会/運営資料/顧客情報/メンバーデータベース_改良版.html" class="card-link">
+                        <div class="card-link-icon">🗃️</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">メンバーデータベース</div>
+                            <div class="card-link-desc">顧客情報の一元管理システム</div>
+                        </div>
+                    </a>
+                    <a href="無明会/決済データチェックシート_完全版.html" class="card-link">
+                        <div class="card-link-icon">💳</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">決済データ管理</div>
+                            <div class="card-link-desc">決済状況・分析レポート</div>
+                        </div>
+                    </a>
+                    <a href="無明会/運営資料/月次収支報告/" class="card-link">
+                        <div class="card-link-icon">📊</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">月次収支報告</div>
+                            <div class="card-link-desc">売上・経費の詳細分析</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- コンテンツ管理 -->
+            <div class="section-card" id="content-management">
+                <div class="card-header">
+                    <div class="card-icon">📝</div>
+                    <div class="card-info">
+                        <h3>コンテンツ管理</h3>
+                        <span class="card-status">更新中</span>
+                    </div>
+                </div>
+                <div class="card-description">
+                    過去のnoteコンテンツ（mn01c〜mn08c）の管理・改善、新規コンテンツの企画・制作を行います。
+                </div>
+                <div class="card-links">
+                    <a href="無明会/コンテンツ管理/note_contents/" class="card-link">
+                        <div class="card-link-icon">📚</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">noteコンテンツ一覧</div>
+                            <div class="card-link-desc">mn01c〜mn08c 全コンテンツ</div>
+                        </div>
+                    </a>
+                    <a href="無明会/00_コンセプト・運営資料/なゆたレター（長文）.md" class="card-link">
+                        <div class="card-link-icon">✉️</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">なゆたレター</div>
+                            <div class="card-link-desc">長文・短文レターテンプレート</div>
+                        </div>
+                    </a>
+                    <a href="無明会/00_コンセプト・運営資料/メンバーの声.md" class="card-link">
+                        <div class="card-link-icon">💬</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">メンバーの声</div>
+                            <div class="card-link-desc">体験談・フィードバック集</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 運営資料 -->
+            <div class="section-card" id="operations">
+                <div class="card-header">
+                    <div class="card-icon">⚙️</div>
+                    <div class="card-info">
+                        <h3>運営資料</h3>
+                        <span class="card-status">管理中</span>
+                    </div>
+                </div>
+                <div class="card-description">
+                    日常的な運営業務をサポートするマニュアル、テンプレート、分析ツールを提供します。
+                </div>
+                <div class="card-links">
+                    <a href="無明会/運営資料/無明会運営スタッフハブ.html" class="card-link">
+                        <div class="card-link-icon">🏠</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">運営スタッフハブ</div>
+                            <div class="card-link-desc">スタッフ向け統合管理画面</div>
+                        </div>
+                    </a>
+                    <a href="無明会/運営資料/運営資料・マニュアル/" class="card-link">
+                        <div class="card-link-icon">📋</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">運営マニュアル</div>
+                            <div class="card-link-desc">業務手順書・禁止事項一覧</div>
+                        </div>
+                    </a>
+                    <a href="無明会/運営資料/htmlページテンプレート/" class="card-link">
+                        <div class="card-link-icon">🎨</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">HTMLテンプレート</div>
+                            <div class="card-link-desc">Webページ制作テンプレート</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <h3>無明会 公式リンク</h3>
+            <div class="footer-links">
+                <a href="https://x.com/mumyokai0201" class="footer-link" target="_blank">🐦 公式X</a>
+                <a href="https://twitter.com/i/spaces/1dRKZazvvNXxB" class="footer-link" target="_blank">🎙️ Xスペース</a>
+                <a href="無明会/README.md" class="footer-link">📖 プロジェクト概要</a>
+                <a href="無明会/無明会チームハブ.html" class="footer-link">👥 チームハブ</a>
+            </div>
+            <p style="margin-top: 15px; opacity: 0.8;">
+                なゆた × あやねえ 共同運営 | 最終更新: 2025年1月15日
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // ページ読み込み時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.section-card, .quick-access, .stats-section, .status-banner');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    element.style.transition = 'all 0.8s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        });
+
+        // 統計数値のカウントアップアニメーション
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(number => {
+                const text = number.textContent;
+                const target = parseInt(text.replace(/\D/g, ''));
+                if (target > 0) {
+                    let current = 0;
+                    const increment = target / 20;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        if (text.includes('+')) {
+                            number.textContent = Math.floor(current) + '+';
+                        } else {
+                            number.textContent = Math.floor(current);
+                        }
+                    }, 50);
+                }
+            });
+        }
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 少し遅延してからアニメーション開始
+        setTimeout(animateNumbers, 1000);
+    </script>
+</body>
+</html>

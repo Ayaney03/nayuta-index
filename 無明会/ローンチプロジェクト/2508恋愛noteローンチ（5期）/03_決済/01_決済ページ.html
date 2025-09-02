@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 - お申し込み</title>
+    
+    <style>
+        /* 基本フォント設定 */
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'Yu Mincho', 'YuMincho', 'MS PMincho', 'Noto Serif JP', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a202c;
+            font-feature-settings: 'palt';
+            letter-spacing: 0.03em;
+            margin: 0;
+            padding: 0;
+            background: #f8f6f3;
+            position: relative;
+        }
+
+        /* カラーパレット */
+        :root {
+            --primary-gold: #c4a484;
+            --dark-gold: #8b7355;
+            --light-gold: #f0e6d2;
+            --text-dark: #2d3748;
+            --background-white: #ffffff;
+            --accent-red: #ff4757;
+            --pink-accent: #ec4899;
+            --cream: #fff8dc;
+            --shadow-gold: rgba(196, 164, 132, 0.15);
+            --background-cream: #f8f6f3;
+        }
+
+        /* メインコンテナ */
+        .main-container {
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* ヘッダーセクション */
+        .header-section {
+            background: linear-gradient(135deg, #f8f6f3 0%, #f0e6d2 100%);
+            padding: 80px 30px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 3px solid var(--primary-gold);
+            position: relative;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid var(--dark-gold);
+            pointer-events: none;
+        }
+
+        .header-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0;
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.3;
+        }
+
+        .title-main {
+            display: block;
+            font-size: 56px;
+            margin-bottom: 8px;
+        }
+
+        .title-sub {
+            display: block;
+            font-size: 40px;
+            color: var(--dark-gold);
+            font-weight: 600;
+        }
+
+        /* 説明テキスト */
+        .description-section {
+            background: var(--background-white);
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .description-text {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 16px 12px;
+            }
+            
+            .title-main {
+                font-size: 42px;
+            }
+            
+            .title-sub {
+                font-size: 30px;
+            }
+            
+            .header-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- ヘッダーセクション -->
+        <div class="header-section">
+            <h1 class="header-title">
+                <span class="title-main">無明会</span>
+                <span class="title-sub">体験お申し込み</span>
+            </h1>
+        </div>
+
+        <!-- 説明テキスト -->
+        <div class="description-section">
+            <p class="description-text">お名前とメールアドレスをご入力いただくと、コミュニティへの案内をお送りします。</p>
+        </div>
+
+    </div>
+</body>
+</html>

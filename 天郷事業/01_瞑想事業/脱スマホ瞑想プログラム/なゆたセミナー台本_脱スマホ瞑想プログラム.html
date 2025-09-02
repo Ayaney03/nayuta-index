@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>永世セミナー台本：脱スマホ瞑想プログラム</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .meta {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.2rem;
+            margin: 25px 0 15px 0;
+        }
+        
+        .problem-section {
+            border-left: 5px solid #e74c3c;
+            background: linear-gradient(135deg, #fff5f5, #ffeaea);
+        }
+        
+        .empathy-section {
+            border-left: 5px solid #f39c12;
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+        }
+        
+        .value-section {
+            border-left: 5px solid #27ae60;
+            background: linear-gradient(135deg, #f0fff4, #e8f5e8);
+        }
+        
+        .solution-section {
+            border-left: 5px solid #3498db;
+            background: linear-gradient(135deg, #f0f8ff, #e3f2fd);
+        }
+        
+        .closing-section {
+            border-left: 5px solid #9b59b6;
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+        }
+        
+        .meditation-practice {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+        
+        .meditation-practice h4 {
+            color: #667eea;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .steps {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .steps ol {
+            margin-left: 20px;
+        }
+        
+        .steps li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #666;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+        
+        .time-indicator {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 200px;
+            z-index: 1000;
+        }
+        
+        .navigation h4 {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .navigation a {
+            color: #87CEEB;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+        }
+        
+        .navigation a:hover {
+            color: white;
+        }
+        
+        .last-updated {
+            text-align: right;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .back-to-top {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+        
+        .back-to-hub {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .navigation {
+                display: none;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <h4>📋 目次</h4>
+        <a href="#opening">オープニング</a>
+        <a href="#problem1">問題①人生が溶ける</a>
+        <a href="#problem2">問題②脳が壊される</a>
+        <a href="#problem3">問題③主導権を奪われる</a>
+        <a href="#empathy">共感セクション</a>
+        <a href="#value">価値提供・瞑想体験</a>
+        <a href="#solution">解決ステップ</a>
+        <a href="#future">理想の未来</a>
+        <a href="#closing">クロージング</a>
+    </div>
+
+    <div class="container">
+        <div class="last-updated">
+            📅 最終更新: <span id="lastUpdated"></span>
+        </div>
+        <div class="header" id="top">
+            <h1>🧘‍♀️ 永世セミナー台本</h1>
+            <p>「現代人のスマホ依存を根本解決する瞑想的アプローチ」</p>
+            <div class="meta">
+                <strong>対象者:</strong> 公式LINE登録者向け<br>
+                <strong>時間:</strong> 40-50分<br>
+                <strong>目的:</strong> 脱スマホ瞑想プログラム（2980円）への自然な誘導
+            </div>
+        </div>
+
+        <div id="opening" class="section">
+            <div class="time-indicator">⏰ 2分</div>
+            <h2>🎬 オープニング</h2>
+            
+            <p>みなさん、こんにちは。永世です。</p>
+            
+            <p>今日は貴重なお時間をいただき、ありがとうございます。</p>
+            
+            <p>このセミナーでは、現代人の多くが抱える「スマホ依存」という問題を、瞑想的なアプローチで根本から解決する方法についてお話しします。</p>
+            
+            <p>私自身も以前は、朝起きたらすぐにスマホを手に取り、気づけば1日5時間以上画面を見つめている生活を送っていました。</p>
+            
+            <p>でも今は、スマホを道具として使いこなし、自分の人生を取り戻すことができています。</p>
+            
+            <p><strong>その秘訣を、今日は包み隠さずお伝えしていきますね。</strong></p>
+        </div>
+
+        <div id="problem1" class="section problem-section">
+            <div class="time-indicator">⏰ 8分</div>
+            <h2>🔥 第1部：問題の掘り下げ① - あなたの人生が溶けている現実</h2>
+            
+            <h3>正直に答えてください...逃げないで</h3>
+            
+            <p>まず、スマホのスクリーンタイムを開いてみてください。<br>
+            今、この瞬間に。</p>
+            
+            <p><strong>...見るのが怖いですか？</strong></p>
+            
+            <p>見ましたか？</p>
+            
+            <p>その数字を見て、どう感じましたか？<br>
+            「まさか、こんなに...」<br>
+            「嘘でしょ...」<br>
+            「これ、間違ってるよね...」</p>
+            
+            <p><strong>でも、これが現実です。<br>
+            あなたの現実です。</strong></p>
+            
+            <p>朝起きて最初にすることは何ですか？<br>
+            「おはよう」を家族に言う前に、もうスマホを触っていませんか？</p>
+            
+            <p>目が覚めた瞬間、まだ意識がぼんやりしているうちに、もう手はスマホに伸びている。<br>
+            <strong>まるで中毒者のように。</strong></p>
+            
+            <p>トイレに行く時もスマホ。<br>
+            歯を磨きながらもスマホ。<br>
+            朝食を食べながらもスマホ。</p>
+            
+            <p>休日はもっとひどいですよね？</p>
+            
+            <div class="quote">
+                「今日こそは何か有意義なことをしよう」<br>
+                「掃除でもしようかな」<br>
+                「本でも読もうかな」<br>
+                「運動でもしようかな」
+            </div>
+            
+            <p>そう思って起きたのに、気づけば午後2時。<br>
+            布団の中でネットサーフィン。<br>
+            何を見ていたかも覚えていない。</p>
+            
+            <div class="quote">
+                「また無駄な時間を過ごしてしまった...」<br>
+                「なんで自分はこんなにダメなんだろう...」<br>
+                「明日こそは...」
+            </div>
+            
+            <p><strong>でも、明日も同じことの繰り返し。</strong></p>
+            
+            <h3>あなたの人生、計算してみましょう...ゾッとしますよ</h3>
+            
+            <p>日本人の平均スマホ利用時間は1日4.5〜5時間。<br>
+            でも、あなたはどうですか？</p>
+            
+            <p>正直に言ってください。<br>
+            6時間？7時間？もっとですか？</p>
+            
+            <p>スクリーンタイムの数字、もう一度見てください。<br>
+            1日8時間使っている人もいるんです。<br>
+            睡眠時間と同じくらい。</p>
+            
+            <div class="highlight-box">
+                年間で計算すると...<br>
+                1日8時間 × 365日 = 2920時間<br>
+                これは121日間です。<br><br>
+                <strong>1年の3分の1をスマホに捧げている。</strong>
+            </div>
+            
+            <p>想像してください。<br>
+            もしその121日間があったら？</p>
+            
+            <ul>
+                <li>TOEIC900点を取って外資系企業に転職できます</li>
+                <li>プログラミングをマスターして年収500万円アップできます</li>
+                <li>筋トレで理想の体型を手に入れ、自信を取り戻せます</li>
+                <li>資格を5つ取得して専門性を身につけられます</li>
+                <li>本を600冊読んで教養を深められます</li>
+                <li>副業で月10万円の安定収入を作れます</li>
+                <li>新しい趣味で素敵な出会いがあるかもしれません</li>
+                <li>家族や恋人との時間を大切にできます</li>
+            </ul>
+            
+            <p><strong>でも、あなたは今、その貴重な121日間を何に使っていますか？</strong></p>
+            
+            <p>他人のインスタストーリー。<br>
+            どうでもいいYouTube動画。<br>
+            意味のないTwitterの議論。<br>
+            ゲームのガチャ。</p>
+            
+            <h3>同年代を見てください...心が痛くないですか？</h3>
+            
+            <p>同じ年齢の人たちが、どんどん先に進んでいませんか？</p>
+            
+            <p>あの人は転職して年収を200万円上げた。<br>
+            あの人は副業で月20万円稼いでいる。<br>
+            あの人は新しいスキルを身につけて独立した。<br>
+            あの人は素敵なパートナーと結婚した。<br>
+            あの人は趣味を極めて充実している。<br>
+            あの人は海外旅行を楽しんでいる。</p>
+            
+            <p><strong>その間、あなたは何をしていましたか？</strong></p>
+            
+            <p>インスタで他人のキラキラした投稿を見て、「いいな」と思うだけ。<br>
+            YouTubeのおすすめ動画を延々と見続けて、気づけば3時間経過。<br>
+            Twitterで炎上を眺めて、なぜかイライラして、さらに時間を無駄にする。<br>
+            ゲームに課金して、一瞬の快楽を得るだけ。</p>
+            
+            <div class="quote">
+                そして夜、布団に入る時に思うんです。<br>
+                「今日も何もしなかった...」<br>
+                「また1日無駄にした...」<br>
+                「同年代に置いていかれている...」<br>
+                「このままじゃダメだ...」
+            </div>
+            
+            <p><strong>でも、翌朝起きると、また同じことの繰り返し。</strong></p>
+            
+            <h3>あなたは気づいていますか？</h3>
+            
+            <p>周りの人たちが、あなたのことをどう見ているか。</p>
+            
+            <div class="quote">
+                「あの人、いつもスマホばかり見てるよね」<br>
+                「話しかけても、スマホから目を離さない」<br>
+                「一緒にいても、つまらなそう」
+            </div>
+            
+            <p>家族も、友人も、恋人も、だんだんあなたから離れていっていませんか？</p>
+            
+            <p>でも、あなたはスマホの方が大事。<br>
+            目の前にいる大切な人よりも、スマホの中の赤の他人の方が大事。</p>
+            
+            <p><strong>そんな自分に、嫌気がさしませんか？</strong></p>
+        </div>
+
+        <div id="problem2" class="section problem-section">
+            <div class="time-indicator">⏰ 8分</div>
+            <h2>🧠 第2部：問題の掘り下げ② - あなたの脳が壊されている現実</h2>
+            
+            <h3>あなたの脳に何が起きているか...知りたくないでしょうが</h3>
+            
+            <p>スマホ依存は、ただの時間の無駄ではありません。<br>
+            <strong>あなたの脳を、物理的に破壊しています。</strong></p>
+            
+            <p>「そんなオーバーな...」と思いますか？</p>
+            
+            <div class="highlight-box">
+                ソウル大学の研究で明らかになった恐ろしい事実：<br>
+                <strong>スマホ依存者の脳は、前頭葉灰白質が縮小している。</strong>
+            </div>
+            
+            <p>前頭葉って何をする場所か知っていますか？</p>
+            <ul>
+                <li>意思決定する力</li>
+                <li>集中する力</li>
+                <li>感情をコントロールする力</li>
+                <li>将来の計画を立てる力</li>
+            </ul>
+            
+            <p>つまり、スマホを使えば使うほど、<br>
+            「やる気が出ない」<br>
+            「集中できない」<br>
+            「感情的になりやすい」<br>
+            「将来のことを考えられない」<br>
+            という状態になっていくのです。</p>
+            
+            <p><strong>あなたの「ダメな自分」は、意思が弱いからじゃない。<br>
+            脳が物理的に破壊されているからなんです。</strong></p>
+            
+            <h3>最近、こんなことありませんか？</h3>
+            
+            <p>本を読もうとしても、5分で飽きる。<br>
+            映画を見ても、途中でスマホを触ってしまう。<br>
+            人の話を聞いていても、頭に入ってこない。<br>
+            何かを始めても、すぐに諦めてしまう。</p>
+            
+            <div class="quote">
+                「自分は集中力がない」<br>
+                「自分は意思が弱い」<br>
+                「自分はダメな人間だ」
+            </div>
+            
+            <p>そう思っていませんか？</p>
+            
+            <p><strong>でも、それは違います。<br>
+            あなたの脳が、スマホによって破壊されているからです。</strong></p>
+            
+            <h3>現代人の脳は完全に限界を超えている</h3>
+            
+            <p>江戸時代の人が1年かけて得ていた情報量を、現代人は1日で脳に叩き込まれています。</p>
+            
+            <p>想像してください。<br>
+            江戸時代の人の脳のキャパシティを100とすると、現代人は毎日36500の情報を処理させられている。</p>
+            
+            <p><strong>脳は悲鳴を上げています。<br>
+            オーバーヒートしています。</strong></p>
+            
+            <p>でも、あなたは気づいていますか？</p>
+            
+            <p>朝起きた時の、あの重い頭。<br>
+            なんとなく続く疲労感。<br>
+            理由もないイライラ。<br>
+            やる気の低下。<br>
+            記憶力の低下。<br>
+            判断力の低下。</p>
+            
+            <p><strong>これらは全て、情報過多による脳疲労の症状です。</strong></p>
+            
+            <h3>あなたの幸福度、どんどん下がっていませんか？</h3>
+            
+            <div class="highlight-box">
+                ペンシルバニア大学の研究で明らかになった残酷な事実：<br>
+                <strong>1日4時間以上SNSを使う人は、明らかに幸福度が低い。</strong>
+            </div>
+            
+            <p>なぜだと思いますか？</p>
+            
+            <p>他人の「キラキラした投稿」ばかり見ているからです。<br>
+            みんな、自分の良い部分しか投稿しません。</p>
+            
+            <p>失敗した話、辛い話、ダメな部分は投稿しない。</p>
+            
+            <p>でも、あなたの脳は錯覚します。</p>
+            
+            <div class="quote">
+                「みんな幸せそう」<br>
+                「みんな充実してる」<br>
+                「自分だけ取り残されている」<br>
+                「自分の人生はつまらない」<br>
+                「自分はダメな人間だ」
+            </div>
+            
+            <p><strong>比較地獄の始まりです。</strong></p>
+            
+            <p>そして、その劣等感を紛らわすために、またスマホを見る。<br>
+            さらに他人のキラキラした投稿を見て、さらに落ち込む。</p>
+            
+            <h3>負のスパイラルから抜け出せない理由...わかりますよね？</h3>
+            
+            <div class="highlight-box">
+                疲れる → スマホで現実逃避 → もっと疲れる → またスマホ → さらに疲れる → またスマホ
+            </div>
+            
+            <p>このループ、心当たりありませんか？</p>
+            
+            <p>仕事で疲れた時、「ちょっとだけ」とスマホを見る。<br>
+            でも、スマホを見ることで、さらに脳が疲れる。<br>
+            だから、またスマホを見たくなる。</p>
+            
+            <p>気づけば、2時間、3時間経っている。<br>
+            そして、さらに自己嫌悪。</p>
+            
+            <div class="quote">
+                「また時間を無駄にした...」<br>
+                「なんで自分はこんなにダメなんだろう...」
+            </div>
+            
+            <p>その自己嫌悪を紛らわすために、またスマホ。</p>
+            
+            <p><strong>完全に中毒です。<br>
+            薬物依存と同じメカニズムです。</strong></p>
+            
+            <h3>あなたは既に中毒者です</h3>
+            
+            <p>認めたくないでしょうが、あなたは既にスマホ中毒者です。</p>
+            
+            <p>スマホがないと不安になる。<br>
+            通知が来ると、すぐに確認したくなる。<br>
+            何もすることがないと、とりあえずスマホを触る。<br>
+            トイレにもスマホを持参する。<br>
+            寝る前もスマホ、起きてすぐもスマホ。</p>
+            
+            <p><strong>これ、全部中毒の症状です。</strong></p>
+        </div>
+
+        <div id="problem3" class="section problem-section">
+            <div class="time-indicator">⏰ 8分</div>
+            <h2>👑 第3部：問題の掘り下げ③ - 人生の主導権を完全に奪われている現実</h2>
+            
+            <h3>あなたの人生は誰のものですか？...もう自分のものじゃないですよね</h3>
+            
+            <p>スマホを見ている時間と、大切な人と話している時間。<br>
+            どちらが長いですか？</p>
+            
+            <p><strong>正直に答えてください。</strong></p>
+            
+            <p>家族との食事中もスマホ。<br>
+            友人といてもスマホ。<br>
+            恋人といてもスマホ。<br>
+            子供と遊んでいる時もスマホ。</p>
+            
+            <p>目の前にいる大切な人が話しかけても、</p>
+            
+            <div class="quote">
+                「ちょっと待って」<br>
+                「今、大事なメッセージが...」
+            </div>
+            
+            <p>でも、そのメッセージ、本当に大事でしたか？<br>
+            どうでもいいLINEのやりとり。<br>
+            意味のないSNSの通知。</p>
+            
+            <p><strong>目の前にいる大切な人よりも、スマホの中の赤の他人の方が大事になっていませんか？</strong></p>
+            
+            <h3>あなたは気づいていますか？大切な人たちの失望を</h3>
+            
+            <p>家族があなたに話しかけても、あなたはスマホを見ている。<br>
+            友人があなたと時間を過ごしても、あなたはスマホを触っている。<br>
+            恋人があなたとデートしても、あなたはスマホに夢中。</p>
+            
+            <p>彼らの表情を見たことがありますか？</p>
+            
+            <div class="quote">
+                失望した顔。<br>
+                諦めた顔。<br>
+                「もういいや」という顔。
+            </div>
+            
+            <p>そして、だんだんあなたに話しかけなくなる。<br>
+            誘わなくなる。<br>
+            距離を置くようになる。</p>
+            
+            <p><strong>気づいた時には、もう遅い。<br>
+            大切な人たちは、もうあなたから離れていってしまっている。</strong></p>
+            
+            <h3>本当にやりたいことを完全に忘れていませんか？</h3>
+            
+            <p>子供の頃、将来の夢がありましたよね？</p>
+            
+            <div class="quote">
+                「大きくなったら○○になりたい」<br>
+                「こんなことをしてみたい」<br>
+                「こんな人になりたい」
+            </div>
+            
+            <p><strong>その夢、今どこにありますか？</strong></p>
+            
+            <p>スマホを見ている時間があったら、その夢に近づけたかもしれません。<br>
+            でも、気づけば夢のことすら忘れて、ただ時間を消費している。</p>
+            
+            <div class="quote">
+                「いつかやろう」<br>
+                「今度時間ができたら」<br>
+                「来年こそは」
+            </div>
+            
+            <p><strong>そう言い続けて、もう何年経ちましたか？</strong></p>
+            
+            <h3>あなたは完全にシリコンバレーの戦略にハマっています</h3>
+            
+            <p>なぜ、あなたはスマホをやめられないのか？</p>
+            
+            <p>それは、あなたの意思が弱いからではありません。</p>
+            
+            <p><strong>シリコンバレーの天才たちが、何年もかけて、何十億円もかけて研究した「人間の脳をハックする技術」にハマっているからです。</strong></p>
+            
+            <ul>
+                <li>通知音で条件反射を作る（パブロフの犬と同じ）</li>
+                <li>無限スクロールで終わりをなくす（パチンコと同じ）</li>
+                <li>いいね機能で承認欲求を刺激する（麻薬と同じ）</li>
+                <li>レコメンド機能で次々と興味を引く（罠と同じ）</li>
+            </ul>
+            
+            <p>これらは全て、あなたの時間を奪い、あなたのお金を奪い、あなたの人生を奪うために設計された「タイムイーター」「ライフイーター」なのです。</p>
+            
+            <div class="highlight-box">
+                <strong>あなたは彼らの「商品」です。<br>
+                あなたの時間と注意力が、彼らの利益になっている。</strong>
+            </div>
+            
+            <h3>人生の主導権を完全に奪われている</h3>
+            
+            <p>今のあなたは、自分の人生を生きていますか？</p>
+            
+            <p>朝起きる時間：アラームアプリが決める<br>
+            見る情報：アルゴリズムが決める<br>
+            買う物：広告が決める<br>
+            行く場所：マップアプリが決める<br>
+            会う人：SNSが決める<br>
+            感情：他人の投稿が決める<br>
+            価値観：インフルエンサーが決める</p>
+            
+            <p><strong>あなたが自分で決めていることって、何ですか？</strong></p>
+            
+            <p><strong>もう、何も決めていないんじゃないですか？</strong></p>
+            
+            <h3>このままだと...想像したくないでしょうが</h3>
+            
+            <p>10年後、あなたはどうなっていると思いますか？</p>
+            
+            <p>同年代がキャリアアップし、家庭を築き、趣味を極め、充実した人生を送っている中で、あなただけが取り残されている。</p>
+            
+            <p>スマホを見続けて10年。<br>
+            何も身につかず、何も達成せず、何も残らない。</p>
+            
+            <div class="quote">
+                「あの時、もっと時間を有効活用していれば...」<br>
+                「スマホばかり見ていないで、もっと努力していれば...」<br>
+                「あの時、行動していれば...」
+            </div>
+            
+            <p>そう後悔する日が来るかもしれません。</p>
+            
+            <p><strong>でも、その時にはもう遅いのです。</strong></p>
+            
+            <p><strong>時間は戻ってきません。<br>
+            失った10年は、二度と戻ってこないのです。</strong></p>
+            
+            <h3>最も残酷な現実...聞きたくないでしょうが</h3>
+            
+            <p>あなたがスマホを見ている間に、<br>
+            あなたの同年代は成長している。<br>
+            あなたの同年代は前進している。<br>
+            あなたの同年代は成功している。</p>
+            
+            <p><strong>差は開く一方です。</strong></p>
+            
+            <p>今この瞬間も、あなたがこのセミナーを聞いている間も、<br>
+            彼らは行動している。<br>
+            彼らは学んでいる。<br>
+            彼らは成長している。</p>
+            
+            <p><strong>あなたは、どんどん置いていかれている。</strong></p>
+            
+            <p>そして、気づいた時には、もう追いつけないほどの差がついている。</p>
+            
+            <div class="highlight-box">
+                これが、現実です。<br>
+                <strong>あなたの現実です。</strong>
+            </div>
+            
+            <h3>でも...</h3>
+            
+            <p>ここまで聞いて、どう感じましたか？</p>
+            
+            <div class="quote">
+                「そんなこと言われても...」<br>
+                「わかってるけど、やめられない」<br>
+                「どうせ自分には無理」
+            </div>
+            
+            <p>そう思っていませんか？</p>
+            
+            <p><strong>でも、大丈夫です。<br>
+            解決策があります。</strong></p>
+            
+            <p><strong>そして、その解決策を、今から実際に体験していただきます。</strong></p>
+        </div>
+
+        <div id="empathy" class="section empathy-section">
+            <div class="time-indicator">⏰ 3分</div>
+            <h2>🤝 第4部：でも、全部わかってます...あなたの気持ち</h2>
+            
+            <h3>聞いただけではダメですよね...わかってます</h3>
+            
+            <p>今まで散々、厳しいことを言ってきました。<br>
+            もしかしたら、落ち込んでしまった方もいるかもしれません。</p>
+            
+            <p><strong>でも、私はあなたの気持ちが全部わかります。</strong></p>
+            
+            <div class="quote">
+                「そんなこと言われても...」<br>
+                「わかってるけど、やめられないんだよ」<br>
+                「何度も挫折してきた」<br>
+                「どうせ自分には無理」<br>
+                「瞑想なんて、自分にはできない」
+            </div>
+            
+            <p>そう思っていませんか？</p>
+            
+            <h3>私も同じでした</h3>
+            
+            <p><strong>実は、私も昔は全く同じでした。</strong></p>
+            
+            <p>朝起きたらネットサーフィン。<br>
+            休日も12時まで布団の中でスマホ。<br>
+            「今日こそは何かしよう」と思っても、結局何もしない。</p>
+            
+            <p>瞑想も何度も挫折しました。</p>
+            
+            <div class="quote">
+                「5分も集中できない」<br>
+                「雑念ばかり浮かんでくる」<br>
+                「寝ちゃう」<br>
+                「どんなふうにしたらいいかわからない」<br>
+                「そもそも自分に瞑想は無理だと思っている」
+            </div>
+            
+            <p><strong>全部、経験しました。</strong></p>
+            
+            <h3>でも、だからこそ</h3>
+            
+            <p><strong>だからこそ、私はあなたの気持ちが痛いほどわかります。</strong></p>
+            
+            <p>そして、だからこそ、本当に効果のある方法をお伝えできます。</p>
+            
+            <p><strong>机上の空論ではありません。<br>
+            実際に私が体験し、乗り越えてきた方法です。</strong></p>
+        </div>
+
+        <div id="value" class="section value-section">
+            <div class="time-indicator">⏰ 15分</div>
+            <h2>✨ 第5部：価値提供 - 今すぐできる脱スマホ瞑想体験</h2>
+            
+            <h3>でも、大丈夫です。解決策があります</h3>
+            
+            <p>ここまで、かなり厳しい現実をお話ししました。<br>
+            もしかしたら、落ち込んでしまった方もいるかもしれません。</p>
+            
+            <p><strong>でも、安心してください。<br>
+            解決策があります。</strong></p>
+            
+            <p><strong>そして、その解決策は、今日、この場で体験していただけます。</strong></p>
+            
+            <h3>なぜ瞑想なのか？</h3>
+            
+            <p>スマホ依存の本質は、<br>
+            「疲れる → スマホで現実逃避 → もっと疲れる → またスマホ」<br>
+            というマイナスループです。</p>
+            
+            <p>このループを断ち切るには、脳の疲労を根本から回復させる必要があります。</p>
+            
+            <p><strong>そのための最も効果的で、お金もかからず、今すぐできる方法が瞑想なのです。</strong></p>
+            
+            <div class="highlight-box">
+                瞑想は「脳の筋トレ」であり、「情報脂肪」を燃やす有酸素運動です。
+            </div>
+            
+            <h3>今から一緒に体験してみましょう</h3>
+            
+            <p>理論だけでは意味がありません。<br>
+            実際に体験していただくことが一番です。</p>
+            
+            <p><strong>今から、私と一緒に5分間の瞑想をしてみましょう。</strong></p>
+            
+            <div class="meditation-practice">
+                <h4>🧘‍♀️ ノイズキャンセリング瞑想 - 5分間実践</h4>
+                
+                <p><strong>まず、スマホを手の届かない場所に置いてください。<br>
+                今すぐに。</strong></p>
+                
+                <div class="steps">
+                    <ol>
+                        <li>楽な姿勢で座ってください。椅子でも床でも構いません。</li>
+                        <li>目を閉じてください。</li>
+                        <li>まず、自然な呼吸を意識します。無理に深くする必要はありません。ただ、今の呼吸に気づいてください。</li>
+                        <li>周りの音が聞こえるかもしれません。車の音、エアコンの音、人の声...それらの音に気づいたら、「ああ、音があるな」と受け入れて、手放してください。</li>
+                        <li>頭の中に色々な考えが浮かんでくるかもしれません。「今日の予定は...」「あのメール返信しなきゃ...」「お腹すいたな...」</li>
+                        <li>それらの思考に気づいたら、雲が空を流れるように、手放してください。追いかけなくて大丈夫です。</li>
+                        <li>ただ、今この瞬間の呼吸に意識を向けます。</li>
+                    </ol>
+                </div>
+                
+                <p><strong>息を吸って...<br>
+                息を吐いて...</strong></p>
+                
+                <p>もし思考が湧いてきても、それは自然なことです。<br>
+                気づいたら、また呼吸に戻ってください。</p>
+                
+                <p><strong>息を吸って...<br>
+                息を吐いて...</strong></p>
+                
+                <p>今、この瞬間だけに意識を向けます。<br>
+                過去でも未来でもなく、今。</p>
+                
+                <p>あと1分ほど続けましょう。</p>
+                
+                <p><strong>息を吸って...<br>
+                息を吐いて...</strong></p>
+                
+                <p><strong>では、ゆっくりと目を開けてください。</strong></p>
+            </div>
+            
+            <h3>いかがでしたか？</h3>
+            
+            <p><strong>どうでしたか？</strong></p>
+            
+            <p>少しでも変化を感じませんでしたか？</p>
+            
+            <ul>
+                <li>頭がスッキリした</li>
+                <li>心が落ち着いた</li>
+                <li>体の緊張がほぐれた</li>
+                <li>呼吸が深くなった</li>
+                <li>今この瞬間に集中できた</li>
+            </ul>
+            
+            <p><strong>どれか一つでも感じられたなら、それが瞑想の効果です。</strong></p>
+            
+            <div class="highlight-box">
+                たった5分で、これだけの変化があったんです。
+            </div>
+            
+            <h3>「自分にもできるじゃん」と思いませんか？</h3>
+            
+            <p>瞑想って、難しいものだと思っていませんでしたか？</p>
+            
+            <p><strong>でも、今体験したように、実はとてもシンプルです。</strong></p>
+            
+            <p>特別な道具も必要ありません。<br>
+            お金もかかりません。<br>
+            場所も選びません。</p>
+            
+            <p><strong>必要なのは、ほんの少しの時間と、やってみようという気持ちだけです。</strong></p>
+            
+            <h3>瞑想習慣がもたらす驚くべき変化</h3>
+            
+            <p>今の5分間の体験を、毎日続けたらどうなると思いますか？</p>
+            
+            <p>実際に瞑想を習慣にした方々から、こんな報告をいただいています：</p>
+            
+            <div class="steps">
+                <p><strong>1週間後：</strong></p>
+                <ul>
+                    <li>朝の目覚めがスッキリするようになった</li>
+                    <li>スマホを見る時間が自然と減った</li>
+                    <li>集中力が上がった</li>
+                </ul>
+                
+                <p><strong>1ヶ月後：</strong></p>
+                <ul>
+                    <li>感情のコントロールができるようになった</li>
+                    <li>人間関係が改善した</li>
+                    <li>仕事の効率が上がった</li>
+                    <li>睡眠の質が向上した</li>
+                </ul>
+                
+                <p><strong>3ヶ月後：</strong></p>
+                <ul>
+                    <li>人生の目標が明確になった</li>
+                    <li>新しいことにチャレンジする勇気が出た</li>
+                    <li>同年代との比較で落ち込まなくなった</li>
+                    <li>本当にやりたいことが見つかった</li>
+                </ul>
+            </div>
+            
+            <h3>重要な公式をお教えします</h3>
+            
+            <p>私が大切にしている公式があります。</p>
+            
+            <div class="highlight-box">
+                <strong>スマホと向き合う時間 ＜ 自分と向き合う時間</strong>
+            </div>
+            
+            <p>この公式を守れば、絶対に自分の人生をスマホに奪われることはなくなります。</p>
+            
+            <p>自分と向き合うとは：</p>
+            <ul>
+                <li>瞑想</li>
+                <li>ジャーナリング</li>
+                <li>呼吸法</li>
+                <li>散歩</li>
+                <li>読書</li>
+                <li>趣味の時間</li>
+            </ul>
+            
+            <p>これらの時間を意識的に作ることです。</p>
+            
+            <h3>あなたにもできます</h3>
+            
+            <p>今日、この5分間の瞑想で、あなたは既に第一歩を踏み出しました。</p>
+            
+            <div class="highlight-box">
+                「自分にもできるじゃん」
+            </div>
+            
+            <p>そう思いませんでしたか？</p>
+            
+            <p><strong>その感覚を大切にしてください。<br>
+            それが、あなたの人生を変える第一歩なのです。</strong></p>
+        </div>
+
+        <div id="solution" class="section solution-section">
+            <div class="time-indicator">⏰ 8分</div>
+            <h2>🛠️ 第6部：具体的な解決ステップ</h2>
+            
+            <h3>3つのステップで脱スマホを実現</h3>
+            
+            <div class="steps">
+                <p><strong>ステップ1：現状認識</strong></p>
+                <p>まず、スクリーンタイムを開いて、自分がどれだけスマホを使っているかを認識してください。<br>
+                書き出す作業を行うことで、現実と向き合います。</p>
+                
+                <p><strong>ステップ2：工夫の実践</strong></p>
+                <p>SNSが面白くなくなる工夫をします。<br>
+                例えば、スマホをグレースケール（白黒）に設定する。<br>
+                色彩で脳を刺激して中毒にするパチンコの演出と同じ仕組みを断ち切るのです。</p>
+                
+                <p><strong>ステップ3：現実世界の充実</strong></p>
+                <p>これが最も重要です。<br>
+                自分の人生のゴールを決める。<br>
+                あなたは死ぬ際に、どんな人生だったと思いたいですか？</p>
+                
+                <p>そのゴールに向かっていく趣味や活動を見つけ、毎日実践する。</p>
+            </div>
+            
+            <h3>成功の鍵は「自覚度」</h3>
+            
+            <p>スマホ依存から抜け出すために最も重要なのは「自覚度」です。</p>
+            
+            <p>自分が何を目的とし、どう行動すればいいのか。<br>
+            何を基準に選び、何を避けるべきか。<br>
+            幸せをくれる情報と、心を削る情報の区別ができるか。</p>
+            
+            <div class="highlight-box">
+                この自覚度を高めるために、瞑想は最短ルートなのです。
+            </div>
+        </div>
+
+        <div id="future" class="section solution-section">
+            <div class="time-indicator">⏰ 5分</div>
+            <h2>🌟 第7部：理想の未来とまとめ</h2>
+            
+            <h3>脱スマホを実現したあなたの未来</h3>
+            
+            <p>原因を解決できたあなたは：</p>
+            
+            <ul>
+                <li>SNSに振り回されず、自分の時間を計画的に使える</li>
+                <li>集中力が戻り、仕事・趣味・人間関係の全てで成果が出る</li>
+                <li>「忙しい」ではなく「時間を作れる」人になる</li>
+                <li>9割のスマホ依存の人々に差をつけ、抜きん出た存在になれる</li>
+            </ul>
+            
+            <p><strong>他の人が時間を逃避する中で、1人だけ時間を使いこなせば、必ず異質な存在になれます。</strong></p>
+            
+            <h3>重要なメッセージ</h3>
+            
+            <p>最後に、とても大切なことをお伝えします。</p>
+            
+            <div class="highlight-box">
+                <strong>スマホは悪ではありません。素晴らしいツールです。</strong>
+            </div>
+            
+            <p>問題は、便利すぎるツールに人生の目的を奪われてしまう現代社会の構造にあります。</p>
+            
+            <p><strong>大切なのは、スマホに支配されるのではなく、スマホと自分の精神をコントロールすることです。</strong></p>
+            
+            <h3>今日のまとめ</h3>
+            
+            <div class="steps">
+                <ol>
+                    <li>スマホ依存は現代病であり、あなたの意思の弱さではない</li>
+                    <li>根本解決には瞑想による脳の回復が必要</li>
+                    <li>「スマホと向き合う時間 ＜ 自分と向き合う時間」の公式を守る</li>
+                    <li>自覚度を高めることで、自然にスマホへの興味が薄れる</li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="closing" class="section closing-section">
+            <div class="time-indicator">⏰ 5分</div>
+            <h2>🎯 第8部：クロージング - 次のステップへの案内</h2>
+            
+            <h3>あなたにお伝えしたいこと</h3>
+            
+            <p>今日のセミナーで、瞑想の可能性を少しでも感じていただけたでしょうか？</p>
+            
+            <p><strong>でも、正直にお話しします。</strong></p>
+            
+            <p><strong>今日お伝えした内容を聞いただけでは、根本的な変化は起きません。</strong></p>
+            
+            <p>なぜなら：</p>
+            <ul>
+                <li>具体的にどう実践すればいいかわからない</li>
+                <li>一人で続けるのは難しい</li>
+                <li>挫折した時のサポートがない</li>
+                <li>そもそも自分に瞑想は無理だと思っている</li>
+            </ul>
+            
+            <p>そんな声をたくさん聞いてきました。</p>
+            
+            <h3>私からの提案</h3>
+            
+            <p>そこで、今日のセミナーを最後まで見てくださったあなたに、特別な提案があります。</p>
+            
+            <div class="highlight-box">
+                <strong>「脱スマホ瞑想プログラム」</strong>
+            </div>
+            
+            <p>これは、今日お話しした内容を、実際に実践できる形にした全3章構成のプログラムです。</p>
+            
+            <p>第1章では、自分なりの脱デジタルライフと理想人生を描き出すワークを。<br>
+            第2章では、具体的なスマートフォンの使い方テクニックを。<br>
+            第3章では、自分の本当にやりたいことを発見する瞑想ワークを。</p>
+            
+            <p><strong>さらに、24時間いつでもサポートしてくれる「いつでも瞑想見守るくん」というAI瞑想コーチもついています。</strong></p>
+            
+            <h3>特別な体験会のご案内</h3>
+            
+            <p>そして、このプログラムの内容を実際に体験していただける無料の瞑想体験会も開催します。</p>
+            
+            <p>ノイズキャンセリング瞑想、基本呼吸法、ドグマ瞑想の3つを、みんなで実践的にトライできる特別な機会です。</p>
+            <p><strong>※ドグマ瞑想とは：</strong>ドグマ（dogma）とは、宗教や哲学における教義・教理、または独断的な考え方を指します。私たちが無意識に持っている固定観念や思い込み、「〜でなければならない」という信念に気づき、それらを手放すことを目指す瞑想法です。スマホ依存の背景にある「常につながっていなければ」「情報を見逃してはいけない」といった思い込みを見つめ直すのに特に効果的です。</p>
+            
+            <p>瞑想は、きちんとした誘導と迷いなく実践できる環境があってこそ、初めて自分の内面と深く繋がり、人生を変える気づきを与えてくれます。</p>
+            
+            <p><strong>一人で我流でやるよりも、適切なナビゲートとそのための場所・空間がある中で実践した方が、遥かに効果があります。</strong></p>
+            
+            <h3>最後に</h3>
+            
+            <div class="highlight-box">
+                あなたの人生は、あなたのものです。
+            </div>
+            
+            <p><strong>スマホに支配される人生から、スマホを使いこなす人生へ。</strong></p>
+            
+            <p><strong>その第一歩を、今日から始めませんか？</strong></p>
+            
+            <p>詳細は、この後すぐに配信されるメッセージでお伝えします。</p>
+            
+            <p>今日は最後まで聞いていただき、本当にありがとうございました。</p>
+            
+            <p><strong>あなたの人生が、より豊かで充実したものになることを心から願っています。</strong></p>
+            
+            <div class="highlight-box">
+                <strong>【台本終了】</strong><br><br>
+                <strong>総時間:</strong> 約45分<br>
+                <strong>構成:</strong> 問題提起 → 原因分析 → 価値提供（瞑想体験） → 解決策 → 商品案内<br>
+                <strong>ポイント:</strong> 押し売り感なく、自然な流れで商品への関心を高める構成
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-buttons">
+        <a href="#top" class="floating-btn back-to-top">
+            ⬆️ トップへ
+        </a>
+        <a href="00_脱スマホ瞑想プログラム_ハブ.html" class="floating-btn back-to-hub">
+            🏠 ハブに戻る
+        </a>
+    </div>
+
+    <script>
+        // 最終更新日時を表示
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleString('ja-JP');
+        
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

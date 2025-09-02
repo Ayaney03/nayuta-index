@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 メンバー管理システム - 提案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #f8f6f3 0%, #fff8dc 50%, #f5e6a3 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .system-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .demo-section {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 2px solid #e9ecef;
+        }
+
+        .demo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .member-profile {
+            display: grid;
+            grid-template-columns: 200px 1fr 300px;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-card {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .profile-stats {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .ltv-display {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .purchase-history {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: #f8f9fa;
+            padding: 12px;
+            font-weight: bold;
+            border-bottom: 1px solid #dee2e6;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        .table-row {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f1f3f4;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            font-size: 0.85em;
+        }
+
+        .table-row:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+
+        .status-active {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .metric-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .metric-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 無明会 メンバー管理・LTV分析システム</h1>
+            <p>月次収支報告自動化 + 顧客分析ダッシュボード 提案書</p>
+        </div>
+        
+        <div class="content">
+            <!-- システム概要 -->
+            <div class="system-overview">
+                <div class="feature-card">
+                    <h3>🔄 月次収支報告自動化</h3>
+                    <ul class="feature-list">
+                        <li>UTAGE・LINE・各種ツールからのデータ自動取得</li>
+                        <li>経費入力フォームによる手動データ統合</li>
+                        <li>HTMLレポートの自動生成</li>
+                        <li>前月比・前年同月比の自動計算</li>
+                        <li>支払い金額の自動算出</li>
+                        <li>PDF出力・メール送信機能</li>
+                        <li>承認フロー機能</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>👥 メンバー管理・LTV分析</h3>
+                    <ul class="feature-list">
+                        <li>メンバー詳細プロフィール管理</li>
+                        <li>購入履歴の時系列表示</li>
+                        <li>LTV（顧客生涯価値）自動計算</li>
+                        <li>アップセル・クロスセル機会の特定</li>
+                        <li>解約予兆アラート機能</li>
+                        <li>セグメント別売上分析</li>
+                        <li>成長率・リテンション分析</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- デモ：メンバー詳細ページ -->
+            <div class="demo-section">
+                <div class="demo-header">
+                    <h3>📋 メンバー詳細ページ（デモ）</h3>
+                    <div style="font-size: 0.9em; color: #666;">ID: M2025001 | 登録日: 2025/03/15</div>
+                </div>
+
+                <!-- メンバープロフィール -->
+                <div class="member-profile">
+                    <div class="profile-card">
+                        <div style="font-size: 1.1em; font-weight: bold; margin-bottom: 10px;">田中 太郎</div>
+                        <div style="font-size: 0.85em; color: #666; margin-bottom: 15px;">tanaka@example.com</div>
+                        <div class="status-badge status-active">アクティブ会員</div>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <h4 style="margin-bottom: 10px; font-size: 0.9em;">基本情報</h4>
+                        <div style="font-size: 0.8em; line-height: 1.5;">
+                            <div><strong>会員種別:</strong> 年間会員</div>
+                            <div><strong>在籍期間:</strong> 10ヶ月</div>
+                            <div><strong>最終ログイン:</strong> 2025/07/28</div>
+                            <div><strong>参加イベント:</strong> 12回</div>
+                            <div><strong>紹介人数:</strong> 2名</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ltv-display">
+                        <div style="font-size: 0.9em; margin-bottom: 5px;">顧客生涯価値 (LTV)</div>
+                        <div style="font-size: 2em; font-weight: bold;">¥485,000</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">予想LTV: ¥720,000</div>
+                    </div>
+                </div>
+
+                <!-- 購入履歴 -->
+                <h4 style="margin-bottom: 15px;">💰 購入履歴</h4>
+                <div class="purchase-history">
+                    <div class="table-header">
+                        <div>購入日</div>
+                        <div>商品・サービス</div>
+                        <div>金額</div>
+                        <div>ステータス</div>
+                        <div>備考</div>
+                    </div>
+                    <div class="table-row">
+                        <div>2025/07/01</div>
+                        <div>年間会員更新</div>
+                        <div>¥220,000</div>
+                        <div><span class="status-badge status-active">継続中</span></div>
+                        <div>自動更新</div>
+                    </div>
+                    <div class="table-row">
+                        <div>2025/05/15</div>
+                        <div>徹底精進コース</div>
+                        <div>¥150,000</div>
+                        <div><span class="status-badge status-active">完了</span></div>
+                        <div>満足度: ★★★★★</div>
+                    </div>
+                    <div class="table-row">
+                        <div>2025/03/15</div>
+                        <div>無明会入会（年間）</div>
+                        <div>¥220,000</div>
+                        <div><span class="status-badge status-active">継続中</span></div>
+                        <div>初回入会</div>
+                    </div>
+                    <div class="table-row">
+                        <div>2025/02/20</div>
+                        <div>体験会参加</div>
+                        <div>¥5,000</div>
+                        <div><span class="status-badge status-active">完了</span></div>
+                        <div>紹介経由</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分析指標 -->
+            <div class="demo-section">
+                <h3 style="margin-bottom: 20px;">📊 LTV・解約予測分析</h3>
+                <div class="analytics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">¥485,000</div>
+                        <div class="metric-label">現在LTV</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">¥720,000</div>
+                        <div class="metric-label">予想LTV</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">95%</div>
+                        <div class="metric-label">継続確率</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">10ヶ月</div>
+                        <div class="metric-label">在籍期間</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">4.8</div>
+                        <div class="metric-label">エンゲージメント</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">低</div>
+                        <div class="metric-label">解約リスク</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- システム提案 -->
+            <div class="demo-section">
+                <h3 style="margin-bottom: 20px;">🛠️ 実装提案</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">Phase 1: 基本システム</h4>
+                        <ul class="feature-list" style="font-size: 0.85em;">
+                            <li>メンバーデータベース構築</li>
+                            <li>購入履歴管理機能</li>
+                            <li>基本的なLTV計算</li>
+                            <li>月次レポート生成</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">Phase 2: 自動化強化</h4>
+                        <ul class="feature-list" style="font-size: 0.85em;">
+                            <li>UTAGE API連携</li>
+                            <li>LINE API連携</li>
+                            <li>自動レポート配信</li>
+                            <li>アラート機能</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">Phase 3: 高度分析</h4>
+                        <ul class="feature-list" style="font-size: 0.85em;">
+                            <li>予測モデル構築</li>
+                            <li>セグメント分析</li>
+                            <li>A/Bテスト機能</li>
+                            <li>BI ダッシュボード</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技術的詳細 -->
+            <div class="demo-section">
+                <h3 style="margin-bottom: 15px;">⚙️ 技術仕様・開発方針</h3>
+                <div style="font-size: 0.9em; line-height: 1.6;">
+                    <p><strong>フロントエンド:</strong> React/Next.js + TypeScript（現在のHTMLレポートをベースに発展）</p>
+                    <p><strong>バックエンド:</strong> Node.js/Express + PostgreSQL（データ永続化）</p>
+                    <p><strong>API連携:</strong> UTAGE決済API、LINE Messaging API、各種SaaS連携</p>
+                    <p><strong>デプロイ:</strong> Vercel/AWS（スケーラブル、低コスト）</p>
+                    <p><strong>セキュリティ:</strong> JWT認証、データ暗号化、定期バックアップ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

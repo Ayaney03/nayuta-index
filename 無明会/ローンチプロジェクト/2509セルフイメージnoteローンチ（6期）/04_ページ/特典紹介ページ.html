@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>努力しても自信がつかない本当の理由 - 豪華特典プレゼント</title>
+    
+    <style>
+        /* 基本フォント設定 */
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'Yu Mincho', 'YuMincho', 'MS PMincho', 'Noto Serif JP', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a202c;
+            font-feature-settings: 'palt';
+            letter-spacing: 0.03em;
+            margin: 0;
+            padding: 0;
+            background: #f8f6f3;
+            position: relative;
+        }
+
+        /* カラーパレット - 落ち着いた色調に変更 */
+        :root {
+            --primary-gold: #d4af37;
+            --dark-gold: #8b6914;
+            --brown-base: #8b7355;
+            --brown-dark: #6b5b47;
+            --light-gold: #f5e6a3;
+            --text-dark: #2d3748;
+            --background-cream: #f8f6f3;
+            --background-light: #ede8dc;
+            --accent-brown: #8b4513;
+            --cream: #fff8dc;
+            --shadow-gold: rgba(139, 105, 20, 0.25);
+        }
+
+        /* メインコンテナ - PC対応 */
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 16px;
+            min-height: 100vh;
+        }
+
+        /* PC用レイアウト調整 */
+        @media (min-width: 768px) {
+            .main-container {
+                padding: 40px 32px;
+            }
+            
+            .bonus-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+                align-items: start;
+            }
+            
+            .bonus-3 {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* ヒーローセクション */
+        .hero-section {
+            background: linear-gradient(135deg, var(--brown-base) 0%, var(--brown-dark) 100%);
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            color: #f7fafc;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 32px rgba(139, 115, 85, 0.3);
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+            margin-bottom: 8px;
+        }
+
+        /* 特典カード */
+        .bonus-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 16px rgba(139, 105, 20, 0.08);
+        }
+
+        /* 特典1のスタイル */
+        .bonus-1 {
+            background: linear-gradient(135deg, var(--background-cream) 0%, var(--background-light) 100%);
+            border: 2px solid var(--primary-gold);
+        }
+
+        /* 特典2のスタイル */
+        .bonus-2 {
+            background: linear-gradient(135deg, var(--background-cream) 0%, var(--background-light) 100%);
+            border: 2px solid var(--brown-base);
+        }
+
+        /* 特典3のスタイル（最も華やか） */
+        .bonus-3 {
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border: 2px solid var(--primary-gold);
+        }
+
+        /* セクションタイトル */
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--dark-gold);
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 8px;
+        }
+
+        /* 特典タイトル */
+        .bonus-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-gold);
+            margin-bottom: 16px;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .bonus-2 .bonus-title {
+            color: var(--brown-base);
+        }
+
+        /* 特典番号バッジ */
+        .bonus-number {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin-right: 12px;
+            vertical-align: middle;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        .bonus-2 .bonus-number {
+            background: var(--brown-base);
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.4);
+        }
+
+        /* ワークシート入力エリア */
+        .worksheet-area {
+            background: #ffffff;
+            border: 2px solid var(--primary-gold);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .work-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        .work-label {
+            font-weight: bold;
+            color: var(--dark-gold);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* 特典説明 */
+        .bonus-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 価格表示 - プレゼント感を強調 */
+        .price-display {
+            text-align: center;
+            background: rgba(245, 230, 163, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid var(--light-gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .original-price {
+            font-size: 18px;
+            color: var(--text-dark);
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 12px;
+        }
+
+        .free-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-red);
+        }
+
+        .limited-text {
+            font-size: 13px;
+            color: var(--accent-red);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* 特典内容リスト */
+        .bonus-features {
+            background: rgba(245, 230, 163, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 16px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bonus-features ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .bonus-features li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ワークシート特別スタイル */
+        .worksheet-highlight {
+            background: linear-gradient(135deg, rgba(49, 130, 206, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+            padding: 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 4px solid var(--confidence-blue);
+        }
+
+        /* 総額表示 */
+        .total-value {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px var(--shadow-gold);
+            z-index: 1;
+        }
+
+        .total-value::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .total-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .total-amount {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .total-description {
+            font-size: 14px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            line-height: 1.5;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 380px) {
+            .main-container {
+                padding: 16px 12px;
+            }
+
+            .bonus-card {
+                padding: 20px;
+            }
+
+            .hero-title {
+                font-size: 24px;
+            }
+
+            .bonus-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- ヒーローセクション -->
+        <div class="hero-section">
+            <h1 class="hero-title">セルフイメージ構築ワーク</h1>
+            <p class="hero-subtitle">健全な自信を築く実践的特典プレゼント</p>
+            <p class="hero-subtitle">〜努力が自信に直結する人生を始める〜</p>
+        </div>
+
+        <div class="bonus-grid">
+            <!-- 特典1 -->
+            <div class="bonus-card bonus-1">
+                <h2 class="bonus-title">
+                    <span class="bonus-number">1</span>6ステップ承認・完了<br>ワークシート
+                </h2>
+                
+                <div class="bonus-description">
+                    動画で解説された「健全なセルフイメージを築く6ステップワーク」を実際に書き込んで実践できるワークシートです。<br><br>
+                    
+                    自分の実績を整理し、未来への許可を与える具体的なプロセスを体験してください。
+                </div>
+
+                <div class="worksheet-area">
+                    <label class="work-label">ステップ1: 重要な分野を選択</label>
+                    <select style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 12px;">
+                        <option>仕事・キャリア</option>
+                        <option>恋愛・パートナーシップ</option>
+                        <option>お金・経済</option>
+                        <option>健康・身体</option>
+                        <option>学習・成長</option>
+                        <option>人間関係</option>
+                        <option>創造・表現</option>
+                    </select>
+                    
+                    <label class="work-label">ステップ2: 過去の実績（具体的に記入）</label>
+                    <textarea class="work-input" placeholder="例：1日10時間×25日×3年間勉強した、営業で月100件訪問を2年継続した、など具体的な数字で記入してください"></textarea>
+                    
+                    <label class="work-label">ステップ3: 現在手に入れているもの</label>
+                    <textarea class="work-input" placeholder="スキル、知識、人間関係、収入、地位、信頼など、過去の努力によって得られた成果を書き出してください"></textarea>
+                </div>
+
+                <div class="price-display">
+                    <p style="margin: 0; font-size: 15px; color: var(--text-dark); margin-bottom: 8px;">
+                        通常コンサルティング料金
+                    </p>
+                    <p style="margin: 0;">
+                        <span class="original-price">20,000円</span>
+                        <span class="free-price">無料プレゼント</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 特典2 -->
+            <div class="bonus-card bonus-2">
+                <h2 class="bonus-title">
+                    <span class="bonus-number">2</span>創造的チャレンジ<br>発見ワークシート
+                </h2>
+                
+                <div class="bonus-description">
+                    「得意なことばかりやっても成長しない」という動画の教えを実践するための書き込み式ワークシートです。<br><br>
+                    
+                    自分の得意分野から離れた、本当に成長につながる挑戦を発見できます。
+                </div>
+
+                <div class="worksheet-area">
+                    <label class="work-label">現在の得意分野（3つまで）</label>
+                    <textarea class="work-input" placeholder="例：営業、プレゼンテーション、数字分析など、あなたが得意で評価されることを書いてください"></textarea>
+                    
+                    <label class="work-label">避けてきた・苦手な分野</label>
+                    <textarea class="work-input" placeholder="例：人前で感情を表現すること、創作活動、スポーツ、深い人間関係など"></textarea>
+                    
+                    <label class="work-label">「ちょっと怖いけど、やってみたい」こと</label>
+                    <textarea class="work-input" placeholder="恐怖と興味が両方あることを書いてください。これがあなたの成長につながる創造的チャレンジです"></textarea>
+                </div>
+
+                <div class="price-display">
+                    <p style="margin: 0; font-size: 15px; color: var(--text-dark); margin-bottom: 8px;">
+                        通常コンサルティング料金
+                    </p>
+                    <p style="margin: 0;">
+                        <span class="original-price">15,000円</span>
+                        <span class="free-price">無料プレゼント</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 特典3 -->
+        <div class="bonus-card bonus-3">
+            <h2 class="bonus-title">
+                <span class="bonus-number">3</span>無明会1ヶ月<br>お試し参加権
+            </h2>
+            
+            <div class="bonus-description">
+                健全なセルフイメージ構築を一人で続けるのは困難です。<br><br>
+                
+                無明会では、同じ志を持つ仲間たちと共に学び、<br>
+                お互いを支え合いながら確実な変化を起こしていきます。<br><br>
+                
+                動画の内容をより深く理解し、実生活で実践するための最高の環境を体験してください。
+            </div>
+
+            <div class="price-display">
+                <p style="margin: 0; font-size: 15px; color: var(--text-dark); margin-bottom: 8px;">
+                    成長を共にする方への特別提供
+                </p>
+                <p style="margin: 0;">
+                    <span class="original-price">月額22,000円</span>
+                    <span class="free-price">1ヶ月無料</span>
+                </p>
+                <p class="limited-text">※受け入れ人数に制限があります</p>
+            </div>
+
+            <div class="bonus-features">
+                <h3 style="color: var(--dark-gold); font-size: 16px; margin-bottom: 12px;">無明会で体験できること</h3>
+                <ul>
+                    <li>セルフイメージ向上の実践的プログラム</li>
+                    <li>メンバー同士の承認・完了ワーク実践</li>
+                    <li>創造的チャレンジの共有と相互サポート</li>
+                    <li>責任と自由の関係性を深く学ぶコンテンツ</li>
+                    <li>なゆた・あやねえによる直接指導の機会</li>
+                    <li>同じ目標を持つ仲間との深いつながり</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 総額表示 -->
+        <div class="total-value">
+            <h2 class="total-title">実践的成長への投資価値</h2>
+            <div class="total-amount">57,000円相当</div>
+            <p class="total-description">
+                努力しても自信がつかない状態から抜け出し、<br>
+                健全で持続可能な自信を築く人生を始めませんか？<br><br>
+                
+                書き込み式ワークシートで実際に手を動かし、<br>
+                あなたの人生が根本から変わっていくことを体験してください。
+            </p>
+        </div>
+    </div>
+</body>
+</html>

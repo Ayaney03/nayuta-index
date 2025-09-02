@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2509恋愛note 特典配布ページ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Mincho ProN', serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .welcome-message h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .welcome-message p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .benefit-card {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(116, 185, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .download-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .download-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .download-item {
+            background: rgba(255,255,255,0.1);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .download-info {
+            text-align: left;
+        }
+        
+        .download-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .download-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .download-btn {
+            background: white;
+            color: #00b894;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            background: #f8f9fa;
+            transform: scale(1.05);
+        }
+        
+        .next-steps {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .next-steps h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .step-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .step-item {
+            background: rgba(255,255,255,0.7);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-number {
+            background: #e17055;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 5px solid #d4af37;
+        }
+        
+        .contact-info h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info p {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-card {
+                padding: 25px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .download-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .download-info {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <div class="header">
+            <h1>2509恋愛note</h1>
+            <p>特典配布ページ</p>
+        </div>
+        
+        <!-- メインコンテンツ -->
+        <div class="content-card">
+            <!-- ウェルカムメッセージ -->
+            <div class="welcome-message">
+                <h2>ご購入ありがとうございます！</h2>
+                <p>2509恋愛noteをご購入いただき、誠にありがとうございます。<br>
+                こちらのページから特典をダウンロードしていただけます。</p>
+            </div>
+            
+            <!-- 特典の価値 -->
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">📚</span>
+                    <div class="benefit-title">実践ワークブック</div>
+                    <div class="benefit-description">六波羅蜜を恋愛に活かす具体的なワーク集</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">🎥</span>
+                    <div class="benefit-title">特別動画セミナー</div>
+                    <div class="benefit-description">なゆた・あやねえによる恋愛実践法解説</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <span class="benefit-icon">💝</span>
+                    <div class="benefit-title">限定コンテンツ</div>
+                    <div class="benefit-description">購入者だけがアクセスできる特別な教材</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ダウンロードセクション -->
+        <div class="download-section">
+            <h3 class="download-title">特典ダウンロード</h3>
+            
+            <ul class="download-list">
+                <li class="download-item">
+                    <div class="download-info">
+                        <div class="download-name">六波羅蜜恋愛実践ワークブック</div>
+                        <div class="download-desc">PDF形式 / 50ページ / 実践的なワーク集</div>
+                    </div>
+                    <a href="#" class="download-btn">ダウンロード</a>
+                </li>
+                
+                <li class="download-item">
+                    <div class="download-info">
+                        <div class="download-name">特別動画セミナー「真の愛を育む方法」</div>
+                        <div class="download-desc">MP4形式 / 90分 / なゆた・あやねえ対談</div>
+                    </div>
+                    <a href="#" class="download-btn">視聴する</a>
+                </li>
+                
+                <li class="download-item">
+                    <div class="download-info">
+                        <div class="download-name">親子関係改善ワークシート</div>
+                        <div class="download-desc">PDF形式 / 20ページ / 恋愛の土台作り</div>
+                    </div>
+                    <a href="#" class="download-btn">ダウンロード</a>
+                </li>
+                
+                <li class="download-item">
+                    <div class="download-info">
+                        <div class="download-name">音声ガイド「瞑想による心の安定法」</div>
+                        <div class="download-desc">MP3形式 / 30分 / 日々の実践用</div>
+                    </div>
+                    <a href="#" class="download-btn">ダウンロード</a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- 次のステップ -->
+        <div class="content-card">
+            <div class="next-steps">
+                <h3>次のステップ</h3>
+                
+                <ul class="step-list">
+                    <li class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-text">上記の特典をすべてダウンロード・保存してください</div>
+                    </li>
+                    
+                    <li class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-text">ワークブックを使って実際に実践を始めましょう</div>
+                    </li>
+                    
+                    <li class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-text">さらに深く学びたい方は無明会への参加をご検討ください</div>
+                    </li>
+                </ul>
+                
+                <div class="contact-info">
+                    <h4>サポートについて</h4>
+                    <p>ダウンロードに関するご質問やサポートが必要な場合は、</p>
+                    <p>公式LINEまたはメールにてお気軽にお問い合わせください。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ダウンロードボタンのクリック処理
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 実際の運用時はここに適切なダウンロードリンクを設定
+                alert('ダウンロードリンクを設定してください。\n\n実際の運用時は、各特典の正しいURLを設定する必要があります。');
+            });
+        });
+        
+        // ページ読み込み時のアニメーション
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.benefit-card').forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

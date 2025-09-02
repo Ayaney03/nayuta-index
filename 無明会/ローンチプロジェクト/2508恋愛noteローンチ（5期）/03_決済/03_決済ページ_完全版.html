@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 - お申し込み</title>
+    
+    <style>
+        /* 基本フォント設定 */
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'Yu Mincho', 'YuMincho', 'MS PMincho', 'Noto Serif JP', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a202c;
+            font-feature-settings: 'palt';
+            letter-spacing: 0.03em;
+            margin: 0;
+            padding: 0;
+            background: #f8f6f3;
+            position: relative;
+        }
+
+        /* カラーパレット */
+        :root {
+            --primary-gold: #c4a484;
+            --dark-gold: #8b7355;
+            --light-gold: #f0e6d2;
+            --text-dark: #2d3748;
+            --background-white: #ffffff;
+            --accent-red: #ff4757;
+            --pink-accent: #ec4899;
+            --cream: #fff8dc;
+            --shadow-gold: rgba(196, 164, 132, 0.15);
+            --background-cream: #f8f6f3;
+        }
+
+        /* メインコンテナ */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 16px;
+            min-height: 100vh;
+        }
+
+        /* ヒーローセクション */
+        .hero-section {
+            background: linear-gradient(135deg, #f8f6f3 0%, #f0e6d2 50%, #e6d7c0 100%);
+            padding: 24px 20px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px var(--shadow-gold);
+            z-index: 1;
+            border: 1px solid var(--light-gold);
+        }
+
+        .hero-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        /* プラン選択カード */
+        .plan-card {
+            background: var(--background-white);
+            padding: 24px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--light-gold);
+            z-index: 1;
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .plan-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .plan-description {
+            font-size: 14px;
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        .price-section {
+            background: linear-gradient(135deg, #f8f6f3 0%, #f0e6d2 100%);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid var(--light-gold);
+        }
+
+        .current-price {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .next-month-price {
+            font-size: 14px;
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        /* 重要事項カード */
+        .important-card {
+            background: linear-gradient(135deg, #f8f6f3 0%, #f0e6d2 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--light-gold);
+        }
+
+        .important-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .important-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .important-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 12px 16px;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary-gold);
+        }
+
+        .important-icon {
+            font-size: 16px;
+            color: var(--primary-gold);
+            margin-right: 12px;
+            font-weight: 600;
+        }
+
+        .important-text {
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        /* 申し込みボタン */
+        .cta-section {
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #b8a08a 100%);
+            color: var(--background-white);
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(196, 164, 132, 0.25);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(196, 164, 132, 0.3);
+        }
+
+        .cta-note {
+            font-size: 13px;
+            color: var(--text-dark);
+            margin-top: 12px;
+            opacity: 0.7;
+        }
+
+        /* 注意事項 */
+        .disclaimer-section {
+            background: rgba(255, 71, 87, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 71, 87, 0.2);
+        }
+
+        .disclaimer-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-red);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .disclaimer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .disclaimer-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 12px 16px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .disclaimer-icon {
+            font-size: 16px;
+            margin-right: 12px;
+        }
+
+        .disclaimer-text {
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        /* 安心ポイント */
+        .safety-section {
+            background: var(--background-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--light-gold);
+        }
+
+        .safety-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .safety-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .safety-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(240, 230, 210, 0.3);
+            border-radius: 6px;
+            border: 1px solid var(--light-gold);
+        }
+
+        .safety-icon {
+            font-size: 18px;
+            margin-right: 12px;
+            color: var(--primary-gold);
+        }
+
+        .safety-text {
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        /* 説明テキスト */
+        .description-section {
+            background: var(--background-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--light-gold);
+            text-align: center;
+        }
+
+        .description-text {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 注意事項 */
+        .disclaimer-section {
+            background: rgba(255, 71, 87, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 71, 87, 0.2);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 16px 12px;
+            }
+            
+            .hero-title {
+                font-size: 22px;
+            }
+            
+            .plan-title {
+                font-size: 18px;
+            }
+            
+            .current-price {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- ヒーローセクション -->
+        <div class="hero-section">
+            <h1 class="hero-title">無明会 お申し込み</h1>
+            <p class="hero-subtitle">あなたの人生を変える第一歩を踏み出しましょう</p>
+        </div>
+
+        <!-- 説明テキスト -->
+        <div class="description-section">
+            <p class="description-text">
+                無明会では、初月完全無料でお試しいただけます。2ヶ月目以降は月額22,000円（税込）で継続していただきますが、いつでも解約可能です。
+                下記の情報を入力して、今すぐ無料で始めましょう。
+            </p>
+        </div>
+
+        <!-- ======================================== -->
+        <!-- UTAGE決済フォーム開始 -->
+        <!-- ここから下のコメントまでがUTAGEフォームの範囲です -->
+        <!-- ======================================== -->
+        
+        <!-- UTAGEフォームのHTMLをここに挿入してください -->
+        <!-- 例: <div class="utage-checkout-form">...</div> -->
+        
+        <!-- ======================================== -->
+        <!-- UTAGE決済フォーム終了 -->
+        <!-- ======================================== -->
+
+        <!-- 注意事項 -->
+        <div class="disclaimer-section">
+            <h3 class="disclaimer-title">ご注意事項</h3>
+            <div class="disclaimer-content">
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <span class="disclaimer-text">初月無料期間終了後は、自動的に有料プランに移行します</span>
+                </div>
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">📧</span>
+                    <span class="disclaimer-text">解約は決済完了メールに記載されている手順に従ってください</span>
+                </div>
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">💳</span>
+                    <span class="disclaimer-text">解約手数料は一切かかりません</span>
+                </div>
+                <div class="disclaimer-item">
+                    <span class="disclaimer-icon">❓</span>
+                    <span class="disclaimer-text">ご不明な点がございましたら、お気軽にお問い合わせください</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 安心ポイント -->
+        <div class="safety-section">
+            <h3 class="safety-title">安心ポイント</h3>
+            <div class="safety-content">
+                <div class="safety-item">
+                    <span class="safety-icon">🎁</span>
+                    <span class="safety-text">初月完全無料でお試しいただけます</span>
+                </div>
+                <div class="safety-item">
+                    <span class="safety-icon">🔄</span>
+                    <span class="safety-text">解約はいつでも可能です</span>
+                </div>
+                <div class="safety-item">
+                    <span class="safety-icon">📧</span>
+                    <span class="safety-text">解約手続きは決済完了メールに詳しく記載されています</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // UTAGEフォームが読み込まれた後の処理
+        function onUtageFormLoaded() {
+            console.log('UTAGE決済フォームが読み込まれました');
+            // ここにUTAGEフォーム読み込み後の処理を追加
+        }
+
+        // ページ読み込み完了時の処理
+        document.addEventListener('DOMContentLoaded', function() {
+            // UTAGEフォームの読み込みを待機
+            // 実際のUTAGEフォームの読み込み処理をここに実装
+        });
+    </script>
+</body>
+</html>

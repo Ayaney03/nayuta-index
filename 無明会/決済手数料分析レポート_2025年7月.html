@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 決済手数料分析レポート - 2025年7月</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 3px solid #E91E63;
+            padding-bottom: 10px;
+        }
+        .summary {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #E91E63;
+        }
+        .fee-structure {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #FF9800;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #E91E63;
+        }
+        .stat-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #E91E63;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .brand-section {
+            margin: 30px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .brand-header {
+            color: white;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .visa-header { background: linear-gradient(135deg, #1A1F71 0%, #0066CC 100%); }
+        .mastercard-header { background: linear-gradient(135deg, #EB001B 0%, #F79E1B 100%); }
+        .amex-header { background: linear-gradient(135deg, #006FCF 0%, #0077CE 100%); }
+        .jcb-header { background: linear-gradient(135deg, #002B5B 0%, #005DAA 100%); }
+        
+        .brand-content {
+            padding: 20px;
+        }
+        .transaction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 10px;
+        }
+        .transaction-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fafafa;
+            font-size: 12px;
+        }
+        .customer-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 3px;
+        }
+        .transaction-details {
+            color: #666;
+            margin: 2px 0;
+        }
+        .fee-calculation {
+            color: #E91E63;
+            font-weight: bold;
+            margin-top: 5px;
+            padding: 3px 6px;
+            background: #fce4ec;
+            border-radius: 3px;
+        }
+        .total-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .comparison-table th {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .transaction-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💰 決済手数料分析レポート - 2025年7月</h1>
+        
+        <div class="summary">
+            <h3>📊 手数料サマリー</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">¥1,882,800</div>
+                    <div class="stat-label">確定売上金額</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">¥77,277</div>
+                    <div class="stat-label">総決済手数料</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.1%</div>
+                    <div class="stat-label">実効手数料率</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">52件</div>
+                    <div class="stat-label">成功決済件数</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fee-structure">
+            <h4>💳 手数料体系</h4>
+            <ul>
+                <li><strong>VISA・Mastercard：</strong> 4.2% + 20円/件</li>
+                <li><strong>American Express・JCB：</strong> 3.6% + 20円/件</li>
+            </ul>
+        </div>
+
+        <div class="total-section">
+            <h3>🎯 ブランド別手数料内訳</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>カードブランド</th>
+                        <th>決済件数</th>
+                        <th>決済金額</th>
+                        <th>手数料率</th>
+                        <th>率別手数料</th>
+                        <th>固定費(20円×件数)</th>
+                        <th>総手数料</th>
+                        <th>実効手数料率</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>VISA</strong></td>
+                        <td>25件</td>
+                        <td>¥748,800</td>
+                        <td>4.2%</td>
+                        <td>¥31,450</td>
+                        <td>¥500</td>
+                        <td><strong>¥31,950</strong></td>
+                        <td>4.27%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mastercard</strong></td>
+                        <td>9件</td>
+                        <td>¥339,680</td>
+                        <td>4.2%</td>
+                        <td>¥14,267</td>
+                        <td>¥180</td>
+                        <td><strong>¥14,447</strong></td>
+                        <td>4.25%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>American Express</strong></td>
+                        <td>5件</td>
+                        <td>¥145,880</td>
+                        <td>3.6%</td>
+                        <td>¥5,252</td>
+                        <td>¥100</td>
+                        <td><strong>¥5,352</strong></td>
+                        <td>3.67%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JCB</strong></td>
+                        <td>7件</td>
+                        <td>¥158,880</td>
+                        <td>3.6%</td>
+                        <td>¥5,720</td>
+                        <td>¥140</td>
+                        <td><strong>¥5,860</strong></td>
+                        <td>3.69%</td>
+                    </tr>
+                    <tr style="background: #f0f0f0; font-weight: bold;">
+                        <td><strong>合計</strong></td>
+                        <td><strong>46件</strong></td>
+                        <td><strong>¥1,393,240</strong></td>
+                        <td>-</td>
+                        <td><strong>¥56,689</strong></td>
+                        <td><strong>¥920</strong></td>
+                        <td><strong>¥57,609</strong></td>
+                        <td><strong>4.13%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>※徹底精進（振込）、分割決済の初回分を除く</em></p>
+        </div>
+
+        <!-- VISA詳細 -->
+        <div class="brand-section">
+            <div class="brand-header visa-header">
+                💳 VISA詳細 - 25件 (¥748,800) | 手数料: ¥31,950
+            </div>
+            <div class="brand-content">
+                <div class="transaction-grid">
+                    <div class="transaction-item">
+                        <div class="customer-name">渡邉智大</div>
+                        <div class="transaction-details">¥220,000 (7/1) - 年間プラン</div>
+                        <div class="fee-calculation">手数料: ¥9,240 + ¥20 = ¥9,260</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">上村徹雄</div>
+                        <div class="transaction-details">¥22,000 (7/28) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">佐々木　透</div>
+                        <div class="transaction-details">¥22,000 (7/9) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">吉澤幸一</div>
+                        <div class="transaction-details">¥22,000 (7/8) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">坂本研太朗</div>
+                        <div class="transaction-details">¥22,000 (7/12) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">宮崎弘登</div>
+                        <div class="transaction-details">¥22,000 (7/27) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">小島啓輔</div>
+                        <div class="transaction-details">¥22,000 (7/3) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">小杉沙里衣</div>
+                        <div class="transaction-details">¥22,000 (7/17) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">小林千泰</div>
+                        <div class="transaction-details">¥22,000 (7/19) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">山田剛</div>
+                        <div class="transaction-details">¥22,000 (7/21) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">山縣誠二</div>
+                        <div class="transaction-details">¥22,000 (7/26) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">巾崎由紀子</div>
+                        <div class="transaction-details">¥22,000 (7/26) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">日高悠河</div>
+                        <div class="transaction-details">¥22,000 (7/7) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">永野福三</div>
+                        <div class="transaction-details">¥22,000 (7/2) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">片桐瞭</div>
+                        <div class="transaction-details">¥22,000 (7/3) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">石垣吉規</div>
+                        <div class="transaction-details">¥22,000 (7/28) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">篠崎弘多</div>
+                        <div class="transaction-details">¥22,000 (7/25) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">池本 湊了汰</div>
+                        <div class="transaction-details">¥22,000 (7/25) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">土井美里</div>
+                        <div class="transaction-details">¥22,000 (7/1) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">奥村拓哉</div>
+                        <div class="transaction-details">¥22,000 (7/28) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">杉平　涼</div>
+                        <div class="transaction-details">¥22,000 (7/1) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">KYO SUSUKIDA</div>
+                        <div class="transaction-details">¥29,880 (7/22) - NH半年</div>
+                        <div class="fee-calculation">手数料: ¥1,255 + ¥20 = ¥1,275</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">尾﨑勇哉</div>
+                        <div class="transaction-details">¥4,980 (7/12) - NH1年</div>
+                        <div class="fee-calculation">手数料: ¥209 + ¥20 = ¥229</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">尾﨑勇哉</div>
+                        <div class="transaction-details">¥10,000 (7/13) - 分割初回</div>
+                        <div class="fee-calculation">手数料: ¥420 + ¥20 = ¥440</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">西島颯人</div>
+                        <div class="transaction-details">¥22,000 (7/30) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mastercard詳細 -->
+        <div class="brand-section">
+            <div class="brand-header mastercard-header">
+                💳 Mastercard詳細 - 9件 (¥339,680) | 手数料: ¥14,447
+            </div>
+            <div class="brand-content">
+                <div class="transaction-grid">
+                    <div class="transaction-item">
+                        <div class="customer-name">渡邉智大</div>
+                        <div class="transaction-details">¥49,800 (7/23) - NH1年</div>
+                        <div class="fee-calculation">手数料: ¥2,092 + ¥20 = ¥2,112</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">山田大将</div>
+                        <div class="transaction-details">¥29,880 (7/27) - NH半年</div>
+                        <div class="fee-calculation">手数料: ¥1,255 + ¥20 = ¥1,275</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">山田大将</div>
+                        <div class="transaction-details">¥30,000 (7/27) - NH入会費</div>
+                        <div class="fee-calculation">手数料: ¥1,260 + ¥20 = ¥1,280</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">松本竜季</div>
+                        <div class="transaction-details">¥29,880 (7/31) - NH半年</div>
+                        <div class="fee-calculation">手数料: ¥1,255 + ¥20 = ¥1,275</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">今井奎介</div>
+                        <div class="transaction-details">¥22,000 (7/24) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">佐藤恭平</div>
+                        <div class="transaction-details">¥22,000 (7/26) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">進藤勇輝</div>
+                        <div class="transaction-details">¥22,000 (7/21) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">瀬口航平</div>
+                        <div class="transaction-details">¥22,000 (7/11) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥924 + ¥20 = ¥944</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- American Express詳細 -->
+        <div class="brand-section">
+            <div class="brand-header amex-header">
+                💳 American Express詳細 - 5件 (¥145,880) | 手数料: ¥5,352
+            </div>
+            <div class="brand-content">
+                <div class="transaction-grid">
+                    <div class="transaction-item">
+                        <div class="customer-name">松村遼河</div>
+                        <div class="transaction-details">¥49,800 (7/21) - NH1年</div>
+                        <div class="fee-calculation">手数料: ¥1,793 + ¥20 = ¥1,813</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">内野真子</div>
+                        <div class="transaction-details">¥29,880 (7/13) - NH半年</div>
+                        <div class="fee-calculation">手数料: ¥1,076 + ¥20 = ¥1,096</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">内野真子</div>
+                        <div class="transaction-details">¥22,000 (7/24) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥792 + ¥20 = ¥812</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">松村遼河</div>
+                        <div class="transaction-details">¥22,000 (7/23) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥792 + ¥20 = ¥812</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">清水暁</div>
+                        <div class="transaction-details">¥22,000 (7/12) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥792 + ¥20 = ¥812</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JCB詳細 -->
+        <div class="brand-section">
+            <div class="brand-header jcb-header">
+                💳 JCB詳細 - 7件 (¥158,880) | 手数料: ¥5,860
+            </div>
+            <div class="brand-content">
+                <div class="transaction-grid">
+                    <div class="transaction-item">
+                        <div class="customer-name">鈴木智弘</div>
+                        <div class="transaction-details">¥29,880 (7/12) - NH半年</div>
+                        <div class="fee-calculation">手数料: ¥1,076 + ¥20 = ¥1,096</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">鈴木智弘</div>
+                        <div class="transaction-details">¥4,980 (7/11) - NH1年初回</div>
+                        <div class="fee-calculation">手数料: ¥179 + ¥20 = ¥199</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">千吉良俊充</div>
+                        <div class="transaction-details">¥22,000 (7/15) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥792 + ¥20 = ¥812</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">西島颯人</div>
+                        <div class="transaction-details">¥22,000 (7/30) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥792 + ¥20 = ¥812</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">鈴木智弘</div>
+                        <div class="transaction-details">¥22,000 (7/24) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥792 + ¥20 = ¥812</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">長田一</div>
+                        <div class="transaction-details">¥22,000 (7/24) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥792 + ¥20 = ¥812</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="customer-name">松田陽平</div>
+                        <div class="transaction-details">¥22,000 (7/8) - 通常プラン</div>
+                        <div class="fee-calculation">手数料: ¥792 + ¥20 = ¥812</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-section">
+            <h3>📈 手数料分析まとめ</h3>
+            <ul>
+                <li><strong>最も手数料が高いブランド：</strong> VISA（¥31,950 - 41.3%）</li>
+                <li><strong>最も手数料が安いブランド：</strong> American Express（¥5,352 - 6.9%）</li>
+                <li><strong>1件あたり平均手数料：</strong> ¥1,252（¥57,609 ÷ 46件）</li>
+                <li><strong>高額決済の影響：</strong> 渡邉智大さんの年間プラン（¥220,000）で¥9,260の手数料</li>
+                <li><strong>コスト削減のポイント：</strong> AMEX・JCBの利用促進で手数料を0.6%削減可能</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

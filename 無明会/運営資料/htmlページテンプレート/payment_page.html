@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 参加申し込み｜決済ページ</title>
+    
+    <style>
+        /* 基本フォント設定 */
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'Yu Mincho', 'YuMincho', 'MS PMincho', 'Noto Serif JP', serif;
+            font-size: 18px;
+            line-height: 1.9;
+            color: #1a202c;
+            font-feature-settings: 'palt';
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0;
+            background: #f8f6f3;
+        }
+
+        /* カラーパレット */
+        :root {
+            --primary-gold: #d4af37;
+            --dark-gold: #8b6914;
+            --light-gold: #f5e6a3;
+            --brown-gradient-1: #8b7355;
+            --brown-gradient-2: #6b5b47;
+            --text-dark: #2d3748;
+            --text-light: #f7fafc;
+            --background-light: #f8f6f3;
+            --background-white: #ffffff;
+            --accent-red: #ff4757;
+            --cream: #fff8dc;
+            --success-green: #27ae60;
+            --warning-orange: #f39c12;
+        }
+
+        /* ヒーローセクション */
+        .hero-section {
+            background: linear-gradient(135deg, #f5e6a3 0%, #d4af37 50%, #b8860b 100%);
+            padding: 32px 0 24px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(184, 134, 11, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            color: var(--dark-gold);
+            margin-bottom: 16px;
+            text-shadow: 3px 3px 6px rgba(139, 105, 20, 0.25);
+            letter-spacing: 0.06em;
+            position: relative;
+            line-height: 1.3;
+        }
+
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(80px, 20vw, 120px);
+            height: 3px;
+            background: linear-gradient(90deg, var(--dark-gold) 0%, var(--primary-gold) 100%);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: clamp(14px, 3.5vw, 18px);
+            color: var(--dark-gold);
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            line-height: 1.6;
+        }
+
+        /* 決済セクション */
+        .payment-section {
+            background: var(--background-white);
+            padding: 48px 0;
+        }
+
+        .payment-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* プラン詳細 */
+        .plan-details {
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-details::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .plan-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--dark-gold);
+            margin-bottom: 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .plan-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--dark-gold) 0%, var(--primary-gold) 100%);
+            border-radius: 1px;
+        }
+
+        .price-display {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .normal-price {
+            margin-bottom: 16px;
+            padding: 12px;
+            background: rgba(245, 230, 163, 0.3);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .special-offer-badge {
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            background: linear-gradient(45deg, #ff6b6b, var(--accent-red));
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        .special-price {
+            background: linear-gradient(135deg, var(--dark-gold) 0%, var(--primary-gold) 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .benefits-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-dark);
+            position: relative;
+            padding-left: 24px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            color: var(--success-green);
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* 決済フォーム */
+        .payment-form {
+            background: var(--background-white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(139, 105, 20, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-gold);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            background: var(--background-white);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            background: #fafafa;
+            cursor: pointer;
+        }
+
+        .payment-method {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .payment-option {
+            padding: 16px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .payment-option:hover {
+            border-color: var(--primary-gold);
+            background: rgba(245, 230, 163, 0.1);
+        }
+
+        .payment-option.selected {
+            border-color: var(--primary-gold);
+            background: rgba(245, 230, 163, 0.3);
+        }
+
+        .payment-option-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .payment-option-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* 信頼要素 */
+        .trust-elements {
+            background: rgba(245, 230, 163, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 24px 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .trust-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .trust-icon {
+            color: var(--success-green);
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        /* 申し込みボタン */
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+            color: var(--text-light);
+            padding: 18px 24px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+            font-family: inherit;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* 保証セクション */
+        .guarantee-section {
+            background: linear-gradient(135deg, var(--brown-gradient-1) 0%, var(--brown-gradient-2) 100%);
+            color: var(--text-light);
+            padding: 48px 0;
+        }
+
+        .guarantee-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .guarantee-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .guarantee-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--dark-gold) 0%, var(--primary-gold) 100%);
+            border-radius: 1px;
+        }
+
+        .guarantee-badge {
+            display: inline-block;
+            background: var(--success-green);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 24px 0;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .payment-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 0 16px;
+            }
+            
+            .hero-section {
+                padding: 24px 0 20px 0;
+            }
+            
+            .main-title {
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
+                margin-bottom: 12px;
+            }
+            
+            .subtitle {
+                font-size: clamp(12px, 3vw, 16px);
+            }
+            
+            .plan-details, .payment-form {
+                padding: 24px;
+            }
+            
+            .payment-method {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 20px 0 16px 0;
+            }
+            
+            .main-title {
+                font-size: clamp(1.5rem, 5vw, 2rem);
+            }
+            
+            .plan-details, .payment-form {
+                padding: 20px;
+            }
+            
+            .plan-title {
+                font-size: 24px;
+            }
+            
+            .form-title {
+                font-size: 20px;
+            }
+        }
+
+        /* アニメーション */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヒーローセクション -->
+    <div class="hero-section">
+        <div class="hero-container">
+            <h1 class="main-title">無明会 参加申し込み</h1>
+            <p class="subtitle">
+                あなたの人生を変える旅が今、始まります
+            </p>
+        </div>
+    </div>
+
+    <!-- 決済セクション -->
+    <div class="payment-section">
+        <div class="payment-container">
+            <!-- プラン詳細 -->
+            <div class="plan-details fade-in">
+                <h2 class="plan-title">正規会員プラン</h2>
+                
+                <div class="price-display">
+                    <div class="normal-price">
+                        <div class="special-offer-badge">🔥 今だけ限定</div>
+                        <p style="font-size: 24px; color: var(--dark-gold); margin: 0; font-weight: 700; text-align: center;">
+                            通常：<span style="font-size: 28px; text-decoration: line-through; opacity: 0.7;">22,000円</span>
+                            <span style="font-size: 16px; font-weight: normal;"> (税込/月)</span>
+                        </p>
+                    </div>
+                    
+                    <div class="special-price">
+                        <div style="position: relative; z-index: 1;">
+                            <p style="font-size: 32px; margin: 0; font-weight: 700; text-align: center; line-height: 1.2;">
+                                <span style="font-size: 20px;">初月</span> 
+                                <span style="font-size: 40px; color: var(--cream);">0円</span>
+                            </p>
+                            <p style="font-size: 16px; margin: 8px 0 0 0; opacity: 0.95; text-align: center; color: var(--cream);">
+                                (1ヶ月完全無料)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="benefits-list">
+                    <li>月次オフラインイベント参加権</li>
+                    <li>炊き出し活動・ビーチクリーン参加権</li>
+                    <li>メンバー限定オンラインコミュニティ</li>
+                    <li>個別相談・指導の機会</li>
+                    <li>無明会限定動画コンテンツ</li>
+                    <li>会員限定LINEサポート</li>
+                    <li>特典動画・教材の配布</li>
+                    <li>いつでも解約可能（縛りなし）</li>
+                </ul>
+            </div>
+
+            <!-- 決済フォーム -->
+            <div class="payment-form fade-in">
+                <h3 class="form-title">お申し込み情報</h3>
+                
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label class="form-label" for="fullName">お名前 *</label>
+                        <input type="text" id="fullName" name="fullName" class="form-input" required placeholder="山田太郎">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">メールアドレス *</label>
+                        <input type="email" id="email" name="email" class="form-input" required placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="phone">電話番号 *</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" required placeholder="090-1234-5678">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">お支払い方法</label>
+                        <div class="payment-method">
+                            <div class="payment-option selected" data-method="credit">
+                                <div class="payment-option-icon">💳</div>
+                                <div class="payment-option-text">クレジットカード</div>
+                            </div>
+                            <div class="payment-option" data-method="bank">
+                                <div class="payment-option-icon">🏦</div>
+                                <div class="payment-option-text">銀行振込</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="creditCardInfo" class="credit-card-section">
+                        <div class="form-group">
+                            <label class="form-label" for="cardNumber">カード番号 *</label>
+                            <input type="text" id="cardNumber" name="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="form-group">
+                                <label class="form-label" for="expiry">有効期限 *</label>
+                                <input type="text" id="expiry" name="expiry" class="form-input" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="cvv">セキュリティコード *</label>
+                                <input type="text" id="cvv" name="cvv" class="form-input" placeholder="123" maxlength="4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trust-elements">
+                        <div class="trust-item">
+                            <span class="trust-icon">🔒</span>
+                            SSL暗号化により情報を安全に保護
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">✅</span>
+                            初月完全無料・いつでも解約可能
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">📞</span>
+                            サポート対応：平日9:00-18:00
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        今すぐ無明会に参加する
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 保証セクション -->
+    <div class="guarantee-section">
+        <div class="guarantee-container">
+            <h2 class="guarantee-title">安心の満足保証</h2>
+            
+            <div class="guarantee-badge">
+                30日間返金保証
+            </div>
+            
+            <p style="font-size: 18px; line-height: 1.8; max-width: 60ch; margin: 0 auto;">
+                もし無明会の内容にご満足いただけない場合は、<br>
+                初回参加から30日以内であれば、理由を問わず全額返金いたします。<br>
+                あなたにリスクはありません。
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 支払い方法選択
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const method = this.dataset.method;
+                const creditCardSection = document.getElementById('creditCardInfo');
+                
+                if (method === 'credit') {
+                    creditCardSection.style.display = 'block';
+                } else {
+                    creditCardSection.style.display = 'none';
+                }
+            });
+        });
+
+        // カード番号の自動フォーマット
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            if (formattedValue.length > 19) formattedValue = formattedValue.substring(0, 19);
+            e.target.value = formattedValue;
+        });
+
+        // 有効期限の自動フォーマット
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // CVVの数字のみ入力
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+
+        // フォーム送信処理
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 基本的なバリデーション
+            const requiredFields = this.querySelectorAll('input[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#ff4757';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = 'rgba(212, 175, 55, 0.3)';
+                }
+            });
+            
+            if (!isValid) {
+                alert('必須項目をすべて入力してください。');
+                return;
+            }
+            
+            // 実際の決済処理はここに実装
+            const submitButton = document.querySelector('.submit-button');
+            submitButton.disabled = true;
+            submitButton.textContent = '処理中...';
+            
+            // 模擬的な処理時間
+            setTimeout(() => {
+                alert('お申し込みありがとうございます！\n確認メールをお送りいたします。');
+                submitButton.disabled = false;
+                submitButton.textContent = '今すぐ無明会に参加する';
+            }, 2000);
+        });
+
+        // スクロールアニメーション
+        function initScrollAnimations() {
+            const animateElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animateElements.forEach(function(element) {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                observer.observe(element);
+            });
+        }
+
+        // ページ読み込み完了後に初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initScrollAnimations();
+        });
+    </script>
+</body>
+</html>

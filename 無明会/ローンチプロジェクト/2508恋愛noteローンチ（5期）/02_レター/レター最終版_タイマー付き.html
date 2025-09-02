@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 - 人は皆、誰かの光になれる</title>
+    
+    <!-- CSS読み込み -->
+    <link rel="stylesheet" href="letter_styles.css">
+    
+    <!-- 専用タイマーコントローラー（最優先で読み込み） -->
+    <script src="timer_controller.js"></script>
+    
+    <style>
+        /* 基本スタイル */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background-color: #ffffff;
+        }
+        
+        /* カウントダウンタイマーのスタイル */
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .countdown-item {
+            background-color: #d2691e;
+            border-radius: 10px;
+            padding: 12px;
+            min-width: 65px;
+            text-align: center;
+        }
+        
+        .countdown-number {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            color: #ffffff;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        /* CTAボタンのスタイル */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b6914 0%, #d4af37 100%);
+            color: #ffffff;
+            padding: 18px 54px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 6px 16px rgba(139, 105, 20, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 105, 20, 0.6);
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .countdown-item {
+                min-width: 55px;
+                padding: 10px;
+            }
+            
+            .countdown-number {
+                font-size: 22px;
+            }
+            
+            .countdown-label {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ヒーローセクション -->
+<div style="background: linear-gradient(135deg, #f5e6a3 0%, #d4af37 50%, #b8860b 100%); padding: 24px 0 16px 0; text-align: center; position: relative; overflow: hidden; margin: 0; font-family: 'Hiragino Mincho ProN', serif; font-size: 18px; line-height: 1.9; color: #1a202c;">
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1;">
+        <h1 style="font-size: clamp(4rem, 12vw, 5rem); font-weight: 700; color: #8b6914; margin-bottom: 20px; letter-spacing: 0.12em; position: relative; line-height: 1.1;">無明会</h1>
+        <p style="font-size: clamp(22px, 5.5vw, 28px); color: #8b6914; margin-bottom: 28px; font-weight: 500;">人は皆、誰かの光になれる</p>
+        <video controls autoplay loop playsinline style="width: 100%; max-width: 600px; height: auto; border-radius: 12px; border: 2px solid #d4af37;">
+            <source src="https://utagesystem.s3.ap-northeast-1.wasabisys.com/57YVjsYUpoL0/RlXN8Vylx1Cl.mp4" type="video/mp4">
+        </video>
+        
+        <!-- カウントダウンタイマー -->
+        <div style="margin-top: 20px; text-align: center;" id="countdown-timer" class="countdown-floating">
+            <div style="font-size: 16px; color: #8b6914; margin-bottom: 8px;">特別なご案内終了まであと...</div>
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div id="days" class="countdown-number">00</div>
+                    <div class="countdown-label">日</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="hours" class="countdown-number">00</div>
+                    <div class="countdown-label">時間</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="minutes" class="countdown-number">00</div>
+                    <div class="countdown-label">分</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="seconds" class="countdown-number">00</div>
+                    <div class="countdown-label">秒</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 問題提起 -->
+<div style="background: linear-gradient(135deg, #6b5b47 0%, #4a3c2e 100%); color: #ffffff; padding: 24px 0; font-family: 'Hiragino Mincho ProN', serif;" class="scroll-fade-in">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 style="font-size: clamp(24px, 6vw, 32px); font-weight: 600; margin-bottom: 32px; color: #ffffff; text-align: center;" class="scroll-fade-in delay-1">もしかして、あなたの心の中に<br>こんな声が響いていませんか？</h2>
+        
+        <p style="font-size: 16px; margin-bottom: 40px; text-align: center; max-width: 75ch; margin-left: auto; margin-right: auto; line-height: 2.0;" class="fade-in">朝起きて、また今日も「大丈夫な自分」を演じなければならないと思うと、心がどんよりと重くなる。</p>
+        
+        <ul style="list-style: none; padding: 0; max-width: 800px; margin: 0 auto;">
+            <li style="background: rgba(255, 255, 255, 0.15); padding: 20px; margin-bottom: 20px; border-radius: 10px; border-left: 4px solid #f5e6a3; font-size: 16px; line-height: 1.8; color: #ffffff;" class="scroll-fade-in delay-1">毎晩ベッドに入る瞬間、「今日も本当の自分を出せなかった」と胸が苦しくなる</li>
+            <li style="background: rgba(255, 255, 255, 0.15); padding: 20px; margin-bottom: 20px; border-radius: 10px; border-left: 4px solid #f5e6a3; font-size: 16px; line-height: 1.8; color: #ffffff;" class="scroll-fade-in delay-2">「頑張れば報われる」と信じて努力してきたのに、なぜか満たされない日々が続く</li>
+            <li style="background: rgba(255, 255, 255, 0.15); padding: 20px; margin-bottom: 20px; border-radius: 10px; border-left: 4px solid #f5e6a3; font-size: 16px; line-height: 1.8; color: #ffffff;" class="scroll-fade-in delay-3">深夜にふと「このままで人生が終わっていいの？」と不安が押し寄せてくる</li>
+            <li style="background: rgba(255, 255, 255, 0.15); padding: 20px; margin-bottom: 0; border-radius: 10px; border-left: 4px solid #f5e6a3; font-size: 16px; line-height: 1.8; color: #ffffff;" class="scroll-fade-in delay-4">SNSで他人の成功を見るたび、「自分だけが取り残されている」という気持ちになる</li>
+        </ul>
+        
+        <p style="font-size: 16px; margin-top: 48px; text-align: center; max-width: 75ch; margin-left: auto; margin-right: auto; line-height: 2.0; font-style: italic; color: #f5e6a3;" class="fade-in">子供の頃は「大人になったら何でもできる」と思っていたのに、気づけば「どうせ自分なんて…」が口癖になっている。</p>
+    </div>
+</div>
+
+<!-- CTAセクション -->
+<div style="background: #f8f6f3; padding: 24px 0; font-family: 'Hiragino Mincho ProN', serif;" class="scroll-fade-in">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <!-- CTA -->
+        <div style="text-align: center; margin: 0 auto; padding: 32px; background: rgba(139, 105, 20, 0.15); border-radius: 16px; max-width: 600px; border: 2px solid rgba(139, 105, 20, 0.3);" class="scroll-fade-in delay-1">
+            <p style="font-size: 18px; color: #8b6914; margin-bottom: 20px; font-weight: 600;" class="fade-in-up delay-2">無明会で本当の自分と<br>向き合ってみませんか？</p>
+            <a href="https://ne0ne.com/mn08p" class="fade-in-up delay-3 cta-button">
+                今すぐ無料で始める
+            </a>
+            <p style="font-size: 14px; color: #8b6914; margin-top: 12px;" class="fade-in-up delay-4">今だけの特別な案内・いつでも解約可能</p>
+        </div>
+    </div>
+</div>
+
+<!-- 解決策 -->
+<div style="padding: 24px 0; font-family: 'Hiragino Mincho ProN', serif;" class="scroll-fade-in">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 style="font-size: 34px; font-weight: 600; margin-bottom: 48px; color: #2d3748; text-align: center;" class="scroll-fade-in delay-1">無明会が提供する本質的な解決策</h2>
+        
+        <p style="font-size: 20px; line-height: 2.0; margin-bottom: 64px; color: #2d3748; max-width: 80ch; margin-left: auto; margin-right: auto; text-align: center; font-weight: 500;" class="scroll-fade-in delay-2">
+            無明会は「心を整え、より良く強く生きる」ことを実践するコミュニティです。<br>
+            表面的な慰めではなく、本質的な変化を遂げるための具体的な方法をお伝えします。
+        </p>
+    </div>
+</div>
+
+<!-- メンバーの変化 -->
+<div style="padding: 48px 0; font-family: 'Hiragino Mincho ProN', serif;" class="scroll-fade-in">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 style="font-size: 32px; font-weight: 600; margin-bottom: 48px; color: #2d3748; text-align: center;" class="scroll-fade-in delay-1">メンバーに起きている変化</h2>
+        
+        <p style="font-size: 20px; line-height: 2.0; margin-bottom: 32px; color: #2d3748; max-width: 80ch; margin-left: auto; margin-right: auto; text-align: center; font-weight: 500;">
+            無明会で学んだ仲間たちは、本音を分かち合い、自分の心に正直になることで、人生を変えています。
+        </p>
+
+        <!-- ビフォアフさりこ -->
+        <div style="margin-bottom: 32px; text-align: center;" class="scroll-fade-in delay-1">
+            <iframe src="https://utage-system.com/video/xKs4L9mzdelH" style="width: 100%; max-width: 600px; height: 56.25vw; max-height: 338px; border-radius: 12px; border: 2px solid #d4af37;"></iframe>
+        </div>
+        
+        <!-- ビフォアフわたひろ -->
+        <div style="margin-bottom: 32px; text-align: center;" class="scroll-fade-in delay-2">
+            <iframe src="https://utage-system.com/video/A6S7BagchPem" style="width: 100%; max-width: 600px; height: 56.25vw; max-height: 338px; border-radius: 12px; border: 2px solid #d4af37;"></iframe>
+        </div>
+        
+        <!-- ビフォアフへびひろ -->
+        <div style="margin-bottom: 32px; text-align: center;" class="scroll-fade-in delay-3">
+            <iframe src="https://utage-system.com/video/VDcA6V6NtQYI" style="width: 100%; max-width: 600px; height: 56.25vw; max-height: 338px; border-radius: 12px; border: 2px solid #d4af37;"></iframe>
+        </div>
+
+        <!-- メンバーの声 -->
+        <div style="margin-bottom: 64px;">
+            <!-- 導入文 -->
+            <div style="margin-bottom: 48px;">
+                <h3 style="font-size: 24px; font-weight: 700; color: #8b6914; margin-bottom: 24px; text-align: center;">
+                    彼らも最初は、あなたと同じような思いを抱えていました
+                </h3>
+                
+                <p style="font-size: 18px; line-height: 1.8; color: #2d3748; text-align: center; margin-bottom: 20px;">
+                    「毎日が苦しい」「人生に意味を見出せない」「本当の自分を出せない」<br>
+                    「このまま一生変われないのではないか」
+                </p>
+                
+                <p style="font-size: 16px; line-height: 1.8; color: #2d3748; text-align: center; margin-bottom: 20px;">
+                    そんな、あなたと同じ「行き場のない苦しみ」「答えのない迷い」「分かち合うことのない悲しみ」を抱えたまま、無明会の扉を叩きました。
+                </p>
+                
+                <p style="font-size: 18px; line-height: 1.8; color: #8b6914; text-align: center; font-weight: 600; margin: 0;">
+                    そして今、彼らは自分の人生を取り戻しています。
+                </p>
+            </div>
+            
+            <!-- けんたろうさんの声 -->
+            <div style="margin-bottom: 48px;">
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/blDlIpg9dnMQwNOKl1QxnpH1Uqtr9K6cfirK9Y7I.png" alt="けんたろうさんの声" style="width: 100%; height: auto; border-radius: 12px;">
+                </div>
+            </div>
+            
+            <!-- こうたさんの声 -->
+            <div style="margin-bottom: 48px;">
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/rWF04ebRDdsbgV0NlDs5SM1gdgPJ1WMmR5HgRA6I.png" alt="こうたさんの声" style="width: 100%; height: auto; border-radius: 12px;">
+                </div>
+            </div>
+            
+            <!-- さりこさんの声 -->
+            <div style="margin-bottom: 48px;">
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/6aAHAA3WcznA2h8vvsxkSBVJj8OeBi4OPUaqTHd4.png" alt="さりこさんの声" style="width: 100%; height: auto; border-radius: 12px;">
+                </div>
+            </div>
+            
+            <!-- たつきさんの声 -->
+            <div style="margin-bottom: 48px;">
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/oge6YXJh01482EZ2l495cDd9q7nn8iNbFD1D4PTQ.png" alt="たつきさんの声" style="width: 100%; height: auto; border-radius: 12px;">
+                </div>
+            </div>
+            
+            <!-- ともひろさんの声 -->
+            <div style="margin-bottom: 48px;">
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/T61p74bgxBpHBQhuQiEjKPbfSFvaMcRV3FYgaRVQ.png" alt="ともひろさんの声" style="width: 100%; height: auto; border-radius: 12px;">
+                </div>
+            </div>
+            
+            <!-- その他の複数メンバー -->
+            <div style="margin-bottom: 32px;">
+                <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/0tEmjZJNucHJzQn60B47V4IwjV6JGSU1iXQCLRw6.png" alt="りょう、ゆきこ、長田さんの声" style="width: 100%; max-width: 600px; height: auto; border-radius: 12px; margin: 0 auto 24px auto; display: block;">
+                <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/e0rlCesjNJ1gRHB39Cv3YKB09uN8mrbkWBeffPrm.png" alt="ながのさん、ゆうがさんの声" style="width: 100%; max-width: 600px; height: auto; border-radius: 12px; margin: 0 auto 24px auto; display: block;">
+                <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/KTtpj6bB4W2B25vEzLLulZA74xiFj2HIg8Gg8X4x.png" alt="尾崎さん、ひろこさんの声" style="width: 100%; max-width: 600px; height: auto; border-radius: 12px; margin: 0 auto 24px auto; display: block;">
+                <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/kmlfCFGexQGZm34EhALSeMMAnrmIOTgAuQ9IuT0j.png" alt="いながきさん、さとしさん、あきさんの声" style="width: 100%; max-width: 600px; height: auto; border-radius: 12px; margin: 0 auto; display: block;">
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align: center; margin: 48px 0;">
+            <p style="font-size: 20px; color: #8b6914; margin-bottom: 16px; font-weight: 600;">あなたも同じような変化を体験してみませんか？</p>
+            <a href="https://ne0ne.com/mn08p" class="cta-button">
+                今すぐ無明会に参加する
+            </a>
+            <p style="font-size: 14px; color: #8b6914; margin-top: 16px;">今だけの特別な案内・いつでも退会可能</p>
+        </div>
+    </div>
+</div>
+
+<!-- 無明会の実践活動 -->
+<div style="padding: 20px 0; font-family: 'Hiragino Mincho ProN', serif;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 style="font-size: 36px; font-weight: 600; margin-bottom: 32px; color: #2d3748; text-align: center;">無明会の活動</h2>
+        
+        <!-- 活動の意味 -->
+        <div style="margin-bottom: 48px;">
+            <p style="font-size: 20px; line-height: 1.8; margin-bottom: 24px; color: #2d3748; text-align: center; font-weight: 600;">
+                無明会は、学びだけで終わらない。
+            </p>
+            
+            <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px; color: #2d3748; text-align: center;">
+                「苦しみを織り込んだこの人生を、前向きに笑い飛ばそう」<br>
+                その理念を、実際の行動を通じて体現していきます。
+            </p>
+            
+            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px; color: #2d3748; text-align: center;">
+                一人では続けられないことも、「善き友」である仲間がいれば乗り越えられる。<br>
+                それが無明会の真の価値です。
+            </p>
+            
+            <p style="font-size: 18px; line-height: 1.8; color: #8b6914; text-align: center; font-weight: 600; margin: 0; font-style: italic;">
+                「このクソゲーとしか言いようのない人生を、<br>共にゲラゲラ笑い飛ばしながら歩いていく。」
+            </p>
+        </div>
+
+        <!-- 動画コンテンツの詳細 -->
+        <div style="background: rgba(139, 105, 20, 0.05); padding: 32px; border-radius: 16px; margin-bottom: 48px; border-left: 4px solid #d4af37;">
+            <h3 style="font-size: 28px; font-weight: 600; color: #8b6914; margin-bottom: 24px; text-align: center;">🎥 圧倒的なコンテンツ量</h3>
+            
+            <div style="text-align: center; margin-bottom: 24px;">
+                <div style="display: inline-block; background: linear-gradient(135deg, #8b6914 0%, #d4af37 100%); color: #fff; padding: 16px 24px; border-radius: 12px; margin: 0 8px 8px 0;">
+                    <span style="font-size: 24px; font-weight: 700;">150本</span>
+                </div>
+                <div style="display: inline-block; background: linear-gradient(135deg, #d2691e 0%, #8b6914 100%); color: #fff; padding: 16px 24px; border-radius: 12px; margin: 0 0 8px 0;">
+                    <span style="font-size: 24px; font-weight: 700;">160時間以上</span>
+                </div>
+            </div>
+            
+            <div style="text-align: left; margin-bottom: 24px;">
+                <p style="font-size: 16px; color: #2d3748; margin-bottom: 8px; padding-left: 16px; position: relative;">
+                    <span style="position: absolute; left: 0; top: 6px; width: 4px; height: 4px; background: #d4af37; border-radius: 50%;"></span>
+                    今回の動画のような<strong>実践的なワーク付きコンテンツ</strong>が多数
+                </p>
+                <p style="font-size: 16px; color: #2d3748; margin-bottom: 8px; padding-left: 16px; position: relative;">
+                    <span style="position: absolute; left: 0; top: 6px; width: 4px; height: 4px; background: #d4af37; border-radius: 50%;"></span>
+                    <strong>補講コンテンツ</strong>で理解を深める追加解説
+                </p>
+                <p style="font-size: 16px; color: #2d3748; margin-bottom: 8px; padding-left: 16px; position: relative;">
+                    <span style="position: absolute; left: 0; top: 6px; width: 4px; height: 4px; background: #d4af37; border-radius: 50%;"></span>
+                    <strong>オフラインイベントのアーカイブ</strong>で復習も完璧
+                </p>
+                <p style="font-size: 16px; color: #2d3748; margin: 0; padding-left: 16px; position: relative;">
+                    <span style="position: absolute; left: 0; top: 6px; width: 4px; height: 4px; background: #d4af37; border-radius: 50%;"></span>
+                    運営メンバーや外部講師との<strong>ここだけでしか見れない対談</strong>
+                </p>
+            </div>
+            
+            <!-- コンテンツ一覧画像 -->
+            <div style="text-align: center; margin-bottom: 16px;">
+                <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/EcYt6F6LgWh1z7nx15e5lYcCQ67h3Cm4WRbRdu3J.png" alt="無明会コンテンツ一覧" style="width: 100%; max-width: 800px; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(139, 105, 20, 0.15); border: 2px solid #d4af37;">
+            </div>
+        </div>
+
+        <!-- 月次イベント -->
+        <h3 style="font-size: 28px; font-weight: 600; color: #8b6914; margin-bottom: 16px; text-align: center;">月次オフラインイベント</h3>
+        <div style="text-align: center; margin-bottom: 48px;">
+            <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/ZwpJbwgLL0cWnYVJq1vDGgHBk5iQz1uFOMDeO5TU.webp" alt="月次オフラインイベントの様子" style="width: 100%; max-width: 800px; height: auto; border-radius: 16px; box-shadow: 0 8px 24px rgba(139, 105, 20, 0.15);">
+        </div>
+
+        <!-- ビーチクリーン活動 -->
+        <h3 style="font-size: 28px; font-weight: 600; color: #8b6914; margin-bottom: 16px; text-align: center;">ビーチクリーン活動</h3>
+        <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/rHFcfBhqdjRxDVnZNkYOjVkNoxnwCcZiE0vAVvPA.webp" alt="ビーチクリーン活動の様子" style="width: 100%; height: auto; margin-bottom: 48px;">
+
+        <!-- 炊き出し活動 -->
+        <h3 style="font-size: 28px; font-weight: 600; color: #8b6914; margin-bottom: 16px; text-align: center;">炊き出し活動</h3>
+        <div style="text-align: center; margin-bottom: 48px;">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <iframe src="https://utage-system.com/video/4ioZinXIKHIV" style="width: 100%; max-width: 600px; height: 338px; border-radius: 12px; border: 2px solid #d4af37;"></iframe>
+                <p style="color: #8b6914; font-size: 14px; opacity: 0.8; margin: 8px 0 0 0; font-style: italic;">フィリピンのスラム街にて炊き出し活動</p>
+            </div>
+        </div>
+
+        <!-- メンバーの実践アウトプット -->
+        <h3 style="font-size: 28px; font-weight: 600; color: #8b6914; margin-bottom: 16px; text-align: center;">無明会で得た変化</h3>
+            <!-- 1: 口下手改善・医師試験合格 -->
+            <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/306I8aboUFasbVGGFAlSdUgDDVN588Hnr5taqFp1.webp" alt="1: 口下手改善・医師試験合格" style="width: 100%; max-width: 800px; height: auto; border-radius: 16px; box-shadow: 0 8px 24px rgba(139, 105, 20, 0.15); margin-bottom: 24px;">
+            <!-- 4: 彼女ができた！ -->
+            <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/Sda557NxldWhB0n2kVjvbq3zBLGchTtAPC2Css6h.webp" alt="4: 彼女ができた！" style="width: 100%; max-width: 800px; height: auto; border-radius: 16px; box-shadow: 0 8px 24px rgba(139, 105, 20, 0.15); margin-bottom: 24px;">
+            <!-- 2: 親子関係・昇級昇進 -->
+            <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/xfsPnJ3aXZlGHxtIUHbf8e6JvzdtTqUcpCZT3ia6.webp" alt="2: 親子関係・昇級昇進" style="width: 100%; max-width: 800px; height: auto; border-radius: 16px; box-shadow: 0 8px 24px rgba(139, 105, 20, 0.15); margin-bottom: 24px;">
+            <!-- 3: 愛着障害克服 -->
+            <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/57YVjsYUpoL0/RiegvW0vppeJtTcdOSXSg0P7G1IlZcvUTjnE9IzQ.webp" alt="3: 愛着障害克服" style="width: 100%; max-width: 800px; height: auto; border-radius: 16px; box-shadow: 0 8px 24px rgba(139, 105, 20, 0.15);">
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align: center; margin-top: 64px; padding: 48px; background: rgba(139, 105, 20, 0.1); border-radius: 20px;">
+            <h4 style="font-size: 26px; font-weight: 700; color: #8b6914; margin-bottom: 20px;">あなたも無明会の実践活動に参加しませんか？</h4>
+            <p style="font-size: 18px; line-height: 1.8; color: #2d3748; max-width: 65ch; margin: 0 auto 32px auto;">
+                学びだけでなく、実際の行動を通じて心を整え、仲間とともに成長していく。<br>これが無明会の真の価値です。
+            </p>
+            <a href="https://ne0ne.com/mn08p" class="cta-button">
+                今すぐ無明会で新しい自分になる
+            </a>
+            <p style="font-size: 14px; color: #8b6914; margin-top: 20px; opacity: 0.8;">今だけの特別な案内・本質的な変化を体験</p>
+        </div>
+    </div>
+</div>
+
+<!-- 価格アンカリング・価値教育 -->
+<div style="background: #f8f6f3; padding: 48px 0; font-family: 'Hiragino Mincho ProN', serif; font-size: 18px; line-height: 1.9; color: #1a202c;">
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+        <h2 style="font-size: 34px; font-weight: 600; margin-bottom: 48px; color: #2d3748; text-align: center;">なぜこれほどの変化が可能なのか？</h2>
+        
+        <p style="font-size: 18px; color: #2d3748; text-align: center; line-height: 1.8; margin-bottom: 32px;">
+            それは、無明会を主催する永世豊・髙見龍の両名が、これまで数千人単位の人生に関わり、人間心理・精神のプロとして活動してきたからです。
+        </p>
+        
+        <p style="font-size: 16px; color: #2d3748; text-align: center; line-height: 1.8; margin-bottom: 24px;">
+            事実として、両名は平時においてはその指導において
+        </p>
+        
+        <div style="text-align: center; margin-bottom: 32px;">
+            <div style="background: linear-gradient(135deg, #8b6914 0%, #d4af37 100%); color: #fff; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+                <p style="font-size: 32px; margin: 0; font-weight: 700;">タイムチャージ「10万円〜30万円」</p>
+            </div>
+            <p style="font-size: 16px; color: #2d3748; margin: 16px 0;">を報酬としています。</p>
+        </div>
+        
+        <p style="font-size: 16px; color: #2d3748; text-align: center; line-height: 1.8; margin-bottom: 48px;">
+            それは、そういう値札をつけている、というだけではなく。<br>
+            現にそういった報酬の価値を見出している方のみをクライアントとして迎えている、ということです。
+        </p>
+        
+        <!-- 価値の根拠 -->
+        <h3 style="font-size: 22px; font-weight: 700; color: #8b6914; margin-bottom: 24px; text-align: center;">まして、その両名から、オフラインという距離感で直接に学べるなら、その価値はどれくらいのものになるのか。</h3>
+        
+        <p style="font-size: 18px; color: #2d3748; text-align: center; line-height: 1.8; margin-bottom: 24px;">
+            実際、永世と髙見の、いわば「探求にかけてきた投資額と月日」を合算しようものなら。
+        </p>
+        
+        <div style="text-align: center; margin-bottom: 32px;">
+            <div style="background: linear-gradient(135deg, #d2691e 0%, #8b6914 100%); color: #fff; padding: 24px; border-radius: 12px;">
+                <p style="font-size: 32px; margin: 0; font-weight: 700; color: #fff8dc;">まさに「億単位の投資・数十年の研鑽」</p>
+            </div>
+        </div>
+        
+        <p style="font-size: 18px; color: #2d3748; text-align: center; line-height: 1.8; margin-bottom: 24px;">
+            そして、その結晶となる智慧を提供する場があるというのであれば、その入門料は…。
+        </p>
+        
+        <p style="font-size: 28px; color: #8b6914; font-weight: 700; margin-bottom: 8px; text-align: center;">
+            「どう考えても百万円以上の価値がある」
+        </p>
+        <p style="font-size: 16px; color: #2d3748; margin-bottom: 16px; text-align: center;">
+            そう思えたなら、それは間違っていません。極めて正常です。
+        </p>
+        
+        <p style="font-size: 14px; color: #666; text-align: center; margin-bottom: 48px; font-style: italic;">
+            （現に、それくらいのフィーを、日常的にお預かりしているのが私たちです）
+        </p>
+        
+        <!-- 無明会の価値提供理由 -->
+        <h3 style="font-size: 22px; font-weight: 700; color: #8b6914; margin-bottom: 24px; text-align: center;">ただ。</h3>
+        
+        <p style="font-size: 18px; color: #2d3748; text-align: center; line-height: 1.8; margin-bottom: 24px;">
+            逆にいうと、この「無明会」では、<strong style="color: #8b6914;">「価格を度外視した学び」</strong>を与えたいと思っています。
+        </p>
+        
+        <p style="font-size: 18px; color: #2d3748; text-align: center; line-height: 1.8; margin-bottom: 32px;">
+            裏を返せば<strong style="color: #8b6914;">「学びの価値を度外視した価格」</strong>で、それを提供したいと言っているのです。
+        </p>
+        
+        <p style="font-size: 16px; color: #2d3748; line-height: 1.8; margin-bottom: 16px; text-align: center; font-style: italic;">
+            苦しみの闇の中にいた、私たち2人の前に、それぞれの「善き友」が現れたように。
+        </p>
+        <p style="font-size: 16px; color: #2d3748; line-height: 1.8; margin-bottom: 48px; text-align: center; font-style: italic;">
+            少なくともお金に困ることがなくなった我々から「次に繋ぎ、場を広める」そのような意図を持って。
+        </p>
+        
+        <!-- 22,000円の価値内訳 -->
+        <h3 style="font-size: 22px; font-weight: 700; color: #8b6914; margin-bottom: 24px; text-align: center;">月額22,000円で得られる価値</h3>
+            
+            <div style="margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee;">
+                    <span style="font-size: 16px; color: #2d3748;"><strong>動画150本・160時間以上のコンテンツ</strong></span>
+                    <span style="font-size: 16px; color: #8b6914; font-weight: 600;">100,000円相当</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee;">
+                    <span style="font-size: 16px; color: #2d3748;">月1回オフラインイベント参加</span>
+                    <span style="font-size: 16px; color: #8b6914; font-weight: 600;">70,000円相当</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee;">
+                    <span style="font-size: 16px; color: #2d3748;">Discord限定コミュニティ</span>
+                    <span style="font-size: 16px; color: #8b6914; font-weight: 600;">30,000円相当</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0; background: rgba(139, 105, 20, 0.1); margin-top: 16px; border-radius: 8px; padding-left: 16px; padding-right: 16px;">
+                    <span style="font-size: 18px; color: #2d3748; font-weight: 700;">合計価値</span>
+                    <span style="font-size: 20px; color: #d2691e; font-weight: 700;">200,000円相当</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding: 20px; background: rgba(210, 105, 30, 0.1); border-radius: 12px; margin-bottom: 48px;">
+                <p style="font-size: 18px; color: #d2691e; font-weight: 700; margin: 0;">
+                    それを月額22,000円で提供 = <span style="font-size: 24px;">89%OFF</span>
+                </p>
+                <p style="font-size: 16px; color: #2d3748; margin-top: 12px; margin-bottom: 0;">
+                    髙見龍・なゆたのタイムチャージを考えると、まさに破格の価格設定です。
+                </p>
+            </div>
+        
+        <!-- 体験参加への繋ぎ -->
+        <p style="font-size: 18px; color: #2d3748; text-align: center; line-height: 1.8; margin-bottom: 32px;">
+            すでに十分すぎるほど破格な価格設定ですが...
+        </p>
+        
+
+        <!-- 体験参加案内 -->
+        <div style="background: linear-gradient(135deg, #6b5b47 0%, #4a3c2e 100%); color: #fff; padding: 40px; border-radius: 16px; margin-bottom: 32px;">
+            <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 24px; text-align: center; color: #fff;">それでも、まだ迷っているあなたへ。</h3>
+            
+            <p style="font-size: 18px; line-height: 1.8; color: #fff; text-align: center; margin-bottom: 24px;">
+                この門出の宣言に縁する人を、1人でも多く、その「苦しみを肯定する体験」へと誘うために。
+            </p>
+            
+            <p style="font-size: 20px; line-height: 1.8; color: #f5e6a3; text-align: center; font-weight: 700; margin-bottom: 32px;">
+                勇気の最後のひと押しをするために。<br>
+                今回に限り、「1ヶ月体験参加」を受け付けます。
+            </p>
+            
+            <!-- 価格表示 -->
+            <div style="background: linear-gradient(135deg, #f8f6f3 0%, #ffffff 100%); padding: 24px; border-radius: 12px; text-align: center; margin-bottom: 24px;">
+                <div style="margin-bottom: 20px;">
+                    <p style="font-size: 18px; color: #6b5b47; text-decoration: line-through; margin: 0;">通常：22,000円 (税込/月)</p>
+                    <p style="font-size: 14px; color: #4a3c2e; margin: 4px 0;">200,000円相当の価値</p>
+                </div>
+                
+                <!-- CSS矢印 -->
+                <div style="text-align: center; margin: 16px 0; position: relative; z-index: 2;">
+                    <div style="width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 16px solid #6b5b47; margin: 0 auto; position: relative;">
+                        <div style="position: absolute; top: -20px; left: -1px; width: 3px; height: 12px; background: #6b5b47;"></div>
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #6b5b47 0%, #4a3c2e 100%); color: #fff; padding: 20px; border-radius: 8px; margin-bottom: 16px;">
+                    <p style="font-size: 28px; margin: 0; font-weight: 700; text-align: center;">初月体験参加 0円</p>
+                    <p style="font-size: 16px; margin: 8px 0 0 0; text-align: center; color: #f5e6a3;">このページ表示中限定・今回のみ</p>
+                </div>
+                
+                <p style="font-size: 12px; color: #6b5b47; margin: 8px 0 0 0;">※2ヶ月目以降は通常料金22,000円　※いつでも退会可能</p>
+            </div>
+            
+            <div style="background: rgba(255, 255, 255, 0.15); padding: 20px; border-radius: 12px;">
+                <p style="font-size: 16px; line-height: 1.8; color: #f5e6a3; text-align: center; margin-bottom: 12px; font-weight: 600;">
+                    たった一度でいい。なんなら、人生最後の勇気でもいい。
+                </p>
+                
+                <p style="font-size: 15px; line-height: 1.7; color: #fff; text-align: center; margin-bottom: 12px;">
+                    この「無明会」によって得られる体験は、<strong>「体感しないと絶対にわからない」</strong>ものです。
+                </p>
+                
+                <p style="font-size: 16px; line-height: 1.8; color: #f5e6a3; text-align: center; font-weight: 600; margin: 0;">
+                    だからまずは、考えるより先に、食べるところから。
+                </p>
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <div style="text-align: center; margin: 48px 0; padding: 40px; background: linear-gradient(135deg, #f5e6a3 0%, #d4af37 100%); border-radius: 16px; border: 2px solid #8b6914;">
+            <p style="font-size: 22px; color: #8b6914; margin-bottom: 20px; font-weight: 700; line-height: 1.4;">
+                この一回にかけて、私たちに会いに来てください。<br>
+                200,000円相当の価値を、まずは体感してください。
+            </p>
+            
+            <div style="background: rgba(139, 105, 20, 0.15); padding: 20px; border-radius: 12px; margin-bottom: 24px;">
+                <p style="font-size: 16px; color: #8b6914; margin: 0; font-style: italic; line-height: 1.6; font-weight: 600;">
+                    「苦しむことが許され、笑い飛ばせる、<br>世界最初で最後の場所」<br>
+                    それがこの無明会というコミュニティです。
+                </p>
+            </div>
+            
+            <a href="https://ne0ne.com/mn08p" class="cta-button">
+                今すぐ無明会に参加する
+            </a>
+            <p style="font-size: 14px; color: #8b6914; margin-top: 12px;">人生最後の勇気を、ここに。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 最終メッセージ -->
+<div style="background: #8b6914; color: #f7fafc; padding: 48px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h2 style="font-size: 36px; text-align: center; margin-bottom: 48px; font-weight: 700;">もう一人で抱え込まなくていい</h2>
+        
+        <p style="margin-bottom: 40px; font-size: 20px; max-width: 80ch; margin-left: auto; margin-right: auto; text-align: center; line-height: 2.0;">無明でしかないこの人生に、もし救いがあるとするなら。それは「<strong style="color: #f5e6a3;">善き友</strong>」において他ならないのではないでしょうか。</p>
+        
+        <!-- 最終CTA -->
+        <div style="text-align: center; margin-top: 48px; padding: 40px; background: rgba(255, 255, 255, 0.1); border-radius: 20px;">
+            <p style="font-size: 22px; color: #f5e6a3; margin-bottom: 20px; font-weight: 700;">本当の自分と向き合う準備はできていますか？</p>
+            <a href="https://ne0ne.com/mn08p" class="cta-button" style="background: linear-gradient(135deg, #d4af37 0%, #8b6914 100%); color: #f7fafc; padding: 24px 56px; font-size: 24px; font-weight: 700; border: 3px solid #f5e6a3;">
+                無明会で人生を変える
+            </a>
+            <p style="font-size: 16px; color: #f5e6a3; margin-top: 20px; opacity: 0.9;">今だけの特別な案内・本質的な変化を体験</p>
+            
+            <!-- カウントダウン -->
+            <div style="margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                <h4 style="font-size: 20px; font-weight: 700; color: #f5e6a3; margin-bottom: 16px; text-align: center;">人生を変える機会が終わるまで、あと...</h4>
+                
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <div id="final-days" class="countdown-number">00</div>
+                        <div class="countdown-label">日</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="final-hours" class="countdown-number">00</div>
+                        <div class="countdown-label">時間</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="final-minutes" class="countdown-number">00</div>
+                        <div class="countdown-label">分</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="final-seconds" class="countdown-number">00</div>
+                        <div class="countdown-label">秒</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 最初に戻るボタン -->
+<div style="background: #f8f6f3; padding: 24px 0; text-align: center; border-top: 1px solid #d4af37;">
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="background: linear-gradient(135deg, #8b6914 0%, #d4af37 100%); color: #ffffff; padding: 16px 32px; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(139, 105, 20, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(139, 105, 20, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(139, 105, 20, 0.3)'">
+        ↑ 最初に戻る
+    </button>
+</div>
+
+<!-- 既存のスクリプトファイル（アニメーション等） -->
+<script src="letter_scripts.js"></script>
+
+<!-- デバッグ用コンソール（開発時のみ） -->
+<script>
+// デバッグ用：残り時間確認
+console.log('無明会タイマーデバッグ情報:');
+console.log('残り時間を確認: getMumyokaiRemainingTime()');
+console.log('タイマーリセット: resetMumyokaiTimer()');
+</script>
+
+</body>
+</html>

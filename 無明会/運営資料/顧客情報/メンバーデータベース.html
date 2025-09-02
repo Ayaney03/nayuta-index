@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 メンバーデータベース</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #f8f6f3 0%, #fff8dc 50%, #f5e6a3 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .filter-select {
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            background: white;
+            font-size: 0.9em;
+        }
+
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #6c757d;
+        }
+
+        .member-grid {
+            background: white;
+            border-radius: 8px;
+            margin: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .member-list-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 8px 15px;
+            display: grid;
+            grid-template-columns: 50px 140px 100px 80px 100px 100px 120px;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 0.75em;
+            text-align: center;
+        }
+
+        .member-list-item {
+            display: grid;
+            grid-template-columns: 50px 140px 100px 80px 100px 100px 120px;
+            gap: 8px;
+            padding: 6px 15px;
+            border-bottom: 1px solid #e9ecef;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 0.7em;
+            align-items: center;
+        }
+
+        .member-list-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .member-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .member-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .member-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .member-id {
+            font-size: 0.7em;
+            color: #666;
+            background: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .member-team {
+            font-size: 0.7em;
+            padding: 2px 4px;
+            border-radius: 3px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .team-貪欲 { 
+            background: #fff9c4; 
+            color: #795548; 
+            border: 1px solid #ffeb3b; 
+        }
+        
+        .team-瞋恚 { 
+            background: #ffebee; 
+            color: #b71c1c; 
+            border: 1px solid #f44336; 
+        }
+        
+        .team-愚痴 { 
+            background: #e8f5e8; 
+            color: #2e7d32; 
+            border: 1px solid #4caf50; 
+        }
+        
+        .team-なし { 
+            background: #e9ecef; 
+            color: #6c757d; 
+            border: 1px solid #6c757d; 
+        }
+        
+        .team-未設定 { 
+            background: #fff; 
+            color: #999; 
+            border: 1px solid #dee2e6; 
+        }
+
+        .join-date {
+            font-size: 0.7em;
+            color: #666;
+            text-align: center;
+        }
+
+        .last-active {
+            font-size: 0.7em;
+            color: #666;
+            text-align: center;
+        }
+
+        .member-status {
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.7em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .status-年間, .status-通常 {
+            background: #f8f9fa;
+            color: #495057;
+            border: 1px solid #dee2e6;
+        }
+
+        .status-体験終了, .status-退会 {
+            background: #495057;
+            color: #fff;
+            border: 1px solid #343a40;
+        }
+
+        .status-不明 {
+            background: #e9ecef;
+            color: #6c757d;
+            border: 1px solid #6c757d;
+        }
+
+        .member-details {
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .detail-label {
+            color: #6c757d;
+        }
+
+        .detail-value {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .ltv-display {
+            text-align: right;
+            font-weight: 600;
+            color: #1976d2;
+            font-size: 0.7em;
+        }
+
+        .upsale-display {
+            text-align: center;
+            font-size: 0.65em;
+            color: #e91e63;
+            font-weight: 500;
+        }
+
+        .total-ltv-display {
+            text-align: right;
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 0.75em;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .add-member-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #d4af37;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .add-member-btn:hover {
+            transform: scale(1.1);
+            background: #b8860b;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        /* 更新期限アラート色 */
+        .renewal-overdue { 
+            background: #dc3545 !important; 
+            color: white !important; 
+        }
+        
+        .renewal-soon { 
+            background: #fd7e14 !important; 
+            color: white !important; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー & 統計エリア（2カラム） -->
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 12px; color: white;">
+            <!-- 左カラム：タイトル -->
+            <div>
+                <h1 style="font-size: 1.8em; margin: 0 0 8px 0;">👥 無明会</h1>
+                <h2 style="font-size: 1.2em; margin: 0 0 12px 0; opacity: 0.9;">メンバーデータベース</h2>
+                <p style="margin: 0; opacity: 0.8; font-size: 0.9em;">メンバー管理・LTV分析システム</p>
+            </div>
+            
+            <!-- 右カラム：統計 -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 1.4em; font-weight: bold;" id="total-members">110</div>
+                    <div style="font-size: 0.75em; opacity: 0.9;">👥 総メンバー</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 1.4em; font-weight: bold;" id="annual-members">0</div>
+                    <div style="font-size: 0.75em; opacity: 0.9;">💎 年間会員</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 1.4em; font-weight: bold;" id="regular-members">0</div>
+                    <div style="font-size: 0.75em; opacity: 0.9;">⭐ 通常会員</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 1.4em; font-weight: bold;" id="trial-ended-members">0</div>
+                    <div style="font-size: 0.75em; opacity: 0.9;">⏰ 体験終了</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 1.4em; font-weight: bold;" id="churned-members">0</div>
+                    <div style="font-size: 0.75em; opacity: 0.9;">❌ 退会</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 12px; border-radius: 8px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 1.4em; font-weight: bold;" id="active-ltv">¥0M</div>
+                    <div style="font-size: 0.75em; opacity: 0.9;">💰 現役LTV</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 💰 売上・更新予定 -->
+        <div style="background: #fff3e0; padding: 12px; margin: 15px 20px; border-radius: 8px; border-left: 4px solid #ff9800;">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-size: 0.8em;">
+                <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">
+                    <div style="font-weight: bold; color: #007bff; font-size: 1em;" id="this-month-count">0</div>
+                    <div style="font-size: 0.75em;">📅 今月更新予定</div>
+                </div>
+                <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">
+                    <div style="font-weight: bold; color: #ffc107; font-size: 1em;" id="next-month-count">0</div>
+                    <div style="font-size: 0.75em;">📅 来月更新予定</div>
+                </div>
+                <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">
+                    <div style="font-weight: bold; color: #28a745; font-size: 1em;" id="this-month-revenue">¥0</div>
+                    <div style="font-size: 0.75em;">💰 今月売上予定</div>
+                </div>
+                <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">
+                    <div style="font-weight: bold; color: #17a2b8; font-size: 1em;" id="next-month-revenue">¥0</div>
+                    <div style="font-size: 0.75em;">💸 来月売上見込み</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 📈 メンバー数推移 -->
+        <div style="background: #e8f5e8; padding: 12px; margin: 15px 20px; border-radius: 8px; border-left: 4px solid #28a745;">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-size: 0.8em;">
+                <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">
+                    <div style="font-weight: bold; color: #007bff; font-size: 1em;" id="current-active-members">0</div>
+                    <div style="font-size: 0.75em;">👥 現役会員数</div>
+                </div>
+                <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">
+                    <div style="font-weight: bold; color: #28a745; font-size: 1em;" id="monthly-growth">+0</div>
+                    <div style="font-size: 0.75em;">📊 前月比増減</div>
+                </div>
+                <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">
+                    <div style="font-weight: bold; color: #17a2b8; font-size: 1em;" id="yearly-growth">+0</div>
+                    <div style="font-size: 0.75em;">📈 前年同月比</div>
+                </div>
+                <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">
+                    <div style="font-weight: bold; color: #6f42c1; font-size: 1em;" id="growth-rate">0%</div>
+                    <div style="font-size: 0.75em;">📍 月間成長率</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 三毒チーム統計 -->
+        <div style="background: #f8f9fa; padding: 15px; margin: 15px 20px; border-radius: 8px; border-left: 4px solid #6f42c1;">
+            <h3 style="color: #6f42c1; margin-bottom: 10px; font-size: 1em;">🔮 三毒チーム分布</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; font-size: 0.85em;">
+                <div style="background: #fff3cd; padding: 8px; border-radius: 4px; text-align: center; border: 2px solid #ffc107;">
+                    <div style="font-weight: bold; color: #856404;" id="greed-count">0</div>
+                    <div>貪欲チーム</div>
+                </div>
+                <div style="background: #f8d7da; padding: 8px; border-radius: 4px; text-align: center; border: 2px solid #dc3545;">
+                    <div style="font-weight: bold; color: #721c24;" id="anger-count">0</div>
+                    <div>瞋恚チーム</div>
+                </div>
+                <div style="background: #d4edda; padding: 8px; border-radius: 4px; text-align: center; border: 2px solid #28a745;">
+                    <div style="font-weight: bold; color: #155724;" id="ignorance-count">0</div>
+                    <div>愚痴チーム</div>
+                </div>
+                <div style="background: #e9ecef; padding: 8px; border-radius: 4px; text-align: center; border: 2px solid #6c757d;">
+                    <div style="font-weight: bold; color: #6c757d;" id="no-team-count">0</div>
+                    <div>未所属</div>
+                </div>
+                <div style="background: white; padding: 8px; border-radius: 4px; text-align: center; border: 2px solid #dee2e6;">
+                    <div style="font-weight: bold; color: #999;" id="unassigned-count">0</div>
+                    <div>未設定</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 検索・フィルター -->
+        <div class="controls">
+            <input type="text" id="searchBox" class="search-box" placeholder="🔍 メンバー名で検索...">
+            <select id="statusFilter" class="filter-select">
+                <option value="">全ステータス</option>
+                <option value="年間">年間会員</option>
+                <option value="通常">通常会員</option>
+                <option value="体験終了">体験終了</option>
+                <option value="退会">退会</option>
+            </select>
+            <select id="sortBy" class="filter-select">
+                <option value="id">ID順</option>
+                <option value="name">名前順（あいうえお）</option>
+                <option value="ltv">LTV高い順</option>
+                <option value="ltvLow">LTV低い順</option>
+                <option value="joinDate">入会日順</option>
+                <option value="subscription">サブスク期間長い順</option>
+                <option value="events">参加イベント多い順</option>
+            </select>
+            <select id="teamFilter" class="filter-select">
+                <option value="">全チーム</option>
+                <option value="貪欲">貪欲チーム</option>
+                <option value="瞋恚">瞋恚チーム</option>
+                <option value="愚痴">愚痴チーム</option>
+                <option value="なし">チーム未所属</option>
+            </select>
+            <button id="rankingBtn" class="filter-select" style="background: #6f42c1; color: white; border: none; cursor: pointer;">🏆 LTVランキング</button>
+            <button id="activeOnlyBtn" class="filter-select" style="background: #28a745; color: white; border: none; cursor: pointer;">👥 現役会員のみ</button>
+            <button id="renewalAlertBtn" class="filter-select" style="background: #ff6b35; color: white; border: none; cursor: pointer;">⚠️ 更新間近</button>
+        </div>
+
+        <!-- メンバーテーブル -->
+        <div class="member-grid">
+            <div class="member-list-header">
+                <div>ID</div>
+                <div>名前</div>
+                <div>ステータス</div>
+                <div>チーム</div>
+                <div>基本LTV</div>
+                <div>アップセル</div>
+                <div>総LTV</div>
+            </div>
+            <div id="memberGrid">
+                <!-- メンバーリストがここに動的に生成されます -->
+            </div>
+        </div>
+    </div>
+
+    <button class="add-member-btn" onclick="addNewMember()">+</button>
+
+    <script src="three_poisons_team_mapping.js"></script>
+    <script>
+        // 通常会員になった日（正規支払い開始日）配列（M001から順番）
+        const regularJoinDateArray = [
+            '', // M001 (退会)
+            '', // M002 (体験終了)
+            '2024-01-26', // M003 (年間)
+            '2024-02-04', // M004 (年間)
+            '2024-01-25', // M005 (通常)
+            '', // M006 (体験終了)
+            '2024-01-26', // M007 (通常)
+            '', // M008 (退会)
+            '2024-02-29', // M009 (通常)
+            '', // M010 (退会)
+            '', // M011 (退会)
+            '2024-01-25', // M012 (年間)
+            '', // M013 (体験終了)
+            '2024-02-13', // M014 (年間)
+            '', // M015 (退会)
+            '', // M016 (退会)
+            '', // M017 (退会)
+            '', // M018 (体験終了)
+            '', // M019 (退会)
+            '', // M020 (体験終了)
+            '2024-01-25', // M021 (通常)
+            '', // M022 (退会)
+            '2024-01-25', // M023 (年間)
+            '2024-01-25', // M024 (通常)
+            '2024-01-29', // M025 (通常)
+            '2024-01-30', // M026 (年間)
+            '', // M027 (体験終了)
+            '', // M028 (体験終了)
+            '', // M029 (体験終了)
+            '2024-01-31', // M030 (通常)
+            '', // M031 (退会)
+            '', // M032 (体験終了)
+            '2024-02-01', // M033 (通常)
+            '', // M034 (退会)
+            '', // M035 (体験終了)
+            '', // M036 (体験終了)
+            '', // M037 (退会)
+            '', // M038 (体験終了)
+            '', // M039 (退会)
+            '', // M040 (体験終了)
+            '', // M041 (体験終了)
+            '', // M042 (体験終了)
+            '', // M043 (体験終了)
+            '2024-02-01', // M044 (年間)
+            '', // M045 (体験終了)
+            '', // M046 (体験終了)
+            '', // M047 (体験終了)
+            '', // M048 (体験終了)
+            '2024-02-28', // M049 (通常)
+            '', // M050 (体験終了)
+            '', // M051 (退会)
+            '', // M052 (体験終了)
+            '', // M053 (体験終了)
+            '2024-05-15', // M054 (年間)
+            '2024-06-18', // M055 (通常)
+            '', // M056 (退会)
+            '2024-07-01', // M057 (通常)
+            '2024-06-24', // M058 (通常)
+            '2024-11-08', // M059 (年間)
+            '2024-05-18', // M060 (通常)
+            '', // M061 (退会)
+            '2024-05-24', // M062 (通常)
+            '2024-06-03', // M063 (年間)
+            '2024-06-14', // M064 (年間)
+            '', // M065 (退会)
+            '', // M066 (体験終了)
+            '2024-07-23', // M067 (通常)
+            '2024-08-22', // M068 (年間)
+            '2024-09-07', // M069 (通常)
+            '2024-10-27', // M070 (通常)
+            '', // M071 (退会)
+            '2024-10-02', // M072 (通常)
+            '2024-10-24', // M073 (年間)
+            '2024-10-24', // M074 (通常)
+            '', // M075 (退会)
+            '', // M076 (体験終了)
+            '2024-10-24', // M077 (通常)
+            '2024-11-28', // M078 (年間)
+            '2024-10-24', // M079 (年間)
+            '2024-10-25', // M080 (通常)
+            '2024-10-26', // M081 (通常)
+            '', // M082 (退会)
+            '', // M083 (体験終了)
+            '', // M084 (体験終了)
+            '', // M085 (退会)
+            '', // M086 (体験終了)
+            '', // M087 (体験終了)
+            '', // M088 (体験終了)
+            '', // M089 (体験終了)
+            '2024-10-25', // M090 (通常)
+            '', // M091 (体験終了)
+            '', // M092 (体験終了)
+            '2024-11-26', // M093 (通常)
+            '', // M094 (退会)
+            '2024-10-26', // M095 (通常)
+            '2024-10-26', // M096 (年間)
+            '', // M097 (退会)
+            '2024-10-26', // M098 (年間)
+            '', // M099 (退会)
+            '2024-11-19', // M100 (通常)
+            '2024-11-12', // M101 (年間)
+            '', // M102 (体験終了)
+            '2024-10-26', // M103 (年間)
+            '2024-11-02', // M104 (通常)
+            '', // M105 (退会)
+            '2024-10-29', // M106 (通常)
+            '', // M107 (退会)
+            '', // M108 (退会)
+            '2024-11-19', // M109 (年間)
+            '', // M110 (退会)
+            '', // M111 (退会)
+            '2025-01-16', // M112 (通常)
+            '2025-02-15', // M113 (通常)
+            '', // M114 (体験終了)
+            '', // M115 (体験終了)
+            '2025-01-17', // M116 (通常)
+            '2025-01-18', // M117 (通常)
+            '2025-01-19', // M118 (通常)
+            '', // M119 (体験終了)
+            '2025-01-19', // M120 (通常)
+            '2025-02-28' // M121 (通常)
+        ];
+
+        // 徹底精進購入者リスト
+        const tesseiShinPurchasers = [
+            '渡邉智大', '松村遼河', '佐藤一気', '小島啓輔', '内野真子',
+            '巾崎由紀子', '坂本研太朗', '薄田京', '山田大将', '淺利勇斗',
+            '片山裕子', '上村徹雄', '今野大輔', '今井奎介', '松本竜季',
+            '安田滉一', '尾崎勇哉', '松田陽平'
+        ];
+
+        // NHブートキャンプ購入者リスト
+        const nhBootcampPurchasers = [
+            { name: '鈴木智弘', date: '2025-07-12', product: 'NHブートキャンプ 半年コース・ノーマルプラン', amount: 29880 },
+            { name: '内野真子', date: '2025-07-13', product: 'NHブートキャンプ 半年コース・ノーマルプラン', amount: 29880 },
+            { name: '尾崎勇哉', date: '2025-07-21', product: 'NHブートキャンプ 1年コース・ノーマルプラン', amount: 49800 },
+            { name: '松村遼河', date: '2025-07-22', product: 'NHブートキャンプ 半年コース・ノーマルプラン', amount: 29880 },
+            { name: '薄田京', date: '2025-07-23', product: 'NHブートキャンプ 1年コース・ノーマルプラン', amount: 49800 },
+            { name: '渡邉智大', date: '2025-07-27', product: '無明会_NHブートキャンプ_入会費', amount: 30000 },
+            { name: '山田大将', date: '2025-07-27', product: 'NHブートキャンプ 半年コース・ノーマルプラン', amount: 29880 },
+            { name: '松田陽平', date: '2025-07-16', product: 'NHBC1年VIP', amount: 50000 },
+            { name: '松本竜季', date: '2025-07-31', product: 'NHブートキャンプ 半年コース・ノーマルプラン', amount: 29880 }
+        ];
+
+        // 現在のステータス配列（M001から順番）
+        const currentStatusArray = [
+            '退会',      // M001
+            '体験終了',  // M002
+            '年間',      // M003
+            '年間',      // M004
+            '通常',      // M005
+            '体験終了',  // M006
+            '通常',      // M007
+            '退会',      // M008
+            '通常',      // M009
+            '退会',      // M010
+            '退会',      // M011
+            '年間',      // M012
+            '体験終了',  // M013
+            '年間',      // M014
+            '退会',      // M015
+            '退会',      // M016
+            '退会',      // M017
+            '体験終了',  // M018
+            '退会',      // M019
+            '体験終了',  // M020
+            '通常',      // M021
+            '退会',      // M022
+            '年間',      // M023
+            '通常',      // M024
+            '通常',      // M025
+            '年間',      // M026
+            '体験終了',  // M027
+            '体験終了',  // M028
+            '体験終了',  // M029
+            '通常',      // M030
+            '退会',      // M031
+            '体験終了',  // M032
+            '通常',      // M033
+            '退会',      // M034
+            '体験終了',  // M035
+            '体験終了',  // M036
+            '退会',      // M037
+            '体験終了',  // M038
+            '退会',      // M039
+            '体験終了',  // M040
+            '体験終了',  // M041
+            '体験終了',  // M042
+            '体験終了',  // M043
+            '年間',      // M044
+            '体験終了',  // M045
+            '体験終了',  // M046
+            '体験終了',  // M047
+            '体験終了',  // M048
+            '通常',      // M049
+            '体験終了',  // M050
+            '退会',      // M051
+            '体験終了',  // M052
+            '体験終了',  // M053
+            '年間',      // M054
+            '通常',      // M055
+            '退会',      // M056
+            '通常',      // M057
+            '通常',      // M058
+            '年間',      // M059
+            '通常',      // M060
+            '退会',      // M061
+            '通常',      // M062
+            '年間',      // M063
+            '年間',      // M064
+            '退会',      // M065
+            '体験終了',  // M066
+            '通常',      // M067
+            '年間',      // M068
+            '通常',      // M069
+            '通常',      // M070
+            '退会',      // M071
+            '通常',      // M072
+            '年間',      // M073
+            '通常',      // M074
+            '退会',      // M075
+            '体験終了',  // M076
+            '通常',      // M077
+            '年間',      // M078
+            '年間',      // M079
+            '通常',      // M080
+            '通常',      // M081
+            '退会',      // M082
+            '体験終了',  // M083
+            '体験終了',  // M084
+            '退会',      // M085
+            '体験終了',  // M086
+            '体験終了',  // M087
+            '体験終了',  // M088
+            '体験終了',  // M089
+            '通常',      // M090
+            '体験終了',  // M091
+            '体験終了',  // M092
+            '通常',      // M093
+            '退会',      // M094
+            '通常',      // M095
+            '年間',      // M096
+            '退会',      // M097
+            '年間',      // M098
+            '退会',      // M099
+            '通常',      // M100
+            '年間',      // M101
+            '体験終了',  // M102
+            '年間',      // M103
+            '通常',      // M104
+            '退会',      // M105
+            '通常',      // M106
+            '退会',      // M107
+            '退会',      // M108
+            '年間',      // M109
+            '退会',      // M110
+            '退会',      // M111
+            '通常',      // M112
+            '通常',      // M113
+            '体験終了',  // M114
+            '体験終了',  // M115
+            '通常',      // M116
+            '通常',      // M117
+            '通常',      // M118
+            '体験終了',  // M119
+            '通常',      // M120
+            '通常'       // M121
+        ];
+
+        // メンバー数推移データ（過去12ヶ月分）
+        const memberGrowthData = {
+            '2024-08': { total: 85, annual: 18, regular: 29, churned: 38 },
+            '2024-09': { total: 88, annual: 19, regular: 31, churned: 38 },
+            '2024-10': { total: 92, annual: 20, regular: 33, churned: 39 },
+            '2024-11': { total: 95, annual: 20, regular: 35, churned: 40 },
+            '2024-12': { total: 98, annual: 20, regular: 37, churned: 41 },
+            '2025-01': { total: 102, annual: 20, regular: 40, churned: 42 },
+            '2025-02': { total: 106, annual: 20, regular: 43, churned: 43 },
+            '2025-03': { total: 110, annual: 20, regular: 46, churned: 44 },
+            '2025-04': { total: 113, annual: 20, regular: 48, churned: 45 },
+            '2025-05': { total: 116, annual: 20, regular: 50, churned: 46 },
+            '2025-06': { total: 119, annual: 20, regular: 52, churned: 47 },
+            '2025-07': { total: 121, annual: 20, regular: 54, churned: 47 }
+        };
+
+        // 年間決済日データ（年間会員のみ）
+        const annualPaymentDates = {
+            'M003': '2024-03-01',
+            'M004': '2024-03-08', 
+            'M012': '2024-02-28',
+            'M014': '2024-02-12',
+            'M023': '2024-03-01',
+            'M026': '2024-02-09',
+            'M044': '2024-02-21',
+            'M054': '2024-02-10',
+            'M059': '2024-02-05',
+            'M063': '2025-02-04',
+            'M064': '2024-11-02',
+            'M068': '2024-02-26',
+            'M073': '2024-07-01',
+            'M078': '2024-05-16',
+            'M079': '2024-05-18',
+            'M096': '2025-01-16',
+            'M098': '2025-02-12',
+            'M101': '2024-12-04',
+            'M103': '2024-10-25',
+            'M109': '2024-10-30'
+        };
+
+        // メンバーデータベース
+        const membersDatabase = [
+            // 年間会員（20名）
+            { id: 'M001', name: '藤澤秀彰', discord: '藤澤', discordId: '', status: 'annual', joinDate: '2024-03-15', ltv: 650000, lastActive: '2025-07-28', events: 15, currentStatus: '退会' },
+            { id: 'M002', name: '鈴木裕介', discord: 'ゆう', discordId: 'exuberant_pomelo_29770', status: 'annual', joinDate: '2024-04-20', ltv: 9800, lastActive: '2025-07-27', events: 12, currentStatus: '体験終了' },
+            { id: 'M003', name: '福井康大', discord: 'yasu0016', discordId: '', status: 'annual', joinDate: '2024-02-10', ltv: 720000, lastActive: '2025-07-29', events: 18, currentStatus: '年間' },
+            { id: 'M004', name: '俵健太郎', discord: 'たわら', discordId: '', status: 'annual', joinDate: '2024-05-12', ltv: 620000, lastActive: '2025-07-26', events: 14, currentStatus: '年間' },
+            { id: 'M005', name: '進藤勇輝', discord: 'シン', discordId: '', status: 'annual', joinDate: '2024-01-08', ltv: 780000, lastActive: '2025-07-30', events: 20, currentStatus: '通常' },
+            { id: 'M006', name: '佐藤諒駿', status: 'annual', joinDate: '2024-06-18', ltv: 540000, lastActive: '2025-07-25', events: 11 },
+            { id: 'M007', name: '杉平涼', status: 'annual', joinDate: '2024-03-22', ltv: 660000, lastActive: '2025-07-28', events: 16 },
+            { id: 'M008', name: '松本和久', status: 'annual', joinDate: '2024-04-05', ltv: 590000, lastActive: '2025-07-27', events: 13 },
+            { id: 'M009', name: '松田陽平', status: 'annual', joinDate: '2024-07-01', ltv: 450000, lastActive: '2025-07-29', events: 8 },
+            { id: 'M010', name: '井上純也', status: 'annual', joinDate: '2024-02-28', ltv: 710000, lastActive: '2025-07-30', events: 17 },
+            { id: 'M011', name: '根塚陽己', status: 'annual', joinDate: '2024-05-30', ltv: 570000, lastActive: '2025-07-26', events: 12 },
+            { id: 'M012', name: '藤原綜太郎', status: 'annual', joinDate: '2024-01-15', ltv: 790000, lastActive: '2025-07-28', events: 21 },
+            { id: 'M013', name: '石島秀峰', status: 'annual', joinDate: '2024-06-08', ltv: 520000, lastActive: '2025-07-27', events: 10 },
+            { id: 'M014', name: '佐藤亜美', status: 'annual', joinDate: '2024-03-12', ltv: 680000, lastActive: '2025-07-29', events: 15 },
+            { id: 'M015', name: '塚本真伍', status: 'annual', joinDate: '2024-04-25', ltv: 600000, lastActive: '2025-07-25', events: 14 },
+            { id: 'M016', name: '湊翔太郎', status: 'annual', joinDate: '2024-07-10', ltv: 440000, lastActive: '2025-07-30', events: 7 },
+            { id: 'M017', name: '鈴木菜摘', status: 'annual', joinDate: '2024-02-05', ltv: 730000, lastActive: '2025-07-28', events: 19 },
+            { id: 'M018', name: '松島徹', status: 'annual', joinDate: '2024-05-18', ltv: 610000, lastActive: '2025-07-26', events: 13 },
+            { id: 'M019', name: '粟津律子', status: 'annual', joinDate: '2024-01-25', ltv: 750000, lastActive: '2025-07-27', events: 20 },
+            { id: 'M020', name: '榎本高也', status: 'annual', joinDate: '2024-06-22', ltv: 530000, lastActive: '2025-07-29', events: 11 },
+
+            // 通常会員（85名）- 提供されたリストから85名を選出
+            { id: 'M021', name: '石垣吉規', status: 'regular', joinDate: '2024-08-15', ltv: 280000, lastActive: '2025-07-28', events: 8 },
+            { id: 'M022', name: 'ブル', status: 'regular', joinDate: '2024-09-10', ltv: 150000, lastActive: '2025-07-27', events: 5 },
+            { id: 'M023', name: '鈴木康太', status: 'regular', joinDate: '2024-10-05', ltv: 220000, lastActive: '2025-07-29', events: 6 },
+            { id: 'M024', name: '奥村拓哉', status: 'regular', joinDate: '2024-11-12', ltv: 180000, lastActive: '2025-07-26', events: 4 },
+            { id: 'M025', name: '池本湊了汰', status: 'regular', joinDate: '2024-12-20', ltv: 120000, lastActive: '2025-07-25', events: 3 },
+            { id: 'M026', name: '松本竜季', status: 'regular', joinDate: '2025-01-15', ltv: 90000, lastActive: '2025-07-30', events: 2 },
+            { id: 'M027', name: '西島颯人', status: 'regular', joinDate: '2025-02-08', ltv: 60000, lastActive: '2025-07-28', events: 1 },
+            { id: 'M028', name: '山縣誠二', status: 'regular', joinDate: '2024-07-22', ltv: 320000, lastActive: '2025-07-27', events: 9 },
+            { id: 'M029', name: '綿貫桂太', status: 'regular', joinDate: '2024-08-18', ltv: 260000, lastActive: '2025-07-29', events: 7 },
+            { id: 'M030', name: '清水暁', status: 'regular', joinDate: '2024-09-25', ltv: 200000, lastActive: '2025-07-26', events: 5 },
+            { id: 'M031', name: '中村意央里', status: 'regular', joinDate: '2024-10-30', ltv: 170000, lastActive: '2025-07-25', events: 4 },
+            { id: 'M032', name: '島守勇次', status: 'regular', joinDate: '2024-11-15', ltv: 140000, lastActive: '2025-07-30', events: 3 },
+            { id: 'M033', name: '千吉良俊充', status: 'regular', joinDate: '2024-12-08', ltv: 110000, lastActive: '2025-07-28', events: 2 },
+            { id: 'M034', name: '岩下未誉子', status: 'regular', joinDate: '2025-01-20', ltv: 80000, lastActive: '2025-07-27', events: 1 },
+            { id: 'M035', name: '安田滉一', status: 'regular', joinDate: '2024-06-12', ltv: 380000, lastActive: '2025-07-29', events: 10 },
+            { id: 'M036', name: '真木智之', status: 'regular', joinDate: '2024-07-05', ltv: 340000, lastActive: '2025-07-26', events: 9 },
+            { id: 'M037', name: '吉嵜俊一郎', status: 'regular', joinDate: '2024-08-28', ltv: 240000, lastActive: '2025-07-25', events: 6 },
+            { id: 'M038', name: '今井一真', status: 'regular', joinDate: '2024-09-15', ltv: 190000, lastActive: '2025-07-30', events: 5 },
+            { id: 'M039', name: '平野理絵', status: 'regular', joinDate: '2024-10-10', ltv: 160000, lastActive: '2025-07-28', events: 4 },
+            { id: 'M040', name: '内田泰文', status: 'regular', joinDate: '2024-11-22', ltv: 130000, lastActive: '2025-07-27', events: 3 },
+            { id: 'M041', name: '増田凌一', status: 'regular', joinDate: '2024-12-18', ltv: 100000, lastActive: '2025-07-29', events: 2 },
+            { id: 'M042', name: '新保友望奈', status: 'regular', joinDate: '2025-01-12', ltv: 70000, lastActive: '2025-07-26', events: 1 },
+            { id: 'M043', name: '市川佳奈', status: 'regular', joinDate: '2024-05-25', ltv: 420000, lastActive: '2025-07-25', events: 11 },
+            { id: 'M044', name: '渡邉智大', status: 'regular', joinDate: '2024-06-30', ltv: 360000, lastActive: '2025-07-30', events: 10 },
+            { id: 'M045', name: '泉田祐輝', status: 'regular', joinDate: '2024-07-18', ltv: 300000, lastActive: '2025-07-28', events: 8 },
+            { id: 'M046', name: '永井克幸', status: 'regular', joinDate: '2024-08-12', ltv: 250000, lastActive: '2025-07-27', events: 7 },
+            { id: 'M047', name: '茂木一幸', status: 'regular', joinDate: '2024-09-08', ltv: 210000, lastActive: '2025-07-29', events: 6 },
+            { id: 'M048', name: '松田圭右', status: 'regular', joinDate: '2024-10-20', ltv: 180000, lastActive: '2025-07-26', events: 4 },
+            { id: 'M049', name: '松村遼河', status: 'regular', joinDate: '2024-11-08', ltv: 150000, lastActive: '2025-07-25', events: 3 },
+            { id: 'M050', name: '平岩遼志', status: 'regular', joinDate: '2024-12-25', ltv: 120000, lastActive: '2025-07-30', events: 2 },
+            { id: 'M051', name: '佐藤一気', status: 'regular', joinDate: '2025-01-18', ltv: 90000, lastActive: '2025-07-28', events: 1 },
+            { id: 'M052', name: '照井紀臣', status: 'regular', joinDate: '2024-04-15', ltv: 480000, lastActive: '2025-07-27', events: 12 },
+            { id: 'M053', name: '坂詰宣人', status: 'regular', joinDate: '2024-05-12', ltv: 440000, lastActive: '2025-07-29', events: 11 },
+            { id: 'M054', name: '中悠太', status: 'regular', joinDate: '2024-06-18', ltv: 380000, lastActive: '2025-07-26', events: 10 },
+            { id: 'M055', name: '小林千泰', status: 'regular', joinDate: '2024-07-25', ltv: 320000, lastActive: '2025-07-25', events: 8 },
+            { id: 'M056', name: '廣田一敬', status: 'regular', joinDate: '2024-08-08', ltv: 280000, lastActive: '2025-07-30', events: 7 },
+            { id: 'M057', name: '鈴木智弘', status: 'regular', joinDate: '2024-09-12', ltv: 240000, lastActive: '2025-07-28', events: 6 },
+            { id: 'M058', name: '小島啓輔', status: 'regular', joinDate: '2024-10-28', ltv: 200000, lastActive: '2025-07-27', events: 5 },
+            { id: 'M059', name: '尾崎勇哉', status: 'regular', joinDate: '2024-11-18', ltv: 160000, lastActive: '2025-07-29', events: 4 },
+            { id: 'M060', name: '佐々木透', status: 'regular', joinDate: '2024-12-05', ltv: 130000, lastActive: '2025-07-26', events: 3 },
+            { id: 'M061', name: '小林和貴', status: 'regular', joinDate: '2025-01-08', ltv: 100000, lastActive: '2025-07-25', events: 2 },
+            { id: 'M062', name: '日高悠河', status: 'regular', joinDate: '2024-03-20', ltv: 520000, lastActive: '2025-07-30', events: 13 },
+            { id: 'M063', name: '江口達宏', status: 'regular', joinDate: '2024-04-22', ltv: 460000, lastActive: '2025-07-28', events: 12 },
+            { id: 'M064', name: '東出教若', status: 'regular', joinDate: '2024-05-30', ltv: 400000, lastActive: '2025-07-27', events: 10 },
+            { id: 'M065', name: '出田竜也', status: 'regular', joinDate: '2024-06-25', ltv: 350000, lastActive: '2025-07-29', events: 9 },
+            { id: 'M066', name: '長田一', status: 'regular', joinDate: '2024-07-15', ltv: 310000, lastActive: '2025-07-26', events: 8 },
+            { id: 'M067', name: '市橋慎士', status: 'regular', joinDate: '2024-08-20', ltv: 270000, lastActive: '2025-07-25', events: 7 },
+            { id: 'M068', name: '今井奎介', status: 'regular', joinDate: '2024-09-18', ltv: 230000, lastActive: '2025-07-30', events: 6 },
+            { id: 'M069', name: '中西航平', status: 'regular', joinDate: '2024-10-15', ltv: 190000, lastActive: '2025-07-28', events: 5 },
+            { id: 'M070', name: '熊谷瑞奈美', status: 'regular', joinDate: '2024-11-28', ltv: 150000, lastActive: '2025-07-27', events: 3 },
+            { id: 'M071', name: '内野真子', status: 'regular', joinDate: '2024-12-12', ltv: 120000, lastActive: '2025-07-29', events: 2 },
+            { id: 'M072', name: '稲垣真裕', status: 'regular', joinDate: '2025-01-25', ltv: 80000, lastActive: '2025-07-26', events: 1 },
+            { id: 'M073', name: '清田宇宙', status: 'regular', joinDate: '2024-02-18', ltv: 560000, lastActive: '2025-07-25', events: 14 },
+            { id: 'M074', name: '猪野倫哉', status: 'regular', joinDate: '2024-03-15', ltv: 500000, lastActive: '2025-07-30', events: 13 },
+            { id: 'M075', name: '松垣友', status: 'regular', joinDate: '2024-04-10', ltv: 440000, lastActive: '2025-07-28', events: 11 },
+            { id: 'M076', name: '篠崎弘多', status: 'regular', joinDate: '2024-05-08', ltv: 390000, lastActive: '2025-07-27', events: 10 },
+            { id: 'M077', name: '市村智', status: 'regular', joinDate: '2024-06-12', ltv: 340000, lastActive: '2025-07-29', events: 9 },
+            { id: 'M078', name: '今野大輔', status: 'regular', joinDate: '2024-07-28', ltv: 290000, lastActive: '2025-07-26', events: 7 },
+            { id: 'M079', name: '巾崎由紀子', status: 'regular', joinDate: '2024-08-25', ltv: 250000, lastActive: '2025-07-25', events: 6 },
+            { id: 'M080', name: '籾山銀河', status: 'regular', joinDate: '2024-09-22', ltv: 210000, lastActive: '2025-07-30', events: 5 },
+            { id: 'M081', name: '坂之上颯人', status: 'regular', joinDate: '2024-10-18', ltv: 170000, lastActive: '2025-07-28', events: 4 },
+            { id: 'M082', name: '氏家威吹', status: 'regular', joinDate: '2024-11-25', ltv: 140000, lastActive: '2025-07-27', events: 3 },
+            { id: 'M083', name: '黒柳朱音', status: 'regular', joinDate: '2024-12-20', ltv: 110000, lastActive: '2025-07-29', events: 2 },
+            { id: 'M084', name: '国安あずみ', status: 'regular', joinDate: '2025-01-15', ltv: 75000, lastActive: '2025-07-26', events: 1 },
+            { id: 'M085', name: '阪本巳玖也', status: 'regular', joinDate: '2024-01-20', ltv: 580000, lastActive: '2025-07-25', events: 15 },
+            { id: 'M086', name: '坂本研太朗', status: 'regular', joinDate: '2024-02-25', ltv: 540000, lastActive: '2025-07-30', events: 14 },
+            { id: 'M087', name: '藤井徹', status: 'regular', joinDate: '2024-03-28', ltv: 480000, lastActive: '2025-07-28', events: 12 },
+            { id: 'M088', name: '吉岡佑弥', status: 'regular', joinDate: '2024-04-18', ltv: 420000, lastActive: '2025-07-27', events: 11 },
+            { id: 'M089', name: '佐藤恭平', status: 'regular', joinDate: '2024-05-22', ltv: 380000, lastActive: '2025-07-29', events: 10 },
+            { id: 'M090', name: '小渕桃子', status: 'regular', joinDate: '2024-06-15', ltv: 330000, lastActive: '2025-07-26', events: 9 },
+            { id: 'M091', name: '森岡裕之', status: 'regular', joinDate: '2024-07-12', ltv: 280000, lastActive: '2025-07-25', events: 8 },
+            { id: 'M092', name: '遠藤瑛太', status: 'regular', joinDate: '2024-08-05', ltv: 240000, lastActive: '2025-07-30', events: 6 },
+            { id: 'M093', name: '亀井悠', status: 'regular', joinDate: '2024-09-10', ltv: 200000, lastActive: '2025-07-28', events: 5 },
+            { id: 'M094', name: '伊藤英哉', status: 'regular', joinDate: '2024-10-08', ltv: 160000, lastActive: '2025-07-27', events: 4 },
+            { id: 'M095', name: '小杉沙里衣', status: 'regular', joinDate: '2024-11-12', ltv: 130000, lastActive: '2025-07-29', events: 3 },
+            { id: 'M096', name: '薄田京', status: 'regular', joinDate: '2024-12-08', ltv: 100000, lastActive: '2025-07-26', events: 2 },
+            { id: 'M097', name: '淺沼佳那子', status: 'regular', joinDate: '2025-01-05', ltv: 70000, lastActive: '2025-07-25', events: 1 },
+            { id: 'M098', name: '山田大将', status: 'regular', joinDate: '2023-12-15', ltv: 620000, lastActive: '2025-07-30', events: 16 },
+            { id: 'M099', name: '永野福三', status: 'regular', joinDate: '2024-01-08', ltv: 590000, lastActive: '2025-07-28', events: 15 },
+            { id: 'M100', name: '中根滉介', status: 'regular', joinDate: '2024-02-12', ltv: 520000, lastActive: '2025-07-27', events: 13 },
+            { id: 'M101', name: '山田剛', status: 'regular', joinDate: '2024-03-05', ltv: 460000, lastActive: '2025-07-29', events: 12 },
+            { id: 'M102', name: '田原璃音', status: 'regular', joinDate: '2024-04-08', ltv: 400000, lastActive: '2025-07-26', events: 10 },
+            { id: 'M103', name: '淺利勇斗', status: 'regular', joinDate: '2024-05-15', ltv: 350000, lastActive: '2025-07-25', events: 9 },
+            { id: 'M104', name: '片山裕子', status: 'regular', joinDate: '2024-06-20', ltv: 310000, lastActive: '2025-07-30', events: 8 },
+            { id: 'M105', name: '水林麻里恵', status: 'regular', joinDate: '2024-07-08', ltv: 270000, lastActive: '2025-07-28', events: 7 },
+
+            // 体験会員（5名）
+            { id: 'M106', name: '榎本知佳', status: 'trial', joinDate: '2025-07-15', ltv: 5000, lastActive: '2025-07-27', events: 1 },
+            { id: 'M107', name: '畠田はな', status: 'trial', joinDate: '2025-07-18', ltv: 5000, lastActive: '2025-07-29', events: 1 },
+            { id: 'M108', name: '上村徹雄', status: 'trial', joinDate: '2025-07-22', ltv: 5000, lastActive: '2025-07-26', events: 1 },
+            { id: 'M109', name: '渡邊敦子', status: 'trial', joinDate: '2025-07-25', ltv: 5000, lastActive: '2025-07-25', events: 1 },
+            { id: 'M110', name: '伊藤奏衣', status: 'trial', joinDate: '2025-07-28', ltv: 5000, lastActive: '2025-07-30', events: 1 }
+        ];
+
+        let filteredMembers = [];
+
+        // LTV計算関数
+        function calculateBaseLTV(member) {
+            const now = new Date();
+            
+            // 現在のステータスに基づいてLTVを計算
+            if (member.currentStatus === '体験終了') {
+                return 3000; // 体験のみ
+            } else if (member.currentStatus === '退会' || member.currentStatus === '通常') {
+                // 通常会員の計算（退会・継続問わず）
+                // regularJoinDate（正規支払い開始日）から計算
+                if (member.regularJoinDate) {
+                    const regularStartDate = new Date(member.regularJoinDate);
+                    const monthsActive = Math.max(1, Math.floor((now - regularStartDate) / (1000 * 60 * 60 * 24 * 30)));
+                    return 3000 + (monthsActive * 22000); // 体験 + 通常会員期間
+                } else {
+                    // regularJoinDateがない場合はjoinDateから推定
+                    const joinDate = new Date(member.joinDate);
+                    const monthsActive = Math.max(1, Math.floor((now - joinDate) / (1000 * 60 * 60 * 24 * 30)));
+                    return monthsActive * 22000;
+                }
+            } else if (member.currentStatus === '年間') {
+                // 年間会員：入会からの年数 × 220,000円
+                const joinDate = new Date(member.regularJoinDate || member.joinDate);
+                const yearsActive = Math.max(1, Math.ceil((now - joinDate) / (1000 * 60 * 60 * 24 * 365)));
+                return yearsActive * 220000;
+            }
+            return 0;
+        }
+
+        // 年間決済更新期限計算
+        function calculateRenewalStatus(member) {
+            if (member.currentStatus !== '年間' || !member.annualPaymentDate) {
+                return { status: 'なし', daysUntilRenewal: null, renewalDate: null };
+            }
+
+            const today = new Date();
+            const lastPayment = new Date(member.annualPaymentDate);
+            const renewalDate = new Date(lastPayment);
+            renewalDate.setFullYear(renewalDate.getFullYear() + 1);
+            
+            const daysUntilRenewal = Math.ceil((renewalDate - today) / (1000 * 60 * 60 * 24));
+            
+            let status;
+            if (daysUntilRenewal < 0) {
+                status = '更新必要';
+            } else if (daysUntilRenewal <= 30) {
+                status = '更新間近';
+            } else if (daysUntilRenewal <= 60) {
+                status = '要注意';
+            } else {
+                status = '正常';
+            }
+
+            return {
+                status: status,
+                daysUntilRenewal: daysUntilRenewal,
+                renewalDate: renewalDate.toISOString().split('T')[0]
+            };
+        }
+
+        // メンバーデータの初期化（現在のステータスとLTVの調整）
+        function initializeMemberData() {
+            membersDatabase.forEach((member, index) => {
+                // 現在のステータスを設定
+                member.currentStatus = currentStatusArray[index];
+                
+                // 正規支払い開始日を設定
+                member.regularJoinDate = regularJoinDateArray[index] || null;
+                
+                // LTVを正しく計算
+                member.ltv = calculateBaseLTV(member);
+                
+                // 三毒チーム情報を設定
+                if (typeof threePoisonsTeamMapping !== 'undefined') {
+                    member.threePoisonsTeam = threePoisonsTeamMapping[member.name] || '未設定';
+                }
+                
+                // アップセル売上の設定
+                member.upsales = member.upsales || [];
+                let totalUpsales = 0;
+                
+                // 徹底精進購入者の場合
+                if (tesseiShinPurchasers.includes(member.name)) {
+                    const tesseiShin = {
+                        name: '徹底精進',
+                        totalAmount: 330000,
+                        purchaseDate: '2025-06',
+                        installments: 3,
+                        monthlyAmount: 110000,
+                        paidInstallments: 2, // 2回分支払い済み（6月、7月）
+                        remainingAmount: 110000,
+                        nextPaymentDate: '2025-08-31',
+                        status: '分割中'
+                    };
+                    member.upsales.push(tesseiShin);
+                    totalUpsales += 330000;
+                }
+                
+                // NHブートキャンプ購入者の場合
+                const nhPurchase = nhBootcampPurchasers.find(p => p.name === member.name);
+                if (nhPurchase) {
+                    const nhBootcamp = {
+                        name: nhPurchase.product,
+                        totalAmount: nhPurchase.amount,
+                        purchaseDate: nhPurchase.date,
+                        installments: 1,
+                        monthlyAmount: nhPurchase.amount,
+                        paidInstallments: 1,
+                        remainingAmount: 0,
+                        nextPaymentDate: null,
+                        status: '完済'
+                    };
+                    member.upsales.push(nhBootcamp);
+                    totalUpsales += nhPurchase.amount;
+                }
+                
+                member.totalUpsales = totalUpsales;
+                
+                member.totalLTV = member.ltv + member.totalUpsales;
+
+                // 年間決済日を設定
+                if (member.currentStatus === '年間') {
+                    member.annualPaymentDate = annualPaymentDates[member.id] || null;
+                    
+                    if (member.annualPaymentDate) {
+                        const renewalInfo = calculateRenewalStatus(member);
+                        member.renewalStatus = renewalInfo.status;
+                        member.daysUntilRenewal = renewalInfo.daysUntilRenewal;
+                        member.renewalDate = renewalInfo.renewalDate;
+                    }
+                }
+            });
+        }
+
+        // ページ読み込み時の初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                console.log('DOMContentLoaded実行開始');
+                console.log('membersDatabase長さ:', membersDatabase ? membersDatabase.length : 'undefined');
+                
+                if (!membersDatabase || membersDatabase.length === 0) {
+                    console.error('membersDatabase が空または未定義');
+                    document.getElementById('memberGrid').innerHTML = '<div style="text-align:center; padding:50px; color:red;">メンバーデータの読み込みに失敗しました</div>';
+                    return;
+                }
+                
+                initializeMemberData();
+                filteredMembers = [...membersDatabase];
+                console.log('filteredMembers長さ:', filteredMembers.length);
+                
+                // 直接renderMembersを呼び出してテスト
+                renderMembers();
+                setupEventListeners();
+                updateStats();
+                
+                console.log('初期化完了');
+            } catch (error) {
+                console.error('初期化エラー:', error);
+                document.getElementById('memberGrid').innerHTML = '<div style="text-align:center; padding:50px; color:red;">初期化エラー: ' + error.message + '</div>';
+            }
+        });
+
+        // アクティブメンバーのみ表示フラグ
+        let showActiveOnly = false;
+
+        // イベントリスナーの設定
+        function setupEventListeners() {
+            document.getElementById('searchBox').addEventListener('input', filterMembers);
+            document.getElementById('statusFilter').addEventListener('change', filterMembers);
+            document.getElementById('sortBy').addEventListener('change', sortMembers);
+            document.getElementById('teamFilter').addEventListener('change', filterMembers);
+            document.getElementById('activeOnlyBtn').addEventListener('click', toggleActiveOnly);
+            document.getElementById('rankingBtn').addEventListener('click', showLTVRanking);
+            document.getElementById('renewalAlertBtn').addEventListener('click', showRenewalAlert);
+        }
+
+        // LTVランキング表示
+        function showLTVRanking() {
+            // 現役会員をフィルタ
+            showActiveOnly = true;
+            const btn = document.getElementById('activeOnlyBtn');
+            btn.style.background = '#dc3545';
+            btn.textContent = '🚫 全員表示';
+            
+            // LTV順でソート
+            document.getElementById('sortBy').value = 'ltv';
+            filterMembers();
+        }
+
+        // 更新間近アラート表示
+        function showRenewalAlert() {
+            const renewalAlertMembers = membersDatabase.filter(m => 
+                m.currentStatus === '年間' && 
+                (m.renewalStatus === '更新必要' || m.renewalStatus === '更新間近' || m.renewalStatus === '要注意')
+            );
+
+            if (renewalAlertMembers.length === 0) {
+                alert('現在、更新が必要な年間会員はいません。');
+                return;
+            }
+
+            // 更新期限順でソート
+            renewalAlertMembers.sort((a, b) => (a.daysUntilRenewal || -999) - (b.daysUntilRenewal || -999));
+
+            let alertMessage = `⚠️ 年間会員更新アラート (${renewalAlertMembers.length}名)\n\n`;
+            
+            renewalAlertMembers.forEach(member => {
+                const daysText = member.daysUntilRenewal < 0 ? 
+                    `期限切れ(${Math.abs(member.daysUntilRenewal)}日経過)` : 
+                    `あと${member.daysUntilRenewal}日`;
+                
+                alertMessage += `${member.name} (${member.id})\n`;
+                alertMessage += `  └ ${member.renewalStatus}: ${daysText}\n`;
+                alertMessage += `  └ 更新期限: ${member.renewalDate}\n\n`;
+            });
+
+            alert(alertMessage);
+
+            // フィルターを年間会員に設定
+            document.getElementById('statusFilter').value = '年間';
+            filterMembers();
+        }
+
+        // 現役会員のみ表示切り替え
+        function toggleActiveOnly() {
+            showActiveOnly = !showActiveOnly;
+            const btn = document.getElementById('activeOnlyBtn');
+            
+            if (showActiveOnly) {
+                btn.style.background = '#dc3545';
+                btn.textContent = '🚫 全員表示';
+                btn.title = 'クリックで全メンバーを表示';
+            } else {
+                btn.style.background = '#28a745';
+                btn.textContent = '👥 現役会員のみ';
+                btn.title = 'クリックで現役会員のみ表示';
+            }
+            
+            filterMembers();
+        }
+
+        // メンバーリストアイテムの生成
+        function createMemberCard(member) {
+            // ステータス表示（年間会員は更新期限情報を表示）
+            let statusLabel = member.currentStatus || {
+                'annual': '年間',
+                'regular': '通常',
+                'trial': '体験'
+            }[member.status];
+            
+            let statusClass = `status-${member.currentStatus || member.status}`;
+            
+            if (member.currentStatus === '年間' && member.renewalDate) {
+                const today = new Date();
+                const currentMonth = today.getMonth() + 1;
+                const renewalDate = new Date(member.renewalDate);
+                const renewalMonth = renewalDate.getMonth() + 1;
+                
+                if (member.daysUntilRenewal <= 30) {
+                    statusLabel = `年間(${renewalMonth}月更新)`;
+                    if (member.daysUntilRenewal < 0) {
+                        statusClass += ' renewal-overdue';
+                    } else {
+                        statusClass += ' renewal-soon';
+                    }
+                } else {
+                    statusLabel = `年間(${currentMonth}月)`;
+                }
+            }
+
+            // 三毒チーム表示
+            const teamClass = `team-${member.threePoisonsTeam || '未設定'}`;
+            const teamLabel = member.threePoisonsTeam || '未設定';
+
+
+
+            const opacity = (member.currentStatus === '退会' || member.currentStatus === '体験終了') ? 'opacity: 0.6;' : '';
+
+            // アップセル表示
+            let upsaleDisplay = '-';
+            if (member.upsales && member.upsales.length > 0) {
+                const upsaleNames = member.upsales.map(u => {
+                    if (u.name === '徹底精進') return '徹底精進';
+                    if (u.name.includes('NHブートキャンプ') || u.name.includes('NHBC')) return 'NHBC';
+                    return u.name.substring(0, 8);
+                });
+                upsaleDisplay = upsaleNames.join(' + ');
+            }
+
+            return `
+                <div class="member-list-item" onclick="openMemberDetail('${member.id}')" style="${opacity}">
+                    <div class="member-id">${member.id}</div>
+                    <div class="member-name">${member.name}</div>
+                    <div class="member-status ${statusClass}">${statusLabel}</div>
+                    <div class="member-team ${teamClass}">${teamLabel}</div>
+                    <div class="ltv-display">¥${member.ltv.toLocaleString()}</div>
+                    <div class="upsale-display">${upsaleDisplay}</div>
+                    <div class="total-ltv-display">¥${member.totalLTV.toLocaleString()}</div>
+                </div>
+            `;
+        }
+
+        // メンバー一覧の描画
+        function renderMembers() {
+            try {
+                console.log('renderMembers開始, filteredMembers数:', filteredMembers ? filteredMembers.length : 'undefined');
+                const grid = document.getElementById('memberGrid');
+                
+                if (!grid) {
+                    console.error('memberGrid要素が見つかりません');
+                    return;
+                }
+                
+                if (!filteredMembers || filteredMembers.length === 0) {
+                    console.log('filteredMembersが空です');
+                    grid.innerHTML = '<div style="text-align:center; padding:50px;">メンバーデータがありません</div>';
+                    return;
+                }
+                
+                console.log('最初のメンバー:', filteredMembers[0]);
+                
+                // シンプルなHTML生成でテスト
+                let html = '';
+                for (let i = 0; i < Math.min(filteredMembers.length, 10); i++) {
+                    const member = filteredMembers[i];
+                    html += `
+                        <div style="padding: 10px; border-bottom: 1px solid #eee; display: grid; grid-template-columns: 50px 150px 100px 80px 100px 100px 120px; gap: 8px; font-size: 0.8em;">
+                            <div>${member.id}</div>
+                            <div>${member.name}</div>
+                            <div>${member.currentStatus || member.status || '不明'}</div>
+                            <div>${member.threePoisonsTeam || '未設定'}</div>
+                            <div>¥${(member.ltv || 0).toLocaleString()}</div>
+                            <div>¥${(member.totalUpsales || 0).toLocaleString()}</div>
+                            <div>¥${(member.totalLTV || member.ltv || 0).toLocaleString()}</div>
+                        </div>
+                    `;
+                }
+                
+                grid.innerHTML = html;
+                console.log('メンバー表示完了:', Math.min(filteredMembers.length, 10), '名表示');
+                
+            } catch (error) {
+                console.error('renderMembersエラー:', error);
+                const grid = document.getElementById('memberGrid');
+                if (grid) {
+                    grid.innerHTML = '<div style="text-align:center; padding:50px; color:red;">表示エラー: ' + error.message + '</div>';
+                }
+            }
+        }
+
+        // フィルタリング
+        function filterMembers() {
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            const statusFilter = document.getElementById('statusFilter').value;
+            const teamFilter = document.getElementById('teamFilter').value;
+
+            filteredMembers = membersDatabase.filter(member => {
+                const matchesSearch = member.name.toLowerCase().includes(searchTerm);
+                const matchesStatus = !statusFilter || member.currentStatus === statusFilter;
+                const matchesTeam = !teamFilter || member.threePoisonsTeam === teamFilter;
+                
+                // アクティブメンバーのみ表示フィルター
+                const isActive = member.currentStatus === '年間' || member.currentStatus === '通常';
+                const matchesActiveFilter = !showActiveOnly || isActive;
+                
+                return matchesSearch && matchesStatus && matchesTeam && matchesActiveFilter;
+            });
+
+            sortMembers();
+        }
+
+        // ソート
+        function sortMembers() {
+            const sortBy = document.getElementById('sortBy').value;
+
+            filteredMembers.sort((a, b) => {
+                switch(sortBy) {
+                    case 'id':
+                        return a.id.localeCompare(b.id);
+                    case 'ltv':
+                        return b.totalLTV - a.totalLTV;
+                    case 'ltvLow':
+                        return a.totalLTV - b.totalLTV;
+                    case 'joinDate':
+                        return new Date(b.joinDate) - new Date(a.joinDate);
+                    case 'subscription':
+                        const aMonths = a.regularJoinDate ? Math.floor((new Date() - new Date(a.regularJoinDate)) / (1000 * 60 * 60 * 24 * 30)) : 0;
+                        const bMonths = b.regularJoinDate ? Math.floor((new Date() - new Date(b.regularJoinDate)) / (1000 * 60 * 60 * 24 * 30)) : 0;
+                        return bMonths - aMonths;
+                    case 'events':
+                        return b.events - a.events;
+                    case 'name':
+                        return a.name.localeCompare(b.name, 'ja');
+                    default:
+                        return a.id.localeCompare(b.id);
+                }
+            });
+
+            renderMembers();
+            updateStats();
+        }
+
+        // 統計の更新
+        function updateStats() {
+            const total = filteredMembers.length;
+            const annual = filteredMembers.filter(m => m.currentStatus === '年間').length;
+            const regular = filteredMembers.filter(m => m.currentStatus === '通常').length;
+            const trialEnded = filteredMembers.filter(m => m.currentStatus === '体験終了').length;
+            const churned = filteredMembers.filter(m => m.currentStatus === '退会').length;
+            
+            // 現役会員（年間+通常）のLTV
+            const activeLTV = filteredMembers
+                .filter(m => m.currentStatus === '年間' || m.currentStatus === '通常')
+                .reduce((sum, m) => sum + m.ltv, 0);
+
+            // 今月・来月の更新予定者統計
+            const today = new Date();
+            const currentMonth = today.getMonth() + 1;
+            const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
+            
+            const thisMonthRenewals = filteredMembers.filter(m => {
+                if (m.currentStatus !== '年間' || !m.renewalDate) return false;
+                const renewalDate = new Date(m.renewalDate);
+                return renewalDate.getMonth() + 1 === currentMonth;
+            }).length;
+            
+            const nextMonthRenewals = filteredMembers.filter(m => {
+                if (m.currentStatus !== '年間' || !m.renewalDate) return false;
+                const renewalDate = new Date(m.renewalDate);
+                return renewalDate.getMonth() + 1 === nextMonth;
+            }).length;
+
+            // 今月・来月の売上予定計算
+            const thisMonthRevenue = thisMonthRenewals * 220000; // 年間更新 ¥220,000
+            const nextMonthRevenue = nextMonthRenewals * 220000;
+
+            // 通常会員の月額売上も加算
+            const currentRegularMembers = filteredMembers.filter(m => m.currentStatus === '通常').length;
+            const thisMonthTotalRevenue = thisMonthRevenue + (currentRegularMembers * 22000);
+            const nextMonthTotalRevenue = nextMonthRevenue + (currentRegularMembers * 22000);
+
+            // メンバー数推移計算
+            const currentActiveMembers = annual + regular;
+            const today = new Date();
+            const currentMonthKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
+            const lastMonthKey = today.getMonth() === 0 ? 
+                `${today.getFullYear() - 1}-12` : 
+                `${today.getFullYear()}-${String(today.getMonth()).padStart(2, '0')}`;
+            const lastYearKey = `${today.getFullYear() - 1}-${String(today.getMonth() + 1).padStart(2, '0')}`;
+
+            const lastMonthData = memberGrowthData[lastMonthKey];
+            const lastYearData = memberGrowthData[lastYearKey];
+
+            const monthlyGrowth = lastMonthData ? 
+                currentActiveMembers - (lastMonthData.annual + lastMonthData.regular) : 0;
+            const yearlyGrowth = lastYearData ? 
+                currentActiveMembers - (lastYearData.annual + lastYearData.regular) : 0;
+            const growthRate = lastMonthData ? 
+                ((currentActiveMembers - (lastMonthData.annual + lastMonthData.regular)) / (lastMonthData.annual + lastMonthData.regular) * 100) : 0;
+
+            // 三毒チーム統計
+            const greedCount = filteredMembers.filter(m => m.threePoisonsTeam === '貪欲').length;
+            const angerCount = filteredMembers.filter(m => m.threePoisonsTeam === '瞋恚').length;
+            const ignoranceCount = filteredMembers.filter(m => m.threePoisonsTeam === '愚痴').length;
+            const noTeamCount = filteredMembers.filter(m => m.threePoisonsTeam === 'なし').length;
+            const unassignedCount = filteredMembers.filter(m => m.threePoisonsTeam === '未設定').length;
+
+            // 統計を更新
+            document.getElementById('total-members').textContent = total;
+            document.getElementById('annual-members').textContent = annual;
+            document.getElementById('regular-members').textContent = regular;
+            document.getElementById('trial-ended-members').textContent = trialEnded;
+            document.getElementById('churned-members').textContent = churned;
+            document.getElementById('active-ltv').textContent = `¥${(activeLTV / 1000000).toFixed(1)}M`;
+
+            // 更新予定・売上統計を更新
+            document.getElementById('this-month-count').textContent = thisMonthRenewals;
+            document.getElementById('next-month-count').textContent = nextMonthRenewals;
+            document.getElementById('this-month-revenue').textContent = `¥${(thisMonthTotalRevenue / 1000).toFixed(0)}K`;
+            document.getElementById('next-month-revenue').textContent = `¥${(nextMonthTotalRevenue / 1000).toFixed(0)}K`;
+
+            // メンバー数推移統計を更新
+            document.getElementById('current-active-members').textContent = currentActiveMembers;
+            document.getElementById('monthly-growth').textContent = monthlyGrowth >= 0 ? `+${monthlyGrowth}` : monthlyGrowth;
+            document.getElementById('yearly-growth').textContent = yearlyGrowth >= 0 ? `+${yearlyGrowth}` : yearlyGrowth;
+            document.getElementById('growth-rate').textContent = `${growthRate.toFixed(1)}%`;
+
+            // 三毒チーム統計を更新
+            document.getElementById('greed-count').textContent = greedCount;
+            document.getElementById('anger-count').textContent = angerCount;
+            document.getElementById('ignorance-count').textContent = ignoranceCount;
+            document.getElementById('no-team-count').textContent = noTeamCount;
+            document.getElementById('unassigned-count').textContent = unassignedCount;
+        }
+
+        // メンバー詳細を開く
+        function openMemberDetail(memberId) {
+            const member = membersDatabase.find(m => m.id === memberId);
+            if (member) {
+                // メンバーデータをlocalStorageに保存
+                localStorage.setItem(`member_${memberId}`, JSON.stringify(member));
+                
+                // 詳細ページに遷移
+                window.open(`member_detail.html?id=${memberId}`, '_blank');
+            }
+        }
+
+        // 新しいメンバーを追加
+        function addNewMember() {
+            const name = prompt('新しいメンバーの名前を入力してください:');
+            if (name && name.trim()) {
+                const newMember = {
+                    id: `M${String(membersDatabase.length + 1).padStart(3, '0')}`,
+                    name: name.trim(),
+                    status: 'trial',
+                    joinDate: new Date().toISOString().split('T')[0],
+                    ltv: 5000,
+                    lastActive: new Date().toISOString().split('T')[0],
+                    events: 0
+                };
+                membersDatabase.push(newMember);
+                filterMembers();
+                alert(`${name}さんを追加しました！`);
+            }
+        }
+    </script>
+</body>
+</html>

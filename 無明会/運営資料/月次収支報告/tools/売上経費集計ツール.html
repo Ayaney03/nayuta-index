@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 売上経費集計ツール</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #f8f6f3 0%, #fff8dc 50%, #f5e6a3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f5e6a3 0%, #d4af37 50%, #b8860b 100%);
+            color: #8b6914;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+
+        .input-section {
+            padding: 40px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .output-section {
+            padding: 40px;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .upload-area {
+            border: 2px dashed #d4af37;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background: #fff8dc;
+            margin-bottom: 20px;
+        }
+
+        .upload-area:hover {
+            border-color: #b8860b;
+            background: #f5e6a3;
+        }
+
+        .upload-area input[type="file"] {
+            border: none;
+            background: transparent;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .data-item {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .data-item:hover {
+            border-color: #d4af37;
+        }
+
+        .data-item label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .data-item input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .service-section {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .service-section h4 {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .expense-item {
+            margin-bottom: 15px;
+        }
+
+        .expense-item label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9em;
+        }
+
+        .expense-item input, .expense-item select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .expense-section {
+            margin-bottom: 25px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-header h5 {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .add-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .add-btn:hover {
+            background: #218838;
+        }
+
+        .expense-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .remove-btn:hover {
+            background: #c82333;
+        }
+
+        .labor-expense-item, .other-expense-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .summary-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .summary-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 8px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+
+        .summary-item.total {
+            background: #d4af37;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .transfer-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .transfer-btn:hover {
+            background: #218838;
+        }
+
+        .csv-preview {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8em;
+        }
+
+        .help-text {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-section {
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 無明会 売上経費集計ツール</h1>
+            <p>複数データソースから売上・経費を自動集計します</p>
+        </div>
+        
+        <div class="content">
+            <div class="input-section">
+                <h2 class="section-title">📝 データ入力</h2>
+                
+                <!-- 対象年月 -->
+                <div class="form-group">
+                    <label>対象年月</label>
+                    <div class="data-grid">
+                        <div>
+                            <label for="targetYear">年</label>
+                            <select id="targetYear" required>
+                                <option value="">年を選択</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="targetMonth">月</label>
+                            <select id="targetMonth" required>
+                                <option value="">月を選択</option>
+                                <option value="1">1月</option>
+                                <option value="2">2月</option>
+                                <option value="3">3月</option>
+                                <option value="4">4月</option>
+                                <option value="5">5月</option>
+                                <option value="6">6月</option>
+                                <option value="7">7月</option>
+                                <option value="8">8月</option>
+                                <option value="9">9月</option>
+                                <option value="10">10月</option>
+                                <option value="11">11月</option>
+                                <option value="12">12月</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- サービス別売上データ入力 -->
+                <div class="form-group">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px;">💰 サービス別売上データ</h3>
+                    
+                    <!-- コミュニティ売上 -->
+                    <div class="service-section">
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">🏢 コミュニティ</h4>
+                        
+                        <!-- 手動入力セクション -->
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <label for="communitySalesManual">コミュニティ売上金額</label>
+                                <input type="text" id="communitySalesManual" placeholder="0" value="0">
+                                <div class="help-text">月額・年額会員の合計売上を入力</div>
+                            </div>
+                            <div class="data-item">
+                                <label for="communityCommissionExpense">決済手数料</label>
+                                <input type="text" id="communityCommissionExpense" placeholder="0" value="0">
+                                <div class="help-text">コミュニティ売上の決済手数料</div>
+                            </div>
+                        </div>
+
+                        <!-- 参考情報セクション -->
+                        <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 15px; margin-top: 15px;">
+                            <h5 style="color: #6c757d; margin-bottom: 10px;">📋 参考情報（自動計算）</h5>
+                            
+                            <!-- 月額会員 -->
+                            <div class="membership-section">
+                                <h6 style="color: #2c3e50; margin-bottom: 10px;">📅 月額会員（2.2万円税込）</h6>
+                                <div class="data-grid">
+                                    <div class="data-item">
+                                        <label for="newMonthlyMembers">新規入会者数</label>
+                                        <input type="number" id="newMonthlyMembers" placeholder="0" value="0" min="0">
+                                    </div>
+                                    <div class="data-item">
+                                        <label for="continuingMonthlyMembers">継続決済者数</label>
+                                        <input type="number" id="continuingMonthlyMembers" placeholder="0" value="0" min="0">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 8px; font-size: 0.9em; color: #6c757d;">
+                                    計算結果: <span id="monthlyMembersSalesCalc">¥0</span>
+                                </div>
+                            </div>
+
+                            <!-- 年額会員 -->
+                            <div class="membership-section">
+                                <h6 style="color: #2c3e50; margin-bottom: 10px;">📅 年額会員（22万円税込）</h6>
+                                <div class="data-grid">
+                                    <div class="data-item">
+                                        <label for="newYearlyMembers">新規入会者数</label>
+                                        <input type="number" id="newYearlyMembers" placeholder="0" value="0" min="0">
+                                    </div>
+                                    <div class="data-item">
+                                        <label for="existingYearlyMembers">在籍年額会員数</label>
+                                        <input type="number" id="existingYearlyMembers" placeholder="0" value="0" min="0">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 8px; font-size: 0.9em; color: #6c757d;">
+                                    計算結果: <span id="yearlyMembersSalesCalc">¥0</span>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid #e9ecef; font-weight: 600; color: #2c3e50;">
+                                合計: <span id="totalMembersSalesCalc">¥0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- note売上・経費 -->
+                    <div class="service-section">
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">📝 note</h4>
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <label for="noteSales">売上金額</label>
+                                <input type="text" id="noteSales" placeholder="0" value="0">
+                            </div>
+                            <div class="data-item">
+                                <label for="noteCommissionExpense">決済手数料</label>
+                                <input type="text" id="noteCommissionExpense" placeholder="0" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 徹底精進コース売上・経費 -->
+                    <div class="service-section">
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">🔥 徹底精進コース</h4>
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <label for="appSellSales">振込売上金額</label>
+                                <input type="text" id="appSellSales" placeholder="0" value="0">
+                            </div>
+                            <div class="data-item">
+                                <label for="appSellStaffExpense">スタッフ・指導者人件費</label>
+                                <input type="text" id="appSellStaffExpense" placeholder="0" value="0">
+                            </div>
+                            <div class="data-item">
+                                <label for="appSellOtherExpense">その他経費</label>
+                                <input type="text" id="appSellOtherExpense" placeholder="0" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NHブートキャンプ売上・経費 -->
+                    <div class="service-section">
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">💪 NHブートキャンプ</h4>
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <label for="nhBootcampSales">売上金額</label>
+                                <input type="text" id="nhBootcampSales" placeholder="0" value="0">
+                            </div>
+                            <div class="data-item">
+                                <label for="nhBootcampStaffExpense">スタッフ・指導者人件費</label>
+                                <input type="text" id="nhBootcampStaffExpense" placeholder="0" value="0">
+                            </div>
+                            <div class="data-item">
+                                <label for="nhBootcampOtherExpense">その他経費</label>
+                                <input type="text" id="nhBootcampOtherExpense" placeholder="0" value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- サービス別経費データ入力 -->
+                <div class="form-group">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px;">💸 サービス別経費データ</h3>
+                    
+                    <!-- 徹底精進コース経費 -->
+                    <div class="service-section">
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">📚 徹底精進コース経費</h4>
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <label for="appSellStaffExpense">スタッフ・指導者人件費</label>
+                                <input type="text" id="appSellStaffExpense" placeholder="0" value="0">
+                            </div>
+                            <div class="data-item">
+                                <label for="appSellOtherExpense">その他経費</label>
+                                <input type="text" id="appSellOtherExpense" placeholder="0" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NHブートキャンプ経費 -->
+                    <div class="service-section">
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">🚀 NHブートキャンプ経費</h4>
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <label for="nhBootcampStaffExpense">スタッフ・指導者人件費</label>
+                                <input type="text" id="nhBootcampStaffExpense" placeholder="0" value="0">
+                            </div>
+                            <div class="data-item">
+                                <label for="nhBootcampOtherExpense">その他経費</label>
+                                <input type="text" id="nhBootcampOtherExpense" placeholder="0" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- 共通経費 -->
+                    <div class="service-section">
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">🏢 共通経費</h4>
+                        
+                        <!-- 会場費 -->
+                        <div class="expense-item">
+                            <label for="venueExpense">会場費</label>
+                            <input type="text" id="venueExpense" placeholder="0" value="0">
+                        </div>
+
+                        <!-- 人件費（動的追加） -->
+                        <div class="expense-section">
+                            <div class="section-header">
+                                <h5 style="color: #2c3e50; margin-bottom: 10px;">👥 人件費</h5>
+                                <button type="button" class="add-btn" onclick="addLaborExpense()">➕ 人件費項目を追加</button>
+                            </div>
+                            <div id="laborExpensesContainer">
+                                <div class="expense-item labor-expense-item">
+                                    <div class="expense-item-header">
+                                        <label>人件費項目名</label>
+                                        <button type="button" class="remove-btn" onclick="removeLaborExpense(this)" style="display: none;">🗑️</button>
+                                    </div>
+                                    <input type="text" class="labor-expense-label" value="一般的人件費" placeholder="項目名を入力">
+                                    <label>金額</label>
+                                    <input type="text" class="labor-expense-amount" placeholder="0" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- マーケティング費 -->
+                        <div class="expense-item">
+                            <label for="marketingExpense">マーケティング費（LINE、X、宴等）</label>
+                            <input type="text" id="marketingExpense" placeholder="0" value="0">
+                        </div>
+
+                        <!-- システム費 -->
+                        <div class="expense-item">
+                            <label for="systemExpense">システム費</label>
+                            <input type="text" id="systemExpense" placeholder="0" value="0">
+                        </div>
+
+                        <!-- その他経費（動的追加） -->
+                        <div class="expense-section">
+                            <div class="section-header">
+                                <h5 style="color: #2c3e50; margin-bottom: 10px;">📋 その他経費</h5>
+                                <button type="button" class="add-btn" onclick="addOtherExpense()">➕ 経費項目を追加</button>
+                            </div>
+                            <div id="otherExpensesContainer">
+                                <div class="expense-item other-expense-item">
+                                    <div class="expense-item-header">
+                                        <label>経費項目名</label>
+                                        <button type="button" class="remove-btn" onclick="removeOtherExpense(this)" style="display: none;">🗑️</button>
+                                    </div>
+                                    <input type="text" class="other-expense-label" value="その他経費" placeholder="項目名を入力">
+                                    <label>金額</label>
+                                    <input type="text" class="other-expense-amount" placeholder="0" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="calculate-btn" onclick="calculateTotal()">📊 集計実行</button>
+                <button type="button" class="test-btn" onclick="loadTestData()" style="background: #28a745; margin-top: 10px;">🧪 テストデータ読み込み</button>
+            </div>
+
+            <!-- スプレッドシート解析セクション -->
+            <div class="input-section" style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #e9ecef;">
+                <h2 class="section-title">📊 スプレッドシート解析</h2>
+                
+                <div class="form-group">
+                    <label for="spreadsheetData">スプレッドシートデータを貼り付け</label>
+                    <textarea id="spreadsheetData" placeholder="スプレッドシートからコピーしたデータをここに貼り付けてください&#10;例：&#10;2025-07-12 17:43:22	鈴木智弘	10tomo11yasu@gmail.com	NHブートキャンプ 半年コース・ノーマルプラン	univapay	 ¥ 29,880 	一回払い" rows="8" style="width: 100%; padding: 10px; border: 2px solid #e9ecef; border-radius: 6px; font-family: monospace; font-size: 0.9em;"></textarea>
+                    <div class="help-text">タブ区切りまたはカンマ区切りのデータに対応しています</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dataType">データ形式</label>
+                    <select id="dataType" style="width: 100%; padding: 8px; border: 2px solid #e9ecef; border-radius: 6px;">
+                        <option value="auto">自動判定</option>
+                        <option value="tab">タブ区切り</option>
+                        <option value="comma">カンマ区切り</option>
+                    </select>
+                </div>
+
+                <button id="analyzeBtn" style="background: #007bff; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-size: 1em; cursor: pointer; width: 100%; margin-top: 15px; transition: background-color 0.2s ease;">🔍 データを解析</button>
+                
+                <div id="analysisResult" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef; display: none;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">📈 解析結果</h4>
+                    <div id="analysisContent"></div>
+                    <button id="applyAnalysisBtn" style="background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.9em; cursor: pointer; margin-top: 10px;">✅ 売上に反映</button>
+                </div>
+            </div>
+            </div>
+
+            <div class="output-section">
+                <h2 class="section-title">📋 集計結果</h2>
+                
+                <!-- サービス別売上サマリー -->
+                <div class="summary-card">
+                    <h3>💰 サービス別売上内訳</h3>
+                    <div id="salesSummary">
+                        <div class="summary-item">
+                            <span>🏢 コミュニティ売上</span>
+                            <span id="communitySalesAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>📝 note売上</span>
+                            <span id="noteSalesAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>🔥 徹底精進コース売上</span>
+                            <span id="appSellSalesAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>🚀 NHブートキャンプ売上</span>
+                            <span id="nhBootcampSalesAmount">¥0</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>売上合計</span>
+                            <span id="totalSalesAmount">¥0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- コミュニティ詳細 -->
+                <div class="summary-card">
+                    <h3>🏢 コミュニティ詳細</h3>
+                    <div id="communityDetails">
+                        <div class="summary-item">
+                            <span>📅 月額会員</span>
+                            <span id="monthlyMembersCount">0名</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>📅 年額会員</span>
+                            <span id="yearlyMembersCount">0名</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>総会員数</span>
+                            <span id="totalMembersCount">0名</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>月額単価</span>
+                            <span>¥22,000</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>年額単価</span>
+                            <span>¥220,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- サービス別経費サマリー -->
+                <div class="summary-card">
+                    <h3>💸 サービス別経費内訳</h3>
+                    <div id="expenseSummary">
+                        <div class="summary-item">
+                            <span>🔥 徹底精進コース経費</span>
+                            <span id="appSellExpenseAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>🚀 NHブートキャンプ経費</span>
+                            <span id="nhBootcampExpenseAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>📝 note決済手数料</span>
+                            <span id="noteCommissionExpenseAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>🏢 コミュニティ決済手数料</span>
+                            <span id="communityCommissionExpenseAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>会場費</span>
+                            <span id="venueExpenseAmount">¥0</span>
+                        </div>
+                        <div id="laborExpensesSummary">
+                            <!-- 動的に生成される人件費項目 -->
+                        </div>
+                        <div class="summary-item">
+                            <span>マーケティング費</span>
+                            <span id="marketingExpenseAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>システム費</span>
+                            <span id="systemExpenseAmount">¥0</span>
+                        </div>
+                        <div id="otherExpensesSummary">
+                            <!-- 動的に生成されるその他経費項目 -->
+                        </div>
+                        <div class="summary-item total">
+                            <span>経費合計</span>
+                            <span id="totalExpenseAmount">¥0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 収支サマリー -->
+                <div class="summary-card">
+                    <h3>📊 収支サマリー</h3>
+                    <div id="profitSummary">
+                        <div class="summary-item">
+                            <span>売上合計</span>
+                            <span id="finalSalesAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>経費合計</span>
+                            <span id="finalExpenseAmount">¥0</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>利益</span>
+                            <span id="finalProfitAmount">¥0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>利益率</span>
+                            <span id="profitRateAmount">0.00%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="transfer-btn" onclick="transferToReport()">📋 収支報告ツールに転送</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 年の選択肢を生成
+        function generateYearOptions() {
+            const yearSelect = document.getElementById('targetYear');
+            const currentYear = new Date().getFullYear();
+            
+            for (let year = currentYear - 5; year <= currentYear + 2; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year + '年';
+                yearSelect.appendChild(option);
+            }
+        }
+
+        // 現在の年月をデフォルトで選択
+        function setDefaultDate() {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth() + 1;
+            
+            document.getElementById('targetYear').value = currentYear;
+            document.getElementById('targetMonth').value = currentMonth;
+        }
+
+        // 数値のパース
+        function parseNumber(value) {
+            if (!value) return 0;
+            return parseInt(value.replace(/[^\d]/g, ''));
+        }
+
+        // 金額フォーマット
+        function formatCurrency(amount) {
+            return '¥' + amount.toLocaleString();
+        }
+
+
+
+        // 人件費項目を追加
+        function addLaborExpense() {
+            const container = document.getElementById('laborExpensesContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'expense-item labor-expense-item';
+            newItem.innerHTML = `
+                <div class="expense-item-header">
+                    <label>人件費項目名</label>
+                    <button type="button" class="remove-btn" onclick="removeLaborExpense(this)">🗑️</button>
+                </div>
+                <input type="text" class="labor-expense-label" value="人件費" placeholder="項目名を入力">
+                <label>金額</label>
+                <input type="text" class="labor-expense-amount" placeholder="0" value="0">
+            `;
+            container.appendChild(newItem);
+            
+            // 新しい入力フィールドにイベントリスナーを追加
+            const newInput = newItem.querySelector('.labor-expense-amount');
+            newInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/[^\d]/g, '');
+                if (value) {
+                    value = parseInt(value).toLocaleString();
+                }
+                e.target.value = value;
+                calculateTotal();
+            });
+            
+            calculateTotal();
+        }
+
+        // 人件費項目を削除
+        function removeLaborExpense(button) {
+            const container = document.getElementById('laborExpensesContainer');
+            if (container.children.length > 1) {
+                button.closest('.labor-expense-item').remove();
+                calculateTotal();
+            }
+        }
+
+        // その他経費項目を追加
+        function addOtherExpense() {
+            const container = document.getElementById('otherExpensesContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'expense-item other-expense-item';
+            newItem.innerHTML = `
+                <div class="expense-item-header">
+                    <label>経費項目名</label>
+                    <button type="button" class="remove-btn" onclick="removeOtherExpense(this)">🗑️</button>
+                </div>
+                <input type="text" class="other-expense-label" value="経費" placeholder="項目名を入力">
+                <label>金額</label>
+                <input type="text" class="other-expense-amount" placeholder="0" value="0">
+            `;
+            container.appendChild(newItem);
+            
+            // 新しい入力フィールドにイベントリスナーを追加
+            const newInput = newItem.querySelector('.other-expense-amount');
+            newInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/[^\d]/g, '');
+                if (value) {
+                    value = parseInt(value).toLocaleString();
+                }
+                e.target.value = value;
+                calculateTotal();
+            });
+            
+            calculateTotal();
+        }
+
+        // その他経費項目を削除
+        function removeOtherExpense(button) {
+            const container = document.getElementById('otherExpensesContainer');
+            if (container.children.length > 1) {
+                button.closest('.other-expense-item').remove();
+                calculateTotal();
+            }
+        }
+
+        // 会員数の参考計算を更新
+        function updateMembershipCalculations() {
+            // 月額会員計算
+            const newMonthlyMembers = parseInt(document.getElementById('newMonthlyMembers').value) || 0;
+            const continuingMonthlyMembers = parseInt(document.getElementById('continuingMonthlyMembers').value) || 0;
+            const totalMonthlyMembers = newMonthlyMembers + continuingMonthlyMembers;
+            const monthlySales = totalMonthlyMembers * 22000; // 月額2.2万円
+
+            // 年額会員計算
+            const newYearlyMembers = parseInt(document.getElementById('newYearlyMembers').value) || 0;
+            const existingYearlyMembers = parseInt(document.getElementById('existingYearlyMembers').value) || 0;
+            const totalYearlyMembers = newYearlyMembers + existingYearlyMembers;
+            const yearlySales = newYearlyMembers * 220000; // 年額22万円（新規のみ）
+
+            const calculatedCommunitySales = monthlySales + yearlySales;
+            const totalCommunityMembers = totalMonthlyMembers + totalYearlyMembers;
+
+            // 参考情報の表示を更新
+            document.getElementById('monthlyMembersSalesCalc').textContent = formatCurrency(monthlySales);
+            document.getElementById('yearlyMembersSalesCalc').textContent = formatCurrency(yearlySales);
+            document.getElementById('totalMembersSalesCalc').textContent = formatCurrency(calculatedCommunitySales);
+
+            return { calculatedCommunitySales, totalCommunityMembers, totalMonthlyMembers, totalYearlyMembers };
+        }
+
+        // 総集計
+        function calculateTotal() {
+            // 会員数の参考計算を更新
+            const membershipData = updateMembershipCalculations();
+
+            // 手動入力されたコミュニティ売上を使用
+            const communitySales = parseNumber(document.getElementById('communitySalesManual').value);
+            const totalCommunityMembers = membershipData.totalCommunityMembers;
+
+            // その他の売上
+            const noteSales = parseNumber(document.getElementById('noteSales').value);
+            const appSellSales = parseNumber(document.getElementById('appSellSales').value);
+            const nhBootcampSales = parseNumber(document.getElementById('nhBootcampSales').value);
+            const totalSales = communitySales + noteSales + appSellSales + nhBootcampSales;
+
+            // 経費集計
+            const appSellStaffExpense = parseNumber(document.getElementById('appSellStaffExpense').value);
+            const appSellOtherExpense = parseNumber(document.getElementById('appSellOtherExpense').value);
+            const appSellTotalExpense = appSellStaffExpense + appSellOtherExpense;
+
+            const nhBootcampStaffExpense = parseNumber(document.getElementById('nhBootcampStaffExpense').value);
+            const nhBootcampOtherExpense = parseNumber(document.getElementById('nhBootcampOtherExpense').value);
+            const nhBootcampTotalExpense = nhBootcampStaffExpense + nhBootcampOtherExpense;
+
+            const noteCommissionExpense = parseNumber(document.getElementById('noteCommissionExpense').value);
+            const communityCommissionExpense = parseNumber(document.getElementById('communityCommissionExpense').value);
+            
+            const venueExpense = parseNumber(document.getElementById('venueExpense').value);
+            const marketingExpense = parseNumber(document.getElementById('marketingExpense').value);
+            const systemExpense = parseNumber(document.getElementById('systemExpense').value);
+            
+            // 動的人件費集計
+            const laborExpenseItems = document.querySelectorAll('.labor-expense-item');
+            let totalLaborExpense = 0;
+            let laborExpensesSummary = '';
+            
+            laborExpenseItems.forEach((item, index) => {
+                const label = item.querySelector('.labor-expense-label').value || `人件費${index + 1}`;
+                const amount = parseNumber(item.querySelector('.labor-expense-amount').value);
+                totalLaborExpense += amount;
+                if (amount > 0) {
+                    laborExpensesSummary += `<div class="summary-item"><span>${label}</span><span>${formatCurrency(amount)}</span></div>`;
+                }
+            });
+            
+            // 動的その他経費集計
+            const otherExpenseItems = document.querySelectorAll('.other-expense-item');
+            let totalOtherExpense = 0;
+            let otherExpensesSummary = '';
+            
+            otherExpenseItems.forEach((item, index) => {
+                const label = item.querySelector('.other-expense-label').value || `経費${index + 1}`;
+                const amount = parseNumber(item.querySelector('.other-expense-amount').value);
+                totalOtherExpense += amount;
+                if (amount > 0) {
+                    otherExpensesSummary += `<div class="summary-item"><span>${label}</span><span>${formatCurrency(amount)}</span></div>`;
+                }
+            });
+            
+            const totalExpenses = appSellTotalExpense + nhBootcampTotalExpense + noteCommissionExpense + communityCommissionExpense + venueExpense + totalLaborExpense + marketingExpense + systemExpense + totalOtherExpense;
+
+            // 利益計算
+            const profit = totalSales - totalExpenses;
+            const profitRate = totalSales > 0 ? (profit / totalSales) * 100 : 0;
+
+            // 表示更新
+            document.getElementById('communitySalesAmount').textContent = formatCurrency(communitySales);
+            document.getElementById('noteSalesAmount').textContent = formatCurrency(noteSales);
+            document.getElementById('appSellSalesAmount').textContent = formatCurrency(appSellSales);
+            document.getElementById('nhBootcampSalesAmount').textContent = formatCurrency(nhBootcampSales);
+            document.getElementById('totalSalesAmount').textContent = formatCurrency(totalSales);
+
+            document.getElementById('monthlyMembersCount').textContent = membershipData.totalMonthlyMembers + '名';
+            document.getElementById('yearlyMembersCount').textContent = membershipData.totalYearlyMembers + '名';
+            document.getElementById('totalMembersCount').textContent = totalCommunityMembers + '名';
+
+            document.getElementById('appSellExpenseAmount').textContent = formatCurrency(appSellTotalExpense);
+            document.getElementById('nhBootcampExpenseAmount').textContent = formatCurrency(nhBootcampTotalExpense);
+            document.getElementById('noteCommissionExpenseAmount').textContent = formatCurrency(noteCommissionExpense);
+            document.getElementById('communityCommissionExpenseAmount').textContent = formatCurrency(communityCommissionExpense);
+            document.getElementById('venueExpenseAmount').textContent = formatCurrency(venueExpense);
+            document.getElementById('laborExpenseAmount').textContent = formatCurrency(laborExpense);
+            document.getElementById('marketingExpenseAmount').textContent = formatCurrency(marketingExpense);
+            document.getElementById('systemExpenseAmount').textContent = formatCurrency(systemExpense);
+            document.getElementById('otherExpenseAmount').textContent = formatCurrency(otherExpense);
+            document.getElementById('totalExpenseAmount').textContent = formatCurrency(totalExpenses);
+
+            document.getElementById('finalSalesAmount').textContent = formatCurrency(totalSales);
+            document.getElementById('finalExpenseAmount').textContent = formatCurrency(totalExpenses);
+            document.getElementById('finalProfitAmount').textContent = formatCurrency(profit);
+            document.getElementById('profitRateAmount').textContent = profitRate.toFixed(2) + '%';
+        }
+
+        // 収支報告ツールに転送
+        function transferToReport() {
+            const totalSales = parseNumber(document.getElementById('totalSalesAmount').textContent.replace(/[^\d]/g, ''));
+            const totalExpenses = parseNumber(document.getElementById('totalExpenseAmount').textContent.replace(/[^\d]/g, ''));
+            
+            // 会員数データも保存
+            const totalMonthlyMembers = parseInt(document.getElementById('newMonthlyMembers').value) || 0 + parseInt(document.getElementById('continuingMonthlyMembers').value) || 0;
+            const totalYearlyMembers = parseInt(document.getElementById('newYearlyMembers').value) || 0 + parseInt(document.getElementById('existingYearlyMembers').value) || 0;
+            const totalMembers = totalMonthlyMembers + totalYearlyMembers;
+            
+            // ローカルストレージに一時保存
+            localStorage.setItem('temp_sales', totalSales);
+            localStorage.setItem('temp_expenses', totalExpenses);
+            localStorage.setItem('temp_yearlyMembers', totalYearlyMembers);
+            localStorage.setItem('temp_regularMembers', totalMonthlyMembers);
+            localStorage.setItem('temp_trialMembers', 0); // 体験会員は0として設定
+            
+            alert('データを収支報告ツールに転送しました。収支報告ツールを開いて「データ転送」ボタンを押してください。');
+        }
+
+        // 入力値の自動フォーマット
+        function addNumberFormatting() {
+            const numberInputs = ['communitySalesManual', 'communityCommissionExpense', 'noteSales', 'noteCommissionExpense', 'appSellSales', 'nhBootcampSales', 'appSellStaffExpense', 'appSellOtherExpense', 'nhBootcampStaffExpense', 'nhBootcampOtherExpense', 'venueExpense', 'laborExpense', 'marketingExpense', 'systemExpense', 'otherExpense'];
+            
+            numberInputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', function(e) {
+                        let value = e.target.value.replace(/[^\d]/g, '');
+                        if (value) {
+                            value = parseInt(value).toLocaleString();
+                        }
+                        e.target.value = value;
+                        calculateTotal();
+                    });
+                }
+            });
+
+            // 会員数の入力監視（参考計算用）
+            const memberInputs = ['newMonthlyMembers', 'continuingMonthlyMembers', 'newYearlyMembers', 'existingYearlyMembers'];
+            memberInputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', function(e) {
+                        updateMembershipCalculations();
+                    });
+                }
+            });
+        }
+
+        // テストデータ読み込み機能
+        function loadTestData() {
+            const month = document.getElementById('targetMonth').value;
+            const testData = getTestData(month);
+            
+            if (testData) {
+                // 年月設定
+                document.getElementById('targetYear').value = testData.year;
+                document.getElementById('targetMonth').value = testData.month;
+                
+                // コミュニティ売上と会員数
+                document.getElementById('communitySalesManual').value = testData.communitySales.toLocaleString();
+                document.getElementById('communityCommissionExpense').value = testData.communityCommissionExpense.toLocaleString();
+                document.getElementById('newMonthlyMembers').value = testData.newMonthlyMembers;
+                document.getElementById('continuingMonthlyMembers').value = testData.continuingMonthlyMembers;
+                document.getElementById('newYearlyMembers').value = testData.newYearlyMembers;
+                document.getElementById('existingYearlyMembers').value = testData.existingYearlyMembers;
+                
+                // 売上
+                document.getElementById('noteSales').value = testData.noteSales.toLocaleString();
+                document.getElementById('appSellSales').value = testData.appSellSales.toLocaleString();
+                document.getElementById('nhBootcampSales').value = testData.nhBootcampSales.toLocaleString();
+                
+                // 経費
+                document.getElementById('appSellStaffExpense').value = testData.appSellStaffExpense.toLocaleString();
+                document.getElementById('appSellOtherExpense').value = testData.appSellOtherExpense.toLocaleString();
+                document.getElementById('nhBootcampStaffExpense').value = testData.nhBootcampStaffExpense.toLocaleString();
+                document.getElementById('nhBootcampOtherExpense').value = testData.nhBootcampOtherExpense.toLocaleString();
+                document.getElementById('noteCommissionExpense').value = testData.noteCommissionExpense.toLocaleString();
+                document.getElementById('venueExpense').value = testData.venueExpense.toLocaleString();
+                document.getElementById('marketingExpense').value = testData.marketingExpense.toLocaleString();
+                document.getElementById('systemExpense').value = testData.systemExpense.toLocaleString();
+                
+                // 人件費（最初の項目のみ）
+                const laborItems = document.querySelectorAll('.labor-expense-item');
+                if (laborItems.length > 0) {
+                    laborItems[0].querySelector('.labor-expense-label').value = '人件費';
+                    laborItems[0].querySelector('.labor-expense-amount').value = testData.laborExpense.toLocaleString();
+                }
+                
+                // その他経費（最初の項目のみ）
+                const otherItems = document.querySelectorAll('.other-expense-item');
+                if (otherItems.length > 0) {
+                    otherItems[0].querySelector('.other-expense-label').value = 'その他経費';
+                    otherItems[0].querySelector('.other-expense-amount').value = testData.otherExpense.toLocaleString();
+                }
+                
+                // 集計実行
+                calculateTotal();
+                
+                alert(`${testData.year}年${testData.month}月のテストデータを読み込みました！`);
+            } else {
+                alert('選択された月のテストデータが見つかりません。2024年12月〜2025年4月のデータが利用可能です。');
+            }
+        }
+
+        // テストデータ定義
+        function getTestData(month) {
+            const testData = {
+                '12': {
+                    year: '2024',
+                    month: '12',
+                    communitySales: 550000,
+                    communityCommissionExpense: 16500,
+                    newMonthlyMembers: 5,
+                    continuingMonthlyMembers: 0,
+                    newYearlyMembers: 2,
+                    existingYearlyMembers: 2,
+                    noteSales: 85000,
+                    appSellSales: 320000,
+                    nhBootcampSales: 180000,
+                    appSellStaffExpense: 80000,
+                    appSellOtherExpense: 40000,
+                    nhBootcampStaffExpense: 50000,
+                    nhBootcampOtherExpense: 30000,
+                    noteCommissionExpense: 8500,
+                    venueExpense: 50000,
+                    laborExpense: 200000,
+                    marketingExpense: 30000,
+                    systemExpense: 15000,
+                    otherExpense: 25000
+                },
+                '01': {
+                    year: '2025',
+                    month: '01',
+                    communitySales: 946000,
+                    communityCommissionExpense: 28380,
+                    newMonthlyMembers: 8,
+                    continuingMonthlyMembers: 5,
+                    newYearlyMembers: 3,
+                    existingYearlyMembers: 5,
+                    noteSales: 120000,
+                    appSellSales: 450000,
+                    nhBootcampSales: 220000,
+                    appSellStaffExpense: 100000,
+                    appSellOtherExpense: 50000,
+                    nhBootcampStaffExpense: 60000,
+                    nhBootcampOtherExpense: 35000,
+                    noteCommissionExpense: 12000,
+                    venueExpense: 55000,
+                    laborExpense: 250000,
+                    marketingExpense: 40000,
+                    systemExpense: 18000,
+                    otherExpense: 30000
+                },
+                '02': {
+                    year: '2025',
+                    month: '02',
+                    communitySales: 1430000,
+                    communityCommissionExpense: 42900,
+                    newMonthlyMembers: 12,
+                    continuingMonthlyMembers: 13,
+                    newYearlyMembers: 4,
+                    existingYearlyMembers: 8,
+                    noteSales: 150000,
+                    appSellSales: 520000,
+                    nhBootcampSales: 280000,
+                    appSellStaffExpense: 120000,
+                    appSellOtherExpense: 60000,
+                    nhBootcampStaffExpense: 70000,
+                    nhBootcampOtherExpense: 40000,
+                    noteCommissionExpense: 15000,
+                    venueExpense: 60000,
+                    laborExpense: 300000,
+                    marketingExpense: 50000,
+                    systemExpense: 20000,
+                    otherExpense: 35000
+                },
+                '03': {
+                    year: '2025',
+                    month: '03',
+                    communitySales: 1980000,
+                    communityCommissionExpense: 59400,
+                    newMonthlyMembers: 15,
+                    continuingMonthlyMembers: 25,
+                    newYearlyMembers: 5,
+                    existingYearlyMembers: 13,
+                    noteSales: 180000,
+                    appSellSales: 580000,
+                    nhBootcampSales: 320000,
+                    appSellStaffExpense: 140000,
+                    appSellOtherExpense: 60000,
+                    nhBootcampStaffExpense: 80000,
+                    nhBootcampOtherExpense: 45000,
+                    noteCommissionExpense: 18000,
+                    venueExpense: 65000,
+                    laborExpense: 350000,
+                    marketingExpense: 60000,
+                    systemExpense: 22000,
+                    otherExpense: 40000
+                },
+                '04': {
+                    year: '2025',
+                    month: '04',
+                    communitySales: 2596000,
+                    communityCommissionExpense: 77880,
+                    newMonthlyMembers: 18,
+                    continuingMonthlyMembers: 40,
+                    newYearlyMembers: 6,
+                    existingYearlyMembers: 19,
+                    noteSales: 220000,
+                    appSellSales: 650000,
+                    nhBootcampSales: 380000,
+                    appSellStaffExpense: 160000,
+                    appSellOtherExpense: 60000,
+                    nhBootcampStaffExpense: 90000,
+                    nhBootcampOtherExpense: 50000,
+                    noteCommissionExpense: 22000,
+                    venueExpense: 70000,
+                    laborExpense: 400000,
+                    marketingExpense: 70000,
+                    systemExpense: 25000,
+                    otherExpense: 45000
+                }
+            };
+            
+            return testData[month];
+        }
+
+        // スプレッドシート解析機能
+        document.getElementById('analyzeBtn').addEventListener('click', function() {
+            analyzeSpreadsheetData();
+        });
+
+        document.getElementById('applyAnalysisBtn').addEventListener('click', function() {
+            applyAnalysisToSales();
+        });
+
+        function analyzeSpreadsheetData() {
+            const data = document.getElementById('spreadsheetData').value.trim();
+            const dataType = document.getElementById('dataType').value;
+            
+            if (!data) {
+                alert('データを入力してください');
+                return;
+            }
+
+            try {
+                const lines = data.split('\n').filter(line => line.trim());
+                const delimiter = detectDelimiter(data, dataType);
+                const parsedData = parseSpreadsheetData(lines, delimiter);
+                const analysis = analyzeSalesData(parsedData);
+                
+                displayAnalysisResult(analysis);
+            } catch (error) {
+                alert('データの解析中にエラーが発生しました: ' + error.message);
+            }
+        }
+
+        function detectDelimiter(data, dataType) {
+            if (dataType === 'tab') return '\t';
+            if (dataType === 'comma') return ',';
+            
+            // 自動判定
+            const firstLine = data.split('\n')[0];
+            const tabCount = (firstLine.match(/\t/g) || []).length;
+            const commaCount = (firstLine.match(/,/g) || []).length;
+            
+            return tabCount > commaCount ? '\t' : ',';
+        }
+
+        function parseSpreadsheetData(lines, delimiter) {
+            const parsedData = [];
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                
+                const columns = line.split(delimiter);
+                if (columns.length < 6) continue; // 最低6列必要
+                
+                // 金額列を探す（¥記号を含む列）
+                let amountIndex = -1;
+                for (let j = 0; j < columns.length; j++) {
+                    if (columns[j].includes('¥') || columns[j].includes('円')) {
+                        amountIndex = j;
+                        break;
+                    }
+                }
+                
+                if (amountIndex === -1) continue;
+                
+                // 金額を抽出して数値に変換
+                const amountStr = columns[amountIndex].replace(/[¥,\s]/g, '');
+                const amount = parseInt(amountStr);
+                
+                if (isNaN(amount)) continue;
+                
+                parsedData.push({
+                    date: columns[0] || '',
+                    name: columns[1] || '',
+                    email: columns[2] || '',
+                    product: columns[3] || '',
+                    paymentMethod: columns[4] || '',
+                    amount: amount,
+                    paymentType: columns[6] || '',
+                    originalLine: line
+                });
+            }
+            
+            return parsedData;
+        }
+
+        function analyzeSalesData(data) {
+            const totalSales = data.reduce((sum, item) => sum + item.amount, 0);
+            const transactionCount = data.length;
+            
+            // 商品別集計
+            const productSummary = {};
+            data.forEach(item => {
+                const product = item.product || '不明';
+                if (!productSummary[product]) {
+                    productSummary[product] = { count: 0, amount: 0 };
+                }
+                productSummary[product].count++;
+                productSummary[product].amount += item.amount;
+            });
+            
+            // 決済方法別集計
+            const paymentSummary = {};
+            data.forEach(item => {
+                const method = item.paymentMethod || '不明';
+                if (!paymentSummary[method]) {
+                    paymentSummary[method] = { count: 0, amount: 0 };
+                }
+                paymentSummary[method].count++;
+                paymentSummary[method].amount += item.amount;
+            });
+            
+            // NHブートキャンプ関連の売上を特定
+            const nhBootcampSales = data
+                .filter(item => item.product && item.product.includes('NHブートキャンプ'))
+                .reduce((sum, item) => sum + item.amount, 0);
+            
+            // その他の売上（NHブートキャンプ以外）
+            const otherSales = totalSales - nhBootcampSales;
+            
+            return {
+                totalSales,
+                transactionCount,
+                productSummary,
+                paymentSummary,
+                nhBootcampSales,
+                otherSales,
+                rawData: data
+            };
+        }
+
+        function displayAnalysisResult(analysis) {
+            const resultDiv = document.getElementById('analysisResult');
+            const contentDiv = document.getElementById('analysisContent');
+            
+            let html = `
+                <div style="margin-bottom: 15px;">
+                    <strong>総売上:</strong> ¥${analysis.totalSales.toLocaleString()}<br>
+                    <strong>取引件数:</strong> ${analysis.transactionCount}件
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong>商品別集計:</strong>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+            `;
+            
+            Object.entries(analysis.productSummary).forEach(([product, data]) => {
+                html += `<li>${product}: ${data.count}件 × ¥${data.amount.toLocaleString()}</li>`;
+            });
+            
+            html += `
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong>決済方法別集計:</strong>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+            `;
+            
+            Object.entries(analysis.paymentSummary).forEach(([method, data]) => {
+                html += `<li>${method}: ${data.count}件 × ¥${data.amount.toLocaleString()}</li>`;
+            });
+            
+            html += `
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 15px; padding: 10px; background: #e8f5e8; border-radius: 4px;">
+                    <strong>推奨設定:</strong><br>
+                    <strong>NHブートキャンプ売上:</strong> ¥${analysis.nhBootcampSales.toLocaleString()}<br>
+                    <strong>その他売上:</strong> ¥${analysis.otherSales.toLocaleString()}
+                </div>
+            `;
+            
+            contentDiv.innerHTML = html;
+            resultDiv.style.display = 'block';
+            
+            // 解析結果をグローバル変数に保存
+            window.currentAnalysis = analysis;
+        }
+
+        function applyAnalysisToSales() {
+            if (!window.currentAnalysis) {
+                alert('先にデータを解析してください');
+                return;
+            }
+            
+            const analysis = window.currentAnalysis;
+            
+            // NHブートキャンプ売上を設定
+            document.getElementById('nhBootcampSales').value = analysis.nhBootcampSales.toLocaleString();
+            
+            // その他の売上を適切な項目に設定（例：徹底精進コース）
+            if (analysis.otherSales > 0) {
+                document.getElementById('appSellSales').value = analysis.otherSales.toLocaleString();
+            }
+            
+            // 自動で集計を実行
+            calculateTotal();
+            
+            alert(`売上データを設定しました！\n\nNHブートキャンプ: ¥${analysis.nhBootcampSales.toLocaleString()}\nその他: ¥${analysis.otherSales.toLocaleString()}`);
+        }
+
+        // ページ読み込み時に初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            generateYearOptions();
+            setDefaultDate();
+            addNumberFormatting();
+        });
+    </script>
+</body>
+</html>

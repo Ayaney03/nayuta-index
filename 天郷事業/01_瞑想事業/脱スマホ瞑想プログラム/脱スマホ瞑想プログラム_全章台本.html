@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脱スマホ瞑想プログラム - 全3章台本</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .chapter-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .chapter-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+        
+        .chapter-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .chapter-card .duration {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .chapter-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .chapter1 {
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .chapter2 {
+            border-left: 5px solid #f39c12;
+        }
+        
+        .chapter3 {
+            border-left: 5px solid #27ae60;
+        }
+        
+        .chapter-section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .chapter-section h3 {
+            color: #764ba2;
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+        }
+        
+        .chapter-section h4 {
+            color: #555;
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+        }
+        
+        .time-indicator {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .work-section {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .work-section h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .meditation-guide {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .meditation-guide h4 {
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+        
+        .technique-box {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .technique-box h4 {
+            color: #f39c12;
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 200px;
+            z-index: 1000;
+        }
+        
+        .navigation h4 {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .navigation a {
+            color: #87CEEB;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+        }
+        
+        .navigation a:hover {
+            color: white;
+        }
+        
+        .last-updated {
+            text-align: right;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .back-to-top {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+        
+        .back-to-hub {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .navigation {
+                display: none;
+            }
+            
+            .chapter-section {
+                padding: 20px;
+            }
+            
+            .chapter-nav {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <h4>📋 目次</h4>
+        <a href="#overview">プログラム概要</a>
+        <a href="#chapter1">第1章：現状把握</a>
+        <a href="#chapter2">第2章：テクニック</a>
+        <a href="#chapter3">第3章：瞑想ワーク</a>
+    </div>
+
+    <div class="container">
+        <div class="last-updated">
+            📅 最終更新: <span id="lastUpdated"></span>
+        </div>
+        <div class="header" id="top">
+            <h1>📱✨ 脱スマホ瞑想プログラム</h1>
+            <p>全3章構成 動画コンテンツ台本</p>
+            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                <strong>総時間:</strong> 約30分（各章10分）<br>
+                <strong>構成:</strong> 現状把握 → 実践テクニック → 瞑想ワーク<br>
+                <strong>目的:</strong> スマホ依存の根本解決と理想人生の実現
+            </div>
+        </div>
+
+        <div id="overview" class="chapter-nav">
+            <a href="#chapter1" class="chapter-card">
+                <h3>📊 第1章</h3>
+                <div class="duration">⏰ 10分</div>
+                <h4>自分なりの脱デジタルライフと理想人生を描き出す</h4>
+                <p>現状把握 → アプリ分析 → 理想設定</p>
+                <div style="margin-top: 15px; font-size: 0.9rem; color: #667eea; font-weight: bold;">
+                    📄 詳細台本を見る ↓
+                </div>
+            </a>
+            
+            <a href="#chapter2" class="chapter-card">
+                <h3>🛠️ 第2章</h3>
+                <div class="duration">⏰ 10分</div>
+                <h4>具体的なスマートフォンの使い方テクニック編</h4>
+                <p>5つの実践テクニック → 即効性のある改善</p>
+                <div style="margin-top: 15px; font-size: 0.9rem; color: #667eea; font-weight: bold;">
+                    📄 詳細台本を見る ↓
+                </div>
+            </a>
+            
+            <a href="#chapter3" class="chapter-card">
+                <h3>🧘‍♀️ 第3章</h3>
+                <div class="duration">⏰ 10分</div>
+                <h4>自分の本当にやりたいことを発見するワーク</h4>
+                <p>3つの瞑想法 → 人生の目的発見</p>
+                <div style="margin-top: 15px; font-size: 0.9rem; color: #667eea; font-weight: bold;">
+                    📄 詳細台本を見る ↓
+                </div>
+            </a>
+        </div>
+
+        <div id="chapter1" class="chapter-section chapter1">
+            <div class="time-indicator">⏰ 10分</div>
+            <h2>📊 第1章：自分なりの脱デジタルライフと理想人生を描き出す</h2>
+            
+            <h3>オープニング（1分）</h3>
+            <p>こんにちは、永世です。</p>
+            <p>脱スマホ瞑想プログラムの第1章へようこそ。</p>
+            <p>今日は「自分なりの脱デジタルライフと理想人生を描き出す」というテーマでお話しします。</p>
+            <p>この章では、まず現実と向き合い、そして理想の未来を描いていきます。</p>
+            <p>少し痛い現実もお話ししますが、これが変化への第一歩です。</p>
+            <p>一緒に取り組んでいきましょう。</p>
+
+            <h3>ステップ1：スマホ使用状況の認識（2分）</h3>
+            <h4>現実と向き合う時間です</h4>
+            <p>まず、あなたのスマホを手に取ってください。</p>
+            <p>スクリーンタイムを開いてみましょう。</p>
+            <p>iPhone の方は「設定」→「スクリーンタイム」<br>
+            Android の方は「設定」→「デジタルウェルビーイング」</p>
+            <p>数字を見てください。どう感じますか？</p>
+            <p>「思ったより多い...」「まさか、こんなに...」</p>
+            <p>その感情を大切にしてください。これが変化の始まりです。</p>
+
+            <div class="work-section">
+                <h4>ワーク：使用時間の記録</h4>
+                <p>今から、紙とペンを用意してください。</p>
+                <p>以下の項目を書き出してみましょう：</p>
+                <ol>
+                    <li><strong>今日のスマホ使用時間</strong>：_____時間_____分</li>
+                    <li><strong>最も使用時間の長いアプリ</strong>：___________</li>
+                    <li><strong>2番目に長いアプリ</strong>：___________</li>
+                    <li><strong>3番目に長いアプリ</strong>：___________</li>
+                </ol>
+                <p>書けましたか？この数字があなたの現実です。</p>
+            </div>
+
+            <h3>ステップ2：不要なアプリの特定（2分）</h3>
+            <h4>理想の人生に必要ですか？</h4>
+            <p>今、書き出したアプリを見てください。</p>
+            <p>一つずつ、こう自問してみてください：</p>
+            <p><strong>「このアプリは、私の理想の人生に本当に必要でしょうか？」</strong></p>
+
+            <div class="work-section">
+                <h4>ワーク：アプリの分類</h4>
+                <p>紙に2つの列を作ってください：</p>
+                <p><strong>【必要】</strong></p>
+                <ul>
+                    <li>仕事で使う</li>
+                    <li>家族・友人との連絡</li>
+                    <li>本当に価値のある情報源</li>
+                </ul>
+                <p><strong>【不要かも】</strong></p>
+                <ul>
+                    <li>なんとなく見てしまう</li>
+                    <li>時間を無駄にしている</li>
+                    <li>見た後に後悔する</li>
+                </ul>
+                <p>各アプリを、どちらかの列に書いてください。</p>
+            </div>
+
+            <h3>ステップ3：アプリから受け取っているものの分析（3分）</h3>
+            <h4>なぜそのアプリを使うのか？</h4>
+            <p>「不要かも」の列に書いたアプリを見てください。</p>
+            <p>なぜ、そのアプリを使ってしまうのでしょうか？</p>
+
+            <h4>よくある理由</h4>
+            <ul>
+                <li><strong>暇つぶし</strong> → 空いた時間を埋めたい</li>
+                <li><strong>楽しさ</strong> → 一時的な快楽を求めている</li>
+                <li><strong>寂しさを埋める</strong> → 人とのつながりを感じたい</li>
+                <li><strong>情報収集</strong> → 何か重要なことを見逃したくない</li>
+                <li><strong>承認欲求</strong> → いいねやコメントが欲しい</li>
+                <li><strong>現実逃避</strong> → 嫌なことを忘れたい</li>
+            </ul>
+
+            <div class="work-section">
+                <h4>ワーク：欲求の分析</h4>
+                <p>「不要かも」の各アプリについて、以下を書いてください：</p>
+                <p><strong>アプリ名：___________</strong></p>
+                <ul>
+                    <li>このアプリから得ているもの：___________</li>
+                    <li>使う時の気持ち：___________</li>
+                    <li>使った後の気持ち：___________</li>
+                </ul>
+                <p>正直に書いてください。自分を責める必要はありません。</p>
+            </div>
+
+            <h3>ステップ4：代替手段の検討（1.5分）</h3>
+            <h4>より良い方法はありませんか？</h4>
+            <p>先ほど分析した欲求を、別の方法で満たすことはできないでしょうか？</p>
+
+            <h4>代替手段の例</h4>
+            <ul>
+                <li><strong>暇つぶし</strong> → 読書、散歩、瞑想、ストレッチ</li>
+                <li><strong>楽しさ</strong> → 趣味、運動、音楽鑑賞、料理</li>
+                <li><strong>寂しさ</strong> → 家族・友人との直接の会話、手紙を書く</li>
+                <li><strong>情報収集</strong> → 厳選したニュースサイト、本、雑誌</li>
+                <li><strong>承認欲求</strong> → 実際の成果や成長に焦点を当てる</li>
+                <li><strong>現実逃避</strong> → 瞑想、呼吸法、問題解決に取り組む</li>
+            </ul>
+
+            <div class="work-section">
+                <h4>ワーク：代替手段を決める</h4>
+                <p>各欲求に対して、代替手段を書いてください：</p>
+                <p><strong>欲求：___________</strong> → <strong>代替手段：___________</strong></p>
+            </div>
+
+            <h3>ステップ5：理想の人生を描く（0.5分）</h3>
+            <h4>最後の質問です</h4>
+            <p>あなたは、どんな人生を送りたいですか？</p>
+            <p>1年後、3年後、5年後...どんな自分になっていたいですか？</p>
+            <p>その理想の自分は、今のスマホの使い方をしているでしょうか？</p>
+
+            <h3>まとめとクロージング（1分）</h3>
+            <h4>今日のワークお疲れさまでした</h4>
+            <p>今日は現実と向き合い、理想を描きました。</p>
+            <p>重要なのは：</p>
+            <ol>
+                <li><strong>現状を正確に把握すること</strong></li>
+                <li><strong>なぜそうしているかを理解すること</strong></li>
+                <li><strong>より良い代替手段を見つけること</strong></li>
+                <li><strong>理想の人生を明確にすること</strong></li>
+            </ol>
+
+            <div class="highlight">
+                今日から始められること：<br>
+                「不要かも」リストのアプリを開く前に、一度立ち止まってください。<br>
+                「今、本当にこれが必要？」「代わりに○○をしてみようかな」<br>
+                そう自問する習慣を始めましょう。
+            </div>
+
+            <p>第2章では、スマホとの付き合い方を変える具体的なテクニックをお伝えします。</p>
+            <p>次回もお楽しみに。ありがとうございました。</p>
+        </div>
+
+        <div id="chapter2" class="chapter-section chapter2">
+            <div class="time-indicator">⏰ 10分</div>
+            <h2>🛠️ 第2章：具体的なスマートフォンの使い方テクニック編</h2>
+            
+            <h3>オープニング（1分）</h3>
+            <p>こんにちは、永世です。</p>
+            <p>脱スマホ瞑想プログラム第2章へようこそ。</p>
+            <p>第1章では現状把握と理想の明確化を行いました。今日は、より実践的な内容をお伝えします。</p>
+            <p>「スマホとの付き合い方を根本から変える具体的なテクニック」です。</p>
+            <p>これらのテクニックは、私自身が実践し、効果を実感したものばかりです。</p>
+            <p>今日学んだことを、すぐに実践してみてください。きっと変化を感じられるはずです。</p>
+
+            <h3>テクニック1：グレースケール設定（2分）</h3>
+            <div class="technique-box">
+                <h4>脳をハックから守る最強の方法</h4>
+                <p>まず、最も効果的なテクニックからお伝えします。</p>
+                <p>スマホの画面を白黒（グレースケール）に設定することです。</p>
+            </div>
+
+            <h4>なぜグレースケールが効果的なのか？</h4>
+            <p>SNSやアプリの開発者は、色彩心理学を駆使してあなたの注意を引きつけています。</p>
+            <ul>
+                <li><strong>赤</strong> → 緊急性、興奮を煽る</li>
+                <li><strong>青</strong> → 信頼感、安心感を与える</li>
+                <li><strong>オレンジ</strong> → 活動的、行動を促す</li>
+                <li><strong>緑</strong> → 安らぎ、継続を促す</li>
+            </ul>
+            <p>これらの色が、あなたの脳を刺激し、中毒状態を作り出しているのです。</p>
+
+            <h4>設定方法</h4>
+            <p><strong>iPhone の場合：</strong></p>
+            <ol>
+                <li>設定 → アクセシビリティ</li>
+                <li>画面表示とテキストサイズ</li>
+                <li>カラーフィルタ → オン</li>
+                <li>グレースケール を選択</li>
+            </ol>
+            <p><strong>Android の場合：</strong></p>
+            <ol>
+                <li>設定 → ユーザー補助</li>
+                <li>色補正 → オン</li>
+                <li>グレースケール を選択</li>
+            </ol>
+
+            <div class="highlight">
+                実践してみましょう：今すぐ、設定してみてください。<br>
+                「なんか、つまらなくなった...」「見る気が失せた...」<br>
+                それが正解です。色彩による脳のハッキングから解放されました。
+            </div>
+
+            <h3>テクニック2：スマホの壁紙最適化（1.5分）</h3>
+            <div class="technique-box">
+                <h4>壁紙があなたの行動を決めている</h4>
+                <p>現在の壁紙は何ですか？美しい風景？好きなキャラクター？家族の写真？</p>
+            </div>
+
+            <h4>理想的な壁紙とは？</h4>
+            <p><strong>避けるべき壁紙：</strong></p>
+            <ul>
+                <li>刺激的な色彩</li>
+                <li>複雑なデザイン</li>
+                <li>感情を強く刺激するもの</li>
+            </ul>
+            <p><strong>推奨する壁紙：</strong></p>
+            <ul>
+                <li>シンプルな単色</li>
+                <li>自然の風景（落ち着いた色調）</li>
+                <li>自分の目標や理想を思い出させるもの</li>
+            </ul>
+
+            <div class="work-section">
+                <h4>ワーク：壁紙を変更する</h4>
+                <p>今すぐ、壁紙を変更してみましょう。</p>
+                <p>シンプルで、あなたの理想を思い出させるものを選んでください。</p>
+            </div>
+
+            <h3>テクニック3：スクリーンタイム設定とウィジェット配置（2.5分）</h3>
+            <div class="technique-box">
+                <h4>現実を常に見える化する</h4>
+                <p>第1章で確認したスクリーンタイム。これを、常に見える場所に配置します。</p>
+            </div>
+
+            <h4>スクリーンタイムウィジェットの設定</h4>
+            <p><strong>iPhone の場合：</strong></p>
+            <ol>
+                <li>ホーム画面を長押し</li>
+                <li>左上の「+」をタップ</li>
+                <li>「スクリーンタイム」を検索</li>
+                <li>ウィジェットを追加</li>
+                <li>ホーム画面の見やすい場所に配置</li>
+            </ol>
+
+            <h4>アプリの配置も重要</h4>
+            <p><strong>ホーム画面に置くべきアプリ：</strong></p>
+            <ul>
+                <li>電話、メッセージ（必要最小限）</li>
+                <li>カレンダー、時計</li>
+                <li>本当に必要なツール系アプリ</li>
+            </ul>
+            <p><strong>ホーム画面から削除すべきアプリ：</strong></p>
+            <ul>
+                <li>SNS系アプリ</li>
+                <li>ゲーム</li>
+                <li>エンタメ系アプリ</li>
+            </ul>
+
+            <div class="work-section">
+                <h4>ワーク：ホーム画面の整理</h4>
+                <p>今から5分間で、ホーム画面を整理してください。</p>
+                <ol>
+                    <li>スクリーンタイムウィジェットを追加</li>
+                    <li>不要なアプリをフォルダに移動</li>
+                    <li>本当に必要なアプリだけを残す</li>
+                </ol>
+            </div>
+
+            <h3>テクニック4：通知設定の最適化（2分）</h3>
+            <div class="technique-box">
+                <h4>通知があなたの人生を支配している</h4>
+                <p>スマホの通知は、現代版の「パブロフの犬」実験です。</p>
+                <p>音が鳴る → 反射的にスマホを見る → ドーパミンが分泌される</p>
+                <p>この条件反射を断ち切りましょう。</p>
+            </div>
+
+            <h4>通知をオフにすべきアプリ</h4>
+            <ul>
+                <li><strong>SNS系アプリ</strong> → 全ての通知をオフ</li>
+                <li><strong>ニュースアプリ</strong> → 緊急性の低い情報は不要</li>
+                <li><strong>ゲーム</strong> → 完全にオフ</li>
+                <li><strong>ショッピングアプリ</strong> → セール情報は誘惑の元</li>
+            </ul>
+
+            <h4>通知を残すべきアプリ</h4>
+            <ul>
+                <li><strong>電話、SMS</strong> → 緊急連絡用</li>
+                <li><strong>カレンダー</strong> → 予定管理用</li>
+                <li><strong>重要な仕事関連アプリ</strong> → 最小限に</li>
+            </ul>
+
+            <div class="work-section">
+                <h4>ワーク：通知の大掃除</h4>
+                <p>今すぐ、不要な通知をオフにしてください。</p>
+                <p>「見逃したらどうしよう...」という不安は、実は錯覚です。</p>
+            </div>
+
+            <h3>テクニック5：デジタルデトックスタイムの設定（1分）</h3>
+            <div class="technique-box">
+                <h4>強制的にスマホから離れる時間を作る</h4>
+                <p>最後のテクニックは、物理的にスマホから離れる時間を作ることです。</p>
+            </div>
+
+            <h4>設定する時間帯</h4>
+            <ul>
+                <li>朝起きてから1時間</li>
+                <li>夜寝る前1時間</li>
+                <li>食事中</li>
+                <li>集中作業中</li>
+            </ul>
+
+            <div class="work-section">
+                <h4>ワーク：デトックスタイムを決める</h4>
+                <p>あなたの「スマホフリータイム」を決めてください：</p>
+                <p><strong>朝：</strong> _____時から_____時まで</p>
+                <p><strong>夜：</strong> _____時から_____時まで</p>
+                <p><strong>その他：</strong> ___________</p>
+            </div>
+
+            <h3>まとめとクロージング（1分）</h3>
+            <h4>今日学んだ5つのテクニック</h4>
+            <ol>
+                <li><strong>グレースケール設定</strong> → 色彩による誘惑を断つ</li>
+                <li><strong>壁紙最適化</strong> → 理想を思い出させる環境作り</li>
+                <li><strong>スクリーンタイム表示</strong> → 使用時間の見える化</li>
+                <li><strong>通知最適化</strong> → 不要な中断を排除</li>
+                <li><strong>デトックスタイム</strong> → 物理的な距離を作る</li>
+            </ol>
+
+            <div class="highlight">
+                重要なポイント：<br>
+                これらのテクニックは、スマホを敵視するためのものではありません。<br>
+                スマホを、あなたの理想の人生を実現するための「道具」として使いこなすためのものです。
+            </div>
+
+            <p>第3章では、「自分の本当にやりたいことを発見するワーク」をお伝えします。</p>
+            <p>瞑想を使って、あなたの内なる声に耳を傾ける方法を学びましょう。</p>
+            <p>今日もありがとうございました。</p>
+        </div>
+
+        <div id="chapter3" class="chapter-section chapter3">
+            <div class="time-indicator">⏰ 10分</div>
+            <h2>🧘‍♀️ 第3章：自分の本当にやりたいことを発見するワーク</h2>
+            
+            <h3>オープニング（1分）</h3>
+            <p>こんにちは、永世です。</p>
+            <p>脱スマホ瞑想プログラム、最終章へようこそ。</p>
+            <p>第1章で現状を把握し、第2章で具体的なテクニックを学びました。そして今日は、最も重要な章です。</p>
+            <p>「自分の本当にやりたいことを発見する」</p>
+            <p>なぜこれが重要なのか？スマホ依存の根本原因は、「人生の目的が不明確」だからです。</p>
+            <p>やりたいことが明確な人は、スマホに時間を奪われません。なぜなら、もっと大切なことがあるからです。</p>
+            <p>今日は、瞑想を使って、あなたの内なる声に耳を傾けます。きっと、新しい発見があるはずです。</p>
+
+            <h3>瞑想の準備（1分）</h3>
+            <h4>環境を整えましょう</h4>
+            <p>まず、瞑想に適した環境を作ります。</p>
+            <ol>
+                <li><strong>スマホを別の部屋に置く</strong> → 物理的に距離を作る</li>
+                <li><strong>静かな場所を選ぶ</strong> → 集中できる環境</li>
+                <li><strong>楽な姿勢で座る</strong> → 椅子でも床でも構いません</li>
+                <li><strong>背筋を軽く伸ばす</strong> → でも力まない</li>
+                <li><strong>目を閉じる</strong> → 外部の刺激を遮断</li>
+            </ol>
+
+            <h4>今日行う3つの瞑想</h4>
+            <ol>
+                <li><strong>ノイズキャンセリング瞑想</strong> → 心を静める</li>
+                <li><strong>基本呼吸法</strong> → 集中力を高める</li>
+                <li><strong>ドグマ瞑想（理想実現法）</strong> → 内なる声を聞く</li>
+            </ol>
+            <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #4682b4;">
+                <p><strong>💡 ドグマ瞑想とは？</strong><br>
+                ドグマとは本来「宗教的教義」や「独断的な考え」を意味しますが、ここでは「固定観念や思い込み」として使用しています。ドグマ瞑想は、日常の固定観念や先入観（ドグマ）を手放し、心を空っぽにした状態で自分の本当の気持ちや願いに気づく瞑想法です。頭で考えるのではなく、心の奥底からの声を聞くことができます。</p>
+            </div>
+
+            <h3>瞑想1：ノイズキャンセリング瞑想（2分）</h3>
+            <div class="meditation-guide">
+                <h4>心のノイズを取り除く</h4>
+                <p>まず、心を静めることから始めます。</p>
+                <p>目を閉じて、自然な呼吸を意識してください。</p>
+                <p>周りの音が聞こえるかもしれません。車の音、エアコンの音、人の声...</p>
+                <p>それらの音に気づいたら、「ああ、音があるな」と受け入れて、手放してください。</p>
+                <p>頭の中に様々な思考が浮かんできます。</p>
+                <p>それらの思考に気づいたら、雲が空を流れるように、手放してください。</p>
+                <p>ただ、今この瞬間の呼吸に意識を向けます。</p>
+                <p><strong>息を吸って... 息を吐いて...</strong></p>
+                <p>思考が浮かんできても、それは自然なことです。気づいたら、また呼吸に戻ってください。</p>
+            </div>
+
+            <h3>瞑想2：基本呼吸法（2分）</h3>
+            <div class="meditation-guide">
+                <h4>集中力を高める</h4>
+                <p>今度は、呼吸に意識を集中させます。</p>
+                <p>鼻から息をゆっくりと吸います。4つ数えながら... 1、2、3、4</p>
+                <p>少し息を止めます。2つ数えながら... 1、2</p>
+                <p>口からゆっくりと息を吐きます。6つ数えながら... 1、2、3、4、5、6</p>
+                <p>これを繰り返します。</p>
+                <p><strong>吸って... 1、2、3、4</strong></p>
+                <p><strong>止めて... 1、2</strong></p>
+                <p><strong>吐いて... 1、2、3、4、5、6</strong></p>
+                <p>呼吸だけに意識を向けてください。他のことは考えなくて大丈夫です。</p>
+            </div>
+
+            <h3>瞑想3：ドグマ瞑想（理想実現法）（4分）</h3>
+            <div class="meditation-guide">
+                <h4>あなたの内なる声を聞く</h4>
+                <p>今、あなたの心は静まり、集中力が高まっています。この状態で、自分の内側に問いかけてみましょう。</p>
+                
+                <h4>質問1：本当にやりたいことは何ですか？</h4>
+                <p>心の中で、自分に問いかけてください。</p>
+                <p>「私が本当にやりたいことは何だろう？」</p>
+                <p>答えを探そうとしなくて大丈夫です。ただ、問いかけて、静かに待ってください。</p>
+                
+                <h4>質問2：理想の1日はどんな1日ですか？</h4>
+                <p>「私の理想の1日は、どんな1日だろう？」</p>
+                <p>朝起きてから夜寝るまで、理想の1日を想像してみてください。</p>
+                <p>その理想の1日に、スマホを見る時間はどのくらいありますか？</p>
+                
+                <h4>質問3：1年後、どんな自分になっていたいですか？</h4>
+                <p>「1年後、私はどんな自分になっていたいだろう？」</p>
+                <p>1年後のあなたを想像してください。</p>
+                <p>その理想の自分は、今のようにスマホに時間を使っているでしょうか？</p>
+                
+                <h4>内なる声からのメッセージ</h4>
+                <p>静かに、あなたの内なる声に耳を傾けてください。</p>
+                <p>その声は、あなたに何と言っていますか？</p>
+                <p>その声を、しっかりと心に刻んでください。</p>
+            </div>
+
+            <h3>瞑想の終了とワーク（1分）</h3>
+            <h4>ゆっくりと現実に戻りましょう</h4>
+            <p>深呼吸を3回してください。</p>
+            <p>1回目... 吸って、吐いて</p>
+            <p>2回目... 吸って、吐いて</p>
+            <p>3回目... 吸って、吐いて</p>
+            <p>手足を軽く動かして、ゆっくりと目を開けてください。</p>
+
+            <div class="work-section">
+                <h4>ワーク：気づきを記録する</h4>
+                <p>今すぐ、紙とペンを取って、以下を書いてください：</p>
+                <p><strong>私が本当にやりたいこと：</strong><br>_________________________________</p>
+                <p><strong>私の理想の1日：</strong><br>_________________________________</p>
+                <p><strong>1年後の理想の自分：</strong><br>_________________________________</p>
+                <p><strong>内なる声からのメッセージ：</strong><br>_________________________________</p>
+                <p>これが、あなたの人生の羅針盤です。</p>
+            </div>
+
+            <h3>まとめとクロージング（1分）</h3>
+            <h4>スマホ依存からの根本的な解放</h4>
+            <p>今日の瞑想で、あなたは重要な発見をしました。</p>
+            <p>スマホに時間を奪われる理由は、「本当にやりたいことが不明確」だったからです。</p>
+            <p>でも今、あなたには明確な目標があります。</p>
+
+            <h4>これからの人生で大切なこと</h4>
+            <p>スマホを見たくなったとき、今日書いた内容を思い出してください。</p>
+            <p>「私には、もっと大切なことがある」</p>
+            <p>「この時間を、理想の実現に使おう」</p>
+            <p>そう思えるはずです。</p>
+
+            <div class="highlight">
+                3章すべてを通じて学んだこと：<br>
+                第1章：現状把握と理想の明確化<br>
+                第2章：具体的なテクニック<br>
+                第3章：人生の目的の発見<br><br>
+                この3つが揃えば、スマホ依存から完全に解放されます。
+            </div>
+
+            <h4>最後のメッセージ</h4>
+            <p>あなたの人生は、あなたのものです。</p>
+            <p>スマホに支配される人生から、スマホを使いこなす人生へ。</p>
+            <p>今日が、その転換点です。</p>
+
+            <h4>特別なご案内</h4>
+            <p>このプログラムの内容をより深く実践したい方のために、無料の瞑想体験会を開催します。</p>
+            <p>今日学んだ3つの瞑想法を、みんなで一緒に実践できる特別な機会です。</p>
+            <p>詳細は、後ほどお送りするメッセージでご確認ください。</p>
+
+            <p>3章すべてを最後まで受講していただき、本当にありがとうございました。</p>
+            <p>あなたの人生が、より豊かで充実したものになることを心から願っています。</p>
+            <p>今日学んだことを、ぜひ実践してください。きっと、素晴らしい変化が待っています。</p>
+            <p>ありがとうございました。</p>
+        </div>
+    </div>
+
+    <div class="floating-buttons">
+        <a href="#top" class="floating-btn back-to-top">
+            ⬆️ トップへ
+        </a>
+        <a href="00_脱スマホ瞑想プログラム_ハブ.html" class="floating-btn back-to-hub">
+            🏠 ハブに戻る
+        </a>
+    </div>
+
+    <script>
+        // 最終更新日時を表示
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleString('ja-JP');
+        
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

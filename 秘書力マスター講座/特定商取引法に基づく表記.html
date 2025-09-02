@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特定商取引法に基づく表記</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5aa0 50%, #1e3a5f 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 3px solid #d4af37;
+        }
+
+        .header h1 {
+            color: #1e3a5f;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #2c5aa0;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .info-item {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+            border: 1px solid #d1e9ff;
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.2s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 90, 160, 0.1);
+        }
+
+        .info-label {
+            color: #1e3a5f;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-label::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, #2c5aa0, #d4af37);
+            border-radius: 2px;
+        }
+
+        .info-value {
+            color: #444;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffeaa7 100%);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .notice-section {
+            background: linear-gradient(135deg, #fff0f0 0%, #ffe6e6 100%);
+            border: 2px solid #ff9999;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .notice-section h3 {
+            color: #cc3333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .email-notice {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #38bdf8;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 0.9em;
+            color: #0369a1;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            color: #1e3a5f;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .decorative-element {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #2c5aa0, #d4af37, #2c5aa0);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .url-link {
+            color: #2c5aa0;
+            text-decoration: none;
+            border-bottom: 1px solid #2c5aa0;
+            transition: all 0.3s ease;
+        }
+
+        .url-link:hover {
+            background: #2c5aa0;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .info-item {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>特定商取引法に基づく表記</h1>
+            <div class="decorative-element"></div>
+        </header>
+
+        <main class="content">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">販売事業者名</div>
+                    <div class="info-value">株式会社フルガード</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">運営統括責任者</div>
+                    <div class="info-value">水野彩香</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">所在地</div>
+                    <div class="info-value">
+                        〒600-8846<br>
+                        京都府京都市下京区朱雀宝蔵町44番地 協栄ビル2階<br>
+                        京都朱雀スタジオAB-502
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">電話番号</div>
+                    <div class="info-value">075-313-3700</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">メールアドレス</div>
+                    <div class="info-value">
+                        info@@fulguard.co.jp
+                        <div class="email-notice">
+                            <strong>※注意</strong> アットマーク(@)を1つ削除してください（スパムメール対策のため）
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">販売URL</div>
+                    <div class="info-value">
+                        <a href="https://utage-system.com/p/h9gofgK02IZ4" class="url-link" target="_blank">
+                            https://utage-system.com/p/h9gofgK02IZ4
+                        </a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">お支払い方法</div>
+                    <div class="info-value">クレジットカード・銀行振り込みにて決済</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">販売価格</div>
+                    <div class="info-value">商品申込ページに記載</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">商品代金以外の必要金額</div>
+                    <div class="info-value">ありません。</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">解約方法</div>
+                    <div class="info-value">
+                        解約をご希望の場合はinfo@@fulguard.co.jpまで申込者氏名を添えてご連絡下さい。
+                        <div class="email-notice">
+                            <strong>※注意</strong> アットマーク(@)を1つ削除してください（スパムメール対策のため）
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">継続決済の停止処理日について</div>
+                    <div class="info-value">
+                        <div class="highlight-box">
+                            継続決済の解約をご希望の場合は、<strong>次回継続決済の課金日の3日前まで</strong>にご連絡ください。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">お申込み有効期限</div>
+                    <div class="info-value">
+                        14日以内にお願いいたします。<br>
+                        14日間入金がない場合は、キャンセルとさせていただきます。
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">商品引渡し時期</div>
+                    <div class="info-value">初回のご入金確認後3営業日以内にご案内します。</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">商品引渡し方法</div>
+                    <div class="info-value">商品購入メールアドレスへ配信</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">返品・不良品について</div>
+                    <div class="info-value">お客様のご都合による返品および返金には応じられません。</div>
+                </div>
+            </div>
+
+            <div class="notice-section">
+                <h3>表現、及び商品に関する注意書き</h3>
+                <p>本商品に示された表現や再現性には個人差があり、必ずしも利益や効果を保証したものではございません。</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="decorative-element"></div>
+            <p>&copy;2025 株式会社フルガード</p>
+        </footer>
+    </div>
+</body>
+</html>

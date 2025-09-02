@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無明会 チームハブ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .access-notice {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .section-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-item {
+            margin-bottom: 10px;
+        }
+
+        .resource-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #f8f9fa;
+            color: #495057;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .resource-link:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .restricted {
+            opacity: 0.6;
+            pointer-events: none;
+            background: #f1f3f4 !important;
+        }
+
+        .team-info {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-info h2 {
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .team-info h2::before {
+            content: "👥";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .member-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .access-level {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #28a745;
+            color: white;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-top: 5px;
+        }
+
+        .access-level.limited {
+            background: #ffc107;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌙 無明会 チームハブ</h1>
+            <p>なゆた・あやねえ共同運営コミュニティ</p>
+        </div>
+
+        <div class="access-notice">
+            <strong>🔐 アクセス制限</strong> このページは無明会運営メンバー専用です
+        </div>
+
+        <div class="team-info">
+            <h2>チーム構成</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-name">なゆたさん</div>
+                    <div class="member-role">共同代表</div>
+                    <div class="access-level">フルアクセス</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">あやねえ</div>
+                    <div class="member-role">共同代表・運営統括</div>
+                    <div class="access-level">フルアクセス</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">運営メンバー</div>
+                    <div class="member-role">コンテンツ制作・配信</div>
+                    <div class="access-level limited">限定アクセス</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-grid">
+            <!-- コンセプト・運営資料 -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">📋</div>
+                    <div class="section-title">コンセプト・運営資料</div>
+                </div>
+                <div class="section-description">
+                    無明会の基本コンセプト、Q&A、メンバーの声、なゆたレターなど
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="00_コンセプト・運営資料/Q&A.md" class="resource-link">❓ Q&A</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="00_コンセプト・運営資料/なゆたレター（短文）.md" class="resource-link">📝 なゆたレター（短文）</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="00_コンセプト・運営資料/なゆたレター（長文）.md" class="resource-link">📄 なゆたレター（長文）</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="00_コンセプト・運営資料/メンバーの声.md" class="resource-link">💬 メンバーの声</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ローンチプロジェクト -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">🚀</div>
+                    <div class="section-title">ローンチプロジェクト</div>
+                </div>
+                <div class="section-description">
+                    恋愛note・セルフイメージnoteローンチの管理・進捗確認
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="ローンチプロジェクト/2508恋愛noteローンチ（5期）/" class="resource-link">💕 恋愛note（5期）</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="ローンチプロジェクト/2509セルフイメージnoteローンチ（6期）/" class="resource-link">✨ セルフイメージnote（6期）</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="ローンチプロジェクト/README.md" class="resource-link">📖 プロジェクト概要</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- コンテンツ管理 -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">📚</div>
+                    <div class="section-title">コンテンツ管理</div>
+                </div>
+                <div class="section-description">
+                    noteコンテンツ、ページテンプレート、配信用素材の管理
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="コンテンツ管理/note_contents/" class="resource-link">📝 noteコンテンツ</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="ローンチテンプレート/ページテンプレート/" class="resource-link">🎨 ページテンプレート</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="ローンチテンプレート/配信テンプレート/" class="resource-link">📧 配信テンプレート</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 運営資料 -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">⚙️</div>
+                    <div class="section-title">運営資料</div>
+                </div>
+                <div class="section-description">
+                    運営マニュアル、顧客情報、月次収支報告など（限定アクセス）
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="運営資料/運営資料・マニュアル/" class="resource-link">📋 運営マニュアル</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="運営資料/月次収支報告/" class="resource-link restricted">💰 月次収支報告</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="運営資料/顧客情報/" class="resource-link restricted">👥 顧客情報</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="運営資料/無明会資料ナビゲーター.html" class="resource-link">🧭 資料ナビゲーター</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 外部リンク -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">🔗</div>
+                    <div class="section-title">外部リンク・SNS</div>
+                </div>
+                <div class="section-description">
+                    公式アカウント、コミュニティ、重要なURLへのアクセス
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="https://x.com/mumyokai0201" class="resource-link" target="_blank">🐦 公式Xアカウント</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://twitter.com/i/spaces/1dRKZazvvNXxB" class="resource-link" target="_blank">🎙️ Xスペース</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="https://discord.gg/zEKvaju8" class="resource-link" target="_blank">💬 Discord</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 決済・分析 -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">📊</div>
+                    <div class="section-title">決済・分析</div>
+                </div>
+                <div class="section-description">
+                    決済データ、手数料分析、収支管理ツール（管理者限定）
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="決済データチェックシート_完全版.html" class="resource-link restricted">💳 決済データチェック</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="決済手数料分析レポート_2025年7月.html" class="resource-link restricted">📈 手数料分析</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="クレジットカード分析レポート.html" class="resource-link restricted">💰 クレカ分析</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ページ読み込み時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.section-card, .team-info');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // 制限されたリンクのクリック処理
+        document.querySelectorAll('.restricted').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('このコンテンツは管理者限定です。アクセス権限が必要です。');
+            });
+        });
+    </script>
+</body>
+</html>

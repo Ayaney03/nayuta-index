@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脱スマホ瞑想プログラム - プロジェクトハブ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .overview-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .overview-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .overview-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .overview-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .content-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .content-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .content-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .content-btn.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .content-btn.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .todo-section {
+            grid-column: 1 / -1;
+        }
+        
+        .todo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .todo-item {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .todo-item.completed {
+            background: #f0f8f0;
+            border-left-color: #4caf50;
+            opacity: 0.7;
+        }
+        
+        .todo-item h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .todo-item.completed h4 {
+            color: #4caf50;
+            text-decoration: line-through;
+        }
+        
+        .progress-bar {
+            background: #eee;
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .last-updated {
+            text-align: right;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .back-to-top {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+        
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .todo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="last-updated">
+            📅 最終更新: <span id="lastUpdated"></span>
+        </div>
+        <div class="header" id="top">
+            <h1>📱✨ 脱スマホ瞑想プログラム</h1>
+            <p>プロジェクト管理ハブ - なゆたさん・チーム用</p>
+        </div>
+
+        <div class="main-grid">
+            <!-- プロジェクト概要 -->
+            <div class="section">
+                <h2>📋 プロジェクト概要</h2>
+                <ul class="overview-list">
+                    <li>現代人のスマホ依存を根本解決する包括的プログラム</li>
+                    <li>フロント商品：2,980円の脱スマホ瞑想プログラム</li>
+                    <li>セミナー動画：40-50分のLINE配信用コンテンツ</li>
+                    <li>AI瞑想コーチ：24時間サポートシステム</li>
+                    <li>バックエンド：高額瞑想コーチング誘導</li>
+                    <li>ターゲット：スマホ依存に悩む20-40代</li>
+                </ul>
+            </div>
+
+            <!-- 作成予定コンテンツ -->
+            <div class="section">
+                <h2>🎯 作成予定コンテンツ</h2>
+                <div class="content-buttons">
+                    <a href="なゆたセミナー台本_脱スマホ瞑想プログラム.html" class="content-btn">
+                        🎬 セミナー台本
+                    </a>
+                    <a href="脱スマホ瞑想プログラム_全章台本.html" class="content-btn">
+                        📚 全章台本
+                    </a>
+                    <a href="LINE_bot構想_いつでも瞑想見守るくん.html" class="content-btn">
+                        🤖 AI瞑想コーチ
+                    </a>
+                    <a href="#" class="content-btn disabled">
+                        💰 決済ページ
+                    </a>
+                    <a href="#" class="content-btn disabled">
+                        📧 メルマガ配信
+                    </a>
+                    <a href="#" class="content-btn disabled">
+                        📱 LINE配信
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- なゆたさんのTODOと進捗 -->
+        <div class="section todo-section">
+            <h2>✅ なゆたさんのTODO・進捗管理</h2>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 40%;"></div>
+            </div>
+            <div class="progress-text">プロジェクト進捗: 40% 完了</div>
+            
+            <div class="todo-grid">
+                <div class="todo-item completed">
+                    <h4>セミナー台本作成</h4>
+                    <p>40-50分のセミナー台本完成済み</p>
+                    <small>✅ 完了日: 2024年12月</small>
+                </div>
+                
+                <div class="todo-item completed">
+                    <h4>全章台本作成</h4>
+                    <p>プログラム全体の台本構成完成</p>
+                    <small>✅ 完了日: 2024年12月</small>
+                </div>
+                
+                <div class="todo-item">
+                    <h4>AI瞑想コーチ設計</h4>
+                    <p>24時間サポートシステムの仕様策定</p>
+                    <small>🔄 進行中</small>
+                </div>
+                
+                <div class="todo-item">
+                    <h4>決済ページ作成</h4>
+                    <p>2,980円商品の販売ページ制作</p>
+                    <small>📅 予定</small>
+                </div>
+                
+                <div class="todo-item">
+                    <h4>LINE配信シナリオ</h4>
+                    <p>セミナー動画配信用のシナリオ作成</p>
+                    <small>📅 予定</small>
+                </div>
+                
+                <div class="todo-item">
+                    <h4>メルマガ設計</h4>
+                    <p>フォローアップメール配信設計</p>
+                    <small>📅 予定</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔗 チーム共有・アクセス方法</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📁 Google Drive共有</h3>
+                    <p><strong>フォルダ名:</strong> 脱スマホ瞑想プログラム_チーム共有</p>
+                    <p>あやねえから送られた共有リンクでアクセス</p>
+                    <p>全ファイルの最新版が自動同期されています</p>
+                </div>
+                <div class="info-card">
+                    <h3>🌐 HTMLページ閲覧</h3>
+                    <p>Google Drive内「HTMLページ_Web公開用」フォルダ</p>
+                    <p>index.htmlから各ページにアクセス可能</p>
+                    <p>※正確な表示にはダウンロード推奨</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-buttons">
+        <a href="#top" class="floating-btn back-to-top">
+            ⬆️ トップへ
+        </a>
+    </div>
+
+    <script>
+        // 最終更新日時を表示
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleString('ja-JP');
+        
+        // 進捗計算
+        function updateProgress() {
+            const totalTodos = document.querySelectorAll('.todo-item').length;
+            const completedTodos = document.querySelectorAll('.todo-item.completed').length;
+            const progress = Math.round((completedTodos / totalTodos) * 100);
+            
+            document.querySelector('.progress-fill').style.width = progress + '%';
+            document.querySelector('.progress-text').textContent = `プロジェクト進捗: ${progress}% 完了`;
+        }
+        
+        updateProgress();
+        
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

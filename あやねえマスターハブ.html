@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あやねえ マスターハブ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 50%, #1e5f99 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .business-hub {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .business-hub::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4a90e2, #357abd);
+        }
+
+        .business-hub:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+        }
+
+        .hub-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .hub-icon {
+            font-size: 3rem;
+            margin-right: 20px;
+        }
+
+        .hub-info h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .hub-info .status {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #28a745;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .hub-description {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .access-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .access-info h4 {
+            color: #4a90e2;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .access-info p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .hub-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hub-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .hub-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        .hub-btn.secondary {
+            background: linear-gradient(135deg, #6c757d, #495057);
+        }
+
+        .hub-btn.secondary:hover {
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+        }
+
+        .quick-stats {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .quick-stats h2 {
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quick-stats h2::before {
+            content: "📊";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4a90e2;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .recent-activity {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .recent-activity h2 {
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .recent-activity h2::before {
+            content: "🕒";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .activity-time {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* 管理機能セクション */
+        .management-section {
+            margin-bottom: 40px;
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .management-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .management-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4a90e2, #357abd);
+        }
+
+        .management-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .management-card .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .management-card .card-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+
+        .management-card .card-info h3 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-pending {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .card-content {
+            margin-bottom: 20px;
+        }
+
+        /* 収支管理スタイル */
+        .summary-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .summary-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .summary-value {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .summary-value.positive {
+            color: #28a745;
+        }
+
+        .summary-value.negative {
+            color: #dc3545;
+        }
+
+        /* タスク管理スタイル */
+        .task-summary {
+            margin-bottom: 20px;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-priority {
+            margin-right: 12px;
+            font-size: 0.8rem;
+        }
+
+        .task-text {
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .task-item.urgent .task-text {
+            font-weight: 500;
+        }
+
+        .task-link {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .task-link:hover {
+            color: #4a90e2;
+            text-decoration: underline;
+        }
+
+        /* プライベート管理スタイル */
+        .private-summary {
+            margin-bottom: 20px;
+        }
+
+        .private-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .private-item:last-child {
+            border-bottom: none;
+        }
+
+        .private-icon {
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .private-info {
+            flex: 1;
+        }
+
+        .private-title {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 3px;
+            font-size: 0.95rem;
+        }
+
+        .private-desc {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* アクションボタン */
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .business-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .business-hub {
+                padding: 20px;
+            }
+
+            .hub-actions {
+                flex-direction: column;
+            }
+
+            .hub-btn {
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>あやねえ マスターハブ</h1>
+            <p>全事業・プロジェクトへの統合アクセスポイント</p>
+        </div>
+
+        <div class="quick-stats">
+            <h2>事業概況</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">運営中事業</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">ローンチ中</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">チーム連携</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">新規企画</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 管理機能セクション -->
+        <div class="management-section">
+            <div class="management-grid">
+                <!-- 収支管理 -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <div class="card-icon">💰</div>
+                        <div class="card-info">
+                            <h3>収支管理</h3>
+                            <span class="status-indicator status-active">更新中</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="summary-stats">
+                            <div class="summary-item">
+                                <span class="summary-label">今月売上</span>
+                                <span class="summary-value positive">¥2,450,000</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">今月支出</span>
+                                <span class="summary-value negative">¥680,000</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">純利益</span>
+                                <span class="summary-value positive">¥1,770,000</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="無明会/決済データチェックシート_完全版.html" class="action-btn">📊 決済データ</a>
+                            <a href="無明会/決済手数料分析レポート_2025年7月.html" class="action-btn">📈 手数料分析</a>
+                            <a href="無明会/クレジットカード分析レポート.html" class="action-btn">💳 CC分析</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- タスク管理 -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <div class="card-icon">✅</div>
+                        <div class="card-info">
+                            <h3>タスク管理</h3>
+                            <span class="status-indicator status-pending">6件未完了</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="task-summary">
+                            <div class="task-item urgent">
+                                <span class="task-priority">🔴</span>
+                                <a href="秘書力マスター講座/YouTube_エンドロール動画台本.md" class="task-text task-link">YouTubeエンドロール動画台本叩き完成</a>
+                            </div>
+                            <div class="task-item urgent">
+                                <span class="task-priority">🔴</span>
+                                <a href="秘書力マスター講座/YouTube_エンドロール動画台本.md" class="task-text task-link">YouTubeエンドロール動画音声収録</a>
+                            </div>
+                            <div class="task-item normal">
+                                <span class="task-priority">🟡</span>
+                                <span class="task-text">秘書力講座コンテンツ制作</span>
+                            </div>
+                            <div class="task-item normal">
+                                <span class="task-priority">🟢</span>
+                                <span class="task-text">アメブロ投稿スケジュール</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="あやねえタスクハブ.html" class="action-btn">📋 全タスク</a>
+                            <a href="天郷事業/01_瞑想事業/なゆたさんのやることリスト.md" class="action-btn">👥 なゆたタスク</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- プライベート管理 -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <div class="card-icon">🏠</div>
+                        <div class="card-info">
+                            <h3>プライベート管理</h3>
+                            <span class="status-indicator status-active">家事育児</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="private-summary">
+                            <div class="private-item">
+                                <span class="private-icon">👶</span>
+                                <div class="private-info">
+                                    <div class="private-title">育児スケジュール</div>
+                                    <div class="private-desc">保育園送迎・習い事管理</div>
+                                </div>
+                            </div>
+                            <div class="private-item">
+                                <span class="private-icon">🧹</span>
+                                <div class="private-info">
+                                    <div class="private-title">家事仕組み化</div>
+                                    <div class="private-desc">掃除・料理・買い物の効率化</div>
+                                </div>
+                            </div>
+                            <div class="private-item">
+                                <span class="private-icon">💪</span>
+                                <div class="private-info">
+                                    <div class="private-title">健康管理</div>
+                                    <div class="private-desc">運動・食事・睡眠記録</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <a href="秘書力マスター講座/レッスン（講座コンテンツ）/第6章_家事育児の仕組み化/" class="action-btn">🏠 家事育児</a>
+                            <a href="#" class="action-btn" onclick="alert('プライベート管理システムは準備中です')">📅 スケジュール</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- リンクショートカット集 -->
+        <div class="management-section">
+            <div class="management-card" style="margin-bottom: 40px;">
+                <div class="card-header">
+                    <div class="card-icon">🔗</div>
+                    <div class="card-info">
+                        <h3>リンクショートカット集</h3>
+                        <span class="status-indicator status-active">勉強・参考資料</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="private-summary">
+                        <div class="private-item">
+                            <span class="private-icon">📚</span>
+                            <div class="private-info">
+                                <div class="private-title">おさるマーケ大学</div>
+                                <div class="private-desc">マーケティング学習プラットフォーム</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://app.the-online-class.com/courses/okzM4EDI6MGb" class="action-btn" target="_blank">📖 おさるマーケ大学</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="business-grid">
+            <!-- 天郷事業 -->
+            <div class="business-hub">
+                <div class="hub-header">
+                    <div class="hub-icon">🏢</div>
+                    <div class="hub-info">
+                        <h2>天郷事業</h2>
+                        <span class="status">運営中</span>
+                    </div>
+                </div>
+                <div class="hub-description">
+                    瞑想事業・なゆた関連・出張関係の3事業を統括。特許庁識別番号525313409で管理。
+                </div>
+                <div class="access-info">
+                    <h4>🔐 アクセス権限</h4>
+                    <p>あやねえ（フルアクセス）、なゆたさん（瞑想・なゆた関連）</p>
+                </div>
+                <div class="hub-actions">
+                    <a href="天郷事業/天郷事業ダッシュボード.html" class="hub-btn">📊 ダッシュボード</a>
+                    <a href="https://ayaney03.github.io/smartphone-detox/" class="hub-btn secondary" target="_blank">🧘 脱スマホ公式</a>
+                    <a href="天郷事業/なゆたさん専用ハブ.html" class="hub-btn secondary">👤 なゆたハブ</a>
+                </div>
+            </div>
+
+            <!-- 無明会 -->
+            <div class="business-hub">
+                <div class="hub-header">
+                    <div class="hub-icon">🌙</div>
+                    <div class="hub-info">
+                        <h2>無明会</h2>
+                        <span class="status">運営中</span>
+                    </div>
+                </div>
+                <div class="hub-description">
+                    なゆたさんとの共同運営コミュニティ。恋愛note・セルフイメージnoteローンチ管理。
+                </div>
+                <div class="access-info">
+                    <h4>🔐 アクセス権限</h4>
+                    <p>あやねえ・なゆたさん（フルアクセス）、運営メンバー（限定アクセス）</p>
+                </div>
+                <div class="hub-actions">
+                    <a href="https://ayaney03.github.io/mumyokai" class="hub-btn" target="_blank">🌐 無明会公式</a>
+                    <a href="無明会/README.md" class="hub-btn secondary">📖 概要</a>
+                    <a href="無明会/ローンチプロジェクト/README.md" class="hub-btn secondary">🚀 ローンチ管理</a>
+                </div>
+            </div>
+
+            <!-- 秘書力マスター講座 -->
+            <div class="business-hub">
+                <div class="hub-header">
+                    <div class="hub-icon">💼</div>
+                    <div class="hub-info">
+                        <h2>秘書力マスター講座</h2>
+                        <span class="status">開発中</span>
+                    </div>
+                </div>
+                <div class="hub-description">
+                    あやねえ独自の秘書スキル講座。チーム運営、レッスンコンテンツ、マーケティング戦略を統合管理。
+                </div>
+                <div class="access-info">
+                    <h4>🔐 アクセス権限</h4>
+                    <p>あやねえ（フルアクセス）、制作チーム（コンテンツ限定）</p>
+                </div>
+                <div class="hub-actions">
+                    <a href="秘書力マスター講座/README.md" class="hub-btn">📚 講座概要</a>
+                    <a href="秘書力マスター講座/チーム運営/README.md" class="hub-btn secondary">👥 チーム管理</a>
+                </div>
+            </div>
+
+            <!-- 顧問・コンサル事業 -->
+            <div class="business-hub">
+                <div class="hub-header">
+                    <div class="hub-icon">🎯</div>
+                    <div class="hub-info">
+                        <h2>顧問・コンサル事業</h2>
+                        <span class="status">受託中</span>
+                    </div>
+                </div>
+                <div class="hub-description">
+                    企業向けコンサルティング、Google Drive API連携、UTAGE設定支援など。
+                </div>
+                <div class="access-info">
+                    <h4>🔐 アクセス権限</h4>
+                    <p>あやねえ（フルアクセス）、クライアント別限定共有</p>
+                </div>
+                <div class="hub-actions">
+                    <a href="顧問・コンサル事業/" class="hub-btn">📁 案件一覧</a>
+                    <a href="google_drive_api/README.md" class="hub-btn secondary">⚙️ API連携</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-activity">
+            <h2>最近の活動</h2>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="activity-icon">📝</div>
+                    <div class="activity-content">
+                        <div class="activity-title">アメブロ運用プロジェクト開始</div>
+                        <div class="activity-time">2025年1月15日 - 天郷事業</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon">🚀</div>
+                    <div class="activity-content">
+                        <div class="activity-title">2508恋愛noteローンチ（5期）進行中</div>
+                        <div class="activity-time">2025年1月14日 - 無明会</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon">👥</div>
+                    <div class="activity-content">
+                        <div class="activity-title">チーム運営システム更新</div>
+                        <div class="activity-time">2025年1月13日 - 秘書力マスター講座</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon">⚙️</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Google Drive API連携完了</div>
+                        <div class="activity-time">2025年1月12日 - 顧問・コンサル事業</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // ページ読み込み時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.business-hub, .quick-stats, .recent-activity');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    element.style.transition = 'all 0.8s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        });
+
+        // 統計数値のカウントアップアニメーション
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(number => {
+                const target = parseInt(number.textContent);
+                let current = 0;
+                const increment = target / 20;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    number.textContent = Math.floor(current);
+                }, 50);
+            });
+        }
+
+        // 少し遅延してからアニメーション開始
+        setTimeout(animateNumbers, 1000);
+    </script>
+</body>
+</html>

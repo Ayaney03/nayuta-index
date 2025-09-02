@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秘書力マスター講座 チームハブ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 50%, #1e5f99 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .access-notice {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .section-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-item {
+            margin-bottom: 10px;
+        }
+
+        .resource-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #f8f9fa;
+            color: #495057;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .resource-link:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .restricted {
+            opacity: 0.6;
+            pointer-events: none;
+            background: #f1f3f4 !important;
+        }
+
+        .team-info {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-info h2 {
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .team-info h2::before {
+            content: "👥";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .member-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .access-level {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #28a745;
+            color: white;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-top: 5px;
+        }
+
+        .access-level.limited {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 8px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #4a90e2, #357abd);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💼 秘書力マスター講座 チームハブ</h1>
+            <p>あやねえ主催・稼げるオンライン秘書育成プログラム</p>
+        </div>
+
+        <div class="access-notice">
+            <strong>🔐 アクセス制限</strong> このページは秘書力マスター講座制作チーム専用です
+        </div>
+
+        <div class="team-info">
+            <h2>チーム構成</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-name">あやねえ</div>
+                    <div class="member-role">講座主催・統括責任者</div>
+                    <div class="access-level">フルアクセス</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">コンテンツ制作チーム</div>
+                    <div class="member-role">レッスン制作・編集</div>
+                    <div class="access-level limited">コンテンツ限定</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">マーケティングチーム</div>
+                    <div class="member-role">集客・販促</div>
+                    <div class="access-level limited">マーケ限定</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-grid">
+            <!-- レッスンコンテンツ -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">📚</div>
+                    <div class="section-title">レッスンコンテンツ</div>
+                </div>
+                <div class="section-description">
+                    9章構成の講座コンテンツ。稼げる秘書のマインドから実践スキルまで
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+                <div class="progress-text">制作進捗: 75% 完了</div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="レッスン（講座コンテンツ）/レッスン構造一覧.md" class="resource-link">📋 レッスン構造一覧</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="レッスン（講座コンテンツ）/第1章_講座の使い方ガイダンス/" class="resource-link">📖 第1章: 使い方ガイダンス</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="レッスン（講座コンテンツ）/第2章_稼げるオンライン秘書のマインド/" class="resource-link">🧠 第2章: 秘書マインド</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="レッスン（講座コンテンツ）/第5章_稼ぐ秘書の時短仕事術/" class="resource-link">⚡ 第5章: 時短仕事術</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- チーム運営 -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">👥</div>
+                    <div class="section-title">チーム運営</div>
+                </div>
+                <div class="section-description">
+                    Notion連携、Google Drive管理、プロジェクト管理システム
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="チーム運営/README.md" class="resource-link">📖 チーム運営概要</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="チーム運営/Notion双方向同期_完全ガイド.md" class="resource-link">🔄 Notion同期ガイド</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="チーム運営/Google_Drive_チーム共有手順書.md" class="resource-link">☁️ Google Drive共有</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="チーム運営/Cursor活用ワークフロー.md" class="resource-link">💻 Cursor活用法</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- マーケティング -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">📈</div>
+                    <div class="section-title">マーケティング</div>
+                </div>
+                <div class="section-description">
+                    LINE配信、SNS投稿、ローンチ計画、価格戦略
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="マーケティング/マーケティング戦略概要.html" class="resource-link">📖 マーケ戦略概要</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="マーケティング/LINE配信/" class="resource-link">📱 LINE配信管理</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="マーケティング/SNS投稿/あやねえアカウント投稿文作成メモ.md" class="resource-link">📝 SNS投稿文</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="マーケティング/ローンチ計画/" class="resource-link restricted">🚀 ローンチ計画</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- レッスン制作管理 -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">🛠️</div>
+                    <div class="section-title">レッスン制作管理</div>
+                </div>
+                <div class="section-description">
+                    制作ワークフロー、タスク管理、チェックリスト
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="チーム運営/レッスンコンテンツ制作ワークフロー.md" class="resource-link">🔄 制作ワークフロー</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="チーム運営/レッスンコンテンツ制作管理/レッスン制作フロー・チェックリスト.md" class="resource-link">✅ 制作チェックリスト</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="チーム運営/レッスンコンテンツ制作管理/スプレッドシートレッスン_制作タスク管理.md" class="resource-link">📊 スプレッドシート管理</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="チーム運営/レッスンコンテンツ制作管理/関数レッスン_制作タスク管理.md" class="resource-link">🧮 関数レッスン管理</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 事業計画・戦略 -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">📊</div>
+                    <div class="section-title">事業計画・戦略</div>
+                </div>
+                <div class="section-description">
+                    講座コンセプト、事業計画、価格戦略（管理者限定）
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="あやねえの講座コンセプトまとめ.md" class="resource-link restricted">💡 講座コンセプト</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="秘書力マスター講座_事業計画メモ.md" class="resource-link restricted">📋 事業計画</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="マーケティング/価格戦略/価格戦略ダッシュボード.html" class="resource-link">💰 価格戦略ダッシュボード</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="講座コンテンツネタ整理メモ.md" class="resource-link restricted">📝 コンテンツネタ</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 外部リンク・ツール -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">🔗</div>
+                    <div class="section-title">外部リンク・ツール</div>
+                </div>
+                <div class="section-description">
+                    Discord、資料リンク、法的ページなど
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <a href="Discordコミュニティ活用レッスン.md" class="resource-link">💬 Discord活用法</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="資料リンク集.md" class="resource-link">🔗 資料リンク集</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="プライバシーポリシー.html" class="resource-link">🔒 プライバシーポリシー</a>
+                    </li>
+                    <li class="resource-item">
+                        <a href="特定商取引法に基づく表記.html" class="resource-link">⚖️ 特商法表記</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ページ読み込み時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.section-card, .team-info');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // 制限されたリンクのクリック処理
+        document.querySelectorAll('.restricted').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('このコンテンツは管理者限定です。アクセス権限が必要です。');
+            });
+        });
+
+        // プログレスバーのアニメーション
+        setTimeout(() => {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        }, 800);
+    </script>
+</body>
+</html>
+
