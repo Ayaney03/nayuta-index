@@ -576,14 +576,7 @@
                     <div class="card-link-icon">🏢</div>
                     <div class="card-link-text">
                         <div class="card-link-title">会社基本情報</div>
-                        <div class="card-link-desc">所在地、代表者情報など</div>
-                    </div>
-                </a>
-                <a href="00_会社情報・特許/特許・識別番号管理.md" class="card-link">
-                    <div class="card-link-icon">📜</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">特許・識別番号</div>
-                        <div class="card-link-desc">特許庁識別番号525313409</div>
+                        <div class="card-link-desc">所在地、代表者情報、特許庁識別番号525313409</div>
                     </div>
                 </a>
                 <a href="99_資料管理ハブ/天郷事業_資料管理ハブ.md" class="card-link">
@@ -600,28 +593,13 @@
                         <div class="card-link-desc">Google Drive内の写真素材</div>
                     </div>
                 </a>
-                <div class="card-link contract-details" onclick="toggleContractDetails()" style="background: #f8f9fa; border-left: 4px solid #28a745; cursor: pointer; margin-top: 15px;">
+                <a href="あやねえ契約・報酬体系.md" class="card-link">
                     <div class="card-link-icon">💰</div>
                     <div class="card-link-text">
-                        <div class="card-link-title">あやねえ契約・報酬体系 <span id="contractToggle">▼</span></div>
-                        <div class="card-link-desc">クリックで詳細を表示</div>
+                        <div class="card-link-title">あやねえ契約・報酬体系</div>
+                        <div class="card-link-desc">各事業の報酬体系・契約内容詳細</div>
                     </div>
-                </div>
-                <div id="contractDetails" class="contract-details-content" style="display: none; margin-top: 10px; padding: 15px; background: #fff; border-radius: 8px; border: 1px solid #e0e0e0;">
-                    <div style="font-size: 0.9rem; line-height: 1.6;">
-                        <div style="margin-bottom: 10px;"><strong>🏢 秘書業務基本給:</strong> 5万円（税込5.5万円）</div>
-                        <div style="margin-bottom: 10px;"><strong>🔮 無明会:</strong> 基本給15万円（税込16.5万円）+ 会員数の1割<br>
-                        <span style="color: #666; font-size: 0.8rem;">例：60人→6万円 合計21万円</span></div>
-                        <div style="margin-bottom: 10px;"><strong>🧘 瞑想事業:</strong> フロント商品作成・ファネル構築一式 10万円（税込11万円）</div>
-                        <div style="margin-bottom: 10px;"><strong>🐦 なゆたX運用:</strong> なゆたX経由売上の1割をあやねえに<br>
-                        <span style="color: #666; font-size: 0.8rem;">ぽにょさんがX顧問、あやねえが全体運用管理</span></div>
-                        <div style="background: #fff3cd; padding: 10px; border-radius: 5px; border-left: 3px solid #ffc107;">
-                            <strong>📅 現在の適用状況:</strong><br>
-                            8-10月分 秘書業務+マーケ業務=11万円×3ヶ月で前払い33万円受領済み<br>
-                            11月以降は上記新体系を適用
-                        </div>
-                    </div>
-                </div>
+                </a>
 
             </div>
         </div>
@@ -703,19 +681,7 @@
             }, 3000);
         });
 
-        // 契約詳細の表示/非表示切り替え
-        function toggleContractDetails() {
-            const details = document.getElementById('contractDetails');
-            const toggle = document.getElementById('contractToggle');
-            
-            if (details.style.display === 'none') {
-                details.style.display = 'block';
-                toggle.textContent = '▲';
-            } else {
-                details.style.display = 'none';
-                toggle.textContent = '▼';
-            }
-        }
+
 
         // リンクのクリック時にフィードバック
         document.querySelectorAll('.card-link, .quick-link').forEach(link => {
