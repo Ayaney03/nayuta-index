@@ -20,7 +20,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -40,164 +40,6 @@
         .header .subtitle {
             font-size: 1.1rem;
             opacity: 0.9;
-            margin-bottom: 5px;
-        }
-
-        .header .welcome {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: #ffd700;
-        }
-
-        .quick-access {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        .quick-access h2 {
-            color: #333;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-        }
-
-        .quick-access h2::before {
-            content: "⚡";
-            margin-right: 10px;
-            font-size: 1.8rem;
-        }
-
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .quick-link {
-            display: block;
-            padding: 15px 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .quick-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .business-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .business-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .business-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-
-        .business-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-right: 20px;
-        }
-
-        .card-info h3 {
-            font-size: 1.6rem;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .card-status {
-            display: inline-block;
-            padding: 4px 12px;
-            background: #28a745;
-            color: white;
-            border-radius: 12px;
-            font-size: 0.8rem;
-        }
-
-        .card-description {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .card-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .card-link {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #333;
-            transition: all 0.3s ease;
-            border-left: 4px solid #667eea;
-        }
-
-        .card-link:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
-        }
-
-        .card-link-icon {
-            margin-right: 12px;
-            font-size: 1.2rem;
-        }
-
-        .card-link-text {
-            flex: 1;
-        }
-
-        .card-link-title {
-            font-weight: 500;
-            margin-bottom: 2px;
-        }
-
-        .card-link-desc {
-            font-size: 0.85rem;
-            color: #666;
         }
 
         .important-notice {
@@ -225,35 +67,33 @@
             line-height: 1.6;
         }
 
-        .footer-info {
-            background: rgba(255,255,255,0.1);
+        .memo-section {
+            background: rgba(255,255,255,0.95);
             border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            color: white;
+            padding: 25px;
+            margin-bottom: 30px;
             backdrop-filter: blur(10px);
         }
 
-        .footer-info p {
-            margin-bottom: 10px;
+        .memo-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
         }
 
-        .footer-info .company-info {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .memo-editor {
-            margin-top: 15px;
+        .memo-section h3::before {
+            content: "📝";
+            margin-right: 10px;
         }
 
         .memo-editor textarea {
             width: 100%;
-            min-height: 200px;
+            min-height: 150px;
             padding: 15px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
-            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            font-family: inherit;
             font-size: 14px;
             line-height: 1.6;
             resize: vertical;
@@ -307,6 +147,74 @@
             margin-left: 10px;
         }
 
+        .simple-links {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .simple-links h2 {
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .link-section {
+            margin-bottom: 25px;
+        }
+
+        .link-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .link-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .link-section li {
+            margin-bottom: 8px;
+        }
+
+        .link-section a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .link-section a:hover {
+            background: #f0f2ff;
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .footer-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-info p {
+            margin-bottom: 10px;
+        }
+
+        .footer-info .company-info {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -316,17 +224,8 @@
                 font-size: 2.2rem;
             }
 
-            .business-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .business-card {
+            .simple-links {
                 padding: 20px;
-            }
-
-            .quick-links {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -336,7 +235,6 @@
         <div class="header">
             <h1>🏢 天郷事業ハブ</h1>
             <p class="subtitle">なゆたさん専用アクセスポイント</p>
-
         </div>
 
         <div class="important-notice">
@@ -344,17 +242,9 @@
             <p>このページをブックマークしておくと、天郷事業の各プロジェクトに素早くアクセスできます。</p>
         </div>
 
-        <div class="business-card">
-            <div class="card-header">
-                <div class="card-icon">📝</div>
-                <div class="card-info">
-                    <h3>最近の決定事項メモ</h3>
-                    <span class="card-status">編集可能</span>
-                </div>
-            </div>
-            <div class="card-description">
-                重要な決定事項や変更点を自由に記録できます。内容は自動保存されます。
-            </div>
+        <div class="memo-section">
+            <h3>最近の決定事項メモ</h3>
+            <p style="margin-bottom: 15px; color: #666; font-size: 0.9rem;">重要な決定事項や変更点を自由に記録できます。内容は自動保存されます。</p>
             <div class="memo-editor">
                 <textarea id="memoTextarea" placeholder="日付と内容を自由に記入してください...
 
@@ -370,237 +260,46 @@
             </div>
         </div>
 
-        <div class="quick-access">
-            <h2>よく使うリンク</h2>
-            <div class="quick-links">
-                <a href="なゆたさんのやることリスト.md" class="quick-link">📝 やることリスト</a>
-                <a href="01_瞑想事業/なゆたさん向け_簡単共有ガイド.md" class="quick-link">📖 共有ガイド</a>
-                <a href="https://ayaney03.github.io/smartphone-detox/" class="quick-link" target="_blank">🧘 脱スマホ公式</a>
-                <a href="02_なゆた関連/五大資産_ライフスタイル設計レッスン.html" class="quick-link">💎 五大資産レッスン</a>
-            </div>
-        </div>
-
-        <div class="business-grid">
-            <!-- 瞑想事業 -->
-            <div class="business-card">
-                <div class="card-header">
-                    <div class="card-icon">🧘‍♀️</div>
-                    <div class="card-info">
-                        <h3>瞑想事業</h3>
-                        <span class="card-status">運営中</span>
-                    </div>
-                </div>
-                <div class="card-description">
-                    脱スマホ瞑想プログラム、アメブロ運用、Google Drive連携など、瞑想に関する全ての事業を管理しています。
-                </div>
-                <div class="card-links">
-                    <a href="https://ayaney03.github.io/smartphone-detox/" class="card-link" target="_blank">
-                        <div class="card-link-icon">🌐</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">脱スマホ瞑想プログラム公式</div>
-                            <div class="card-link-desc">公式サイト・全コンテンツアクセス</div>
-                        </div>
-                    </a>
-                    <a href="01_瞑想事業/脱スマホ瞑想プログラム/00_脱スマホ瞑想プログラム_ハブ.html" class="card-link">
-                        <div class="card-link-icon">📱</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">プロジェクトハブ（内部）</div>
-                            <div class="card-link-desc">開発・管理用ハブページ</div>
-                        </div>
-                    </a>
-                    <a href="01_瞑想事業/アメブロ/README.md" class="card-link">
-                        <div class="card-link-icon">📝</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">アメブロ運用</div>
-                            <div class="card-link-desc">ブログ投稿管理と運用ガイド</div>
-                        </div>
-                    </a>
-                    <a href="01_瞑想事業/Google_Drive共有手順.md" class="card-link">
-                        <div class="card-link-icon">☁️</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">Google Drive連携</div>
-                            <div class="card-link-desc">ファイル共有と自動同期設定</div>
-                        </div>
-                    </a>
-                    <a href="01_瞑想事業/なゆたさんのやることリスト.md" class="card-link">
-                        <div class="card-link-icon">✅</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">やることリスト</div>
-                            <div class="card-link-desc">現在のタスクと進捗管理</div>
-                        </div>
-                    </a>
-                    <a href="https://discord.gg/zEKvaju8" class="card-link" target="_blank">
-                        <div class="card-link-icon">💬</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">瞑想コミュニティ Discord</div>
-                            <div class="card-link-desc">瞑想事業のコミュニティ</div>
-                        </div>
-                    </a>
-                </div>
+        <div class="simple-links">
+            <h2>📋 メニュー</h2>
+            
+            <div class="link-section">
+                <h3>🧘 瞑想事業</h3>
+                <ul>
+                    <li><a href="https://ayaney03.github.io/smartphone-detox/" target="_blank">脱スマホ瞑想プログラム公式サイト</a></li>
+                    <li><a href="01_瞑想事業/脱スマホ瞑想プログラム/00_脱スマホ瞑想プログラム_ハブ.html">プロジェクトハブ（内部管理）</a></li>
+                    <li><a href="01_瞑想事業/アメブロ/README.md">アメブロ運用ガイド</a></li>
+                    <li><a href="01_瞑想事業/Google_Drive共有手順.md">Google Drive共有手順</a></li>
+                    <li><a href="https://discord.com/channels/1234567890/1234567890">瞑想コミュニティ Discord</a></li>
+                </ul>
             </div>
 
-            <!-- なゆた関連事業 -->
-            <div class="business-card">
-                <div class="card-header">
-                    <div class="card-icon">💫</div>
-                    <div class="card-info">
-                        <h3>なゆた関連事業</h3>
-                        <span class="card-status">運営中</span>
-                    </div>
-                </div>
-                <div class="card-description">
-                    メルマガ運用、UTAGE設定、五大資産レッスンなど、なゆたさんのブランド構築に関する事業です。
-                </div>
-                <div class="card-links">
-                    <a href="02_なゆた関連/五大資産_ライフスタイル設計レッスン.html" class="card-link">
-                        <div class="card-link-icon">💎</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">五大資産レッスン</div>
-                            <div class="card-link-desc">時間・健康・仲間・知識・富の設計法</div>
-                        </div>
-                    </a>
-                    <a href="02_なゆた関連/メルマガ_30代女性向け.html" class="card-link">
-                        <div class="card-link-icon">📧</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">メルマガ運用</div>
-                            <div class="card-link-desc">30代女性向けメルマガテンプレート</div>
-                        </div>
-                    </a>
-                    <a href="02_なゆた関連/UTAGE設定ガイド_30代女性向けメルマガ.md" class="card-link">
-                        <div class="card-link-icon">⚙️</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">UTAGE設定</div>
-                            <div class="card-link-desc">メルマガシステム設定ガイド</div>
-                        </div>
-                    </a>
-                    <a href="02_なゆた関連/なゆた×あやねえ対談_五大資産による人生設計論_動画書き起こし.md" class="card-link">
-                        <div class="card-link-icon">🎥</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">対談動画書き起こし</div>
-                            <div class="card-link-desc">五大資産による人生設計論</div>
-                        </div>
-                    </a>
-                    <a href="https://discord.com/channels/924998859602657280/1183759996429815868" class="card-link" target="_blank">
-                        <div class="card-link-icon">🏰</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">ユートピアサロン Discord</div>
-                            <div class="card-link-desc">最強秘書室直結・あやねえ在籍</div>
-                        </div>
-                    </a>
-                </div>
+            <div class="link-section">
+                <h3>💫 なゆた関連事業</h3>
+                <ul>
+                    <li><a href="02_なゆた関連/五大資産_ライフスタイル設計レッスン.html">五大資産レッスン</a></li>
+                    <li><a href="02_なゆた関連/UTAGE設定ガイド_30代女性向けメルマガ.md">UTAGE設定ガイド</a></li>
+                    <li><a href="02_なゆた関連/メルマガ_30代女性向け.html">メルマガテンプレート</a></li>
+                    <li><a href="https://discord.com/channels/924998859602657280/1183759996429815868" target="_blank">ユートピアサロン Discord</a></li>
+                </ul>
             </div>
 
-            <!-- 出張関係 -->
-            <div class="business-card">
-                <div class="card-header">
-                    <div class="card-icon">✈️</div>
-                    <div class="card-info">
-                        <h3>出張関係</h3>
-                        <span class="card-status">準備中</span>
-                    </div>
-                </div>
-                <div class="card-description">
-                    出張に関する業務管理、スケジュール調整、必要書類の管理を行います。
-                </div>
-                <div class="card-links">
-                    <a href="03_出張関係/README.md" class="card-link">
-                        <div class="card-link-icon">📋</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">出張業務概要</div>
-                            <div class="card-link-desc">出張関係の業務内容と手順</div>
-                        </div>
-                    </a>
-                </div>
+            <div class="link-section">
+                <h3>🏢 会社情報・管理資料</h3>
+                <ul>
+                    <li><a href="00_会社情報・特許/会社情報.md">会社基本情報（特許庁識別番号525313409含む）</a></li>
+                    <li><a href="99_資料管理ハブ/天郷事業_資料管理ハブ.md">資料管理ハブ</a></li>
+                    <li><a href="https://drive.google.com/drive/folders/1_JaXzIP6R3HHR4633kQaeiXLQg4GI6jZ" target="_blank">宣材写真（Google Drive）</a></li>
+                    <li><a href="あやねえ契約・報酬体系.md">あやねえ契約・報酬体系</a></li>
+                </ul>
             </div>
 
-            <!-- 無明会 -->
-            <div class="business-card">
-                <div class="card-header">
-                    <div class="card-icon">🌙</div>
-                    <div class="card-info">
-                        <h3>無明会</h3>
-                        <span class="card-status">共同運営</span>
-                    </div>
-                </div>
-                <div class="card-description">
-                    なゆたさんとあやねえの共同運営コミュニティ。恋愛note・セルフイメージnoteのローンチ管理とメンバーサポート。
-                </div>
-                <div class="card-links">
-                    <a href="https://ayaney03.github.io/mumyokai" class="card-link" target="_blank">
-                        <div class="card-link-icon">🌐</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">無明会公式サイト</div>
-                            <div class="card-link-desc">メンバー向け情報・ローンチ管理</div>
-                        </div>
-                    </a>
-                    <a href="../無明会/README.md" class="card-link">
-                        <div class="card-link-icon">📖</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">無明会概要</div>
-                            <div class="card-link-desc">コンセプト・運営資料</div>
-                        </div>
-                    </a>
-                    <a href="../無明会/ローンチプロジェクト/" class="card-link">
-                        <div class="card-link-icon">🚀</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">ローンチ管理</div>
-                            <div class="card-link-desc">2508恋愛note・セルフイメージnote</div>
-                        </div>
-                    </a>
-                    <a href="https://x.com/mumyokai0201" class="card-link" target="_blank">
-                        <div class="card-link-icon">🐦</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">公式X（Twitter）</div>
-                            <div class="card-link-desc">@mumyokai0201</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- 会社情報 -->
-        <div class="business-card">
-            <div class="card-header">
-                <div class="card-icon">🏛️</div>
-                <div class="card-info">
-                    <h3>会社情報・管理資料</h3>
-                    <span class="card-status">管理中</span>
-                </div>
-            </div>
-            <div class="card-description">
-                天郷株式会社の基本情報、特許庁識別番号、各種管理資料へのアクセス。
-            </div>
-            <div class="card-links">
-                <a href="00_会社情報・特許/会社情報.md" class="card-link">
-                    <div class="card-link-icon">🏢</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">会社基本情報</div>
-                        <div class="card-link-desc">所在地、代表者情報、特許庁識別番号525313409</div>
-                    </div>
-                </a>
-                <a href="99_資料管理ハブ/天郷事業_資料管理ハブ.md" class="card-link">
-                    <div class="card-link-icon">📂</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">資料管理ハブ</div>
-                        <div class="card-link-desc">全事業の資料一元管理</div>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1_JaXzIP6R3HHR4633kQaeiXLQg4GI6jZ" class="card-link" target="_blank">
-                    <div class="card-link-icon">📷</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">宣材写真</div>
-                        <div class="card-link-desc">Google Drive内の写真素材</div>
-                    </div>
-                </a>
-                <a href="あやねえ契約・報酬体系.md" class="card-link">
-                    <div class="card-link-icon">💰</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">あやねえ契約・報酬体系</div>
-                        <div class="card-link-desc">各事業の報酬体系・契約内容詳細</div>
-                    </div>
-                </a>
-
+            <div class="link-section">
+                <h3>📝 よく使うリンク</h3>
+                <ul>
+                    <li><a href="なゆたさんのやることリスト.md">やることリスト</a></li>
+                    <li><a href="01_瞑想事業/なゆたさん向け_簡単共有ガイド.md">共有ガイド</a></li>
+                </ul>
             </div>
         </div>
 
@@ -613,20 +312,6 @@
     </div>
 
     <script>
-        // ページ読み込み時のアニメーション
-        document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.business-card, .quick-access, .important-notice');
-            elements.forEach((element, index) => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    element.style.transition = 'all 0.8s ease';
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }, index * 150);
-            });
-        });
-
         // メモ機能
         function saveMemo(isAuto = false) {
             const textarea = document.getElementById('memoTextarea');
@@ -665,33 +350,21 @@
         }
 
         // ページ読み込み時にメモを復元
-        const textarea = document.getElementById('memoTextarea');
-        const savedMemo = localStorage.getItem('nayuta-memo');
-        
-        if (savedMemo) {
-            textarea.value = savedMemo;
-        }
-        
-        // 自動保存機能（3秒後に保存）
-        let saveTimeout;
-        textarea.addEventListener('input', function() {
-            clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(function() {
-                saveMemo(true); // 自動保存フラグ
-            }, 3000);
-        });
-
-
-
-        // リンクのクリック時にフィードバック
-        document.querySelectorAll('.card-link, .quick-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // リンクが存在しない場合の処理
-                const href = this.getAttribute('href');
-                if (href && !href.startsWith('http')) {
-                    // ローカルファイルの場合、存在確認は省略
-                    console.log('Navigating to:', href);
-                }
+        document.addEventListener('DOMContentLoaded', function() {
+            const textarea = document.getElementById('memoTextarea');
+            const savedMemo = localStorage.getItem('nayuta-memo');
+            
+            if (savedMemo) {
+                textarea.value = savedMemo;
+            }
+            
+            // 自動保存機能（3秒後に保存）
+            let saveTimeout;
+            textarea.addEventListener('input', function() {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(function() {
+                    saveMemo(true); // 自動保存フラグ
+                }, 3000);
             });
         });
     </script>
