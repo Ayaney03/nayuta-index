@@ -243,6 +243,70 @@
             opacity: 0.8;
         }
 
+        .memo-editor {
+            margin-top: 15px;
+        }
+
+        .memo-editor textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+            background: #fafafa;
+            transition: border-color 0.3s ease;
+        }
+
+        .memo-editor textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+        }
+
+        .memo-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .memo-controls button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .memo-controls button:first-child {
+            background: #667eea;
+            color: white;
+        }
+
+        .memo-controls button:first-child:hover {
+            background: #5a6fd8;
+        }
+
+        .memo-controls button:last-child {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .memo-controls button:last-child:hover {
+            background: #c0392b;
+        }
+
+        #saveStatus {
+            font-size: 12px;
+            color: #666;
+            margin-left: 10px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -285,26 +349,23 @@
                 <div class="card-icon">📝</div>
                 <div class="card-info">
                     <h3>最近の決定事項メモ</h3>
-                    <span class="card-status">更新中</span>
+                    <span class="card-status">編集可能</span>
                 </div>
             </div>
             <div class="card-description">
-                重要な決定事項や変更点を記録するスペースです。随時更新していきます。
+                重要な決定事項や変更点を自由に記録できます。内容は自動保存されます。
             </div>
-            <div class="card-links">
-                <div class="card-link" style="background: #fff3cd; border-left: 4px solid #ffc107; cursor: default;">
-                    <div class="card-link-icon">📅</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">2025/09/01 - なゆたX運用体制変更</div>
-                        <div class="card-link-desc">ぽにょさんがX顧問として参加、あやねえが全体運用管理。なゆたX経由売上の1割をあやねえに。</div>
-                    </div>
-                </div>
-                <div class="card-link" style="background: #d1ecf1; border-left: 4px solid #17a2b8; cursor: default;">
-                    <div class="card-link-icon">💰</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">報酬体系の整理</div>
-                        <div class="card-link-desc">各事業の報酬体系を明確化。詳細は下記「報酬・契約について」を参照。</div>
-                    </div>
+            <div class="memo-editor">
+                <textarea id="memoTextarea" placeholder="日付と内容を自由に記入してください...
+
+例：
+2025/09/01 - なゆたX運用体制変更
+ぽにょさんがX顧問として参加、あやねえが全体運用管理。なゆたX経由売上の1割をあやねえに。">2025/09/01 - なゆたX運用体制変更
+ぽにょさんがX顧問として参加、あやねえが全体運用管理。なゆたX経由売上の1割をあやねえに。</textarea>
+                <div class="memo-controls">
+                    <button onclick="saveMemo()">💾 保存</button>
+                    <button onclick="clearMemo()">🗑️ クリア</button>
+                    <span id="saveStatus"></span>
                 </div>
             </div>
         </div>
@@ -539,16 +600,25 @@
                         <div class="card-link-desc">Google Drive内の写真素材</div>
                     </div>
                 </a>
-                <div class="card-link" style="background: #f8f9fa; border-left: 4px solid #28a745; cursor: default; margin-top: 15px;">
+                <div class="card-link contract-details" onclick="toggleContractDetails()" style="background: #f8f9fa; border-left: 4px solid #28a745; cursor: pointer; margin-top: 15px;">
                     <div class="card-link-icon">💰</div>
                     <div class="card-link-text">
-                        <div class="card-link-title">報酬・契約について</div>
-                        <div class="card-link-desc" style="font-size: 0.8rem; line-height: 1.4;">
-                            <strong>秘書業務:</strong> 基本給5万円（税込5.5万円）<br>
-                            <strong>無明会:</strong> 基本給15万円（税込16.5万円）+ 会員数1割<br>
-                            <strong>瞑想事業:</strong> フロント商品・ファネル構築一式10万円（税込11万円）<br>
-                            <strong>なゆたX運用:</strong> 売上の1割をあやねえに<br>
-                            <em>※現在8-10月分前払い33万円適用中、以降新体系</em>
+                        <div class="card-link-title">あやねえ契約・報酬体系 <span id="contractToggle">▼</span></div>
+                        <div class="card-link-desc">クリックで詳細を表示</div>
+                    </div>
+                </div>
+                <div id="contractDetails" class="contract-details-content" style="display: none; margin-top: 10px; padding: 15px; background: #fff; border-radius: 8px; border: 1px solid #e0e0e0;">
+                    <div style="font-size: 0.9rem; line-height: 1.6;">
+                        <div style="margin-bottom: 10px;"><strong>🏢 秘書業務基本給:</strong> 5万円（税込5.5万円）</div>
+                        <div style="margin-bottom: 10px;"><strong>🔮 無明会:</strong> 基本給15万円（税込16.5万円）+ 会員数の1割<br>
+                        <span style="color: #666; font-size: 0.8rem;">例：60人→6万円 合計21万円</span></div>
+                        <div style="margin-bottom: 10px;"><strong>🧘 瞑想事業:</strong> フロント商品作成・ファネル構築一式 10万円（税込11万円）</div>
+                        <div style="margin-bottom: 10px;"><strong>🐦 なゆたX運用:</strong> なゆたX経由売上の1割をあやねえに<br>
+                        <span style="color: #666; font-size: 0.8rem;">ぽにょさんがX顧問、あやねえが全体運用管理</span></div>
+                        <div style="background: #fff3cd; padding: 10px; border-radius: 5px; border-left: 3px solid #ffc107;">
+                            <strong>📅 現在の適用状況:</strong><br>
+                            8-10月分 秘書業務+マーケ業務=11万円×3ヶ月で前払い33万円受領済み<br>
+                            11月以降は上記新体系を適用
                         </div>
                     </div>
                 </div>
@@ -578,6 +648,74 @@
                 }, index * 150);
             });
         });
+
+        // メモ機能
+        function saveMemo(isAuto = false) {
+            const textarea = document.getElementById('memoTextarea');
+            const saveStatus = document.getElementById('saveStatus');
+            
+            localStorage.setItem('nayuta-memo', textarea.value);
+            
+            if (isAuto) {
+                saveStatus.textContent = '自動保存しました';
+                saveStatus.style.color = '#666';
+            } else {
+                saveStatus.textContent = '保存しました！';
+                saveStatus.style.color = '#27ae60';
+            }
+            
+            setTimeout(function() {
+                saveStatus.textContent = '';
+            }, 2000);
+        }
+
+        function clearMemo() {
+            if (confirm('メモの内容をすべて削除しますか？')) {
+                const textarea = document.getElementById('memoTextarea');
+                const saveStatus = document.getElementById('saveStatus');
+                
+                textarea.value = '';
+                localStorage.removeItem('nayuta-memo');
+                
+                saveStatus.textContent = 'メモをクリアしました';
+                saveStatus.style.color = '#e74c3c';
+                
+                setTimeout(function() {
+                    saveStatus.textContent = '';
+                }, 2000);
+            }
+        }
+
+        // ページ読み込み時にメモを復元
+        const textarea = document.getElementById('memoTextarea');
+        const savedMemo = localStorage.getItem('nayuta-memo');
+        
+        if (savedMemo) {
+            textarea.value = savedMemo;
+        }
+        
+        // 自動保存機能（3秒後に保存）
+        let saveTimeout;
+        textarea.addEventListener('input', function() {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(function() {
+                saveMemo(true); // 自動保存フラグ
+            }, 3000);
+        });
+
+        // 契約詳細の表示/非表示切り替え
+        function toggleContractDetails() {
+            const details = document.getElementById('contractDetails');
+            const toggle = document.getElementById('contractToggle');
+            
+            if (details.style.display === 'none') {
+                details.style.display = 'block';
+                toggle.textContent = '▲';
+            } else {
+                details.style.display = 'none';
+                toggle.textContent = '▼';
+            }
+        }
 
         // リンクのクリック時にフィードバック
         document.querySelectorAll('.card-link, .quick-link').forEach(link => {
