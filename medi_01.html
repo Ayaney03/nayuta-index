@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 寝たまま聴くだけ 思考をゆるめる瞑想 - 台本・資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #4facfe;
+            border-bottom: 3px solid #4facfe;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-card h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .script-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .script-header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .script-content {
+            padding: 20px;
+        }
+        
+        .script-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .reference-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .reference-section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .reference-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .collapsible {
+            background-color: #f1f1f1;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: 0.4s;
+        }
+        
+        .collapsible:hover {
+            background-color: #ddd;
+        }
+        
+        .collapsible.active {
+            background-color: #4facfe;
+            color: white;
+        }
+        
+        .collapsible-content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapsible-content.show {
+            display: block;
+            padding: 18px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #3a8bfd;
+            transform: translateY(-2px);
+        }
+        
+        .floating-back-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background: rgba(79, 172, 254, 0.9);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-back-button:hover {
+            background: rgba(58, 139, 253, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-back-button {
+                top: 10px;
+                right: 10px;
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 固定戻るボタン -->
+    <a href="https://ayaney03.github.io/medi-youtube/" class="floating-back-button">← ハブに戻る</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>01 寝たまま聴くだけ 思考をゆるめる瞑想</h1>
+            <div class="subtitle">なゆた用台本・参考資料・動画情報</div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('script')">なゆた用台本</button>
+            <button class="nav-tab" onclick="showTab('overview')">概要・参考動画情報</button>
+        </div>
+        
+        <div class="content">
+            <!-- なゆた用台本タブ -->
+            <div id="script" class="tab-content active">
+                <div class="script-section">
+                    <div class="script-header">チャプター1: はじめに（導入・準備）</div>
+                    <div class="script-content">
+                        <p>こんばんは、永世豊です。</p>
+                        <p>今日も一日、本当にお疲れ様でした。<br>
+                        いつも頑張っているあなた、毎日を一生懸命生きているあなたも、今日はゆっくりと休む時間です。</p>
+                        <p>これから20分間、あなたのための特別な時間を過ごしましょう。<br>
+                        何も頑張る必要はありません。何も達成する必要もありません。<br>
+                        ただ、そのままのあなたで、ここにいてください。</p>
+                        <p>楽な姿勢で寝転んでください。<br>
+                        ソファでも、ベッドでも、床でも、あなたが一番くつろげる場所で大丈夫です。<br>
+                        必要があれば毛布やクッションを使って、心地よく過ごしてください。</p>
+                        <p>軽く目を閉じて...<br>
+                        足を肩幅程度に開いて...<br>
+                        手は体から少し離して、手のひらは上向きに...<br>
+                        胸は空に向けて、気持ちよく広がっています。<br>
+                        首もゆったりとくつろいでいます。</p>
+                        <p>この20分間、眠ってしまっても構いません。<br>
+                        でも、できれば私の声を聞きながら、一緒にこの時間を過ごしてください。<br>
+                        あなたのペースで、無理をしなくていいのです。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">チャプター2: 心の準備と呼吸の調整</div>
+                    <div class="script-content">
+                        <p>鼻から息をゆっくりと吸い込んで...<br>
+                        鼻から息をゆっくりと吐き出していきましょう...</p>
+                        <p>今日一日、たくさんの人と関わって、たくさんの感情を受け取って、<br>
+                        気疲れした心も、今はもう休んでいいのです。</p>
+                        <p>呼吸をするたびに、心が少しずつ軽くなっていきます。<br>
+                        息そのものが、あなたを癒してくれています。</p>
+                        <p>鼓動や血液の流れが、ゆっくりとペースダウンしていき...<br>
+                        心が、どんどん繊細で優しい感覚に包まれていきます。</p>
+                        <p>息を柔らかく吸い込んでいる時、お腹が穏やかに膨らんで...<br>
+                        息を柔らかく吐き出していく時、お腹が床に向けて穏やかに沈んでいきます。</p>
+                        <p>吸い込む時に、温かな安心感が全身を満たして...<br>
+                        吐き出す時に、今日一日の緊張や疲れが、全部抜け出していきます。</p>
+                        <p>吸い込む時に、「そのままでいい」という優しさが全身を満たして...<br>
+                        吐き出す時に、「完璧である必要はない」という安らぎが、心を包んでいきます。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">チャプター3: 体の各部位への意識化と解放</div>
+                    <div class="script-content">
+                        <p>それでは、あなたの心の奥にある大切な願いを、そっと思い浮かべてみてください。</p>
+                        <p>例えば...<br>
+                        「私は、そのままの自分で愛されている」<br>
+                        「私は、本当の自分らしさを生きている」<br>
+                        「私は、心から安心して人とつながっている」</p>
+                        <p>どんな願いでも構いません。<br>
+                        それが今まさに叶っているという気持ちで、心の中で3回、そっと唱えてみてください。</p>
+                        <p>...</p>
+                        <p>呼吸が、ゆったりと自由に繰り返されています。</p>
+                        <p>そのまま、体の各部分に、優しく意識を向けていきましょう。<br>
+                        ぼんやりとでも、なんとなくでも大丈夫です。<br>
+                        ただ私の声を聞いているだけでも、十分なのです。</p>
+                        <p>右手を感じてみましょう...<br>
+                        右手の親指...人差し指...中指...薬指...小指...<br>
+                        それぞれの指が、今日たくさんの人を支えてくれました。<br>
+                        手のひら...手の甲...<br>
+                        今日一日、本当にありがとう、と伝えてください。</p>
+                        <p>手首...前腕...肘...上腕...肩...<br>
+                        肩には、たくさんの責任を背負わせてしまいましたね。<br>
+                        今は、その重さを全部手放していいのです。</p>
+                        <p>脇...肋骨の外側...脇腹...腰...お尻...太もも...<br>
+                        体の右側全体が、大地にゆっくりと預けられています。</p>
+                        <p>膝...すね...足首...かかと...<br>
+                        足の甲...足の裏...<br>
+                        右足の親指...人差し指...中指...薬指...小指...<br>
+                        今日一日、あなたを支えてくれた足に、感謝を込めて。</p>
+                        <p>左手を感じてみましょう...<br>
+                        左手の親指...人差し指...中指...薬指...小指...<br>
+                        手のひら...手の甲...<br>
+                        手首...前腕...肘...上腕...肩...</p>
+                        <p>左の肩も、今日はゆっくりと休ませてあげてください。<br>
+                        脇...肋骨の外側...脇腹...腰...お尻...太もも...<br>
+                        膝...すね...足首...かかと...<br>
+                        足の甲...足の裏...<br>
+                        左足の親指...人差し指...中指...薬指...小指...</p>
+                        <p>体の背面を感じてみましょう...<br>
+                        後頭部...首筋...<br>
+                        今日一日、たくさん考えて疲れた頭も、今は休んでいいのです。</p>
+                        <p>左右の肩甲骨...背骨...背中の真ん中あたり...<br>
+                        腰回り...左右のお尻...<br>
+                        左右の太もも...左右の膝...<br>
+                        左右のふくらはぎ...左右のかかと...</p>
+                        <p>体の前面を感じてみましょう...<br>
+                        頭頂...額...<br>
+                        左右の目...今日たくさんのものを見て、疲れた目も休ませてあげて...<br>
+                        左右のこめかみ...左右の耳...</p>
+                        <p>左右の顎の関節...顎のライン...<br>
+                        たくさん話して、たくさん笑って、時には我慢もした口元も、今は緩めて...<br>
+                        鼻...左右の頬...上唇...下唇...舌...</p>
+                        <p>喉の奥...喉のライン...<br>
+                        言いたいことを飲み込んだ喉も、今は自由に呼吸させてあげて...</p>
+                        <p>左右の鎖骨...左右の胸...<br>
+                        みぞおち...へそ...下腹...<br>
+                        左右の股関節...骨盤底...</p>
+                        <p>そして全身...<br>
+                        左右の足全体...左右の腕全体...<br>
+                        頭部全体...胴体全体...</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">チャプター4: 深い静寂と自己受容の時間</div>
+                    <div class="script-content">
+                        <p>全身が、完全にくつろいでいます。<br>
+                        完全に澄みきっています。</p>
+                        <p>内向的なあなたも、気疲れしやすいあなたも、<br>
+                        自分を責めがちなあなたも、<br>
+                        全部、全部、愛おしいのです。</p>
+                        <p>吸う息の時に、清らかな愛があなたの全身を隅々まで満たしていき...<br>
+                        吐く息の時に、自己嫌悪や不安が、全部抜け出していきます。</p>
+                        <p>吸う息の時に、「あなたはそのままで十分」という声が全身を満たして...<br>
+                        吐く息の時に、「変な自分も愛おしい」という温かさが、心を包んでいきます。</p>
+                        <p>深い静寂が、全身を満たしていきます。<br>
+                        この静寂の中で、本当のあなたらしさが、そっと顔を出しています。</p>
+                        <p>人との壁を感じるあなたも、<br>
+                        寂しさを抱えるあなたも、<br>
+                        報われない気持ちを持つあなたも、</p>
+                        <p>全部、全部、人生の主役なのです。<br>
+                        あなたが人生の主役なのです。</p>
+                        <p>心の一番深いところで、あなたは完全に満たされています。<br>
+                        内側から溢れ出すような温かさが、あなたを包んでいます。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">チャプター5: 瞑想の終了と日常への橋渡し</div>
+                    <div class="script-content">
+                        <p>体に意識を戻していきましょう。<br>
+                        最初の姿勢のまま...<br>
+                        全身が完全にくつろいでいます。</p>
+                        <p>穏やかで、澄み切っていて、とても優しい感じがします。<br>
+                        呼吸というそよ風が、肺の辺りを優しく吹き抜けて...<br>
+                        体の背面が、完全に大地に預けられています。</p>
+                        <p>全身の感覚を鮮明に感じ取ることができていて、<br>
+                        心も体も、完全に澄みきっています。<br>
+                        全身が、大空に向けて開放されています。</p>
+                        <p>呼吸が、限りなく自由に繰り返されています。<br>
+                        心の一番深い部分が、溢れ出してしまうくらい満たされています。</p>
+                        <p>そのまま、先ほどの願いを、もう一度3回、心を込めて唱えてみてください。<br>
+                        心と体の隅々に至るまで、深く繊細なレベルに至るまで、<br>
+                        その感覚が染みわたっていきます。</p>
+                        <p>...</p>
+                        <p>深呼吸を繰り返して...<br>
+                        手足の指を、ゆっくりと動かしていきましょう。<br>
+                        必要があれば、思いっきり伸びをして...</p>
+                        <p>ゆっくりと横向きになって、起き上がってきてください。<br>
+                        急がなくて大丈夫です。あなたのペースで。</p>
+                        <p>背筋をすらりと伸ばして、ゆったりとした呼吸を繰り返しながら、<br>
+                        今の状態を繊細に感じ取って、全身で記憶してください。</p>
+                        <p>この感覚は、いつでも思い出すことができます。<br>
+                        疲れた時、寂しい時、自分を責めそうになった時、<br>
+                        この温かさを思い出してください。</p>
+                        <p>あなたは、そのままで十分です。<br>
+                        あなたは、愛されています。<br>
+                        あなたは、人生の主役なのです。</p>
+                        <p>気が向いたら、ゆっくりと目を開いてください。</p>
+                        <p>今日も一日、本当にお疲れ様でした。<br>
+                        明日もあなたらしく、輝いてくださいね。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 概要・動画情報タブ -->
+            <div id="overview" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 動画コンセプト</h3>
+                        <p>帰宅後リラックスシリーズ</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏰ 動画時間</h3>
+                        <p>約20分</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📋 ターゲット・ペルソナ</h3>
+                        <p><a href="./共通資料/瞑想YouTube_コンセプト・ペルソナ設計書.md" target="_blank">詳細なペルソナ設計書を参照</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎬 参考動画</h3>
+                        <p>【寝たまま聞くだけ 20分バージョン】脳を休める＆脳の疲れを取るカンタン瞑想『ヨガニドラ/ヨガニードラ』</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📺 チャンネル名</h3>
+                        <p>綿本彰 眠りと瞑想チャンネル</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🔗 参考動画URL</h3>
+                        <p><a href="https://www.youtube.com/watch?v=58bmqCgJWJ4" target="_blank">YouTube動画を見る</a></p>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>📋 瞑想の特徴・効果</h3>
+                    <div class="reference-content">
+                        <ul>
+                            <li><strong>アクセシビリティ:</strong> 寝たまま聞けるスタイル、特別な準備や道具不要</li>
+                            <li><strong>ターゲットへの配慮:</strong> 日々の疲れを抱えた心のケア（詳細は<a href="./共通資料/瞑想YouTube_コンセプト・ペルソナ設計書.md">ペルソナ設計書</a>参照）</li>
+                            <li><strong>永世豊さんらしさ:</strong> 優しく包み込むような語りかけ、「そのままでいい」という受容的なトーン</li>
+                            <li><strong>期待される効果:</strong> 帰宅後の心の疲れを癒す、自己嫌悪から自己受容への転換</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <button class="collapsible">参考動画の詳細書き起こしを表示 ▼</button>
+                <div class="collapsible-content">
+                    <div class="reference-section">
+                        <h3>📖 参考動画詳細書き起こし</h3>
+                        <div class="reference-content">
+                            <h4>チャプター 1: はじめに</h4>
+                            <p>20分間のヨガニドラを行っていきましょう。楽な姿勢で寝転び 必要があれば毛布などを掛け、のんびりとくつろぎましょう 軽く目を閉じ 足を肩幅程度に開き 手は体から少し離して手のひらは上むき 胸は空に向け気持ちよく広がっていて 首がゆったりとくつろいでいます。</p>
+                            
+                            <h4>チャプター 2: 瞑想の深化と体の意識化</h4>
+                            <p>呼吸をするたびに、どんどん繊細になっていきます 息そのものがゆったりとくつろいできます 鼓動や血液の流れがペースダウンしていき、心が繊細を増していきます。</p>
+                            
+                            <h4>対岸（願い）の設定</h4>
+                            <p>それでは自分の大きな願い、「対岸」を唱えて行きましょう 例えば：<br>
+                            「私は幸せに満ちている」<br>
+                            「私は自分を完全に肯定することができている」<br>
+                            「私は周囲から信頼され必要とされている」<br>
+                            など、簡潔で肯定的な文章を それが今まさに叶えられているという気分になって、心の中で3回唱えて行きましょう</p>
+                            
+                            <h4>体の各部位への意識化</h4>
+                            <p>そのまま、体の各パーツに意識を向けていきましょう ぼんやりとでも、なんとなくでも、ただ私の声を聞いているだけでも大丈夫ですよ。右手を感じましょう。右手の親指、人差し指、中指、薬指、小指。手のひら、手の甲。手首、前腕、肘、上腕、肩、脇、肋骨の外側、脇腹...</p>
+                            
+                            <h4>チャプター 3: 全身の感覚と静寂</h4>
+                            <p>全身が、完全にくつろいでいます 完全に澄みきっています。吸気の時に清らかな空気が全身を隅々まで満たしていき 呼気の時に全身からかき集められたよどみが抜け出して 吸気の時に澄み切った空気が全身を満たしては巡り 呼気の時に全てを手放し、明け渡し、委ね切っていきます。</p>
+                            
+                            <h4>チャプター 4: 瞑想の終わりと感覚の記憶</h4>
+                            <p>そのまま、先ほどの対岸を3回、心をこめて心の中で唱えて行きましょう 心と体の隅々に至るまで、深く繊細なレベルに至るまで、その感覚が染みわたっていきます。深呼吸を繰り返し、手足の指をゆっくりと動かしていきましょう 必要があれば思いっきり伸びをして ゆっくりと横向きになり、起き上がって来ましょう。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://ayaney03.github.io/medi-youtube/" class="back-link">← 瞑想YouTube企画ハブに戻る</a>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // すべてのタブボタンを非アクティブ
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたタブボタンをアクティブ
+            event.target.classList.add('active');
+        }
+        
+        // コラプシブル機能
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('show');
+                
+                // ボタンテキストを変更
+                if (content.classList.contains('show')) {
+                    this.innerHTML = this.innerHTML.replace('▼', '▲');
+                } else {
+                    this.innerHTML = this.innerHTML.replace('▲', '▼');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

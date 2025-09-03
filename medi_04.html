@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 自分の全てを受け容れる 寝る前の20分瞑想 - 台本・資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #4facfe;
+            border-bottom: 3px solid #4facfe;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-card h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .script-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .script-header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .script-content {
+            padding: 20px;
+        }
+        
+        .script-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .reference-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .reference-section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .reference-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #3a8bfd;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>04 自分の全てを受け容れる 寝る前の20分瞑想</h1>
+            <div class="subtitle">なゆた用台本・参考資料・動画情報</div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('script')">なゆた用台本</button>
+            <button class="nav-tab" onclick="showTab('overview')">概要・参考動画情報</button>
+        </div>
+        
+        <div class="content">
+            <!-- なゆた用台本タブ -->
+            <div id="script" class="tab-content active">
+                <div class="script-section">
+                    <div class="script-header">1. 導入と瞑想の目的</div>
+                    <div class="script-content">
+                        <p>こんばんは、永世豊です。</p>
+                        <p>今日も一日、本当にお疲れ様でした。</p>
+                        <p>一生のうちで一番長く付き合うのは自分自身ですが、自分を大切に扱えていない人は少なくないのではないでしょうか。</p>
+                        <p>今夜の瞑想では、ボディスキャンを通して自分を大切に思う気持ちに触れていきます。今日一日頑張った自分の体をいたわり、リラックスして良い睡眠に入る準備をしましょう。</p>
+                        <p>これから20分間、あなた自身のための特別な時間です。何も達成する必要はありません。ただ、そのままのあなたで、ここにいてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">2. 瞑想の準備と姿勢</div>
+                    <div class="script-content">
+                        <p>照明はできるだけ落とし、心地の良い環境を整えてください。</p>
+                        <p>一度大きく背伸びをして、今日一日緊張して固まっていた部分を、気持ちの良い程度まで伸ばして体を緩めてあげましょう。凝り固まった筋肉をいたわる気持ちで、左右に動かして優しく心地の良い所まで伸ばしてください。</p>
+                        <p>体を楽にして布団の中に入り、仰向けになってください。</p>
+                        <p>背骨から頭までが一直線になるように調整し、枕の位置も自分が心地が良いと感じる位置に移動してください。</p>
+                        <p>両腕は体から横に拳一つ分ほど空けておき、手は軽く開き、手のひらを天井に向けます。足は肩幅ほどに開き、楽にしてください。</p>
+                        <p>今夜は、あなたが一番くつろげる姿勢で過ごしてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">3. 呼吸への意識と身体の解放</div>
+                    <div class="script-content">
+                        <p>優しく目を閉じ、深くゆっくりとした呼吸をしましょう。</p>
+                        <p>最初に体の中の息を完全に吐ききり、今日一日の疲れも一緒に吐き出すように、ゆっくりと息を吸って少し止め、口から息を少しずつ時間をかけて吐き切ります。お腹がしぼんで小さくなるのを感じてください。</p>
+                        <p>もう一度鼻から息をたっぷりと吸い、お腹の底に新鮮な空気が流れ込むのを感じ、吸い切ったところで少し止め、ゆっくりと少しずつ息を吐き出します。</p>
+                        <p>首と肩の緊張が解け、自然と胸が開き楽になります。お尻、足、腕の力も抜けて脱力し、体が重くベッドに沈み込むのを感じてください。</p>
+                        <p>自然な呼吸に戻し、呼吸に注意を向けてください。自分が心地が良いと思う呼吸をありのままに感じ、体に空気が出入りする様子を観察します。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">4. 思考・感情の受容</div>
+                    <div class="script-content">
+                        <p>呼吸を続ける中で心がさまよい、何か他のことについて考えていることに気づくかもしれません。例えば、今日一日の出来事を思い出すかもしれません。</p>
+                        <p>心がさまようのは自然なことです。さまよっていた時に自分が何を考えていて、どんなことを感じているのかを認識したら、優しく導くように自分の意識を呼吸に戻してください。</p>
+                        <p>今ここにある呼吸に意識を向けます。どんな思考があっても、どんな感情があっても大丈夫です。すべて安全に受け入れ、優しく呼吸に意識を戻します。</p>
+                        <p>思考や感情は、それが肯定的なものであれ否定的なものであれ、生まれては消えてなくなっていくものです。それは永遠に続くものではなく、空に流れる雲のように、変化したり消えていくものです。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">5. ボディスキャンの導入</div>
+                    <div class="script-content">
+                        <p>ここからボディスキャンを行います。</p>
+                        <p>ボディスキャンでは、体の感覚に意識を向け、感覚をよく観察しながら、途中で浮かんできた思考や感情があれば確認し、また体の感覚に意識を戻します。</p>
+                        <p>今夜は、自分の体への優しさや思いやりを思い出しながら行います。</p>
+                        <p>最も大切なことは、誘導に従うことではなく、一瞬一瞬に自分が体験することをありのままに意識することです。</p>
+                        <p>その感覚が不快なものであったり、否定的な思考や感情、体に感じる違和感などがあるときは特に、心をオープンにしてよく観察してください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">6. ボディスキャン：足への思いやり</div>
+                    <div class="script-content">
+                        <p>左右の足のくるぶしより下にすべての注意を向けてください。</p>
+                        <p>どんな感覚があるでしょうか。冷たい、暖かい、乾燥している、湿っている、痺れている感じ、チクチクする感じ、震えや圧力を感じるかもしれません。</p>
+                        <p>表面の感覚も感じてみましょう。布団が触れている部分の感覚や、地面との接触部分の感覚はどんな感覚があるでしょうか。</p>
+                        <p>つま先、足の甲、足の裏、くるぶしなど、部位を細かく分けて感じる感覚が違うか確認してください。</p>
+                        <p>何か違和感があったり、心地がよくないと感じるところはありますか？緊張して力が入っているところがあれば、吐く息とともに体を緩めてリラックスしてみてください。</p>
+                        <p>不快な感覚があれば、そこに優しい気持ちで呼吸をして、手で包み込むような気持ちで思いやりの意識を向けてください。</p>
+                        <p>今日一日、あなたを支えてくれた足に、「ありがとう」と伝えてみましょう。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">7. ボディスキャン：下肢への感謝</div>
+                    <div class="script-content">
+                        <p>今度は膝からくるぶしまでに自分のすべての注意を向けて、感覚を感じてください。</p>
+                        <p>前側、すねの部分はどんな感じがするでしょうか？膝の部分にはどんな感覚がありますか？骨がどこにあって、筋肉がどこにあって、関節がどこにあるのか感じることができますか？</p>
+                        <p>ふくらはぎの感覚、ふくらはぎとベッドの接触部分の感覚、足首の感覚など、どんな感覚があるのか確認します。</p>
+                        <p>緊張している部分や違和感を感じるところがあれば、その部分を意識しながら優しい呼吸をし、緊張が緩み、不快な感覚がなくなるようにイメージします。</p>
+                        <p>次に、膝上から股関節までの太ももに意識を移動させてください。</p>
+                        <p>内ももの筋肉、前側の筋肉、裏側の筋肉、骨など、それぞれどんな感覚があるのか確認します。</p>
+                        <p>緊張している部分や違和感があるところがあれば、その部分に優しい呼吸を流すイメージで意識的に呼吸をしてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">8. ボディスキャン：上半身への思いやり</div>
+                    <div class="script-content">
+                        <p>次に、上半身の感覚に意識を向けましょう。</p>
+                        <p>まずはお腹の感覚を確認します。お腹の中には大腸や小腸、胃があり、それらを守るように脂肪があります。どんな感覚があるのか観察してください。</p>
+                        <p>裏側に回り、背中の下の部分の感覚、脇腹の感覚をありのままに感じます。</p>
+                        <p>そのまま上に上がって、背骨、肩甲骨、肩、鎖骨があり、胸があり、心臓があり、肺があります。</p>
+                        <p>肋骨の感覚も確認したら、横に意識を移動して、脇の下、腕の感覚、肘、手首、手のひら、手の指の感覚をありのままに感じます。</p>
+                        <p>緊張している部分や不快感があれば、その部位に向かって意識的に呼吸をしてください。</p>
+                        <p>今日一日、たくさんの人を支えてくれた手に、「お疲れ様」と伝えてみましょう。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">9. ボディスキャン：首から上への優しさ</div>
+                    <div class="script-content">
+                        <p>最後に首から上の感覚に意識を向けましょう。</p>
+                        <p>首の骨、喉、裏側に回って、後頭部、頭頂、おでこ、こめかみ、側頭、耳の周り、眉毛の間、目、目の奥、鼻、舌、口の下、顎、口の中、口の周りの筋肉、唇など、確認します。</p>
+                        <p>緊張しているところや不快な感覚があれば、そこに向かって優しい呼吸をするイメージで意識を向けながら呼吸を続けてください。</p>
+                        <p>体重の10%の重さである頭を一日中支えている首。</p>
+                        <p>外からの情報を受け取る目、耳、鼻。情報を伝える口。表情を作る顔。あらゆる情報を整理し、指令を出している脳。</p>
+                        <p>今日一日、たくさんのことを考え、感じ、表現してくれた頭に、「ありがとう」と伝えてみましょう。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">10. 全身への意識と深い自己受容</div>
+                    <div class="script-content">
+                        <p>今度は身体全体に意識を向けながら、優しい呼吸が体を巡るのをイメージして呼吸をしましょう。</p>
+                        <p>新鮮な空気が鼻から入り、喉の奥を通り、お腹まで流れ込み、体中に優しい気持ちと酸素が送り込まれます。</p>
+                        <p>身体全体で呼吸をしているようなイメージで優しい呼吸を続けてください。</p>
+                        <p>胸に手を当てて心臓の鼓動を感じてください。今ここに生きている自分の存在を感じます。</p>
+                        <p>生命が誕生してから40億年間、途切れることなく引き継がれてきた多くの命の結果、今ここに自分が存在していることを感じます。</p>
+                        <p>多くの人々やこの地球の恵みのおかげで、今ここに自分が生きていることを感じます。</p>
+                        <p>完璧でない自分も、弱い部分がある自分も、すべて愛おしい存在です。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">11. 瞑想の終結と感謝</div>
+                    <div class="script-content">
+                        <p>最後にゆっくりとした深い呼吸をしましょう。深く息を吸って、自分のタイミングでゆっくりと息を吐き出してください。</p>
+                        <p>良い一日を過ごした人も、そうでない一日を過ごした人も、一瞬一瞬自分のベストを尽くして今日一日を終えました。</p>
+                        <p>どんな日も、同じ時に夜が来ることは二度とありません。今日一日は、自分の人生の中のかけがえのない一日でした。</p>
+                        <p>今の心と身体の状態を確認してください。</p>
+                        <p>この優しい感覚を十分に味わい、覚えておきましょう。</p>
+                        <p>今日、瞑想をすることに決めた自分に感謝をしながら、ゆっくりと目を開けて、自分がいる空間に意識を戻してください。</p>
+                        <p>今日も一緒に瞑想ができたことに感謝します。</p>
+                        <p>あなたは、そのままで十分です。<br>
+                        あなたは、愛されています。<br>
+                        あなたは、大切な存在なのです。</p>
+                        <p>良い眠りに入れますように。おやすみなさい。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 概要・動画情報タブ -->
+            <div id="overview" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 動画コンセプト</h3>
+                        <p>自己受容・寝る前リラックス</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏰ 動画時間</h3>
+                        <p>約20分</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🧘‍♀️ 瞑想スタイル</h3>
+                        <p>ボディスキャン瞑想</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎬 参考動画</h3>
+                        <p>【40分】自分を大切にする 寝る前ボディスキャン瞑想｜ココイマ｜誘導瞑想</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🔗 参考動画URL</h3>
+                        <p><a href="https://www.youtube.com/watch?v=FSRd6P2Mwc0" target="_blank">YouTube動画を見る</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>✨ 瞑想の特徴</h3>
+                        <p>ボディスキャンを通した自己受容と思いやり</p>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>📋 瞑想のポイント</h3>
+                    <div class="reference-content">
+                        <ul>
+                            <li><strong>自己受容:</strong> 完璧でない自分も含めてすべてを受け入れる</li>
+                            <li><strong>ボディスキャン:</strong> 体の各部位への感謝と思いやり</li>
+                            <li><strong>思考の受容:</strong> 浮かんでくる思考や感情をありのまま受け入れる</li>
+                            <li><strong>身体への感謝:</strong> 一日働いてくれた体への感謝の気持ち</li>
+                            <li><strong>深いリラクゼーション:</strong> 良質な睡眠への準備</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://ayaney03.github.io/medi-youtube/" class="back-link">← 瞑想YouTube企画ハブに戻る</a>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // すべてのタブボタンを非アクティブ
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたタブボタンをアクティブ
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

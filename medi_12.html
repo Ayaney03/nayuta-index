@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 自己批判を手放し自分を深く愛する瞑想 - 台本・資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #4facfe;
+            border-bottom: 3px solid #4facfe;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-card h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .script-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .script-header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .script-content {
+            padding: 20px;
+        }
+        
+        .script-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .compassion-message {
+            background: #fff8e1;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #ffc107;
+            font-style: italic;
+            color: #8a6914;
+        }
+        
+        .reference-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .reference-section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .reference-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #3a8bfd;
+            transform: translateY(-2px);
+        }
+        
+        .floating-back-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background: rgba(79, 172, 254, 0.9);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-back-button:hover {
+            background: rgba(58, 139, 253, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-back-button {
+                top: 10px;
+                right: 10px;
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 固定戻るボタン -->
+    <a href="https://ayaney03.github.io/medi-youtube/" class="floating-back-button">← ハブに戻る</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>12 自己批判を手放し自分を深く愛する瞑想</h1>
+            <div class="subtitle">なゆた用台本・参考資料・動画情報</div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('script')">なゆた用台本</button>
+            <button class="nav-tab" onclick="showTab('overview')">概要・参考動画情報</button>
+        </div>
+        
+        <div class="content">
+            <!-- なゆた用台本タブ -->
+            <div id="script" class="tab-content active">
+                <div class="script-section">
+                    <div class="script-header">1. 導入とセルフコンパッションの目的</div>
+                    <div class="script-content">
+                        <p>こんばんは、永世豊です。</p>
+                        <p>現代の競争社会の中では、自分を批判することが得意になっている人が多いのではないでしょうか。</p>
+                        <p>自分の失敗や怠惰な心、まだ自分に足りていない能力を認識すること自体は、成長には欠かせない重要なことです。</p>
+                        <p>しかし、そこに嫌悪感が加わり、自分を痛めつけ始めると、持っている能力を発揮できなくなったり、悪い結果だけに注目し、憂鬱な気分になり、行動しようという気持ちまで無くしてしまったりします。</p>
+                        <p>今回の瞑想のテーマであるセルフコンパッション（自己への思いやり）は、自分に寄り添い、思いやりを持って接する態度です。</p>
+                        <p>セルフコンパッションの高い人は、ありのままの自分を受け入れることができ、抑うつや不安、失敗への恐れを感じにくくなります。また、自分の間違いや失敗を改善しようとするモチベーションが高まることが分かっています。</p>
+                        <p>それでは、楽な姿勢をとってください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">2. 瞑想の準備と呼吸の観察</div>
+                    <div class="script-content">
+                        <p><strong>姿勢の準備</strong></p>
+                        <p>座っていても寝転がった状態でも大丈夫です。</p>
+                        <p>寝転がった状態の人は、足を肩幅ほどに広げ、両腕を体から離し、手のひらを上向きにして楽にしてください。</p>
+                        <p>座って行う人は、背筋を伸ばし、頭が上から吊られているような感覚で、自然と安定して体が支えられる姿勢をとりましょう。</p>
+                        
+                        <p><strong>全身のリラックスと呼吸の観察</strong></p>
+                        <p>優しく目を閉じ、全身の力を抜いて、体がリラックスしている状態に入るのを感じてください。</p>
+                        <p>自分の呼吸に注意を向け、体で感じる呼吸の流れを観察します。</p>
+                        <p>呼吸の流れに合わせて、お腹が膨らみ、お腹がへこむ流れを観察してください。</p>
+                        <p>呼吸をコントロールする必要はありません。ただ、今ここに自然に繰り返される自分の呼吸を観察してください。</p>
+                        
+                        <p><strong>深い呼吸の練習</strong></p>
+                        <p>数回ゆっくりとした深呼吸をします。</p>
+                        <p>ゆっくりと息を吸って、少し止め、自分のタイミングで口から息をゆっくりと吐き出してください。</p>
+                        <p>もう一度たっぷり息を吸って、吸い切ったところで少し止め、自分のタイミングで口から息を吐き出します。</p>
+                        <p>さらにもう一度、たっぷり息を吸ってお腹の底まで空気を送り込み、顎を緩めて口から息を吐き出してください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">3. 自己批判の認識と感情の観察</div>
+                    <div class="script-content">
+                        <p><strong>自己批判の側面を考える</strong></p>
+                        <p>ここで自己批判してしまう自分の側面について考えてください。</p>
+                        <p>過去の失敗や自分の性格、先延ばしを繰り返してしまう怠惰な自分かもしれません。</p>
+                        
+                        <p><strong>自己批判時の感覚を観察する</strong></p>
+                        <p>自分を批判している部分について考えているとき、どんな感覚がするのか観察してください。</p>
+                        <p>喉が詰まったような感覚があるかもしれません。</p>
+                        <p>頭が重く、胸が苦しいと感じるかもしれません。</p>
+                        
+                        <p><strong>自己批判する自分を客観的に認識する</strong></p>
+                        <p>次に、自己批判する自分をマインドフルに認識しましょう。</p>
+                        <p>自分を責めている意地悪な自分を客観的に観察します。</p>
+                        <p>どんな言葉で批判しているでしょうか？</p>
+                        <p>どんなところを批判しているでしょうか？</p>
+                        <p>どんな態度で批判しているでしょうか？</p>
+                        <p>ありのままの自分の感情を抑えることも否定することも、誇張することもなく、ただありのまま、判断をせずに受け入れてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">4. 人間としての不完全性の受容</div>
+                    <div class="script-content">
+                        <p><strong>間違いや失敗は人間として当たり前</strong></p>
+                        <p>次に、間違いや失敗があったり、至らない部分があるのは、人間であれば当たり前だということを思い出しましょう。</p>
+                        <p>まだ歩く練習をしている赤ちゃんに、走れないことを批判する人はいません。</p>
+                        <p>ですが、大人になると、自分の中の成長の過程を見ること、不完全さを認めることを忘れてしまう人が多いのではないでしょうか。</p>
+                        
+                        <p><strong>完璧を求めすぎない</strong></p>
+                        <p>「こうであるべき自分」ばかりを追い求めて、ありのままの自分を受け入れずに自分を批判してしまいます。</p>
+                        <p>人間は何歳になっても完璧ではありません。失敗をしたり、至らない自分を発見しながら、学び続けるのが人間です。</p>
+                        
+                        <p><strong>最善を尽くしているという認識</strong></p>
+                        <p>また、私たちは生まれてわざと失敗したり、間違いを犯しているわけではありません。</p>
+                        <p>一瞬一瞬、自分ができる最善の選択を選ぼうとしていますし、最善な行動を取ろうとしています。</p>
+                        <p>私たちは最善を尽くしていても、いつも理性的ではありませんし、いつも適切な選択を取れるわけではありません。</p>
+                        <p>それは私たちのせいではありません。それが人間というものだからです。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">5. 自己への思いやりと感謝</div>
+                    <div class="script-content">
+                        <p><strong>自己存在の確認と優しい言葉がけ</strong></p>
+                        <p>両手を胸に当てて、自分の呼吸の流れを感じてください。</p>
+                        <p>今ここに生きている自分の存在を感じ、自分が大切な存在であるということを思い出してください。</p>
+                        <p>自分が健全な心を持ち、前に進むための、思いやりのある優しい言葉をかけましょう。</p>
+                        <p>自分の親友や大切な人に声をかけるように、自分への優しさを持ち、失敗や至らない点がある自分に声をかけてください。</p>
+                        
+                        <div class="compassion-message">
+                            <p>「大丈夫、あなたはよく頑張っています」</p>
+                            <p>「完璧でなくても、あなたは愛される価値があります」</p>
+                            <p>「失敗は成長の一部です。あなたは学び続けています」</p>
+                            <p>「あなたは一人ではありません。多くの人が同じような経験をしています」</p>
+                        </div>
+                        
+                        <p><strong>未来への願い</strong></p>
+                        <p>そして、自分がありのままの自分を受け入れ、建設的な思考を持って前に進むことを願います。</p>
+                        <p>自己批判の声が聞こえてきたときは、この優しい声を思い出してください。</p>
+                        <p>あなたは愛される価値のある、大切な存在です。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">6. 瞑想の終了</div>
+                    <div class="script-content">
+                        <p>最後にゆっくりとした深い呼吸をしましょう。</p>
+                        <p>たっぷり息を吸って、口から一滴残らず息を吐き出してください。</p>
+                        <p>今の自分の心と体の状態に意識を向けてください。</p>
+                        <p>時間をとり、自分のために瞑想をしたことに感謝の気持ちを感じながら、ゆっくりと目を開けて、自分のいる空間に意識を戻してください。</p>
+                        <p>今日も一緒に瞑想ができたことに感謝します。</p>
+                        <p>あなたが自分を深く愛し、思いやりを持って自分と向き合えますように。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 概要・動画情報タブ -->
+            <div id="overview" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 動画コンセプト</h3>
+                        <p>セルフコンパッション・自己受容シリーズ</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏰ 動画時間</h3>
+                        <p>約15分</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🌙 瞑想のタイミング</h3>
+                        <p>夜のリラックスタイム</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎬 参考動画</h3>
+                        <p>【瞑想 15分】自己批判に気付き自分への思いやりを育むセルフコンパッション瞑想</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📺 チャンネル名</h3>
+                        <p>ココイマ | 心をととのえ、人生をととのえる。</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>✨ 瞑想の特徴</h3>
+                        <p>セルフコンパッション（自己への思いやり）を育む瞑想</p>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>📋 セルフコンパッション瞑想のポイント</h3>
+                    <div class="reference-content">
+                        <ul>
+                            <li><strong>自己批判の認識:</strong> 自分を批判する声に気づく</li>
+                            <li><strong>感情の観察:</strong> 批判された時の感覚を客観的に観察する</li>
+                            <li><strong>人間性の受容:</strong> 不完全さは人間として自然なことと理解する</li>
+                            <li><strong>自己への思いやり:</strong> 親友に接するように自分に優しく接する</li>
+                            <li><strong>建設的な成長:</strong> 批判ではなく思いやりから成長を促す</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://ayaney03.github.io/medi-youtube/" class="back-link">← 瞑想YouTube企画ハブに戻る</a>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // すべてのタブボタンを非アクティブ
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたタブボタンをアクティブ
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

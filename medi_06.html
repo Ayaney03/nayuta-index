@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 1日を穏やかに終える夜の20分瞑想 - 台本・資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #4facfe;
+            border-bottom: 3px solid #4facfe;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-card h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .script-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .script-header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .script-content {
+            padding: 20px;
+        }
+        
+        .script-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .reference-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .reference-section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .reference-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #3a8bfd;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>06 1日を穏やかに終える夜の20分瞑想</h1>
+            <div class="subtitle">なゆた用台本・参考資料・動画情報</div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('script')">なゆた用台本</button>
+            <button class="nav-tab" onclick="showTab('overview')">概要・参考動画情報</button>
+        </div>
+        
+        <div class="content">
+            <!-- なゆた用台本タブ -->
+            <div id="script" class="tab-content active">
+                <div class="script-section">
+                    <div class="script-header">1. 導入と瞑想の準備</div>
+                    <div class="script-content">
+                        <p>こんばんは、永世豊です。</p>
+                        <p>今日も一日、本当にお疲れ様でした。</p>
+                        <p>穏やかに1日を終えるための夜の瞑想を始めましょう。高ぶりすぎる心と脳を休めて、一日の疲れや緊張を緩めることができます。</p>
+                        <p>お休み前にこの瞑想を実践することで、睡眠の質が高まり、翌朝すっきりと目覚めることができます。</p>
+                        <p>座って行っても、ベッドやソファーの上で横になって行っても構いません。あなたが一番安心し、リラックスできる場所と姿勢でおこなってください。</p>
+                        <p>これから20分間、今日頑張った自分をいたわる時間です。何も達成する必要はありません。ただ、そのままのあなたで、ここにいてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">2. 身体への意識と準備</div>
+                    <div class="script-content">
+                        <p>準備ができたら、軽く目を閉じ、体に意識を向けていきましょう。</p>
+                        <p>体の心地の良い重さを感じ、マットや椅子と触れ合っているところを感じます。考えることを手放して、体の感覚をただ感じ取ってみてください。</p>
+                        <p>今日一日、たくさんのことを考え、感じ、行動してきた自分の体を、優しく感じてあげましょう。</p>
+                        <p>体が安定してきたら、ゆっくりと呼吸を深めていきます。吸う息は鼻で行い、吐く息は鼻からでも口からでも構いません。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">3. 呼吸への意識とカウント</div>
+                    <div class="script-content">
+                        <p>息を吸いながら、新鮮な酸素や生命力を内側に取り入れ、ゆっくりと息を吐きながら、今日一日の緊張やストレスを手放していきます。</p>
+                        <p>息を吸う度に新しいエネルギーが体の奥に流れ込み、身体全体が満たされていくのを感じます。息を吐くたびに、肩や背中、首の後ろ、頭の力が抜けてリラックスしていきます。</p>
+                        <p>呼吸することに身体と心が満たされ、リラックスしていく、そんなイメージで今この瞬間の呼吸を味わっていきます。</p>
+                        <p>ここから少しの間、心の中で吸う息・吐く息のリズムをカウントしてみます。</p>
+                        <p>息を吸って、2、3、4。<br>
+                        息を吐いて、2、3、4、5、6。</p>
+                        <p>余裕がある人はカウントを引き伸ばしても構いません。吐く息を少しだけ長くすると、体の力が抜けてリラックスしやすくなります。自分のペースで呼吸のリズムをカウントしていきましょう。</p>
+                        <p>今日一日の出来事も、吐く息と一緒に手放していきます。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">4. 全身の脱力と感覚の観察</div>
+                    <div class="script-content">
+                        <p>ゆっくりと息を吐くごとに、おでこ、眉間、口元の力も抜けていきます。リラックスした感覚がさらに全身に広がっていきます。</p>
+                        <p>顎や唇、両肩の力も抜けていきます。今日一日、たくさんの言葉を話し、表情を作ってくれた顔の筋肉に、「お疲れ様」と伝えてみましょう。</p>
+                        <p>左右の肩から腕、腰や、お尻、両足の力も抜けてリラックスしています。</p>
+                        <p>左右の指先、足先に流れる温かい感覚。両手と両足がだんだんと重くなっていくのを感じます。</p>
+                        <p>今日一日、あなたを支えてくれた足に、たくさんの作業をしてくれた手に、感謝の気持ちを向けてみましょう。</p>
+                        <p>気持ちのいい呼吸を味わいながら、体の中にある暖かさやリラックスした感覚をただ味わって行きましょう。</p>
+                        <p>もしも緊張しているところやリラックスできないところがあっても大丈夫です。無理に変えようとせずに、そのことにただ気づきます。身体全体やその部分に呼吸を送ってあげるようなイメージで、気持ちのいい呼吸を味わっていきましょう。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">5. 今日一日への感謝</div>
+                    <div class="script-content">
+                        <p>身体と心が落ち着いてきたら、カウントするのをやめて、ただ流れていく呼吸を眺めていきましょう。</p>
+                        <p>今どんな呼吸をしていますか？今この瞬間の呼吸の感覚をただ観察しています。</p>
+                        <p>息を吸うとき、体のどこが動いていますか？息を吐くとき、体のどこが動いているでしょう？</p>
+                        <p>呼吸が胸やお腹のあたりに入ってくるのを感じているかもしれません。呼吸によって体が波打つ感じや、背中や首のあたりが微かに動いている感じにも気づくかもしれません。</p>
+                        <p>吸う息で膨らんで、吐く息で縮んでいく胸やお腹が上下している感覚。自然に繰り返されている呼吸の感覚を優しく感じ取っていきます。</p>
+                        <p>ただ呼吸の感覚に気づいています。</p>
+                        <p>今の自分の体と心を観察していきます。瞑想を始める前と比べ、どんな変化があるでしょう？</p>
+                        <p>そして今度は、今日一日を振り返ってみましょう。</p>
+                        <p>良いことがあった日も、そうでない日も、あなたは一瞬一瞬、自分なりのベストを尽くして今日という日を過ごしました。</p>
+                        <p>完璧でなくても構いません。うまくいかないことがあっても構いません。</p>
+                        <p>今日という日は、あなたの人生の中でかけがえのない一日でした。</p>
+                        <p>今日頑張った自分に、「お疲れ様」と伝えてみましょう。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">6. 明日への優しい意図</div>
+                    <div class="script-content">
+                        <p>そして明日という新しい日に向けて、どんな気持ちで迎えたいか、そっと心に問いかけてみましょう。</p>
+                        <p>穏やかな気持ちで目覚めたい...<br>
+                        感謝の気持ちを持って過ごしたい...<br>
+                        今日よりも少し優しい自分でありたい...</p>
+                        <p>どんな意図でも構いません。明日という日への優しい想いを、心に置いてみてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">7. 瞑想の終わりと良い眠りへ</div>
+                    <div class="script-content">
+                        <p>いつも眠りにつく前に、日中リラックスしたいときには、ぜひこの呼吸への意識を思い出してください。夜に定期的にこの瞑想を実践することで、体と心が安定し、睡眠の質も深まっていくはずです。</p>
+                        <p>目を閉じたまま、ゆったりと深呼吸を繰り返します。最後に、あと数呼吸、マインドフルに呼吸を観察していきましょう。</p>
+                        <p>吸う息の感覚。吐く息の感覚。</p>
+                        <p>今の優しい気持ちのまま、瞑想を終わっていきます。見え方や感じ方にどんな変化があるでしょうか？</p>
+                        <p>意識的に何もしない時間を取った自分自身を褒めてあげましょう。</p>
+                        <p>今日も瞑想をご一緒できたことを感謝します。</p>
+                        <p>あなたは今日も、本当によく頑張りました。<br>
+                        そのままのあなたで、十分です。<br>
+                        あなたは愛されています。</p>
+                        <p>良い眠りに入れますように。おやすみなさい。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 概要・動画情報タブ -->
+            <div id="overview" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 動画コンセプト</h3>
+                        <p>一日の終わり・夜のリラックス</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏰ 動画時間</h3>
+                        <p>約20分</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🌙 瞑想のタイミング</h3>
+                        <p>就寝前・夜</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎬 参考動画</h3>
+                        <p>【穏やかに1日を終える夜の瞑想（10分）】</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📺 チャンネル名</h3>
+                        <p>up mind</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>✨ 瞑想の特徴</h3>
+                        <p>一日の疲れを癒し、良質な睡眠への準備</p>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>📋 瞑想のポイント</h3>
+                    <div class="reference-content">
+                        <ul>
+                            <li><strong>一日の疲れの解放:</strong> 身体と心の緊張を優しく手放す</li>
+                            <li><strong>感謝の気持ち:</strong> 今日頑張った自分と身体への感謝</li>
+                            <li><strong>呼吸のカウント:</strong> リラックス効果を高める呼吸法</li>
+                            <li><strong>自己受容:</strong> 完璧でない自分も含めて受け入れる</li>
+                            <li><strong>良質な睡眠への準備:</strong> 心と身体を休息モードに導く</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://ayaney03.github.io/medi-youtube/" class="back-link">← 瞑想YouTube企画ハブに戻る</a>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // すべてのタブボタンを非アクティブ
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたタブボタンをアクティブ
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

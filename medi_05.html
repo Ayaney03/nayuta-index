@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 最高の1日にする為の朝の20分瞑想 - 台本・資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #4facfe;
+            border-bottom: 3px solid #4facfe;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-card h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .script-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .script-header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .script-content {
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .script-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .reference-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .reference-section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .reference-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .collapsible {
+            background-color: #f1f1f1;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: 0.4s;
+        }
+        
+        .collapsible:hover {
+            background-color: #ddd;
+        }
+        
+        .collapsible.active {
+            background-color: #4facfe;
+            color: white;
+        }
+        
+        .collapsible-content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapsible-content.show {
+            display: block;
+            padding: 18px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #3a8bfd;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>05 最高の1日にする為の朝の20分瞑想</h1>
+            <div class="subtitle">なゆた用台本・参考資料・動画情報</div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('script')">なゆた用台本</button>
+            <button class="nav-tab" onclick="showTab('overview')">概要・参考動画情報</button>
+        </div>
+        
+        <div class="content">
+            <!-- なゆた用台本タブ -->
+            <div id="script" class="tab-content active">
+                <div class="script-section">
+                    <div class="script-header">1. はじめに：朝の瞑想とプライミング効果</div>
+                    <div class="script-content">
+                        <p>おはようございます、永世豊です。</p>
+                        <p>今朝も新しい一日が始まりましたね。</p>
+                        <p>先に与えられる刺激が後に与えられる刺激に影響する仕組みのことを、プライミング効果と言います。私たちの感情や思考は知らず知らずのうちに、その後の意思決定に影響を与えています。</p>
+                        <p>朝一番にマインドフルネスで心を整えると、一日を通していい連鎖が繋がりやすくなり、穏やかで生産的な一日を過ごせるようになります。</p>
+                        <p>これから20分間、あなた自身のための特別な時間です。今日という日を、最高の一日にするための準備をしましょう。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">2. 瞑想の準備と姿勢</div>
+                    <div class="script-content">
+                        <p>楽な姿勢を取り、背筋を伸ばしてください。座っている人は頭を少し後ろに持っていき、糸から吊られているような感覚で、体が楽に支えられる姿勢をとりましょう。</p>
+                        <p>優しく目を閉じ、感覚に注意を向けて、自分の今いる空間を感じていきます。</p>
+                        <p>まずは耳から何が聞こえるかに注意を向けてください。エアコンの音や時計の音、外で車が通る音が聞こえるかもしれません。風の音、鳥の声。</p>
+                        <p>朝の静寂の中で、様々な音があなたを包んでいます。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">3. 感覚への意識：空間と身体</div>
+                    <div class="script-content">
+                        <p>風の音が聞こえるかもしれません。その音はどんな音なのかよく観察してください。どのように音が始まり、どのように音が消えていくのか。音の質や、音の高さ、大きさ、音の重なり。耳に届いたものをそのまま受け取り感じてください。</p>
+                        <p>自分がいる空間を肌で感じてください。そこは寒いでしょうか、暖かいでしょうか、湿度はどれぐらいあるでしょうか。</p>
+                        <p>自分の着ている服は、ざらつく感覚があるでしょうか、柔らかい素材を感じるかもしれません。下着の締め付ける感覚があるかもしれません。着ている洋服の素材の違いを感じるかもしれません。</p>
+                        <p>次に自分の体を支えている部分の感覚に意識を向けてください。自分の体の重みを感じながら、どこに体重がかかっていて、どんな感覚があるのか、確認します。左右で体重のかかり方が違うことに気づく人もいるかもしれません。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">4. 身体の感覚と緊張の解放</div>
+                    <div class="script-content">
+                        <p>必要であれば少し姿勢を調整して、自分の体を楽に支えられるように、体を動かしてください。</p>
+                        <p>次に自分の身体の感覚を感じてみましょう。つま先の感覚、足、足首、ふくらはぎ、膝、太もも、左右で感覚が違うところもあるかもしれません。お尻、お腹、お腹の下側、腰、胸、肩、腕、肘、両手の感覚。</p>
+                        <p>体の中に固まっているところ、緊張して縮こまっているところがあれば、意識的に力を抜いてリラックスしてください。首、頭、おでこ、目の周り、口、顎、緊張している部分があれば、その部分を緩めて、リラックスしてください。</p>
+                        <p>重力に身をまかせて、体が布団や自分が座っているところに沈んでいくのを感じます。身体全体の緊張がなくなり、自分の体重が、重力にしたがって下がっていくのを感じます。</p>
+                        <p>重力に身を任せても自分の体を支えるところがあり、完全に安全で、守られていることを感じてください。重力に身体を完全に任せて、楽になって、自由に、開放的になるのを感じてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">5. 呼吸への意識とマインドフルネスの基本</div>
+                    <div class="script-content">
+                        <p>呼吸に意識を向けましょう。自分が心地が良いと感じる自然な呼吸です。</p>
+                        <p>自分が呼吸を感じるところに意識を向けてください。鼻を通る空気の流れで呼吸を感じる人、お腹や胸の膨らみ、感覚で呼吸を感じる人、どこでも自分が呼吸を感じるところに意識を向けて、呼吸の流れを感じてください。</p>
+                        <p>呼吸をコントロールする必要はありません。</p>
+                        <p>今ここにある呼吸をありのままに感じ、観察してください。すべての呼吸が同じだという考えは捨てて、ありのままの呼吸を観察します。興味深く、自分の呼吸を観察してください。</p>
+                        <p>マインドフルネスは普段無意識に流れている自分の思考や感情に意識を向け、それらを良い悪いと判断したり変えようとすることなく、ありのままを優しく受け入れることです。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">6. 思考と感情の観察</div>
+                    <div class="script-content">
+                        <p>流れている思考や感情に気づいたら、それらを良い悪いと判断したり、変えようとすることなく、ありのままを優しく受け入れて呼吸に意識を戻してください。</p>
+                        <p>呼吸に意識を向けつつ、今度は心に浮かぶ思考がどんなものなのか、を確認してください。</p>
+                        <p>思考や感情をありのままに捉えて、消えてはまた新しい思考や感情が浮かんでくるのを観察してください。それは大空に流れる雲のようなものかもしれません。変化しながら、空を流れて、また新しい雲が現れていきます。自分の思考も、浮かんでは消えていくのを、観察してください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">7. 今日への意図設定</div>
+                    <div class="script-content">
+                        <p>少し時間をとって、呼吸に意識を向けながら、流れてくる思考や感情を確認してください。</p>
+                        <p>そして今度は、今日という日に対して、どんな気持ちで過ごしたいか、そっと心に問いかけてみましょう。</p>
+                        <p>穏やかな気持ちで過ごしたい...<br>
+                        人に優しくありたい...<br>
+                        今この瞬間を大切にしたい...<br>
+                        感謝の気持ちを忘れずにいたい...</p>
+                        <p>どんな意図でも構いません。あなたが今日という日をどう過ごしたいか、その想いを心に置いてみてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">8. 瞑想の終わりと感謝</div>
+                    <div class="script-content">
+                        <p>では、ゆっくりと深呼吸をしましょう。たっぷりと息をお腹の底まで送り込み、少し止めて、自分のタイミングで、口から息を完全に吐き出してください。</p>
+                        <p>もう一度、ゆっくりと息を吸って、少し止め、自分のタイミングで、口から息を一滴残らず吐き出してください。</p>
+                        <p>もう一度身体の感覚に意識を向けて、何を感じるか確認してください。</p>
+                        <p>違和感が無ければ、右手を胸に当てて、自分の呼吸の流れを手の中で感じてください。</p>
+                        <p>朝の忙しい時間に自分のために時間を取り、瞑想をすることに決めた自分に感謝をしながら、足の指、手の指から少しずつ体を動かし、ゆっくりと目を開けて、自分のいる空間に意識を戻してください。</p>
+                        <p>今回も一緒に瞑想ができたことに感謝します。</p>
+                        <p>今日という日が、あなたにとって素晴らしい一日になりますように。</p>
+                        <p>あなたの心に設定した意図が、今日一日を通してあなたを導いてくれるでしょう。</p>
+                        <p>今日も一日、マインドフルで穏やかな時間を過ごしてくださいね。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 概要・動画情報タブ -->
+            <div id="overview" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 動画コンセプト</h3>
+                        <p>プライミング効果を活用した朝のマインドフルネス瞑想</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏰ 動画時間</h3>
+                        <p>20分</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎬 参考動画</h3>
+                        <p>【瞑想 20分】朝のマインドフルネス瞑想 | ココイマ｜誘導瞑想</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🔗 参考動画URL</h3>
+                        <p><a href="https://youtu.be/k1dKNXxkTw8?list=TLGGIqlL0E0iKckxMjA3MjAyNQ" target="_blank">YouTube動画を見る</a></p>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>📋 瞑想の特徴・効果</h3>
+                    <div class="reference-content">
+                        <ul>
+                            <li><strong>プライミング効果:</strong> 朝の心の状態が一日全体に影響する</li>
+                            <li><strong>マインドフルネス:</strong> 思考や感情をありのまま受け入れる</li>
+                            <li><strong>感覚への意識:</strong> 五感を通じて今この瞬間に集中する</li>
+                            <li><strong>意図設定:</strong> 今日をどう過ごしたいかの方向性を定める</li>
+                            <li><strong>自己受容:</strong> 浮かんでくる思考や感情を優しく受け入れる</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <button class="collapsible">参考動画の詳細書き起こしを表示 ▼</button>
+                <div class="collapsible-content">
+                    <div class="reference-section">
+                        <h3>📖 参考動画詳細書き起こし</h3>
+                        <div class="reference-content">
+                            <h4>1. はじめに：マインドフルネスと準備</h4>
+                            <p>先に与えられる刺激が後に与えられる刺激に影響する仕組みのことをプライミング効果と言います。私たちの感情や思考は知らず知らずのうちにその後の私たちの意思決定に影響を与えています。朝一番にマインドフルネスで心を整えると、一日を通していい連鎖が繋がりやすくなり、穏やかで生産的な一日を過ごせるようになります。</p>
+                            
+                            <h4>2. 感覚への意識：空間と身体</h4>
+                            <p>楽な姿勢を取り背筋を伸ばしてください。座っている人は頭を少し後ろに持っていき、糸から吊られているような感覚で、体が楽に支えられる姿勢をとりましょう。優しく目を閉じ、感覚に注意を向けて、自分の今いる空間を感じていきます。まずは耳から何が聞こえるかに注意を向けてください。エアコンの音や時計の音、外で車が通る音が聞こえるかもしれません。風の音、鳥の声。</p>
+                            
+                            <h4>3. 身体の感覚と緊張の解放</h4>
+                            <p>風の音が聞こえるかもしれません。その音はどんな音なのかよく観察してください。どのように音が始まり、どのように音が消えていくのか。音の質や、音の高さ、大きさ、音の重なり。耳に届いたものをそのまま受け取り感じてください。</p>
+                            
+                            <h4>4. 呼吸への意識とマインドフルネスの基本</h4>
+                            <p>呼吸に意識を向けましょう。自分が心地が良いと感じる自然な呼吸です。自分は呼吸を感じるところに意識を向けてください。鼻を通る空気の流れで呼吸を感じる人、お腹や胸の膨らみ、感覚で呼吸を感じる人、どこでも自分が呼吸を感じるところに意識を向けて、呼吸の流れを感じてください。呼吸をコントロールする必要はありません。</p>
+                            
+                            <h4>5. 思考と感情の観察</h4>
+                            <p>マインドフルネスは普段無意識に流れている自分の思考や感情に意識を向け、それらを良い悪いと判断したり変えようとすることなく、ありのままを優しく受け入れることです。</p>
+                            
+                            <h4>6. 瞑想の終わりと感謝</h4>
+                            <p>朝の忙しい時間に自分のために時間を取り、瞑想をすることに決めた自分に感謝をしながら、足の指、手の指から少しずつ体を動かし、ゆっくりと目を開けて、自分のいる空間に意識を戻してください。今回も一緒に瞑想ができたことに感謝します。今日1日、皆さんがマインドフルで穏やかな一日を過ごせますように。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://ayaney03.github.io/medi-youtube/" class="back-link">← 瞑想YouTube企画ハブに戻る</a>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // すべてのタブボタンを非アクティブ
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたタブボタンをアクティブ
+            event.target.classList.add('active');
+        }
+        
+        // コラプシブル機能
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('show');
+                
+                // ボタンテキストを変更
+                if (content.classList.contains('show')) {
+                    this.innerHTML = this.innerHTML.replace('▼', '▲');
+                } else {
+                    this.innerHTML = this.innerHTML.replace('▲', '▼');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

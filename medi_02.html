@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 執着を手放して楽に生きる 慈悲の瞑想 - 台本・資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #4facfe;
+            border-bottom: 3px solid #4facfe;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-card h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .script-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .script-header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .script-content {
+            padding: 20px;
+        }
+        
+        .script-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .reference-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .reference-section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .reference-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .collapsible {
+            background-color: #f1f1f1;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: 0.4s;
+        }
+        
+        .collapsible:hover {
+            background-color: #ddd;
+        }
+        
+        .collapsible.active {
+            background-color: #4facfe;
+            color: white;
+        }
+        
+        .collapsible-content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapsible-content.show {
+            display: block;
+            padding: 18px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #3a8bfd;
+            transform: translateY(-2px);
+        }
+        
+        .floating-back-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background: rgba(79, 172, 254, 0.9);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-back-button:hover {
+            background: rgba(58, 139, 253, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-back-button {
+                top: 10px;
+                right: 10px;
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 固定戻るボタン -->
+    <a href="https://ayaney03.github.io/medi-youtube/" class="floating-back-button">← ハブに戻る</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>02 執着を手放して楽に生きる 慈悲の瞑想</h1>
+            <div class="subtitle">なゆた用台本・参考資料・動画情報</div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('script')">なゆた用台本</button>
+            <button class="nav-tab" onclick="showTab('overview')">概要・参考動画情報</button>
+        </div>
+        
+        <div class="content">
+            <!-- なゆた用台本タブ -->
+            <div id="script" class="tab-content active">
+                <div class="script-section">
+                    <div class="script-header">チャプター1: はじめに（導入・準備）</div>
+                    <div class="script-content">
+                        <p>おはようございます、永世豊です。</p>
+                        <p>新しい一日の始まりですね。<br>
+                        今日という日も、きっとたくさんの人との出会いや関わりが待っています。</p>
+                        <p>いつも頑張っているあなた、毎日を一生懸命生きているあなたが、<br>
+                        今日一日を心軽やかに過ごせるように、<br>
+                        これから15分間、慈悲の瞑想を一緒に行いましょう。</p>
+                        <p>慈悲の瞑想は、自分自身と、周りの人たちへの優しさを育む瞑想です。<br>
+                        「こうあるべき」「こうしなければ」という執着を少しずつ手放して、<br>
+                        もっと楽に、もっと自然に過ごしていけるようになります。</p>
+                        <p>楽な姿勢を取ってください。<br>
+                        座っていても、寝転んでいても、あなたが一番くつろげる姿勢で大丈夫です。</p>
+                        <p>背筋を自然に伸ばして、肩の力を抜いて...<br>
+                        もし仰向けに寝ている場合は、足を肩幅ほどに広げて、<br>
+                        腕を体から少し離して、楽にしてください。</p>
+                        <p>優しく目を閉じて...<br>
+                        今日一日への準備を、ゆっくりと始めていきましょう。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">チャプター2: 環境への意識と身体の解放</div>
+                    <div class="script-content">
+                        <p>自分の自然な呼吸に意識を向けてください。<br>
+                        息が鼻の奥を通って、お腹へと流れて...<br>
+                        吐く息で、逆のルートを辿って鼻から抜けていく...<br>
+                        その流れを、ただ観察してみましょう。</p>
+                        <p>今、あなたがいる空間に注意を向けてみてください。<br>
+                        部屋の空気を感じます。<br>
+                        温度や湿度、空気の柔らかさ...<br>
+                        肌に触れているパジャマや布団の感覚も感じてみて。</p>
+                        <p>今度は、あなたの周りの音を聴いてみましょう。<br>
+                        壁の向こうの音や、車が通り過ぎる音...<br>
+                        風の音、鳥のさえずりが聞こえるかもしれません。</p>
+                        <p>あなた以外にも、たくさんの生き物が、<br>
+                        今この瞬間も、それぞれの朝を迎えているんですね。<br>
+                        みんな、それぞれの人生を、一生懸命生きています。</p>
+                        <p>音への集中を少しずつ弱めて...<br>
+                        音がぼやけて、背景に変わっていくように...<br>
+                        音に向けていた注意を、そっと呼吸に戻していきましょう。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">チャプター3: 呼吸への集中と思考の受容</div>
+                    <div class="script-content">
+                        <p>優しく深い呼吸をしましょう。<br>
+                        ゆっくりと息を吸って...<br>
+                        口からため息をつくように、息を吐き出します。</p>
+                        <p>もう一度、今度はもっとたっぷりと息を吸って...<br>
+                        お腹の底まで空気を流し込んで...<br>
+                        顎を落として、少しずつ口から息を吐き出していきます。</p>
+                        <p>自然な呼吸に戻してください。</p>
+                        <p>体が触れている部分の感覚に注意を向けましょう。<br>
+                        自分の体を支えている部分の感覚...<br>
+                        空気と自分の体の境目の感覚...<br>
+                        着ている洋服が触れている部分の感覚...</p>
+                        <p>身体の中で力が入っている部分や、緊張している部分があれば、<br>
+                        力を抜いて、緩めてください。</p>
+                        <p>重力に体を任せて、深く沈んでいくのを感じます。<br>
+                        すべてを預けても、あなたは支えられていて、完全に大丈夫。<br>
+                        身体と一緒に、心も解放されていきます。</p>
+                        <p>呼吸に意識を戻してください。<br>
+                        呼吸を一番意識できるところに、注意を集中します。</p>
+                        <p>それは鼻先で感じる空気の動きかもしれません。<br>
+                        お腹が膨らんで、しぼむ感覚かもしれません。<br>
+                        どこでも、あなたが一番呼吸を意識できるところに、<br>
+                        しばらく注意を止めてみてください。</p>
+                        <p>心がさまよって、何か考えている自分に気づいたら...<br>
+                        判断することなく、優しく呼吸に意識を戻してください。</p>
+                        <p>思考を止めようとしたり、コントロールする必要はありません。<br>
+                        ただ浮かんできたことに気づいたら、呼吸に意識を戻す。<br>
+                        それだけで十分です。</p>
+                        <p>どんな思考が浮かんできても大丈夫。<br>
+                        どんな感情が湧いてきても大丈夫。<br>
+                        それは自然に浮かんでくるもので、私たちがコントロールできないこと。<br>
+                        ただありのままに受け入れて、気づいた時に呼吸に意識を戻します。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">チャプター4: 慈悲の瞑想（自分への慈悲）</div>
+                    <div class="script-content">
+                        <p>胸に手を当てて、自分の呼吸を感じてください。<br>
+                        ここに呼吸をしていて、ここに生きている自分の存在を感じます。</p>
+                        <p>今日も一生懸命生きようとしている自分。<br>
+                        時には疲れて、時には迷って、時には自分に厳しくしてしまう自分。<br>
+                        でも、それでも毎日頑張っている自分。</p>
+                        <p>そんな自分に、優しい言葉をかけてあげましょう。</p>
+                        <p><strong>私が幸せでありますように。</strong></p>
+                        <p><strong>私が安全に、心穏やかに過ごせますように。</strong></p>
+                        <p><strong>私の心と体が健康でありますように。</strong></p>
+                        <p><strong>私の悩み苦しみがなくなりますように。</strong></p>
+                        <p><strong>私の願いが叶えられますように。</strong></p>
+                        <p><strong>私が幸せでありますように。</strong></p>
+                        <p>繊細で疲れやすい自分も、<br>
+                        完璧でない自分も、<br>
+                        全部、全部愛おしいのです。</p>
+                        <p>そのままのあなたで、十分なのです。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">チャプター5: 慈悲の瞑想（大切な人・全ての命への慈悲）</div>
+                    <div class="script-content">
+                        <p>今度は、あなたの大切な人を思い浮かべてみてください。<br>
+                        家族、友人、同僚...<br>
+                        その人も、あなたと同じように、毎日を一生懸命生きています。</p>
+                        <p>時には疲れて、時には悩んで、時には間違いも犯すけれど、<br>
+                        それでも精一杯生きている、大切な人。</p>
+                        <p>その人に、優しい言葉を送ってあげましょう。</p>
+                        <p><strong>私の大切な人が幸せでありますように。</strong></p>
+                        <p><strong>私の大切な人が穏やかで安全に過ごせますように。</strong></p>
+                        <p><strong>私の大切な人の心と体が健康でありますように。</strong></p>
+                        <p><strong>私の大切な人の悩み苦しみがなくなりますように。</strong></p>
+                        <p><strong>私の大切な人の願いが叶えられますように。</strong></p>
+                        <p><strong>私の大切な人が幸せでありますように。</strong></p>
+                        <p>そして今度は、もっと広く...<br>
+                        この世界に生きる、すべての命に思いを向けてみましょう。</p>
+                        <p>あなたが今日出会う人たち、<br>
+                        街ですれ違う人たち、<br>
+                        世界中の人たち、<br>
+                        そして動物や植物、すべての生き物たち。</p>
+                        <p>みんな、それぞれの人生を、それぞれのペースで生きています。</p>
+                        <p><strong>全ての命が幸せでありますように。</strong></p>
+                        <p><strong>全ての命が安全でありますように。</strong></p>
+                        <p><strong>全ての命の心と体が健康でありますように。</strong></p>
+                        <p><strong>全ての命の悩み苦しみがなくなりますように。</strong></p>
+                        <p><strong>全ての命の願いが叶えられますように。</strong></p>
+                        <p><strong>全ての命が幸せでありますように。</strong></p>
+                        <p>そして最後に、もう一度自分に戻って...</p>
+                        <p><strong>私が幸せでありますように。</strong></p>
+                        <p><strong>私が幸せでありますように。</strong></p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">チャプター6: 瞑想の終了と一日への準備</div>
+                    <div class="script-content">
+                        <p>今の心と体の感覚を味わってください。<br>
+                        少し軽やかになった心を感じてみて。</p>
+                        <p>慈悲の瞑想を行うと、心に優しさが宿ります。<br>
+                        自分への優しさ、他者への優しさ。<br>
+                        その優しさが、今日一日のあなたを支えてくれるでしょう。</p>
+                        <p>人間関係で疲れた時、<br>
+                        誰かにイライラしてしまった時、<br>
+                        自分に厳しくしそうになった時...</p>
+                        <p>この朝の慈悲の気持ちを思い出してください。<br>
+                        「みんな、それぞれ一生懸命生きているんだな」<br>
+                        そう思えるだけで、心がずっと楽になります。</p>
+                        <p>深呼吸を一つして...<br>
+                        手足の指を、ゆっくりと動かしてみましょう。</p>
+                        <p>心地が良いタイミングで、ゆっくりと目を開けて、<br>
+                        自分のいる空間に意識を戻してください。</p>
+                        <p>今日も一緒に瞑想ができたことに感謝します。</p>
+                        <p>今日という日が、あなたにとって、<br>
+                        そしてあなたの周りの人たちにとって、<br>
+                        優しさに満ちた一日になりますように。</p>
+                        <p>今日も一日、お疲れ様です。<br>
+                        あなたらしく、輝いてくださいね。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 概要・動画情報タブ -->
+            <div id="overview" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 動画コンセプト</h3>
+                        <p>朝の心の準備シリーズ</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏰ 動画時間</h3>
+                        <p>約15分</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📋 ターゲット・ペルソナ</h3>
+                        <p><a href="./共通資料/瞑想YouTube_コンセプト・ペルソナ設計書.md" target="_blank">詳細なペルソナ設計書を参照</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎬 参考動画</h3>
+                        <p>【15分】朝の慈悲の瞑想｜慈悲の瞑想｜瞑想｜朝｜ココイマ｜誘導瞑想</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📺 チャンネル名</h3>
+                        <p>ココイマ | 心をととのえ、人生をととのえる。</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🔗 参考動画URL</h3>
+                        <p><a href="https://www.youtube.com/watch?v=dQe39A7NRds&pp=0gcJCcEJAYcqIYzv" target="_blank">YouTube動画を見る</a></p>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>📋 瞑想の特徴・効果</h3>
+                    <div class="reference-content">
+                        <ul>
+                            <li><strong>慈悲の瞑想:</strong> 自分→大切な人→全ての命への段階的な慈悲の拡張</li>
+                            <li><strong>朝の準備:</strong> 一日を心軽やかに過ごすための心の準備</li>
+                            <li><strong>執着の手放し:</strong> 「こうあるべき」という思い込みからの解放</li>
+                            <li><strong>人間関係の改善:</strong> 他者への優しさと理解を育む</li>
+                            <li><strong>期待される効果:</strong> 人間関係の疲れを癒し、心を軽やかにする</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <button class="collapsible">参考動画の詳細書き起こしを表示 ▼</button>
+                <div class="collapsible-content">
+                    <div class="reference-section">
+                        <h3>📖 参考動画詳細書き起こし</h3>
+                        <div class="reference-content">
+                            <h4>1. 導入と瞑想の準備</h4>
+                            <p>新しい一日の始まりです。朝の時間に瞑想を行い、その日一日に起こる様々な出来事に、余裕を持って適切に対応できる心に整えましょう。後半では慈悲の瞑想のフレーズを読み上げます。</p>
+                            
+                            <h4>2. 環境音と身体感覚への気づき、そして呼吸へ</h4>
+                            <p>肌に触れているパジャマや布団の感覚も感じます。今日は自分が今いる空間の周りの音を聴いてみましょう。壁の音や車が通り過ぎる音、風の音、鳥のさえずりが聞こえるかもしれません。自分以外にも様々な生物が自分の周りに生きていることに気づきます。</p>
+                            
+                            <h4>5. 慈悲の瞑想：自分と大切な人へ</h4>
+                            <p>胸に手を当てて自分の呼吸を感じてください。ここに呼吸をしていて、ここに生きている自分の存在を感じます。ここから慈悲の瞑想のフレーズを読み上げます。</p>
+                            <p><strong>慈悲の瞑想フレーズ（自分へ）:</strong><br>
+                            私が幸せでありますように。<br>
+                            私が安全に、心穏やかに過ごせますように。<br>
+                            私の心と体が健康でありますように。<br>
+                            私の悩み苦しみがなくなりますように。<br>
+                            私の願いが叶えられますように。<br>
+                            私が幸せでありますように。</p>
+                            <p><strong>慈悲の瞑想フレーズ（大切な人へ）:</strong><br>
+                            私の大切な人が幸せでありますように。<br>
+                            私の大切な人が穏やかで安全に過ごせますように。<br>
+                            私の大切な人の心と体が健康でありますように。<br>
+                            私の大切な人の悩み苦しみがなくなりますように。<br>
+                            私の大切な人の願いが叶えられますように。<br>
+                            私の大切な人が幸せでありますように。</p>
+                            
+                            <h4>6. 慈悲の瞑想：全ての命へ、そして瞑想の終わりに</h4>
+                            <p><strong>慈悲の瞑想フレーズ（全ての命へ）:</strong><br>
+                            全ての命が幸せでありますように。<br>
+                            全ての命が安全でありますように。<br>
+                            全ての命の心と体が健康でありますように。<br>
+                            全ての命の悩み苦しみがなくなりますように。<br>
+                            全ての命の願いが叶えられますように。<br>
+                            全ての命が幸せでありますように。</p>
+                            <p>私が幸せでありますように。私が幸せでありますように。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://ayaney03.github.io/medi-youtube/" class="back-link">← 瞑想YouTube企画ハブに戻る</a>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // すべてのタブボタンを非アクティブ
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたタブボタンをアクティブ
+            event.target.classList.add('active');
+        }
+        
+        // コラプシブル機能
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('show');
+                
+                // ボタンテキストを変更
+                if (content.classList.contains('show')) {
+                    this.innerHTML = this.innerHTML.replace('▼', '▲');
+                } else {
+                    this.innerHTML = this.innerHTML.replace('▲', '▼');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

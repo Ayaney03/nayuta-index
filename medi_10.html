@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 眠りながら自分を最高に満たす瞑想 - 台本・資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #4facfe;
+            border-bottom: 3px solid #4facfe;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-card h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .script-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .script-header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .script-content {
+            padding: 20px;
+        }
+        
+        .script-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .affirmation {
+            background: #f0f8ff;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #4facfe;
+            font-weight: 500;
+            font-style: italic;
+        }
+        
+        .reference-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .reference-section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .reference-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #3a8bfd;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>10 眠りながら自分を最高に満たす瞑想</h1>
+            <div class="subtitle">なゆた用台本・参考資料・動画情報</div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('script')">なゆた用台本</button>
+            <button class="nav-tab" onclick="showTab('overview')">概要・参考動画情報</button>
+        </div>
+        
+        <div class="content">
+            <!-- なゆた用台本タブ -->
+            <div id="script" class="tab-content active">
+                <div class="script-section">
+                    <div class="script-header">1. 導入とアファメーションの目的</div>
+                    <div class="script-content">
+                        <p>こんばんは、永世豊です。</p>
+                        <p>これから寝る前の、眠りながら自己肯定感を高めるアファメーションを行います。</p>
+                        <p>このアファメーションは、長時間聴き流し、眠っている間や何かをしているとき、常に自己肯定感を高める言葉を聞くことで、潜在意識を変えていく効果があります。</p>
+                        <p>人は寝ている間、潜在意識が働き、自分のマインドセットを決めていきます。毎日自分に対して良い習慣や良い言葉を投げかけていくことで、セルフイメージが変わっていきます。</p>
+                        <p>ぜひこの寝る前アファメーションを習慣にして、素晴らしい人生を手にしていきましょう。</p>
+                        <p>それではリラックスして、全身の疲労、緊張、ストレスを取り除いていきます。</p>
+                        <p>ゆっくりと深い呼吸をしてください。</p>
+                        <p>今あなたは安全で、守られています。安心して取り組んでください。</p>
+                        <p>楽な姿勢で横になり、軽く目を閉じてください。何も頑張る必要はありません。ただ、私の声に身を委ねて、言葉を心の奥深くに浸透させていきましょう。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">2. アファメーションの開始</div>
+                    <div class="script-content">
+                        <p>このアファメーションは、あなたの自己肯定感や自信を高め、幸運や成功、素晴らしい未来を引き寄せていきます。</p>
+                        <p>この言葉をあなたの中に取り入れ、あなた自身を包み込んでいきます。</p>
+                        <p>誘導の言葉の感覚は徐々に広がり、音量を少しずつ下がっていきます。そのまま眠りにつき、潜在意識が開いていきますので、このまま聞き流してください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">3. 個人の本質や特性に関する肯定的な宣言</div>
+                    <div class="script-content">
+                        <div class="affirmation">
+                            <p><strong>あなたは素晴らしい</strong></p>
+                            <p><strong>あなたは輝いている</strong></p>
+                            <p><strong>あなたは運に恵まれている</strong></p>
+                            <p><strong>あなたは成功する</strong></p>
+                            <p><strong>あなたの未来は開けていく</strong></p>
+                            <p><strong>あなたはいつも落ち着いている</strong></p>
+                            <p><strong>あなたはいつも人に恵まれている</strong></p>
+                            <p><strong>あなたは世界で唯一の人です</strong></p>
+                            <p><strong>あなたは良い人です</strong></p>
+                            <p><strong>あなたにはあなたにしかない輝きがあります</strong></p>
+                            <p><strong>あなたはその輝きを放って世界を照らす使命があります</strong></p>
+                            <p><strong>あなたは人に対していつも優しくすることができます</strong></p>
+                            <p><strong>あなたは人に愛され</strong></p>
+                            <p><strong>あなたも人を愛しています</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">4. 自己の意志と創造性に関する肯定的な宣言</div>
+                    <div class="script-content">
+                        <div class="affirmation">
+                            <p><strong>あなたの生活はあなたが願った通りに変わっていきます</strong></p>
+                            <p><strong>あなたは自分の意思で未来をつくることができる</strong></p>
+                            <p><strong>あなたは自分を変えることができる</strong></p>
+                            <p><strong>あなたは思った通りの自分になることができる</strong></p>
+                            <p><strong>あなたは自分を信じることができる</strong></p>
+                            <p><strong>あなたは自分を信じ人を信じ素晴らしい人生が開かれている</strong></p>
+                        </div>
+                        
+                        <p><em>（以下、これらのアファメーションを心を込めてゆっくりと繰り返します）</em></p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">5. 瞑想の終わりと統合</div>
+                    <div class="script-content">
+                        <p>これらの言葉があなたの潜在意識の奥深くに浸透していくのを感じてください。</p>
+                        <p>あなたの心の中で、自己肯定感の扉が開かれています。</p>
+                        <p>あなたは素晴らしい存在です。あなたは輝いています。あなたは愛されています。</p>
+                        <p>眠りにつく前に、もう一度心の中で確認してください。</p>
+                        <p>「私は素晴らしい存在です」<br>
+                        「私は輝いています」<br>
+                        「私は愛されています」<br>
+                        「私は自分を信じています」</p>
+                        <p>このアファメーションは、眠っている間も潜在意識に働きかけ続けます。</p>
+                        <p>安心して、深い眠りに入ってください。</p>
+                        <p>明日目覚めた時、あなたの自己肯定感はより高まっているでしょう。</p>
+                        <p>今夜も一緒にアファメーション瞑想ができたことに感謝します。</p>
+                        <p>あなたが自分を深く愛し、素晴らしい人生を歩んでいけますように。</p>
+                        <p>良い眠りを。おやすみなさい。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 概要・動画情報タブ -->
+            <div id="overview" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 動画コンセプト</h3>
+                        <p>自己肯定感向上・セルフラブシリーズ</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏰ 動画時間</h3>
+                        <p>約30分</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🌙 瞑想のタイミング</h3>
+                        <p>就寝前・ベッドタイム</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎬 参考動画</h3>
+                        <p>【アファメーション】寝る前 眠りながら 自己肯定感を高める 誘導瞑想</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📺 チャンネル名</h3>
+                        <p>メディテラス 〜マインドフルネス瞑想ガイド〜</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>✨ 瞑想の特徴</h3>
+                        <p>自己肯定感を高めるアファメーション瞑想</p>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>📋 アファメーションのポイント</h3>
+                    <div class="reference-content">
+                        <ul>
+                            <li><strong>自己肯定感の向上:</strong> 自分の価値と素晴らしさを深く認識する</li>
+                            <li><strong>潜在意識への刷り込み:</strong> 繰り返しによる深層意識への浸透</li>
+                            <li><strong>自己信頼の構築:</strong> 自分の能力と可能性への確信</li>
+                            <li><strong>愛と思いやり:</strong> 自分と他者への愛情を育む</li>
+                            <li><strong>未来への希望:</strong> 明るい未来への確信と期待</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://ayaney03.github.io/medi-youtube/" class="back-link">← 瞑想YouTube企画ハブに戻る</a>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // すべてのタブボタンを非アクティブ
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたタブボタンをアクティブ
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

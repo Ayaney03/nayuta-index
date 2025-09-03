@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 心を整える為の10分瞑想 - 台本・資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #4facfe;
+            border-bottom: 3px solid #4facfe;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-card h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .script-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .script-header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .script-content {
+            padding: 20px;
+        }
+        
+        .script-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .reference-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .reference-section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .reference-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #3a8bfd;
+            transform: translateY(-2px);
+        }
+        
+        .floating-back-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background: rgba(79, 172, 254, 0.9);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-back-button:hover {
+            background: rgba(58, 139, 253, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-back-button {
+                top: 10px;
+                right: 10px;
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 固定戻るボタン -->
+    <a href="https://ayaney03.github.io/medi-youtube/" class="floating-back-button">← ハブに戻る</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>03 心を整える為の10分瞑想</h1>
+            <div class="subtitle">なゆた用台本・参考資料・動画情報</div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('script')">なゆた用台本</button>
+            <button class="nav-tab" onclick="showTab('overview')">概要・参考動画情報</button>
+        </div>
+        
+        <div class="content">
+            <!-- なゆた用台本タブ -->
+            <div id="script" class="tab-content active">
+                <div class="script-section">
+                    <div class="script-header">1. 導入と瞑想の準備</div>
+                    <div class="script-content">
+                        <p>これから10分間、自分のために時間をとり、瞑想に集中しましょう。一度立ち止まって心の静寂に戻り、自分が本当に大切にしていることを思い出します。</p>
+                        <p>心地の良い姿勢をとってください。背筋を伸ばし、頭をその延長線上に持ってきて、自然と体が支えられる姿勢をとりましょう。優しく目を閉じ、誘導に合わせて呼吸を行います。</p>
+                        <p>これから行う呼吸法は、4カウントで息を吸い、7カウントの間呼吸を止め、最後の8カウントで息を吐いていきます。吐く息を吸う息より長くすることで自律神経を整え、呼吸を止めることで通常以上に脳に酸素を送り込むことができます。</p>
+                        <p>最初は誘導に合わせて呼吸を行い、その後は自分でカウントをしながら呼吸を続けてください。呼吸が途中で苦しいと感じる場合には、無理をせずに苦しくない呼吸に戻してください。</p>
+                        <p>まず、体の中の息をすべて吐ききってください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">2. 4-7-8呼吸法の実践</div>
+                    <div class="script-content">
+                        <p>口からため息を吐くように息を吐きます。一滴残らず吐き出すように、吐くことに集中してください。</p>
+                        <p>それでは始めます。</p>
+                        <p>鼻から息を吸って... 1、2、3、4<br>
+                        息を止めて... 1、2、3、4、5、6、7<br>
+                        口から息を吐いて... 1、2、3、4、5、6、7、8</p>
+                        <p>もう一度。<br>
+                        鼻から息を吸って... 1、2、3、4<br>
+                        息を止めて... 1、2、3、4、5、6、7<br>
+                        口から息を吐いて... 1、2、3、4、5、6、7、8</p>
+                        <p>自分でカウントを取りながら、残り2回呼吸を続けてください。</p>
+                        <p>吐く息とともに体の緊張が解けていき、楽になるのを感じてください。ゆっくりとした呼吸を繰り返すごとに、緊張が解け、同時に心の状態も変化していくのを感じてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">3. 自然な呼吸への移行と体の感覚</div>
+                    <div class="script-content">
+                        <p>この呼吸法が終わったら自然な呼吸に戻し、呼吸に意識を向けてください。</p>
+                        <p>鼻から冷たい空気が入って、喉の奥を通り、肺やお腹に空気が流れ込みます。息が入り終わると、今度は肺や喉の裏を通って鼻から暖かい空気が出ていきます。</p>
+                        <p>呼吸の流れに合わせて体が膨らみ、体が縮む感覚を味わってください。空気が体に入り、出ていく感覚や、自分の体で感じる呼吸を観察してください。</p>
+                        <p>意識を呼吸に集中させます。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">4. 思考・感情の観察と受容</div>
+                    <div class="script-content">
+                        <p>思考や感情が浮かんできたら、呼吸によってお腹が膨らんだりへこんだりするのと同じように、ただ気づいて、ありのまま見届けます。ただそう思っている自分、そう感じている自分に気づき、認めてください。</p>
+                        <p>心がさまよっていることに気づいたら、目指す呼吸に意識を戻し、いまこの瞬間に戻ってきます。今この瞬間の、呼吸に集中します。</p>
+                        <p>この呼吸に意識を向けて、体で気の流れを感じている時、「いまここ、この瞬間」にいます。ここにいる自分の存在を意識して、自分にとって大切なことを思い出してください。</p>
+                        <p>自分自身の思考と感情を理解し、大切にしながらも、自分の意図や価値観に合った、建設的な思考が浮かんできます。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">5. 瞑想の終わりと現実への回帰</div>
+                    <div class="script-content">
+                        <p>最後に、もう一度深い呼吸をしましょう。たっぷりと息を吸って、口から息を吐き出します。今の心と、身体の状態を確認してください。</p>
+                        <p>心の静寂はいつでも自分の中にあります。一度立ち止まって時間を取れば、いつでも自分が必要なときに、ストレスから解放され、大切なことに立ち戻ることができます。</p>
+                        <p>今の感覚を十分に感じて、味わい、覚えておきましょう。</p>
+                        <p>今日、瞑想をすることに決めた自分に感謝をしながら、ゆっくりと目を開けて、少しずつ光を取り込み、自分のいる空間に、意識を戻してください。</p>
+                        <p>今日も一緒に瞑想ができたことに感謝します。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 概要・動画情報タブ -->
+            <div id="overview" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 動画コンセプト</h3>
+                        <p>心を整える短時間瞑想</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏰ 動画時間</h3>
+                        <p>約10分</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🫁 呼吸法</h3>
+                        <p>4-7-8呼吸法</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎬 参考動画</h3>
+                        <p>【10分】10分間瞑想｜ココイマ｜誘導瞑想</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🔗 参考動画URL</h3>
+                        <p><a href="https://youtu.be/jTQ0_Yeq-2E?list=TLGGuCFocVdqip8xMjA3MjAyNQ" target="_blank">YouTube動画を見る</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>✨ 瞑想の特徴</h3>
+                        <p>4-7-8呼吸法を用いた心の静寂への回帰</p>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>📋 瞑想のポイント</h3>
+                    <div class="reference-content">
+                        <ul>
+                            <li><strong>4-7-8呼吸法:</strong> 自律神経を整え、脳に酸素を送り込む効果的な呼吸法</li>
+                            <li><strong>無理をしない:</strong> 苦しい場合は自然な呼吸に戻す</li>
+                            <li><strong>思考の受容:</strong> 浮かんでくる思考や感情をありのまま受け入れる</li>
+                            <li><strong>今この瞬間:</strong> 呼吸を通じて現在に意識を集中させる</li>
+                            <li><strong>心の静寂:</strong> いつでもアクセスできる内なる平安の感覚</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://ayaney03.github.io/medi-youtube/" class="back-link">← 瞑想YouTube企画ハブに戻る</a>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // すべてのタブボタンを非アクティブ
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたタブボタンをアクティブ
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
