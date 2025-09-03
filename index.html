@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>なゆたさん専用 - 天郷事業ハブ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .important-notice {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 5px solid #e17055;
+        }
+
+        .important-notice h3 {
+            color: #2d3436;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .important-notice h3::before {
+            content: "📌";
+            margin-right: 10px;
+        }
+
+        .important-notice p {
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        .memo-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .memo-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .memo-section h3::before {
+            content: "📝";
+            margin-right: 10px;
+        }
+
+        .memo-editor textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+            background: #fafafa;
+            transition: border-color 0.3s ease;
+        }
+
+        .memo-editor textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+        }
+
+        .memo-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .memo-controls button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .memo-controls button:first-child {
+            background: #667eea;
+            color: white;
+        }
+
+        .memo-controls button:first-child:hover {
+            background: #5a6fd8;
+        }
+
+        .memo-controls button:last-child {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .memo-controls button:last-child:hover {
+            background: #c0392b;
+        }
+
+        #saveStatus {
+            font-size: 12px;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        .simple-links {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .simple-links h2 {
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .link-section {
+            margin-bottom: 25px;
+        }
+
+        .link-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .link-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .link-section li {
+            margin-bottom: 8px;
+        }
+
+        .link-section a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .link-section a:hover {
+            background: #f0f2ff;
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .footer-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-info p {
+            margin-bottom: 10px;
+        }
+
+        .footer-info .company-info {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .simple-links {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏢 天郷事業ハブ</h1>
+            <p class="subtitle">なゆたさん専用アクセスポイント</p>
+        </div>
+
+        <div class="important-notice">
+            <h3>重要なお知らせ</h3>
+            <p>このページをブックマークしておくと、天郷事業の各プロジェクトに素早くアクセスできます。</p>
+        </div>
+
+        <div class="memo-section">
+            <h3>最近の決定事項メモ</h3>
+            <p style="margin-bottom: 15px; color: #666; font-size: 0.9rem;">重要な決定事項や変更点を自由に記録できます。内容は自動保存されます。</p>
+            <div class="memo-editor">
+                <textarea id="memoTextarea" placeholder="日付と内容を自由に記入してください...
+
+例：
+2025/09/01 - なゆたX運用体制変更
+ぽにょさんがX顧問として参加、あやねえが全体運用管理。なゆたX経由売上の1割をあやねえに。">2025/09/01 - なゆたX運用体制変更
+ぽにょさんがX顧問として参加、あやねえが全体運用管理。なゆたX経由売上の1割をあやねえに。</textarea>
+                <div class="memo-controls">
+                    <button onclick="saveMemo()">💾 保存</button>
+                    <button onclick="clearMemo()">🗑️ クリア</button>
+                    <span id="saveStatus"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="simple-links">
+            <h2>📋 メニュー</h2>
+            
+            <div class="link-section">
+                <h3>🧘 瞑想事業</h3>
+                <ul>
+                    <li><a href="https://ayaney03.github.io/smartphone-detox/" target="_blank">脱スマホ瞑想プログラム公式サイト</a></li>
+                    <li><a href="01_瞑想事業/脱スマホ瞑想プログラム/00_脱スマホ瞑想プログラム_ハブ.html">プロジェクトハブ（内部管理）</a></li>
+                    <li><a href="01_瞑想事業/瞑想YouTube/README.md">瞑想YouTube運用ガイド</a></li>
+                    <li><a href="01_瞑想事業/アメブロ/README.md">アメブロ運用ガイド</a></li>
+                    <li><a href="01_瞑想事業/Google_Drive共有手順.md">Google Drive共有手順</a></li>
+                    <li><a href="https://discord.com/channels/1234567890/1234567890">瞑想コミュニティ Discord</a></li>
+                </ul>
+            </div>
+
+            <div class="link-section">
+                <h3>💫 なゆた関連事業</h3>
+                <ul>
+                    <li><a href="02_なゆた関連/五大資産_ライフスタイル設計レッスン.html">五大資産レッスン</a></li>
+                    <li><a href="02_なゆた関連/UTAGE設定ガイド_30代女性向けメルマガ.md">UTAGE設定ガイド</a></li>
+                    <li><a href="02_なゆた関連/メルマガ_30代女性向け.html">メルマガテンプレート</a></li>
+                    <li><a href="https://discord.com/channels/924998859602657280/1183759996429815868" target="_blank">ユートピアサロン Discord</a></li>
+                </ul>
+            </div>
+
+            <div class="link-section">
+                <h3>🏢 会社情報・管理資料</h3>
+                <ul>
+                    <li><a href="00_会社情報・特許/会社情報.md">会社基本情報（特許庁識別番号525313409含む）</a></li>
+                    <li><a href="99_資料管理ハブ/天郷事業_資料管理ハブ.md">資料管理ハブ</a></li>
+                    <li><a href="https://drive.google.com/drive/folders/1_JaXzIP6R3HHR4633kQaeiXLQg4GI6jZ" target="_blank">宣材写真（Google Drive）</a></li>
+                    <li><a href="あやねえ契約・報酬体系.md">あやねえ契約・報酬体系</a></li>
+                </ul>
+            </div>
+
+            <div class="link-section">
+                <h3>📝 よく使うリンク</h3>
+                <ul>
+                    <li><a href="なゆたさんのやることリスト.md">やることリスト</a></li>
+                    <li><a href="01_瞑想事業/なゆたさん向け_簡単共有ガイド.md">共有ガイド</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <p><strong>天郷株式会社</strong></p>
+            <p class="company-info">〒249-0006 神奈川県逗子市逗子四丁目9番14号</p>
+            <p class="company-info">特許庁識別番号: 525313409</p>
+            <p class="company-info">最終更新: 2025年1月15日</p>
+        </div>
+    </div>
+
+    <script>
+        // メモ機能
+        function saveMemo(isAuto = false) {
+            const textarea = document.getElementById('memoTextarea');
+            const saveStatus = document.getElementById('saveStatus');
+            
+            localStorage.setItem('nayuta-memo', textarea.value);
+            
+            if (isAuto) {
+                saveStatus.textContent = '自動保存しました';
+                saveStatus.style.color = '#666';
+            } else {
+                saveStatus.textContent = '保存しました！';
+                saveStatus.style.color = '#27ae60';
+            }
+            
+            setTimeout(function() {
+                saveStatus.textContent = '';
+            }, 2000);
+        }
+
+        function clearMemo() {
+            if (confirm('メモの内容をすべて削除しますか？')) {
+                const textarea = document.getElementById('memoTextarea');
+                const saveStatus = document.getElementById('saveStatus');
+                
+                textarea.value = '';
+                localStorage.removeItem('nayuta-memo');
+                
+                saveStatus.textContent = 'メモをクリアしました';
+                saveStatus.style.color = '#e74c3c';
+                
+                setTimeout(function() {
+                    saveStatus.textContent = '';
+                }, 2000);
+            }
+        }
+
+        // ページ読み込み時にメモを復元
+        document.addEventListener('DOMContentLoaded', function() {
+            const textarea = document.getElementById('memoTextarea');
+            const savedMemo = localStorage.getItem('nayuta-memo');
+            
+            if (savedMemo) {
+                textarea.value = savedMemo;
+            }
+            
+            // 自動保存機能（3秒後に保存）
+            let saveTimeout;
+            textarea.addEventListener('input', function() {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(function() {
+                    saveMemo(true); // 自動保存フラグ
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
