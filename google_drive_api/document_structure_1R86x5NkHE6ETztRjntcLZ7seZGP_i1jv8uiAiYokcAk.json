@@ -1,0 +1,4149 @@
+{
+  "title": "瞑想YT_参考動画書き起こし",
+  "body": {
+    "content": [
+      {
+        "endIndex": 1,
+        "sectionBreak": {
+          "sectionStyle": {
+            "columnSeparatorStyle": "NONE",
+            "contentDirection": "LEFT_TO_RIGHT",
+            "sectionType": "CONTINUOUS"
+          }
+        }
+      },
+      {
+        "startIndex": 1,
+        "endIndex": 23,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1,
+              "endIndex": 22,
+              "textRun": {
+                "content": "01 寝たまま聴くだけ\u000b思考をゆるめる瞑想",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 22,
+              "endIndex": 23,
+              "textRun": {
+                "content": "\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT"
+          }
+        }
+      },
+      {
+        "startIndex": 23,
+        "endIndex": 25,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 23,
+              "endIndex": 24,
+              "horizontalRule": {
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 24,
+              "endIndex": 25,
+              "textRun": {
+                "content": "\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT"
+          }
+        }
+      },
+      {
+        "startIndex": 25,
+        "endIndex": 175,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 25,
+              "endIndex": 29,
+              "textRun": {
+                "content": "タイトル",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 29,
+              "endIndex": 107,
+              "textRun": {
+                "content": ": 【寝たまま聞くだけ 20分バージョン】脳を休める＆脳の疲れを取るカンタン瞑想『ヨガニドラ/ヨガニードラ』 ※規約改定により、最後に広告が入ります！！\u000b ",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 107,
+              "endIndex": 113,
+              "textRun": {
+                "content": "チャンネル名",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 113,
+              "endIndex": 129,
+              "textRun": {
+                "content": ": 綿本彰 眠りと瞑想チャンネル",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 129,
+              "endIndex": 131,
+              "textRun": {
+                "content": "\u000b\u000b",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 131,
+              "endIndex": 174,
+              "textRun": {
+                "content": "https://www.youtube.com/watch?v=58bmqCgJWJ4",
+                "textStyle": {
+                  "bold": true,
+                  "underline": true,
+                  "foregroundColor": {
+                    "color": {
+                      "rgbColor": {
+                        "red": 0.06666667,
+                        "green": 0.33333334,
+                        "blue": 0.8
+                      }
+                    }
+                  },
+                  "fontSize": {
+                    "magnitude": 13,
+                    "unit": "PT"
+                  },
+                  "link": {
+                    "url": "https://www.youtube.com/watch?v=58bmqCgJWJ4"
+                  }
+                }
+              }
+            },
+            {
+              "startIndex": 174,
+              "endIndex": 175,
+              "textRun": {
+                "content": "\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 175,
+        "endIndex": 177,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 175,
+              "endIndex": 176,
+              "horizontalRule": {
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 176,
+              "endIndex": 177,
+              "textRun": {
+                "content": "\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT"
+          }
+        }
+      },
+      {
+        "startIndex": 177,
+        "endIndex": 212,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 177,
+              "endIndex": 190,
+              "textRun": {
+                "content": "チャプター 1: はじめに",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 190,
+              "endIndex": 191,
+              "textRun": {
+                "content": " ",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 191,
+              "endIndex": 212,
+              "textRun": {
+                "content": "20分間のヨガニドラを行っていきましょう\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 212,
+        "endIndex": 319,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 212,
+              "endIndex": 319,
+              "textRun": {
+                "content": "楽な姿勢で寝転び 必要があれば毛布などを掛け、のんびりとくつろぎましょう 軽く目を閉じ 足を肩幅程度に開き 手は体から少し離して手のひらは上むき 胸は空に向け気持ちよく広がっていて 首がゆったりとくつろいでいます\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 319,
+        "endIndex": 459,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 319,
+              "endIndex": 360,
+              "textRun": {
+                "content": "この20分間ずっと眠ることなく目が覚めていて、私の声がとてもクリアに聞こえています",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 360,
+              "endIndex": 459,
+              "textRun": {
+                "content": " 何かを獲得する必要も、どこかを目指す必要もなく、集中も努力も必要のない世界の中で、完全にくつろいでいます 鼻から息をゆっくりと吸い込んで、鼻から息をゆっくりと吐き出していきましょう 繰り返します\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 459,
+        "endIndex": 712,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 459,
+              "endIndex": 523,
+              "textRun": {
+                "content": "呼吸をするたびに、どんどん繊細になっていきます 息そのものがゆったりとくつろいできます 鼓動や血液の流れがペースダウンしていき、",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 523,
+              "endIndex": 535,
+              "textRun": {
+                "content": "心が繊細を増していきます",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 535,
+              "endIndex": 712,
+              "textRun": {
+                "content": " 息を柔らかく吸い込んでいる時、おなかが穏やかに膨らみ 息を柔らかく吐き出していくとき、お腹が床に向けて穏やかに沈んでいきます 吸い込むときに穏やかさが全身を満たして、吐き出す時に全身の緊張が抜け出して行きます 吸い込むときにくつろぎが全身を満たしていき、吐き出す時に全身からストレスが抜けていきます 吸い込むときにより繊細なレベルでくつろぎに満たされ\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 712,
+        "endIndex": 761,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 712,
+              "endIndex": 732,
+              "textRun": {
+                "content": "チャプター 2: 瞑想の深化と体の意識化",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 732,
+              "endIndex": 751,
+              "textRun": {
+                "content": " 吐き出す時に全てを手放し、明け渡し、",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 751,
+              "endIndex": 761,
+              "textRun": {
+                "content": "委ねきっていきます\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 761,
+        "endIndex": 794,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 761,
+              "endIndex": 788,
+              "textRun": {
+                "content": "それでは自分の大きな願い、「対岸」を唱えて行きましょう",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 788,
+              "endIndex": 794,
+              "textRun": {
+                "content": " 例えば：\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 794,
+        "endIndex": 807,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 794,
+              "endIndex": 807,
+              "textRun": {
+                "content": "「私は幸せに満ちている」\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.7j2vdaoiiv8i",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 807,
+        "endIndex": 830,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 807,
+              "endIndex": 830,
+              "textRun": {
+                "content": "「私は自分を完全に肯定することができている」\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.7j2vdaoiiv8i",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 830,
+        "endIndex": 905,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 830,
+              "endIndex": 889,
+              "textRun": {
+                "content": "「私は周囲から信頼され必要とされている」 など、簡潔で肯定的な文章を それが今まさに叶えられているという気分になって、",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 889,
+              "endIndex": 905,
+              "textRun": {
+                "content": "心の中で3回唱えて行きましょう\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.7j2vdaoiiv8i",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 905,
+        "endIndex": 926,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 905,
+              "endIndex": 926,
+              "textRun": {
+                "content": "呼吸がゆったりと自由に繰り返されています\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 926,
+        "endIndex": 989,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 926,
+              "endIndex": 931,
+              "textRun": {
+                "content": "そのまま、",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 931,
+              "endIndex": 950,
+              "textRun": {
+                "content": "体の各パーツに意識を向けていきましょう",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 950,
+              "endIndex": 989,
+              "textRun": {
+                "content": " ぼんやりとでも、なんとなくでも、ただ私の声を聞いているだけでも大丈夫ですよ\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 989,
+        "endIndex": 1000,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 989,
+              "endIndex": 1000,
+              "textRun": {
+                "content": "右手を感じましょう\u000b\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1000,
+        "endIndex": 1020,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1000,
+              "endIndex": 1020,
+              "textRun": {
+                "content": "右手の親指、人差し指、中指、薬指、小指\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1020,
+        "endIndex": 1029,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1020,
+              "endIndex": 1029,
+              "textRun": {
+                "content": "手のひら、手の甲\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1029,
+        "endIndex": 1053,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1029,
+              "endIndex": 1037,
+              "textRun": {
+                "content": "手首、前腕、肘、",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 1037,
+              "endIndex": 1043,
+              "textRun": {
+                "content": "上腕、肩、脇",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 1043,
+              "endIndex": 1053,
+              "textRun": {
+                "content": "、肋骨の外側、脇腹\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1053,
+        "endIndex": 1062,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1053,
+              "endIndex": 1062,
+              "textRun": {
+                "content": "腰、お尻、太もも\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1062,
+        "endIndex": 1072,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1062,
+              "endIndex": 1072,
+              "textRun": {
+                "content": "すね、足首、かかと\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1072,
+        "endIndex": 1080,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1072,
+              "endIndex": 1080,
+              "textRun": {
+                "content": "足の甲、足の裏\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1080,
+        "endIndex": 1100,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1080,
+              "endIndex": 1100,
+              "textRun": {
+                "content": "右足の親指、人差し指、中指、薬指、小指\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1100,
+        "endIndex": 1111,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1100,
+              "endIndex": 1111,
+              "textRun": {
+                "content": "左手を感じましょう\u000b\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1111,
+        "endIndex": 1131,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1111,
+              "endIndex": 1131,
+              "textRun": {
+                "content": "左手の親指、人差し指、中指、薬指、小指\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1131,
+        "endIndex": 1140,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1131,
+              "endIndex": 1140,
+              "textRun": {
+                "content": "手のひら、手の甲\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1140,
+        "endIndex": 1151,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1140,
+              "endIndex": 1151,
+              "textRun": {
+                "content": "手首、前腕、肘、上腕\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1151,
+        "endIndex": 1164,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1151,
+              "endIndex": 1164,
+              "textRun": {
+                "content": "肩、脇、肋骨の外側、脇腹\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1164,
+        "endIndex": 1173,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1164,
+              "endIndex": 1173,
+              "textRun": {
+                "content": "腰、お尻、太もも\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1173,
+        "endIndex": 1181,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1173,
+              "endIndex": 1181,
+              "textRun": {
+                "content": "膝、すね、足首\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1181,
+        "endIndex": 1193,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1181,
+              "endIndex": 1193,
+              "textRun": {
+                "content": "かかと、足の甲、足の裏\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1193,
+        "endIndex": 1213,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1193,
+              "endIndex": 1213,
+              "textRun": {
+                "content": "左足の親指、人差し指、中指、薬指、小指\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1213,
+        "endIndex": 1226,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1213,
+              "endIndex": 1226,
+              "textRun": {
+                "content": "体の背面を感じましょう\u000b\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1226,
+        "endIndex": 1233,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1226,
+              "endIndex": 1233,
+              "textRun": {
+                "content": "後頭部、首筋\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1233,
+        "endIndex": 1240,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1233,
+              "endIndex": 1240,
+              "textRun": {
+                "content": "左右の肩甲骨\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1240,
+        "endIndex": 1253,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1240,
+              "endIndex": 1253,
+              "textRun": {
+                "content": "背骨、背中の真ん中あたり\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1253,
+        "endIndex": 1263,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1253,
+              "endIndex": 1263,
+              "textRun": {
+                "content": "腰回り、左右のお尻\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.waz9eymjpkjl",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1263,
+        "endIndex": 1281,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1263,
+              "endIndex": 1281,
+              "textRun": {
+                "content": "チャプター 3: 全身の感覚と静寂\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 1281,
+        "endIndex": 1294,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1281,
+              "endIndex": 1294,
+              "textRun": {
+                "content": "左右の太もも、左右の膝\u000b\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1294,
+        "endIndex": 1311,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1294,
+              "endIndex": 1311,
+              "textRun": {
+                "content": "左右のふくらはぎ、左右のかかと\u000b\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1311,
+        "endIndex": 1324,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1311,
+              "endIndex": 1324,
+              "textRun": {
+                "content": "体の前面を感じましょう\u000b\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1324,
+        "endIndex": 1329,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1324,
+              "endIndex": 1329,
+              "textRun": {
+                "content": "頭頂、額\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1329,
+        "endIndex": 1347,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1329,
+              "endIndex": 1347,
+              "textRun": {
+                "content": "左右の目、左右のこめかみ、左右の耳\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1347,
+        "endIndex": 1361,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1347,
+              "endIndex": 1361,
+              "textRun": {
+                "content": "左右の顎の関節、顎のライン\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1361,
+        "endIndex": 1368,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1361,
+              "endIndex": 1368,
+              "textRun": {
+                "content": "鼻、左右の頬\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1368,
+        "endIndex": 1376,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1368,
+              "endIndex": 1376,
+              "textRun": {
+                "content": "上唇、下唇、舌\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1376,
+        "endIndex": 1386,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1376,
+              "endIndex": 1386,
+              "textRun": {
+                "content": "喉の奥、喉のライン\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1386,
+        "endIndex": 1397,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1386,
+              "endIndex": 1397,
+              "textRun": {
+                "content": "左右の鎖骨、左右の胸\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1397,
+        "endIndex": 1408,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1397,
+              "endIndex": 1408,
+              "textRun": {
+                "content": "みぞおち、へそ、下腹\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1408,
+        "endIndex": 1419,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1408,
+              "endIndex": 1415,
+              "textRun": {
+                "content": "左右の股関節、",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 1415,
+              "endIndex": 1419,
+              "textRun": {
+                "content": "骨盤底\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1419,
+        "endIndex": 1426,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1419,
+              "endIndex": 1426,
+              "textRun": {
+                "content": "そして全身\u000b\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1426,
+        "endIndex": 1433,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1426,
+              "endIndex": 1433,
+              "textRun": {
+                "content": "左右の足全体\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1433,
+        "endIndex": 1440,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1433,
+              "endIndex": 1440,
+              "textRun": {
+                "content": "左右の腕全体\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1440,
+        "endIndex": 1445,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1440,
+              "endIndex": 1445,
+              "textRun": {
+                "content": "頭部全体\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1445,
+        "endIndex": 1450,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1445,
+              "endIndex": 1450,
+              "textRun": {
+                "content": "胴体全体\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.4ss0a4j9wtdd",
+            "nestingLevel": 1,
+            "textStyle": {}
+          }
+        }
+      },
+      {
+        "startIndex": 1450,
+        "endIndex": 1478,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1450,
+              "endIndex": 1465,
+              "textRun": {
+                "content": "全身が、完全にくつろいでいます",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 1465,
+              "endIndex": 1466,
+              "textRun": {
+                "content": " ",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 1466,
+              "endIndex": 1478,
+              "textRun": {
+                "content": "完全に澄みきっています\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 1478,
+        "endIndex": 1581,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1478,
+              "endIndex": 1581,
+              "textRun": {
+                "content": "吸気の時に清らかな空気が全身を隅々まで満たしていき 呼気の時に全身からかき集められたよどみが抜け出して 吸気の時に澄み切った空気が全身を満たしては巡り 呼気の時に全てを手放し、明け渡し、委ね切っていきます\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 1581,
+        "endIndex": 1599,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1581,
+              "endIndex": 1599,
+              "textRun": {
+                "content": "深い静寂が、全身を満たしていきます\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 1599,
+        "endIndex": 1661,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1599,
+              "endIndex": 1661,
+              "textRun": {
+                "content": "体に意識を戻していきましょう 最初の姿勢のまま 全身が完全にくつろいでいます 穏やかで、澄み切っていて、優しい感じがします\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 1661,
+        "endIndex": 1702,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1661,
+              "endIndex": 1702,
+              "textRun": {
+                "content": "呼吸というそよ風が肺の辺りを吹き抜けて 体の背面が、完全に大地に預けられています\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 1702,
+        "endIndex": 1806,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1702,
+              "endIndex": 1735,
+              "textRun": {
+                "content": "全身の感覚を鮮明に感じ取ることができていて、完全に澄みきっています",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 1735,
+              "endIndex": 1776,
+              "textRun": {
+                "content": " 全身が、大空に向けて開放されています 呼吸が、限りなく自由に繰り返されています ",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 1776,
+              "endIndex": 1806,
+              "textRun": {
+                "content": "心の一番深い部分が、溢れ出してしまうくらい満たされています\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 1806,
+        "endIndex": 1904,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1806,
+              "endIndex": 1827,
+              "textRun": {
+                "content": "チャプター 4: 瞑想の終わりと感覚の記憶",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 1827,
+              "endIndex": 1833,
+              "textRun": {
+                "content": " そのまま、",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 1833,
+              "endIndex": 1861,
+              "textRun": {
+                "content": "先ほどの対岸を3回、心をこめて心の中で唱えて行きましょう",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 1861,
+              "endIndex": 1904,
+              "textRun": {
+                "content": " 心と体の隅々に至るまで、深く繊細なレベルに至るまで、その感覚が染みわたっていきます\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 1904,
+        "endIndex": 1975,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1904,
+              "endIndex": 1933,
+              "textRun": {
+                "content": "深呼吸を繰り返し、手足の指をゆっくりと動かしていきましょう",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 1933,
+              "endIndex": 1951,
+              "textRun": {
+                "content": " 必要があれば思いっきり伸びをして ",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 1951,
+              "endIndex": 1975,
+              "textRun": {
+                "content": "ゆっくりと横向きになり、起き上がって来ましょう\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 1975,
+        "endIndex": 2069,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 1975,
+              "endIndex": 2025,
+              "textRun": {
+                "content": "背筋をすらりと伸ばし、ゆったりとした呼吸を繰り返しながら、今の状態を繊細に感じ取り、全身で記憶します",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            },
+            {
+              "startIndex": 2025,
+              "endIndex": 2052,
+              "textRun": {
+                "content": " この感覚がいつでも思い出せますように 気が向いたら、",
+                "textStyle": {}
+              }
+            },
+            {
+              "startIndex": 2052,
+              "endIndex": 2069,
+              "textRun": {
+                "content": "ゆっくりと目を開いていきましょう\n",
+                "textStyle": {
+                  "bold": true
+                }
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "spaceAbove": {
+              "magnitude": 12,
+              "unit": "PT"
+            },
+            "spaceBelow": {
+              "magnitude": 12,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      {
+        "startIndex": 2069,
+        "endIndex": 2070,
+        "paragraph": {
+          "elements": [
+            {
+              "startIndex": 2069,
+              "endIndex": 2070,
+              "textRun": {
+                "content": "\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT"
+          }
+        }
+      }
+    ]
+  },
+  "documentStyle": {
+    "background": {
+      "color": {
+        "color": {
+          "rgbColor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1
+          }
+        }
+      }
+    },
+    "pageNumberStart": 1,
+    "marginTop": {
+      "magnitude": 15.307086614173231,
+      "unit": "PT"
+    },
+    "marginBottom": {
+      "magnitude": 15.307086614173231,
+      "unit": "PT"
+    },
+    "marginRight": {
+      "magnitude": 72.00000000000001,
+      "unit": "PT"
+    },
+    "marginLeft": {
+      "magnitude": 72.00000000000001,
+      "unit": "PT"
+    },
+    "pageSize": {
+      "height": {
+        "magnitude": 841.8897637795277,
+        "unit": "PT"
+      },
+      "width": {
+        "magnitude": 595.2755905511812,
+        "unit": "PT"
+      }
+    },
+    "marginHeader": {
+      "magnitude": 36,
+      "unit": "PT"
+    },
+    "marginFooter": {
+      "magnitude": 36,
+      "unit": "PT"
+    },
+    "useCustomHeaderFooterMargins": true
+  },
+  "namedStyles": {
+    "styles": [
+      {
+        "namedStyleType": "NORMAL_TEXT",
+        "textStyle": {
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "strikethrough": false,
+          "smallCaps": false,
+          "backgroundColor": {},
+          "foregroundColor": {
+            "color": {
+              "rgbColor": {}
+            }
+          },
+          "fontSize": {
+            "magnitude": 11,
+            "unit": "PT"
+          },
+          "weightedFontFamily": {
+            "fontFamily": "Arial",
+            "weight": 400
+          },
+          "baselineOffset": "NONE"
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT",
+          "alignment": "START",
+          "lineSpacing": 115,
+          "direction": "LEFT_TO_RIGHT",
+          "spacingMode": "COLLAPSE_LISTS",
+          "spaceAbove": {
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "unit": "PT"
+          },
+          "borderBetween": {
+            "color": {},
+            "width": {
+              "unit": "PT"
+            },
+            "padding": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID"
+          },
+          "borderTop": {
+            "color": {},
+            "width": {
+              "unit": "PT"
+            },
+            "padding": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID"
+          },
+          "borderBottom": {
+            "color": {},
+            "width": {
+              "unit": "PT"
+            },
+            "padding": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID"
+          },
+          "borderLeft": {
+            "color": {},
+            "width": {
+              "unit": "PT"
+            },
+            "padding": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID"
+          },
+          "borderRight": {
+            "color": {},
+            "width": {
+              "unit": "PT"
+            },
+            "padding": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID"
+          },
+          "indentFirstLine": {
+            "unit": "PT"
+          },
+          "indentStart": {
+            "unit": "PT"
+          },
+          "indentEnd": {
+            "unit": "PT"
+          },
+          "keepLinesTogether": false,
+          "keepWithNext": false,
+          "avoidWidowAndOrphan": true,
+          "shading": {
+            "backgroundColor": {}
+          },
+          "pageBreakBefore": false
+        }
+      },
+      {
+        "namedStyleType": "HEADING_1",
+        "textStyle": {
+          "fontSize": {
+            "magnitude": 20,
+            "unit": "PT"
+          }
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT",
+          "direction": "LEFT_TO_RIGHT",
+          "spaceAbove": {
+            "magnitude": 20,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 6,
+            "unit": "PT"
+          },
+          "keepLinesTogether": true,
+          "keepWithNext": true,
+          "pageBreakBefore": false
+        }
+      },
+      {
+        "namedStyleType": "HEADING_2",
+        "textStyle": {
+          "bold": false,
+          "fontSize": {
+            "magnitude": 16,
+            "unit": "PT"
+          }
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT",
+          "direction": "LEFT_TO_RIGHT",
+          "spaceAbove": {
+            "magnitude": 18,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 6,
+            "unit": "PT"
+          },
+          "keepLinesTogether": true,
+          "keepWithNext": true,
+          "pageBreakBefore": false
+        }
+      },
+      {
+        "namedStyleType": "HEADING_3",
+        "textStyle": {
+          "bold": false,
+          "foregroundColor": {
+            "color": {
+              "rgbColor": {
+                "red": 0.2627451,
+                "green": 0.2627451,
+                "blue": 0.2627451
+              }
+            }
+          },
+          "fontSize": {
+            "magnitude": 14,
+            "unit": "PT"
+          }
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT",
+          "direction": "LEFT_TO_RIGHT",
+          "spaceAbove": {
+            "magnitude": 16,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 4,
+            "unit": "PT"
+          },
+          "keepLinesTogether": true,
+          "keepWithNext": true,
+          "pageBreakBefore": false
+        }
+      },
+      {
+        "namedStyleType": "HEADING_4",
+        "textStyle": {
+          "foregroundColor": {
+            "color": {
+              "rgbColor": {
+                "red": 0.4,
+                "green": 0.4,
+                "blue": 0.4
+              }
+            }
+          },
+          "fontSize": {
+            "magnitude": 12,
+            "unit": "PT"
+          }
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT",
+          "direction": "LEFT_TO_RIGHT",
+          "spaceAbove": {
+            "magnitude": 14,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 4,
+            "unit": "PT"
+          },
+          "keepLinesTogether": true,
+          "keepWithNext": true,
+          "pageBreakBefore": false
+        }
+      },
+      {
+        "namedStyleType": "HEADING_5",
+        "textStyle": {
+          "foregroundColor": {
+            "color": {
+              "rgbColor": {
+                "red": 0.4,
+                "green": 0.4,
+                "blue": 0.4
+              }
+            }
+          },
+          "fontSize": {
+            "magnitude": 11,
+            "unit": "PT"
+          }
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT",
+          "direction": "LEFT_TO_RIGHT",
+          "spaceAbove": {
+            "magnitude": 12,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 4,
+            "unit": "PT"
+          },
+          "keepLinesTogether": true,
+          "keepWithNext": true,
+          "pageBreakBefore": false
+        }
+      },
+      {
+        "namedStyleType": "HEADING_6",
+        "textStyle": {
+          "italic": true,
+          "foregroundColor": {
+            "color": {
+              "rgbColor": {
+                "red": 0.4,
+                "green": 0.4,
+                "blue": 0.4
+              }
+            }
+          },
+          "fontSize": {
+            "magnitude": 11,
+            "unit": "PT"
+          }
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT",
+          "direction": "LEFT_TO_RIGHT",
+          "spaceAbove": {
+            "magnitude": 12,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 4,
+            "unit": "PT"
+          },
+          "keepLinesTogether": true,
+          "keepWithNext": true,
+          "pageBreakBefore": false
+        }
+      },
+      {
+        "namedStyleType": "TITLE",
+        "textStyle": {
+          "fontSize": {
+            "magnitude": 26,
+            "unit": "PT"
+          }
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT",
+          "direction": "LEFT_TO_RIGHT",
+          "spaceAbove": {
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 3,
+            "unit": "PT"
+          },
+          "keepLinesTogether": true,
+          "keepWithNext": true,
+          "pageBreakBefore": false
+        }
+      },
+      {
+        "namedStyleType": "SUBTITLE",
+        "textStyle": {
+          "italic": false,
+          "foregroundColor": {
+            "color": {
+              "rgbColor": {
+                "red": 0.4,
+                "green": 0.4,
+                "blue": 0.4
+              }
+            }
+          },
+          "fontSize": {
+            "magnitude": 15,
+            "unit": "PT"
+          },
+          "weightedFontFamily": {
+            "fontFamily": "Arial",
+            "weight": 400
+          }
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT",
+          "direction": "LEFT_TO_RIGHT",
+          "spaceAbove": {
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 16,
+            "unit": "PT"
+          },
+          "keepLinesTogether": true,
+          "keepWithNext": true,
+          "pageBreakBefore": false
+        }
+      }
+    ]
+  },
+  "lists": {
+    "kix.4ss0a4j9wtdd": {
+      "listProperties": {
+        "nestingLevels": [
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 90,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 108,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 126,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 144,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 162,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 180,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 198,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 216,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 234,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 252,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 270,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 288,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 306,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 324,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          }
+        ]
+      }
+    },
+    "kix.7j2vdaoiiv8i": {
+      "listProperties": {
+        "nestingLevels": [
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 90,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 108,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 126,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 144,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 162,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 180,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 198,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 216,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 234,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 252,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 270,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 288,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 306,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 324,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          }
+        ]
+      }
+    },
+    "kix.92ttl3pxot": {
+      "listProperties": {
+        "nestingLevels": [
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 90,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 108,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 126,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 144,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 162,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 180,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 198,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 216,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 234,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 252,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 270,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 288,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 306,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 324,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          }
+        ]
+      }
+    },
+    "kix.h5lo61lwqkhy": {
+      "listProperties": {
+        "nestingLevels": [
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 90,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 108,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 126,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 144,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 162,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 180,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 198,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 216,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 234,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 252,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 270,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 288,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 306,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 324,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          }
+        ]
+      }
+    },
+    "kix.pg160hq9zfkx": {
+      "listProperties": {
+        "nestingLevels": [
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 90,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 108,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 126,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 144,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 162,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 180,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 198,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 216,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 234,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 252,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 270,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 288,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 306,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 324,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          }
+        ]
+      }
+    },
+    "kix.waz9eymjpkjl": {
+      "listProperties": {
+        "nestingLevels": [
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 90,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 108,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 126,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 144,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 162,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 180,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 198,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 216,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 234,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 252,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 270,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 288,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 306,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 324,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          }
+        ]
+      }
+    },
+    "kix.wtdzhd1ds2yb": {
+      "listProperties": {
+        "nestingLevels": [
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 90,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 108,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 126,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 144,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 162,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 180,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 198,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 216,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 234,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 252,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 270,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 288,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          },
+          {
+            "bulletAlignment": "START",
+            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
+            "indentFirstLine": {
+              "magnitude": 306,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 324,
+              "unit": "PT"
+            },
+            "textStyle": {
+              "underline": false
+            },
+            "startNumber": 1
+          }
+        ]
+      }
+    }
+  },
+  "revisionId": "ALBJ4LteaDh5LC_eIizgIjnMpb3WSesr5vXTRIpHi_FVzCgh46VhXRHWNYJEX2sFA706kNHVLwAaH5iqIJCeQw",
+  "suggestionsViewMode": "SUGGESTIONS_INLINE",
+  "documentId": "1R86x5NkHE6ETztRjntcLZ7seZGP_i1jv8uiAiYokcAk"
+}

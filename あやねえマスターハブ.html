@@ -477,6 +477,227 @@
             box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
         }
 
+        /* スケジュール表示スタイル */
+        .schedule-section {
+            margin-bottom: 40px;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .schedule-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4a90e2, #357abd);
+        }
+
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .schedule-header h3 {
+            color: #333;
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .month-nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #357abd;
+            transform: scale(1.1);
+        }
+
+        .month-display {
+            font-weight: 500;
+            color: #4a90e2;
+            font-size: 1.1rem;
+        }
+
+        .calendar-container {
+            margin-top: 15px;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            margin-bottom: 5px;
+        }
+
+        .weekday {
+            text-align: center;
+            font-weight: 600;
+            color: #666;
+            padding: 8px 4px;
+            font-size: 0.85rem;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 35px;
+        }
+
+        .calendar-day:hover {
+            background: #f0f7ff;
+        }
+
+        .calendar-day.today {
+            background: #4a90e2;
+            color: white;
+            font-weight: bold;
+        }
+
+        .calendar-day.other-month {
+            color: #ccc;
+        }
+
+        .calendar-day.has-event {
+            background: #e3f2fd;
+            border: 2px solid #4a90e2;
+            font-weight: 500;
+        }
+
+        .calendar-day.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: #4a90e2;
+            border-radius: 50%;
+        }
+
+        .upcoming-events {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upcoming-events::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4a90e2, #357abd);
+        }
+
+        .upcoming-events h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #4a90e2;
+            transition: all 0.3s ease;
+        }
+
+        .event-item:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+
+        .event-date {
+            min-width: 80px;
+            font-weight: 600;
+            color: #4a90e2;
+            font-size: 0.9rem;
+        }
+
+        .event-content {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .event-title {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .event-desc {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .event-priority {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -501,6 +722,50 @@
 
             .hub-btn {
                 flex: none;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .schedule-card {
+                padding: 20px;
+            }
+
+            .schedule-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .month-nav {
+                align-self: flex-end;
+            }
+
+            .calendar-day {
+                min-height: 30px;
+                font-size: 0.8rem;
+            }
+
+            .event-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .event-date {
+                min-width: auto;
+                font-size: 0.8rem;
+            }
+
+            .event-content {
+                margin-left: 0;
+            }
+
+            .event-priority {
+                margin-left: 0;
+                align-self: flex-end;
             }
         }
     </style>
@@ -530,6 +795,63 @@
                 <div class="stat-item">
                     <div class="stat-number">1</div>
                     <div class="stat-label">新規企画</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スケジュール表示セクション -->
+        <div class="schedule-section">
+            <div class="schedule-grid">
+                <!-- 今月のスケジュール -->
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 id="current-month-title">今月のスケジュール</h3>
+                        <div class="month-nav">
+                            <button class="nav-btn" onclick="changeMonth(-1)">‹</button>
+                            <span id="current-month-display"></span>
+                            <button class="nav-btn" onclick="changeMonth(1)">›</button>
+                        </div>
+                    </div>
+                    <div class="calendar-container">
+                        <div class="calendar-weekdays">
+                            <div class="weekday">日</div>
+                            <div class="weekday">月</div>
+                            <div class="weekday">火</div>
+                            <div class="weekday">水</div>
+                            <div class="weekday">木</div>
+                            <div class="weekday">金</div>
+                            <div class="weekday">土</div>
+                        </div>
+                        <div class="calendar-days" id="current-calendar"></div>
+                    </div>
+                </div>
+
+                <!-- 来月のスケジュール -->
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 id="next-month-title">来月のスケジュール</h3>
+                        <div class="month-display" id="next-month-display"></div>
+                    </div>
+                    <div class="calendar-container">
+                        <div class="calendar-weekdays">
+                            <div class="weekday">日</div>
+                            <div class="weekday">月</div>
+                            <div class="weekday">火</div>
+                            <div class="weekday">水</div>
+                            <div class="weekday">木</div>
+                            <div class="weekday">金</div>
+                            <div class="weekday">土</div>
+                        </div>
+                        <div class="calendar-days" id="next-calendar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 重要な予定一覧 -->
+            <div class="upcoming-events">
+                <h3>📅 今後の重要な予定</h3>
+                <div class="events-list" id="events-list">
+                    <!-- 予定はJavaScriptで動的に生成 -->
                 </div>
             </div>
         </div>
@@ -801,9 +1123,73 @@
     </div>
 
     <script>
-        // ページ読み込み時のアニメーション
+        // スケジュール管理用の変数
+        let currentDate = new Date();
+        let currentViewDate = new Date();
+
+        // 予定データ（実際の運用では外部データソースから取得）
+        const scheduleData = {
+            '2025-01-16': [
+                { title: 'YouTubeエンドロール動画台本完成', type: 'urgent', desc: '秘書力マスター講座' }
+            ],
+            '2025-01-17': [
+                { title: 'YouTubeエンドロール動画音声収録', type: 'urgent', desc: '秘書力マスター講座' }
+            ],
+            '2025-01-20': [
+                { title: 'アメブロ投稿', type: 'normal', desc: '天郷事業・瞑想関連' }
+            ],
+            '2025-01-22': [
+                { title: 'なゆたさんとのMTG', type: 'important', desc: '無明会運営・恋愛note進捗確認' }
+            ],
+            '2025-01-25': [
+                { title: '2508恋愛noteローンチ（5期）締切', type: 'urgent', desc: '無明会' }
+            ],
+            '2025-01-27': [
+                { title: 'チーム運営会議', type: 'normal', desc: '秘書力マスター講座' }
+            ],
+            '2025-02-01': [
+                { title: '月次売上レポート作成', type: 'important', desc: '全事業' }
+            ],
+            '2025-02-05': [
+                { title: 'Google Drive API連携テスト', type: 'normal', desc: '顧問・コンサル事業' }
+            ],
+            '2025-02-10': [
+                { title: 'セルフイメージnoteローンチ準備', type: 'important', desc: '無明会' }
+            ],
+            '2025-02-14': [
+                { title: 'バレンタイン企画投稿', type: 'normal', desc: 'SNS・マーケティング' }
+            ],
+            '2025-02-20': [
+                { title: '脱スマホ瞑想プログラム更新', type: 'normal', desc: '天郷事業' }
+            ],
+            // 2025年9月の予定
+            '2025-09-10': [
+                { title: 'ちよこさんとスペース', type: 'important', desc: 'コラボ企画・SNS' }
+            ],
+            '2025-09-17': [
+                { title: '秘書講座2期先行募集開始', type: 'urgent', desc: '秘書力マスター講座' }
+            ],
+            '2025-09-19': [
+                { title: '面談申込開始', type: 'important', desc: '秘書力マスター講座' }
+            ],
+            '2025-09-27': [
+                { title: '無明会イベント（13-22時）', type: 'urgent', desc: '無明会・オプチャローンチ' }
+            ],
+            '2025-09-28': [
+                { title: 'ブルーロックフェス＠慶応プラザ', type: 'normal', desc: 'プライベート・エンタメ' }
+            ],
+            '2025-09-29': [
+                { title: '予定調整中', type: 'normal', desc: '未定・要調整' }
+            ],
+            '2025-09-30': [
+                { title: '予定調整中', type: 'normal', desc: '未定・要調整' }
+            ]
+        };
+
+        // ページ読み込み時の処理
         document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.business-hub, .quick-stats, .recent-activity');
+            // アニメーション
+            const elements = document.querySelectorAll('.business-hub, .quick-stats, .recent-activity, .schedule-section');
             elements.forEach((element, index) => {
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(30px)';
@@ -813,7 +1199,151 @@
                     element.style.transform = 'translateY(0)';
                 }, index * 150);
             });
+
+            // スケジュール初期化
+            initializeSchedule();
+            setTimeout(animateNumbers, 1000);
         });
+
+        // スケジュール初期化
+        function initializeSchedule() {
+            updateCalendarDisplay();
+            generateUpcomingEvents();
+        }
+
+        // カレンダー表示更新
+        function updateCalendarDisplay() {
+            const currentMonth = new Date(currentViewDate.getFullYear(), currentViewDate.getMonth(), 1);
+            const nextMonth = new Date(currentViewDate.getFullYear(), currentViewDate.getMonth() + 1, 1);
+
+            // 月表示更新
+            document.getElementById('current-month-display').textContent = 
+                `${currentMonth.getFullYear()}年${currentMonth.getMonth() + 1}月`;
+            document.getElementById('next-month-display').textContent = 
+                `${nextMonth.getFullYear()}年${nextMonth.getMonth() + 1}月`;
+
+            // カレンダー生成
+            generateCalendar('current-calendar', currentMonth);
+            generateCalendar('next-calendar', nextMonth);
+        }
+
+        // カレンダー生成
+        function generateCalendar(containerId, targetDate) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            const year = targetDate.getFullYear();
+            const month = targetDate.getMonth();
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay());
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            for (let i = 0; i < 42; i++) {
+                const cellDate = new Date(startDate);
+                cellDate.setDate(startDate.getDate() + i);
+                
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = cellDate.getDate();
+
+                // 今日の日付をハイライト
+                if (cellDate.getTime() === today.getTime()) {
+                    dayElement.classList.add('today');
+                }
+
+                // 他の月の日付
+                if (cellDate.getMonth() !== month) {
+                    dayElement.classList.add('other-month');
+                }
+
+                // 予定がある日をマーク
+                const dateStr = formatDate(cellDate);
+                if (scheduleData[dateStr]) {
+                    dayElement.classList.add('has-event');
+                    dayElement.title = scheduleData[dateStr].map(event => event.title).join(', ');
+                }
+
+                container.appendChild(dayElement);
+            }
+        }
+
+        // 月変更
+        function changeMonth(direction) {
+            currentViewDate.setMonth(currentViewDate.getMonth() + direction);
+            updateCalendarDisplay();
+        }
+
+        // 今後の予定生成
+        function generateUpcomingEvents() {
+            const eventsList = document.getElementById('events-list');
+            eventsList.innerHTML = '';
+
+            const today = new Date();
+            const upcomingEvents = [];
+
+            // 今後30日間の予定を取得
+            for (let i = 0; i < 30; i++) {
+                const checkDate = new Date(today);
+                checkDate.setDate(today.getDate() + i);
+                const dateStr = formatDate(checkDate);
+
+                if (scheduleData[dateStr]) {
+                    scheduleData[dateStr].forEach(event => {
+                        upcomingEvents.push({
+                            date: new Date(checkDate),
+                            ...event
+                        });
+                    });
+                }
+            }
+
+            // 日付順にソート
+            upcomingEvents.sort((a, b) => a.date - b.date);
+
+            // 最大8件表示
+            upcomingEvents.slice(0, 8).forEach(event => {
+                const eventElement = document.createElement('div');
+                eventElement.className = 'event-item';
+
+                const priorityIcon = {
+                    'urgent': '🔴',
+                    'important': '🟡',
+                    'normal': '🟢'
+                };
+
+                eventElement.innerHTML = `
+                    <div class="event-date">${formatDisplayDate(event.date)}</div>
+                    <div class="event-content">
+                        <div class="event-title">${event.title}</div>
+                        <div class="event-desc">${event.desc}</div>
+                    </div>
+                    <div class="event-priority">${priorityIcon[event.type] || '🟢'}</div>
+                `;
+
+                eventsList.appendChild(eventElement);
+            });
+
+            if (upcomingEvents.length === 0) {
+                eventsList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">今後の予定はありません</div>';
+            }
+        }
+
+        // 日付フォーマット（YYYY-MM-DD）
+        function formatDate(date) {
+            return date.getFullYear() + '-' + 
+                   String(date.getMonth() + 1).padStart(2, '0') + '-' + 
+                   String(date.getDate()).padStart(2, '0');
+        }
+
+        // 表示用日付フォーマット
+        function formatDisplayDate(date) {
+            const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+            return `${date.getMonth() + 1}/${date.getDate()}(${weekdays[date.getDay()]})`;
+        }
 
         // 統計数値のカウントアップアニメーション
         function animateNumbers() {
@@ -832,9 +1362,6 @@
                 }, 50);
             });
         }
-
-        // 少し遅延してからアニメーション開始
-        setTimeout(animateNumbers, 1000);
     </script>
 </body>
 </html>

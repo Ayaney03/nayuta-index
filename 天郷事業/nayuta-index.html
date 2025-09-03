@@ -14,9 +14,26 @@
         body {
             font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2d3748;
+            background: linear-gradient(135deg, #2e1065 0%, #4c1d95 50%, #1a202c 100%);
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(244, 164, 96, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .container {
@@ -27,48 +44,86 @@
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             color: white;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .header::before {
+            content: '🐬';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
         }
 
         .header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #ffd700, #f4a460, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: 2px;
         }
 
         .header .subtitle {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.9;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            color: #e2e8f0;
         }
 
         .header .welcome {
-            font-size: 1.3rem;
-            font-weight: 500;
+            font-size: 1.4rem;
+            font-weight: 600;
             color: #ffd700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
         }
 
         .quick-access {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.2),
+                0 0 0 1px rgba(255, 215, 0, 0.2);
+            border: 2px solid transparent;
+            background-clip: padding-box;
         }
 
         .quick-access h2 {
-            color: #333;
-            margin-bottom: 20px;
+            color: #2d3748;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 600;
         }
 
         .quick-access h2::before {
-            content: "⚡";
-            margin-right: 10px;
-            font-size: 1.8rem;
+            content: "⭐";
+            margin-right: 12px;
+            font-size: 2rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
         }
 
         .quick-links {
@@ -79,19 +134,37 @@
 
         .quick-link {
             display: block;
-            padding: 15px 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #ffd700, #f4a460);
+            color: #2d3748;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 15px;
             text-align: center;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .quick-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
         }
 
         .quick-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .quick-link:hover::before {
+            left: 100%;
         }
 
         .business-grid {
@@ -102,13 +175,18 @@
         }
 
         .business-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(255, 215, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
         }
 
         .business-card::before {
@@ -117,13 +195,37 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 6px;
+            background: linear-gradient(90deg, #ffd700, #f4a460, #ffd700);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .business-card::after {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: twinkle 4s ease-in-out infinite;
         }
 
         .business-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.2),
+                0 0 0 1px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
         .card-header {
@@ -133,23 +235,37 @@
         }
 
         .card-icon {
-            font-size: 3rem;
-            margin-right: 20px;
+            font-size: 3.5rem;
+            margin-right: 25px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+            animation: pulse 3s ease-in-out infinite;
         }
 
         .card-info h3 {
-            font-size: 1.6rem;
-            color: #333;
-            margin-bottom: 5px;
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #2d3748, #4a5568);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .card-status {
             display: inline-block;
-            padding: 4px 12px;
-            background: #28a745;
-            color: white;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #ffd700, #f4a460);
+            color: #2d3748;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .card-description {
@@ -167,18 +283,38 @@
         .card-link {
             display: flex;
             align-items: center;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
+            padding: 15px 18px;
+            background: rgba(248, 249, 250, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
             text-decoration: none;
-            color: #333;
-            transition: all 0.3s ease;
-            border-left: 4px solid #667eea;
+            color: #2d3748;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid #ffd700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), rgba(244, 164, 96, 0.1));
+            transition: width 0.4s ease;
+            z-index: -1;
         }
 
         .card-link:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .card-link:hover::before {
+            width: 100%;
         }
 
         .card-link-icon {
@@ -201,46 +337,99 @@
         }
 
         .important-notice {
-            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-left: 5px solid #e17055;
+            background: linear-gradient(135deg, rgba(255, 234, 167, 0.9), rgba(253, 203, 110, 0.9));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            border-left: 6px solid #f4a460;
+            box-shadow: 
+                0 10px 25px rgba(253, 203, 110, 0.3),
+                0 0 0 1px rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .important-notice::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
         }
 
         .important-notice h3 {
-            color: #2d3436;
-            margin-bottom: 10px;
+            color: #2d3748;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
         }
 
         .important-notice h3::before {
-            content: "📌";
-            margin-right: 10px;
+            content: "🌟";
+            margin-right: 12px;
+            font-size: 1.3rem;
+            animation: bounce 2s ease-in-out infinite;
         }
 
         .important-notice p {
-            color: #2d3436;
-            line-height: 1.6;
+            color: #2d3748;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
 
         .footer-info {
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
             color: white;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.2),
+                0 0 0 1px rgba(255, 215, 0, 0.2);
+            position: relative;
+        }
+
+        .footer-info::before {
+            content: '🏢';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            padding: 10px;
             backdrop-filter: blur(10px);
         }
 
         .footer-info p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 500;
         }
 
         .footer-info .company-info {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            color: #ffd700;
         }
 
         @media (max-width: 768px) {
@@ -366,6 +555,13 @@
                         <div class="card-link-text">
                             <div class="card-link-title">やることリスト</div>
                             <div class="card-link-desc">現在のタスクと進捗管理</div>
+                        </div>
+                    </a>
+                    <a href="01_瞑想事業/瞑想YouTube/01_寝たまま聴くだけ_思考をゆるめる瞑想.html" class="card-link">
+                        <div class="card-link-icon">🎬</div>
+                        <div class="card-link-text">
+                            <div class="card-link-title">瞑想YouTube企画</div>
+                            <div class="card-link-desc">台本・参考資料・企画管理</div>
                         </div>
                     </a>
                     <a href="https://discord.gg/zEKvaju8" class="card-link" target="_blank">

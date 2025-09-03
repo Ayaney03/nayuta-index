@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_寝たまま聴くだけ_思考をゆるめる瞑想 - 永世豊版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .meta-item strong {
+            color: #4a5568;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: #4a5568;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 1.2em;
+        }
+
+        .script-section {
+            grid-column: 1 / -1;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .chapter h3 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .chapter-content {
+            line-height: 1.8;
+            color: #2d3748;
+        }
+
+        .reference-info {
+            background: #e6fffa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #38b2ac;
+        }
+
+        .reference-info h4 {
+            color: #2c7a7b;
+            margin-bottom: 10px;
+        }
+
+        .reference-content {
+            background: #f0fff4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .persona-highlight {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .persona-highlight h4 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .meta-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧘‍♀️ 寝たまま聴くだけ_思考をゆるめる瞑想</h1>
+            <p style="font-size: 1.1em; color: #718096; margin-top: 10px;">永世豊版 台本・参考資料</p>
+            
+            <div class="meta-info">
+                <div class="meta-item">
+                    <strong>対象動画</strong>
+                    帰宅後リラックスシリーズ
+                </div>
+                <div class="meta-item">
+                    <strong>想定視聴時間</strong>
+                    19:00-22:00（帰宅後のソファタイム）
+                </div>
+                <div class="meta-item">
+                    <strong>動画時間</strong>
+                    約20分
+                </div>
+                <div class="meta-item">
+                    <strong>作成日</strong>
+                    2025年1月15日
+                </div>
+            </div>
+
+            <div class="persona-highlight">
+                <h4>🎯 ターゲットペルソナ</h4>
+                <p><strong>ひろみさん（40歳・看護師）</strong><br>
+                内向的で気疲れしやすい・感情労働で心が疲れている</p>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-section">
+                <h2><span class="icon">📖</span>参考動画情報</h2>
+                
+                <div class="reference-info">
+                    <h4>参考元動画</h4>
+                    <p><strong>タイトル:</strong> 【寝たまま聞くだけ 20分バージョン】脳を休める＆脳の疲れを取るカンタン瞑想『ヨガニドラ/ヨガニードラ』</p>
+                    <p><strong>チャンネル:</strong> 綿本彰 眠りと瞑想チャンネル</p>
+                    <p><strong>URL:</strong> <a href="https://www.youtube.com/watch?v=58bmqCgJWJ4" target="_blank">https://www.youtube.com/watch?v=58bmqCgJWJ4</a></p>
+                </div>
+
+                <div class="reference-content">
+                    <h4>参考動画の構成</h4>
+                    <p><strong>チャプター1:</strong> はじめに（導入・準備）<br>
+                    楽な姿勢で寝転び、20分間のヨガニドラの準備</p>
+                    
+                    <p><strong>チャプター2:</strong> 瞑想の深化と体の意識化<br>
+                    呼吸の調整と体の各部位への意識化</p>
+                    
+                    <p><strong>チャプター3:</strong> 深い静寂の時間<br>
+                    完全なくつろぎと内面への集中</p>
+                    
+                    <p><strong>チャプター4:</strong> 瞑想の終了<br>
+                    意識を戻し、日常への橋渡し</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2><span class="icon">🎬</span>動画企画詳細</h2>
+                
+                <h4>メインタイトル案</h4>
+                <p style="background: #f7fafc; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    【寝たまま聴くだけ20分】お疲れ様の心を癒す瞑想｜感情労働で疲れた心のケア｜思考をゆるめる現代式瞑想
+                </p>
+
+                <h4>サブタイトル候補</h4>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>帰宅後のソファで聴く癒しの瞑想</li>
+                    <li>心の慢性疲労を回復する瞑想</li>
+                    <li>人間関係の疲れを手放す瞑想</li>
+                </ul>
+
+                <h4>期待される効果</h4>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>帰宅後の心の疲れを癒す</li>
+                    <li>自己嫌悪から自己受容への転換</li>
+                    <li>人間関係の疲れを手放す</li>
+                    <li>本当の自分らしさを見つける</li>
+                    <li>深いリラクゼーション体験</li>
+                </ul>
+
+                <div class="tags">
+                    <span class="tag">#瞑想</span>
+                    <span class="tag">#ヨガニドラ</span>
+                    <span class="tag">#寝たまま瞑想</span>
+                    <span class="tag">#心の疲れ</span>
+                    <span class="tag">#ストレスケア</span>
+                    <span class="tag">#自己受容</span>
+                    <span class="tag">#リラクゼーション</span>
+                    <span class="tag">#癒し</span>
+                    <span class="tag">#内向的</span>
+                    <span class="tag">#感情労働</span>
+                    <span class="tag">#人生の主役</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="script-section">
+            <h2><span class="icon">📝</span>永世豊版 台本</h2>
+            
+            <div class="chapter">
+                <h3>チャプター1: はじめに（導入・準備）</h3>
+                <div class="chapter-content">
+                    <p>こんばんは、永世豊です。</p>
+                    <p>今日も一日、本当にお疲れ様でした。<br>
+                    人のために尽くすあなた、誰かを支えるあなたも、今日はゆっくりと支えられる時間です。</p>
+                    <p>これから20分間、あなたのための特別な時間を過ごしましょう。<br>
+                    何も頑張る必要はありません。何も達成する必要もありません。<br>
+                    ただ、そのままのあなたで、ここにいてください。</p>
+                    <p>楽な姿勢で寝転んでください。<br>
+                    ソファでも、ベッドでも、床でも、あなたが一番くつろげる場所で大丈夫です。<br>
+                    必要があれば毛布やクッションを使って、心地よく過ごしてください。</p>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h3>チャプター2: 心の準備と呼吸の調整</h3>
+                <div class="chapter-content">
+                    <p>鼻から息をゆっくりと吸い込んで...<br>
+                    鼻から息をゆっくりと吐き出していきましょう...</p>
+                    <p>今日一日、たくさんの人と関わって、たくさんの感情を受け取って、<br>
+                    気疲れした心も、今はもう休んでいいのです。</p>
+                    <p>呼吸をするたびに、心が少しずつ軽くなっていきます。<br>
+                    息そのものが、あなたを癒してくれています。</p>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h3>チャプター3: 体の各部位への意識化と解放</h3>
+                <div class="chapter-content">
+                    <p>それでは、あなたの心の奥にある大切な願いを、そっと思い浮かべてみてください。</p>
+                    <p>例えば...<br>
+                    「私は、そのままの自分で愛されている」<br>
+                    「私は、本当の自分らしさを生きている」<br>
+                    「私は、心から安心して人とつながっている」</p>
+                    <p>どんな願いでも構いません。<br>
+                    それが今まさに叶っているという気持ちで、心の中で3回、そっと唱えてみてください。</p>
+                    <p>そのまま、体の各部分に、優しく意識を向けていきましょう。<br>
+                    ぼんやりとでも、なんとなくでも大丈夫です。<br>
+                    ただ私の声を聞いているだけでも、十分なのです。</p>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h3>チャプター4: 深い静寂と自己受容の時間</h3>
+                <div class="chapter-content">
+                    <p>全身が、完全にくつろいでいます。<br>
+                    完全に澄みきっています。</p>
+                    <p>内向的なあなたも、気疲れしやすいあなたも、<br>
+                    自分を責めがちなあなたも、<br>
+                    全部、全部、愛おしいのです。</p>
+                    <p>吸う息の時に、清らかな愛があなたの全身を隅々まで満たしていき...<br>
+                    吐く息の時に、自己嫌悪や不安が、全部抜け出していきます。</p>
+                    <p>深い静寂が、全身を満たしていきます。<br>
+                    この静寂の中で、本当のあなたらしさが、そっと顔を出しています。</p>
+                    <p>全部、全部、人生の主役なのです。<br>
+                    あなたが人生の主役なのです。</p>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h3>チャプター5: 瞑想の終了と日常への橋渡し</h3>
+                <div class="chapter-content">
+                    <p>体に意識を戻していきましょう。<br>
+                    最初の姿勢のまま...<br>
+                    全身が完全にくつろいでいます。</p>
+                    <p>深呼吸を繰り返して...<br>
+                    手足の指を、ゆっくりと動かしていきましょう。<br>
+                    必要があれば、思いっきり伸びをして...</p>
+                    <p>この感覚は、いつでも思い出すことができます。<br>
+                    疲れた時、寂しい時、自分を責めそうになった時、<br>
+                    この温かさを思い出してください。</p>
+                    <p>あなたは、そのままで十分です。<br>
+                    あなたは、愛されています。<br>
+                    あなたは、人生の主役なのです。</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="../nayuta-index.html" class="back-link">← なゆたさん専用ハブに戻る</a>
+        </div>
+    </div>
+</body>
+</html>
