@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 ジャーナリング書く瞑想 - 台本・資料</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            color: #4facfe;
+            border-bottom: 3px solid #4facfe;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .info-card h3 {
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .script-section {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .script-header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        
+        .script-content {
+            padding: 20px;
+        }
+        
+        .script-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .reference-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .reference-section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .reference-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #3a8bfd;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>07 ジャーナリング書く瞑想</h1>
+            <div class="subtitle">なゆた用台本・参考資料・動画情報</div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('script')">なゆた用台本</button>
+            <button class="nav-tab" onclick="showTab('overview')">概要・参考動画情報</button>
+        </div>
+        
+        <div class="content">
+            <!-- なゆた用台本タブ -->
+            <div id="script" class="tab-content active">
+                <div class="script-section">
+                    <div class="script-header">1. ジャーナリングとは何か、その効果</div>
+                    <div class="script-content">
+                        <p>こんばんは、永世豊です。</p>
+                        <p>今夜は少し違った形の瞑想をご紹介します。それは「ジャーナリング」、書く瞑想法です。</p>
+                        <p>ジャーナリングとは、書き出すことで自分が今無意識に考えていることを理解し、整理するというワークです。Googleの研修プログラム「サーチ・インサイド・ユアセルフ」でも導入されているメソッドで、今考えていることを思いつくままひたすら書き出していく瞑想法です。</p>
+                        <p>テキサス大学の研究では、失業した方々を対象に5日間毎日10分間のジャーナリングを行ったグループと行わなかったグループを8ヶ月間追跡調査したところ、ジャーナリングを行った人たちの就職率が40%も高いという結果が出ました。</p>
+                        <p>ジャーナリングを数回行うと、次のような効果を感じやすくなります：</p>
+                        <p>心の中で重く疲れていたものが取れて楽になる、モヤモヤした感情が明確になってくる、自分の感情に振り回されている様子を俯瞰して見れるようになる、気づきやひらめきを得ることができる、ざわついた心を落ち着けて、心の静寂を取り戻す、次の1歩を踏み出すきっかけになる、自分のストレスと上手に付き合えるようになる。</p>
+                        <p>今自分が感じていることをただ書き出すだけで、ストレスが緩和され、思い通りにならないことへのストレス耐性が強化されていきます。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">2. 準備：ジャーナリングの環境を整える</div>
+                    <div class="script-content">
+                        <p>それでは、実際にジャーナリングを始めましょう。</p>
+                        <p>まず、紙とペンを用意してください。デジタルでも構いませんが、手で書くことをお勧めします。手で書くという行為自体が、心を落ち着ける効果があります。</p>
+                        <p>静かな場所で、誰にも邪魔されない時間を確保してください。今から20分間、あなた自身と向き合う時間です。</p>
+                        <p>楽な姿勢で座り、軽く目を閉じて、数回深呼吸をしましょう。</p>
+                        <p>今日一日の出来事、今感じていること、心の中にあるものに、優しく意識を向けてみてください。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">3. ステップ1：ただ書き出す</div>
+                    <div class="script-content">
+                        <p>それでは、ジャーナリングを始めましょう。</p>
+                        <p>最近気になっていることは何でしょう？<br>
+                        今感じていることは何でしょう？</p>
+                        <p>そう自分に問いかけて、思いつくままにただ書き出してください。</p>
+                        <p>「あの人の言い方が気になる」<br>
+                        「うまくいかないことがある」<br>
+                        「どうしようか迷っている」</p>
+                        <p>といった具体的な思考や、自分が感じている不安、怒り、恐れ、心配、喜び、感謝など、どんな感情でも構いません。</p>
+                        <p>良い悪いを判断せずに、ただありのままに書き出してください。</p>
+                        <p>3分から10分程度、時間を決めて書き続けてみましょう。</p>
+                        <p>手を止めずに、思い浮かんだことをそのまま紙に移していきます。</p>
+                        <p>これだけでも、自分が今何を感じているのか、何を考えているのかが整理されます。</p>
+                        <p>どういう出来事が起こって、それに対して自分はどういう解釈や意味付けをして、どんな感情が湧いているのか、少し俯瞰した視点で見ることができます。</p>
+                        <p>出来事（起こった客観的な事実）、思考（それに対する捉え方・解釈）、感情の3つに分類して書き出すのもおすすめです。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">4. ステップ2：視点を切り替える</div>
+                    <div class="script-content">
+                        <p>書き出しが終わったら、今度は視点を切り替えてみましょう。</p>
+                        <p>極端にネガティブになっている場合や、思い込み、否定的な捉え方をしている場合には、この視点を切り替えるワークが効果的です。</p>
+                        <p>「こう思ったけど、本当にそうだろうか？」</p>
+                        <p>自分の思考や自動的に湧いてきた思考に対して、少し距離をとって違う視座から考えてみます。</p>
+                        <p><strong>ネガティブな中にあるポジティブに気づく</strong></p>
+                        <p>「この出来事の意味は何だろう？」<br>
+                        「もしかしたら、これをきっかけに成長することができるかもしれない」<br>
+                        「自己理解を深めることができるかもしれない」<br>
+                        「頼りになる人に出会うきっかけになるかもしれない」</p>
+                        <p><strong>未来の自分になったつもりで眺める</strong></p>
+                        <p>5年後、10年後の未来の自分になったつもりで、今抱えている問題をすでに解決した自分として眺めてみます。</p>
+                        <p>10年後の自分から見たら、今の悩みはどう見えるでしょうか？</p>
+                        <p><strong>尊敬する人の視点に立ってみる</strong></p>
+                        <p>相手の気持ちになってみる。<br>
+                        あるいは、尊敬する人の気持ちになってみる。</p>
+                        <p>「この人だったらどうするだろう？」</p>
+                        <p>自分が尊敬する先生やメンターの気持ちになって考えてみてください。</p>
+                        <p>このように、視座をいろいろ変えることで、凝り固まった認知や捉え方が少し柔軟になり、より良い思考やアイデアが見えてくるかもしれません。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">5. ステップ3：問題と解決策を考える</div>
+                    <div class="script-content">
+                        <p>最後に、具体的にどんな行動をとったらいいのかを書き出してみましょう。</p>
+                        <p>まず「問題は何だろうか？」「何が問題？」「何が障害なのか？」を論理的に書き出していきます。</p>
+                        <p>問題を絞り込んだら、思いつく限り多種多様な解決策を考え出していきます。</p>
+                        <p>その課題を解決するための最適な解決策を選んで、あとは行動に移していきます。</p>
+                        <p>モヤモヤして曖昧な状態だと、その問題や悩みは大きく感じられますが、何が問題なのかを具体的に明確にしていけば、その解決策が見えてきます。</p>
+                        <p>「できること」「今できること」を小さなステップで書き出し、それを一つずつやっていく。</p>
+                        <p>問題が明確になり具体的な解決策が明確になって、あとは行動するだけになります。そうなると、それはもう悩みではなくなります。</p>
+                        <p>今できることが明確になってそこに集中すれば、行動しているときには不安というものはありません。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">6. マインドフルネスとしてのジャーナリング</div>
+                    <div class="script-content">
+                        <p>自分が今どうしようもない、変えることができない問題は諦めて、今できることにフォーカスしていくことが重要です。</p>
+                        <p>自分を責めたり他人を責めたり、後悔したり、未来に過剰な不安を感じるのではなく、今の現状を受け入れて、じゃあ今何ができるかということにフォーカスし、そこにエネルギーを向けて行動していく。</p>
+                        <p>悶々と悩んで苦しくなっている時というのは、感情的になってしまい冷静な判断ができなくなります。一旦静寂を作って冷静になったり、紙に書き出して理性を働かせて考えたりすると、より良いアイデアや具体的な解決策が出てくるかもしれません。</p>
+                        <p>マインドフルネスでは、自分に湧いてくる思考をポジティブもネガティブも良いとか悪いとか判断せずに、平等にありのまま客観的に見るという実践ですが、ジャーナリングもそれに似ています。</p>
+                        <p>このジャーナリングを通して、自分の思考が勝手に湧いてくるものであると理解できます。そのストーリーに入り込んだ時、それに見合った感情が湧いてきます。</p>
+                        <p>しかし、それに気づいて少し引いたところから眺めることによって、どのような思考もストーリーも、入り込まなければ波の泡のように消えていくということが体験として見えてきます。</p>
+                        <p>客観的にその中に入り込まず観察していくと、思考の無常性に気づきます。そして、本当の私というのは思考ではなく、それを見ている、気づいている意識にあるということが分かってきます。</p>
+                        <p>思考も自分の一部ではありますが、この思考だけではなく、この思考を客観的に見ている自分、そしてこの思考がない時の静寂、これが本当の自分です。</p>
+                    </div>
+                </div>
+                
+                <div class="script-section">
+                    <div class="script-header">7. ジャーナリングの終わりと統合</div>
+                    <div class="script-content">
+                        <p>書き終わったら、書いた内容を読み返してみてください。</p>
+                        <p>客観的に、まるで他の人が書いたもののように読んでみます。</p>
+                        <p>どんな気づきがありますか？<br>
+                        どんな感情が湧いてきますか？</p>
+                        <p>そして最後に、今の自分に必要なメッセージを、自分自身に向けて書いてみてください。</p>
+                        <p>「大丈夫、あなたはよくやっている」<br>
+                        「一歩ずつ進んでいけばいい」<br>
+                        「そのままのあなたで十分」</p>
+                        <p>どんなメッセージでも構いません。</p>
+                        <p>今日、ジャーナリングという形で自分と向き合う時間を取った自分に、感謝の気持ちを向けてみましょう。</p>
+                        <p>このジャーナリングは、いつでも、どこでも行うことができます。心がざわついた時、迷いが生じた時、ぜひこの書く瞑想を思い出してください。</p>
+                        <p>紙とペンがあれば、いつでもあなたの心を整えることができます。</p>
+                        <p>今日も一緒にジャーナリングができたことに感謝します。</p>
+                        <p>あなたの心が、いつも平安でありますように。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 概要・動画情報タブ -->
+            <div id="overview" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 動画コンセプト</h3>
+                        <p>書く瞑想・自己理解</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⏰ 動画時間</h3>
+                        <p>約20分</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>✍️ 瞑想スタイル</h3>
+                        <p>ジャーナリング（書く瞑想）</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎬 参考動画</h3>
+                        <p>マインドフルネス｜ジャーナリング 書く瞑想法</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🔗 参考動画URL</h3>
+                        <p><a href="https://www.youtube.com/watch?v=gOq-DcQb5OM" target="_blank">YouTube動画を見る</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>✨ 瞑想の特徴</h3>
+                        <p>書くことで自分の無意識を理解し整理するワーク</p>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>📋 ジャーナリングのポイント</h3>
+                    <div class="reference-content">
+                        <ul>
+                            <li><strong>3つのステップ:</strong> ただ書き出す → 視点を切り替える → 問題と解決策を考える</li>
+                            <li><strong>判断しない:</strong> 良い悪いを判断せずにありのまま書く</li>
+                            <li><strong>客観視:</strong> 思考と感情を俯瞰して観察する</li>
+                            <li><strong>具体的行動:</strong> 今できることを明確にして行動に移す</li>
+                            <li><strong>自己受容:</strong> 書いた内容を通して自分を理解し受け入れる</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reference-section">
+                    <h3>🔬 研究結果・効果</h3>
+                    <div class="reference-content">
+                        <p><strong>テキサス大学の研究:</strong> 5日間毎日10分間のジャーナリングを行ったグループの就職率が40%向上</p>
+                        <p><strong>期待される効果:</strong></p>
+                        <ul>
+                            <li>心の疲れが軽減される</li>
+                            <li>モヤモヤした感情が明確になる</li>
+                            <li>感情を客観視できるようになる</li>
+                            <li>気づきやひらめきを得られる</li>
+                            <li>心の静寂を取り戻せる</li>
+                            <li>次の行動のきっかけになる</li>
+                            <li>ストレス耐性が向上する</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://ayaney03.github.io/medi-youtube/" class="back-link">← 瞑想YouTube企画ハブに戻る</a>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // すべてのタブボタンを非アクティブ
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたタブボタンをアクティブ
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
