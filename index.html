@@ -3,400 +3,581 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>瞑想YouTube企画ハブ - なゆたさん専用</title>
+    <title>なゆたさん専用 - 天郷事業ハブ</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #2e1065 0%, #4c1d95 50%, #1a202c 100%);
             min-height: 100vh;
-            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
         }
-        
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(244, 164, 96, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            padding: 20px;
         }
-        
+
         .header {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            padding: 40px;
             text-align: center;
+            margin-bottom: 50px;
+            color: white;
+            position: relative;
+            padding: 40px 0;
         }
-        
+
+        .header::before {
+            content: '🐬';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+        }
+
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #ffd700, #f4a460, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: 2px;
         }
-        
+
         .header .subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
+            margin-bottom: 10px;
+            color: #e2e8f0;
+        }
+
+        .header .welcome {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffd700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .quick-access {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.2),
+                0 0 0 1px rgba(255, 215, 0, 0.2);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .quick-access h2 {
+            color: #2d3748;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .quick-access h2::before {
+            content: "⭐";
+            margin-right: 12px;
+            font-size: 2rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-link {
+            display: block;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #ffd700, #f4a460);
+            color: #2d3748;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .quick-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .quick-link:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .quick-link:hover::before {
+            left: 100%;
+        }
+
+
+
+        .business-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(255, 215, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ffd700, #f4a460, #ffd700);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .business-card::after {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        .business-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.2),
+                0 0 0 1px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
             margin-bottom: 20px;
         }
-        
-        .completion-guide {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
-            border-radius: 12px;
-            margin-bottom: 25px;
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-right: 25px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .card-info h3 {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #2d3748, #4a5568);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-status {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #ffd700, #f4a460);
+            color: #2d3748;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .card-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 18px;
+            background: rgba(248, 249, 250, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            text-decoration: none;
+            color: #2d3748;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid #ffd700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), rgba(244, 164, 96, 0.1));
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+
+        .card-link:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .card-link:hover::before {
+            width: 100%;
+        }
+
+        .card-link-icon {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .card-link-text {
+            flex: 1;
+        }
+
+        .card-link-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .card-link-desc {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .important-notice {
+            background: linear-gradient(135deg, rgba(255, 234, 167, 0.9), rgba(253, 203, 110, 0.9));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            border-left: 6px solid #f4a460;
+            box-shadow: 
+                0 10px 25px rgba(253, 203, 110, 0.3),
+                0 0 0 1px rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .important-notice::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        .important-notice h3 {
+            color: #2d3748;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .important-notice h3::before {
+            content: "🌟";
+            margin-right: 12px;
+            font-size: 1.3rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .important-notice p {
+            color: #2d3748;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .footer-info {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.2),
+                0 0 0 1px rgba(255, 215, 0, 0.2);
+            position: relative;
+        }
+
+        .footer-info::before {
+            content: '🏢';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            padding: 10px;
             backdrop-filter: blur(10px);
         }
-        
-        .completion-guide h3 {
-            margin-bottom: 5px;
-            font-size: 0.85rem;
-            color: #fff;
+
+        .footer-info p {
+            margin-bottom: 12px;
+            font-weight: 500;
         }
-        
-        .completion-guide p {
-            font-size: 0.7rem;
-            opacity: 0.9;
-            margin: 0;
-            line-height: 1.3;
-        }
-        
-        .content {
-            padding: 40px;
-        }
-        
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        
-        .video-card {
-            background: #fff;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border-left: 5px solid #4facfe;
-        }
-        
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .video-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .video-number {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-        
-        .video-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2d3748;
-        }
-        
-        .video-description {
-            color: #666;
-            margin-bottom: 20px;
+
+        .footer-info .company-info {
             font-size: 0.95rem;
+            opacity: 0.9;
+            color: #ffd700;
         }
-        
-        .video-link {
-            display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .video-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
-        }
-        
-        .video-status {
-            margin: 10px 0;
-            padding: 8px 10px;
-            background: rgba(102, 126, 234, 0.08);
-            border-radius: 8px;
-            border-left: 3px solid #667eea;
-        }
-        
-        .completion-rate {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 3px;
-        }
-        
-        .rate-label {
-            font-weight: 600;
-            color: #333;
-            font-size: 0.75rem;
-        }
-        
-        .stars {
-            font-size: 0.9rem;
-        }
-        
-        .rate-text {
-            font-size: 0.7rem;
-            color: #666;
-            font-weight: 500;
-        }
-        
-        .update-date {
-            font-size: 0.7rem;
-            color: #888;
-        }
-        
-        
+
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            .container {
+                padding: 15px;
             }
-            
-            .content {
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+
+
+            .business-card {
                 padding: 20px;
             }
-            
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
+
+
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🧘‍♀️ 瞑想YouTube企画ハブ</h1>
-            <div class="subtitle">全動画台本・参考資料</div>
-            <div class="completion-guide">
-                <h3>📊 完成度ガイド</h3>
-                <p>⭐⭐⭐⭐⭐ 完璧 - 収録推奨！ | ⭐⭐⭐⭐ 良好 - ひろみに刺さりそう | ⭐⭐⭐ 普通 - 使えるが物足りない | ⭐⭐ 要改善 | ⭐ やり直したい</p>
+            <h1>🏢 天郷事業ハブ</h1>
+            <p class="subtitle">なゆたさん専用アクセスポイント</p>
+        </div>
+
+        <div class="business-card">
+            <div class="card-header">
+                <div class="card-icon">📝</div>
+                <div class="card-info">
+                    <h3>最近の決定事項メモ</h3>
+                    <span class="card-status">更新中</span>
+                </div>
+            </div>
+            <div class="card-description">
+                重要な決定事項や変更点を自由に記録できます。内容は自動保存されます。
+            </div>
+            <div class="card-links">
+                <div class="card-link" style="background: #fff3cd; border-left: 4px solid #ffc107; cursor: default;">
+                    <div class="card-link-icon">📅</div>
+                    <div class="card-link-text">
+                        <div class="card-link-title">2025/09/01 - なゆたX運用体制変更</div>
+                        <div class="card-link-desc">ぽにょさんがX顧問として参加、あやねえが全体運用管理。なゆたX経由売上の1割をあやねえに。</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button style="padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500;">💾 保存</button>
+                    <button style="padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500;">🗑️ クリア</button>
+                </div>
             </div>
         </div>
-        
-        <div class="content">
-            <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">01</div>
-                        <div class="video-title">寝たまま聴くだけ 思考をゆるめる瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        帰宅後リラックスシリーズ。20分間の寝たまま聞ける瞑想で、日々の疲れを癒します。特定しすぎない表現で、より多くの人に響く内容に改善済み。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span class="rate-text">完璧 - 収録推奨！</span>
-                        </div>
-                        <div class="update-date">更新日: 2025/09/04</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_01.html" class="video-link">📝 台本・資料を見る</a>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">02</div>
-                        <div class="video-title">執着を手放して楽に生きる 慈悲の瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        朝の15分慈悲の瞑想。自分と大切な人、全ての命への慈悲を育む瞑想です。特定表現を汎用化し、幅広い層に響く内容に改善済み。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐⭐⭐</span>
-                            <span class="rate-text">良好 - ひろみに刺さりそう</span>
-                        </div>
-                        <div class="update-date">更新日: 2025/01/15</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_02.html" class="video-link">📝 台本・資料を見る</a>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">03</div>
-                        <div class="video-title">心を整える為の10分瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        4-7-8呼吸法を用いた心の静寂への回帰。短時間で効果的な瞑想です。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐</span>
 
-                        </div>
-                        <div class="update-date">更新日: 2025/08/25</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_03.html" class="video-link">📝 台本・資料を見る</a>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">04</div>
-                        <div class="video-title">自分の全てを受け容れる 寝る前の20分瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        ボディスキャンを通した自己受容と思いやり。良質な睡眠への準備瞑想です。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐⭐</span>
-
-                        </div>
-                        <div class="update-date">更新日: 2025/08/30</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_04.html" class="video-link">📝 台本・資料を見る</a>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">05</div>
-                        <div class="video-title">最高の1日にする為の朝の20分瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        プライミング効果を活用した朝のマインドフルネス瞑想。一日を最高にスタート。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐⭐⭐</span>
-
-                        </div>
-                        <div class="update-date">更新日: 2025/09/01</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_05.html" class="video-link">📝 台本・資料を見る</a>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">06</div>
-                        <div class="video-title">1日を穏やかに終える夜の20分瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        一日の疲れを癒し、良質な睡眠への準備。穏やかに一日を終える瞑想です。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐⭐</span>
-
-                        </div>
-                        <div class="update-date">更新日: 2025/08/29</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_06.html" class="video-link">📝 台本・資料を見る</a>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">07</div>
-                        <div class="video-title">ジャーナリング 書く瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        書くことで自分の無意識を理解し整理するワーク。心の整理に効果的です。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐⭐⭐</span>
-
-                        </div>
-                        <div class="update-date">更新日: 2025/08/31</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_07.html" class="video-link">📝 台本・資料を見る</a>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">09</div>
-                        <div class="video-title">【寝ながら聴くだけ】富を引き寄せる瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        ひろみペルソナ対応。感情労働者向けの優しい豊かさアファメーション。30分間の引き寄せ瞑想です。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-
-                        </div>
-                        <div class="update-date">更新日: 2025/09/02</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_09.html" class="video-link">📝 台本・資料を見る</a>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">10</div>
-                        <div class="video-title">【寝ながら聴くだけ】自分を最高に満たす瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        ひろみペルソナ対応。「私なんて」が「私って素晴らしい」に変わる自己肯定感回復瞑想です。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-
-                        </div>
-                        <div class="update-date">更新日: 2025/09/02</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_10.html" class="video-link">📝 台本・資料を見る</a>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-header">
-                        <div class="video-number">12</div>
-                        <div class="video-title">【寝ながら聴くだけ】自己批判を手放し自分を深く愛する瞑想</div>
-                    </div>
-                    <div class="video-description">
-                        ひろみペルソナ対応。「また私ダメだった」をやめる優しいセルフコンパッション瞑想です。
-                    </div>
-                    <div class="video-status">
-                        <div class="completion-rate">
-                            <span class="rate-label">完成度:</span>
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-
-                        </div>
-                        <div class="update-date">更新日: 2025/09/02</div>
-                    </div>
-                    <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_12.html" class="video-link">📝 台本・資料を見る</a>
+        <div class="business-card">
+            <div class="card-header">
+                <div class="card-icon">📋</div>
+                <div class="card-info">
+                    <h3>メニュー</h3>
+                    <span class="card-status">アクセス</span>
                 </div>
             </div>
+            <div class="card-description">
+                各事業へのクイックアクセスメニューです。
+            </div>
+            <div class="card-links">
+                <div class="card-link" style="background: #e8f5e8; border-left: 4px solid #28a745; cursor: default; margin-bottom: 20px;">
+                    <div class="card-link-icon">🧘</div>
+                    <div class="card-link-text">
+                        <div class="card-link-title" style="font-weight: 700; color: #2d3748;">瞑想事業</div>
+                        <div style="margin-top: 8px; font-size: 0.85rem;">
+                            • <a href="https://ayaney03.github.io/smartphone-detox/" style="color: #007bff; text-decoration: none;">脱スマホ瞑想プログラム</a><br>
+                            • <a href="01_瞑想事業/脱スマホ瞑想プログラム/00_脱スマホ瞑想プログラム_ハブ.html" style="color: #007bff; text-decoration: none;">更新中（内部管理）</a><br>
+                            • <a href="https://ayaney03.github.io/medi-youtube/" style="color: #007bff; text-decoration: none;">瞑想YouTube企画ハブ</a><br>
+                            • <a href="01_瞑想事業/アメブロ/README.md" style="color: #007bff; text-decoration: none;">アメブロ</a><br>
+                            • <a href="01_瞑想事業/Google_Drive共有手順.md" style="color: #007bff; text-decoration: none;">整理中</a><br>
+                            • <a href="https://discord.gg/zEKvaju8" style="color: #007bff; text-decoration: none;">Discord</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-link" style="background: #f0e6ff; border-left: 4px solid #6f42c1; cursor: default; margin-bottom: 20px;">
+                    <div class="card-link-icon">💫</div>
+                    <div class="card-link-text">
+                        <div class="card-link-title" style="font-weight: 700; color: #2d3748;">なゆた関連事業</div>
+                        <div style="margin-top: 8px; font-size: 0.85rem;">
+                            • <a href="02_なゆた関連/五大資産_ライフスタイル設計レッスン.html" style="color: #007bff; text-decoration: none;">五大資産レッスン</a><br>
+                            • <a href="02_なゆた関連/UTAGE設定ガイド_30代女性向けメルマガ.md" style="color: #007bff; text-decoration: none;">UTAGE設定ガイド</a><br>
+                            • <a href="02_なゆた関連/メルマガ_30代女性向け.html" style="color: #007bff; text-decoration: none;">メルマガテンプレート</a><br>
+                            • <a href="https://discord.com/channels/924998859602657280/1183759996429815868" style="color: #007bff; text-decoration: none;">ユートピアサロン Discord</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-link" style="background: #fff3cd; border-left: 4px solid #ffc107; cursor: default; margin-bottom: 20px;">
+                    <div class="card-link-icon">🏢</div>
+                    <div class="card-link-text">
+                        <div class="card-link-title" style="font-weight: 700; color: #2d3748;">会社情報・管理資料</div>
+                        <div style="margin-top: 8px; font-size: 0.85rem;">
+                            • <a href="00_会社情報・特許/会社情報.md" style="color: #007bff; text-decoration: none;">会社基本情報（特許庁識別番号525313409含む）</a><br>
+                            • <a href="99_資料管理ハブ/天郷事業_資料管理ハブ.md" style="color: #007bff; text-decoration: none;">資料管理ハブ</a><br>
+                            • <a href="https://drive.google.com/drive/folders/1_JaXzIP6R3HHR4633kQaeiXLQg4GI6jZ" style="color: #007bff; text-decoration: none;">宣材写真（Google Drive）</a><br>
+                            • <a href="../あやねえ契約・報酬体系.md" style="color: #007bff; text-decoration: none;">あやねえ契約・報酬体系</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-link" style="background: #e8f4fd; border-left: 4px solid #17a2b8; cursor: default;">
+                    <div class="card-link-icon">📝</div>
+                    <div class="card-link-text">
+                        <div class="card-link-title" style="font-weight: 700; color: #2d3748;">よく使うリンク</div>
+                        <div style="margin-top: 8px; font-size: 0.85rem;">
+                            • <a href="なゆたさんのやることリスト.md" style="color: #007bff; text-decoration: none;">やることリスト</a><br>
+                            • <a href="01_瞑想事業/なゆたさん向け_簡単共有ガイド.md" style="color: #007bff; text-decoration: none;">共有ガイド</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="footer-info">
+            <p><strong>天郷株式会社</strong></p>
+            <p class="company-info">〒249-0006 神奈川県逗子市逗子四丁目9番14号</p>
+            <p class="company-info">特許庁識別番号: 525313409</p>
+            <p class="company-info">最終更新: 2025年1月15日</p>
         </div>
     </div>
+
+    <script>
+        // ページ読み込み時のアニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.business-card, .quick-access, .important-notice');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    element.style.transition = 'all 0.8s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        });
+
+        // リンクのクリック時にフィードバック
+        document.querySelectorAll('.card-link, .quick-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // リンクが存在しない場合の処理
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('http')) {
+                    // ローカルファイルの場合、存在確認は省略
+                    console.log('Navigating to:', href);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
