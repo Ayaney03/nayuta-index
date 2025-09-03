@@ -45,6 +45,28 @@
         .header .subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .completion-guide {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .completion-guide h3 {
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+        
+        .completion-guide p {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            margin: 0;
+            line-height: 1.3;
         }
         
         .content {
@@ -119,6 +141,42 @@
             box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
         }
         
+        .video-status {
+            margin: 10px 0;
+            padding: 8px 10px;
+            background: rgba(102, 126, 234, 0.08);
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .completion-rate {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 3px;
+        }
+        
+        .rate-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.75rem;
+        }
+        
+        .stars {
+            font-size: 0.9rem;
+        }
+        
+        .rate-text {
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .update-date {
+            font-size: 0.7rem;
+            color: #888;
+        }
+        
         
         @media (max-width: 768px) {
             .header h1 {
@@ -139,7 +197,11 @@
     <div class="container">
         <div class="header">
             <h1>🧘‍♀️ 瞑想YouTube企画ハブ</h1>
-            <div class="subtitle">なゆた専用 - 全動画台本・参考資料</div>
+            <div class="subtitle">全動画台本・参考資料</div>
+            <div class="completion-guide">
+                <h3>📊 完成度ガイド</h3>
+                <p>⭐⭐⭐⭐⭐ 完璧 - 収録推奨！ | ⭐⭐⭐⭐ 良好 - ひろみに刺さりそう | ⭐⭐⭐ 普通 - 使えるが物足りない | ⭐⭐ 要改善 | ⭐ やり直したい</p>
+            </div>
         </div>
         
         <div class="content">
@@ -150,7 +212,15 @@
                         <div class="video-title">寝たまま聴くだけ 思考をゆるめる瞑想</div>
                     </div>
                     <div class="video-description">
-                        帰宅後リラックスシリーズ。20分間の寝たまま聞ける瞑想で、一日の疲れを癒します。
+                        帰宅後リラックスシリーズ。20分間の寝たまま聞ける瞑想で、日々の疲れを癒します。特定しすぎない表現で、より多くの人に響く内容に改善済み。
+                    </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rate-text">完璧 - 収録推奨！</span>
+                        </div>
+                        <div class="update-date">更新日: 2025/09/04</div>
                     </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_01.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
@@ -161,7 +231,15 @@
                         <div class="video-title">執着を手放して楽に生きる 慈悲の瞑想</div>
                     </div>
                     <div class="video-description">
-                        朝の15分慈悲の瞑想。自分と大切な人、全ての命への慈悲を育む瞑想です。
+                        朝の15分慈悲の瞑想。自分と大切な人、全ての命への慈悲を育む瞑想です。特定表現を汎用化し、幅広い層に響く内容に改善済み。
+                    </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐⭐⭐</span>
+                            <span class="rate-text">良好 - ひろみに刺さりそう</span>
+                        </div>
+                        <div class="update-date">更新日: 2025/01/15</div>
                     </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_02.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
@@ -174,6 +252,14 @@
                     <div class="video-description">
                         4-7-8呼吸法を用いた心の静寂への回帰。短時間で効果的な瞑想です。
                     </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐</span>
+
+                        </div>
+                        <div class="update-date">更新日: 2025/08/25</div>
+                    </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_03.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
                 
@@ -184,6 +270,14 @@
                     </div>
                     <div class="video-description">
                         ボディスキャンを通した自己受容と思いやり。良質な睡眠への準備瞑想です。
+                    </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐⭐</span>
+
+                        </div>
+                        <div class="update-date">更新日: 2025/08/30</div>
                     </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_04.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
@@ -196,6 +290,14 @@
                     <div class="video-description">
                         プライミング効果を活用した朝のマインドフルネス瞑想。一日を最高にスタート。
                     </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐⭐⭐</span>
+
+                        </div>
+                        <div class="update-date">更新日: 2025/09/01</div>
+                    </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_05.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
                 
@@ -206,6 +308,14 @@
                     </div>
                     <div class="video-description">
                         一日の疲れを癒し、良質な睡眠への準備。穏やかに一日を終える瞑想です。
+                    </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐⭐</span>
+
+                        </div>
+                        <div class="update-date">更新日: 2025/08/29</div>
                     </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_06.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
@@ -218,6 +328,14 @@
                     <div class="video-description">
                         書くことで自分の無意識を理解し整理するワーク。心の整理に効果的です。
                     </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐⭐⭐</span>
+
+                        </div>
+                        <div class="update-date">更新日: 2025/08/31</div>
+                    </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_07.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
                 
@@ -227,7 +345,15 @@
                         <div class="video-title">【寝ながら聴くだけ】富を引き寄せる瞑想</div>
                     </div>
                     <div class="video-description">
-                        ひろみさんペルソナ対応。感情労働者向けの優しい豊かさアファメーション。30分間の引き寄せ瞑想です。
+                        ひろみペルソナ対応。感情労働者向けの優しい豊かさアファメーション。30分間の引き寄せ瞑想です。
+                    </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+
+                        </div>
+                        <div class="update-date">更新日: 2025/09/02</div>
                     </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_09.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
@@ -238,7 +364,15 @@
                         <div class="video-title">【寝ながら聴くだけ】自分を最高に満たす瞑想</div>
                     </div>
                     <div class="video-description">
-                        ひろみさんペルソナ対応。「私なんて」が「私って素晴らしい」に変わる自己肯定感回復瞑想です。
+                        ひろみペルソナ対応。「私なんて」が「私って素晴らしい」に変わる自己肯定感回復瞑想です。
+                    </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+
+                        </div>
+                        <div class="update-date">更新日: 2025/09/02</div>
                     </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_10.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
@@ -249,7 +383,15 @@
                         <div class="video-title">【寝ながら聴くだけ】自己批判を手放し自分を深く愛する瞑想</div>
                     </div>
                     <div class="video-description">
-                        ひろみさんペルソナ対応。「また私ダメだった」をやめる優しいセルフコンパッション瞑想です。
+                        ひろみペルソナ対応。「また私ダメだった」をやめる優しいセルフコンパッション瞑想です。
+                    </div>
+                    <div class="video-status">
+                        <div class="completion-rate">
+                            <span class="rate-label">完成度:</span>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+
+                        </div>
+                        <div class="update-date">更新日: 2025/09/02</div>
                     </div>
                     <a href="天郷事業/01_瞑想事業/瞑想YouTube/medi_12.html" class="video-link">📝 台本・資料を見る</a>
                 </div>
