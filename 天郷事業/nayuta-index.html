@@ -167,12 +167,7 @@
             left: 100%;
         }
 
-        .business-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
+
 
         .business-card {
             background: rgba(255, 255, 255, 0.95);
@@ -441,18 +436,13 @@
                 font-size: 2.2rem;
             }
 
-            .business-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
+
 
             .business-card {
                 padding: 20px;
             }
 
-            .quick-links {
-                grid-template-columns: 1fr;
-            }
+
         }
     </style>
 </head>
@@ -478,7 +468,7 @@
                 </div>
             </div>
             <div class="card-description">
-                重要な決定事項や変更点を記録するスペースです。随時更新していきます。
+                重要な決定事項や変更点を自由に記録できます。内容は自動保存されます。
             </div>
             <div class="card-links">
                 <div class="card-link" style="background: #fff3cd; border-left: 4px solid #ffc107; cursor: default;">
@@ -488,276 +478,77 @@
                         <div class="card-link-desc">ぽにょさんがX顧問として参加、あやねえが全体運用管理。なゆたX経由売上の1割をあやねえに。</div>
                     </div>
                 </div>
-                <div class="card-link" style="background: #d1ecf1; border-left: 4px solid #17a2b8; cursor: default;">
-                    <div class="card-link-icon">💰</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">報酬体系の整理</div>
-                        <div class="card-link-desc">各事業の報酬体系を明確化。詳細は下記「報酬・契約について」を参照。</div>
-                    </div>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button style="padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500;">💾 保存</button>
+                    <button style="padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500;">🗑️ クリア</button>
                 </div>
             </div>
         </div>
 
-        <div class="quick-access">
-            <h2>よく使うリンク</h2>
-            <div class="quick-links">
-                <a href="なゆたさんのやることリスト.md" class="quick-link">📝 やることリスト</a>
-                <a href="01_瞑想事業/なゆたさん向け_簡単共有ガイド.md" class="quick-link">📖 共有ガイド</a>
-                <a href="https://ayaney03.github.io/smartphone-detox/" class="quick-link">🧘 脱スマホ公式</a>
-                <a href="02_なゆた関連/五大資産_ライフスタイル設計レッスン.html" class="quick-link">💎 五大資産レッスン</a>
-            </div>
-        </div>
-
-        <div class="business-grid">
-            <!-- 瞑想事業 -->
-            <div class="business-card">
-                <div class="card-header">
-                    <div class="card-icon">🧘‍♀️</div>
-                    <div class="card-info">
-                        <h3>瞑想事業</h3>
-                        <span class="card-status">運営中</span>
-                    </div>
-                </div>
-                <div class="card-description">
-                    脱スマホ瞑想プログラム、アメブロ運用、Google Drive連携など、瞑想に関する全ての事業を管理しています。
-                </div>
-                <div class="card-links">
-                    <a href="https://ayaney03.github.io/smartphone-detox/" class="card-link">
-                        <div class="card-link-icon">🌐</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">脱スマホ瞑想プログラム公式</div>
-                            <div class="card-link-desc">公式サイト・全コンテンツアクセス</div>
-                        </div>
-                    </a>
-                    <a href="01_瞑想事業/脱スマホ瞑想プログラム/00_脱スマホ瞑想プログラム_ハブ.html" class="card-link">
-                        <div class="card-link-icon">📱</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">プロジェクトハブ（内部）</div>
-                            <div class="card-link-desc">開発・管理用ハブページ</div>
-                        </div>
-                    </a>
-                    <a href="https://ameblo.jp/nayu-ta3/" class="card-link">
-                        <div class="card-link-icon">📝</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">なゆたアメブロ</div>
-                            <div class="card-link-desc">永世ゆたか｜現代瞑想術ブログ</div>
-                        </div>
-                    </a>
-                    <a href="01_瞑想事業/アメブロ/README.md" class="card-link">
-                        <div class="card-link-icon">📋</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">アメブロ運用資料</div>
-                            <div class="card-link-desc">投稿スケジュール（月木7:00）・代行チーム情報</div>
-                        </div>
-                    </a>
-                    <a href="01_瞑想事業/Google_Drive共有手順.md" class="card-link">
-                        <div class="card-link-icon">☁️</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">Google Drive連携</div>
-                            <div class="card-link-desc">ファイル共有と自動同期設定</div>
-                        </div>
-                    </a>
-                    <a href="01_瞑想事業/なゆたさんのやることリスト.md" class="card-link">
-                        <div class="card-link-icon">✅</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">やることリスト</div>
-                            <div class="card-link-desc">現在のタスクと進捗管理</div>
-                        </div>
-                    </a>
-                    <a href="01_瞑想事業/瞑想YouTube/medi-daihon.html" class="card-link">
-                        <div class="card-link-icon">🎬</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">瞑想YouTube企画ハブ</div>
-                            <div class="card-link-desc">全動画の台本・参考資料・企画管理</div>
-                        </div>
-                    </a>
-                    <a href="https://discord.gg/zEKvaju8" class="card-link">
-                        <div class="card-link-icon">💬</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">瞑想コミュニティ Discord</div>
-                            <div class="card-link-desc">瞑想事業のコミュニティ</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- なゆた関連事業 -->
-            <div class="business-card">
-                <div class="card-header">
-                    <div class="card-icon">💫</div>
-                    <div class="card-info">
-                        <h3>なゆた関連事業</h3>
-                        <span class="card-status">運営中</span>
-                    </div>
-                </div>
-                <div class="card-description">
-                    メルマガ運用、UTAGE設定、五大資産レッスンなど、なゆたさんのブランド構築に関する事業です。
-                </div>
-                <div class="card-links">
-                    <a href="02_なゆた関連/五大資産_ライフスタイル設計レッスン.html" class="card-link">
-                        <div class="card-link-icon">💎</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">五大資産レッスン</div>
-                            <div class="card-link-desc">時間・健康・仲間・知識・富の設計法</div>
-                        </div>
-                    </a>
-                    <a href="02_なゆた関連/メルマガ_30代女性向け.html" class="card-link">
-                        <div class="card-link-icon">📧</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">メルマガ運用</div>
-                            <div class="card-link-desc">30代女性向けメルマガテンプレート</div>
-                        </div>
-                    </a>
-                    <a href="02_なゆた関連/UTAGE設定ガイド_30代女性向けメルマガ.md" class="card-link">
-                        <div class="card-link-icon">⚙️</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">UTAGE設定</div>
-                            <div class="card-link-desc">メルマガシステム設定ガイド</div>
-                        </div>
-                    </a>
-                    <a href="02_なゆた関連/なゆた×あやねえ対談_五大資産による人生設計論_動画書き起こし.md" class="card-link">
-                        <div class="card-link-icon">🎥</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">対談動画書き起こし</div>
-                            <div class="card-link-desc">五大資産による人生設計論</div>
-                        </div>
-                    </a>
-                    <a href="https://discord.com/channels/924998859602657280/1183759996429815868" class="card-link">
-                        <div class="card-link-icon">🏰</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">ユートピアサロン Discord</div>
-                            <div class="card-link-desc">最強秘書室直結・あやねえ在籍</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 出張関係 -->
-            <div class="business-card">
-                <div class="card-header">
-                    <div class="card-icon">✈️</div>
-                    <div class="card-info">
-                        <h3>出張関係</h3>
-                        <span class="card-status">準備中</span>
-                    </div>
-                </div>
-                <div class="card-description">
-                    出張に関する業務管理、スケジュール調整、必要書類の管理を行います。
-                </div>
-                <div class="card-links">
-                    <a href="03_出張関係/README.md" class="card-link">
-                        <div class="card-link-icon">📋</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">出張業務概要</div>
-                            <div class="card-link-desc">出張関係の業務内容と手順</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 無明会 -->
-            <div class="business-card">
-                <div class="card-header">
-                    <div class="card-icon">🌙</div>
-                    <div class="card-info">
-                        <h3>無明会</h3>
-                        <span class="card-status">共同運営</span>
-                    </div>
-                </div>
-                <div class="card-description">
-                    なゆたさんとあやねえの共同運営コミュニティ。恋愛note・セルフイメージnoteのローンチ管理とメンバーサポート。
-                </div>
-                <div class="card-links">
-                    <a href="https://ayaney03.github.io/mumyokai" class="card-link">
-                        <div class="card-link-icon">🌐</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">無明会公式サイト</div>
-                            <div class="card-link-desc">メンバー向け情報・ローンチ管理</div>
-                        </div>
-                    </a>
-                    <a href="../無明会/README.md" class="card-link">
-                        <div class="card-link-icon">📖</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">無明会概要</div>
-                            <div class="card-link-desc">コンセプト・運営資料</div>
-                        </div>
-                    </a>
-                    <a href="../無明会/ローンチプロジェクト/" class="card-link">
-                        <div class="card-link-icon">🚀</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">ローンチ管理</div>
-                            <div class="card-link-desc">2508恋愛note・セルフイメージnote</div>
-                        </div>
-                    </a>
-                    <a href="https://x.com/mumyokai0201" class="card-link">
-                        <div class="card-link-icon">🐦</div>
-                        <div class="card-link-text">
-                            <div class="card-link-title">公式X（Twitter）</div>
-                            <div class="card-link-desc">@mumyokai0201</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- 会社情報 -->
         <div class="business-card">
             <div class="card-header">
-                <div class="card-icon">🏛️</div>
+                <div class="card-icon">📋</div>
                 <div class="card-info">
-                    <h3>会社情報・管理資料</h3>
-                    <span class="card-status">管理中</span>
+                    <h3>メニュー</h3>
+                    <span class="card-status">アクセス</span>
                 </div>
             </div>
             <div class="card-description">
-                天郷株式会社の基本情報、特許庁識別番号、各種管理資料へのアクセス。
+                各事業へのクイックアクセスメニューです。
             </div>
             <div class="card-links">
-                <a href="00_会社情報・特許/会社情報.md" class="card-link">
-                    <div class="card-link-icon">🏢</div>
+                <div class="card-link" style="background: #e8f5e8; border-left: 4px solid #28a745; cursor: default; margin-bottom: 20px;">
+                    <div class="card-link-icon">🧘</div>
                     <div class="card-link-text">
-                        <div class="card-link-title">会社基本情報</div>
-                        <div class="card-link-desc">所在地、代表者情報など</div>
-                    </div>
-                </a>
-                <a href="00_会社情報・特許/特許・識別番号管理.md" class="card-link">
-                    <div class="card-link-icon">📜</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">特許・識別番号</div>
-                        <div class="card-link-desc">特許庁識別番号525313409</div>
-                    </div>
-                </a>
-                <a href="99_資料管理ハブ/天郷事業_資料管理ハブ.md" class="card-link">
-                    <div class="card-link-icon">📂</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">資料管理ハブ</div>
-                        <div class="card-link-desc">全事業の資料一元管理</div>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1_JaXzIP6R3HHR4633kQaeiXLQg4GI6jZ" class="card-link">
-                    <div class="card-link-icon">📷</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">宣材写真</div>
-                        <div class="card-link-desc">Google Drive内の写真素材</div>
-                    </div>
-                </a>
-                <div class="card-link" style="background: #f8f9fa; border-left: 4px solid #28a745; cursor: default; margin-top: 15px;">
-                    <div class="card-link-icon">💰</div>
-                    <div class="card-link-text">
-                        <div class="card-link-title">報酬・契約について</div>
-                        <div class="card-link-desc" style="font-size: 0.8rem; line-height: 1.4;">
-                            <strong>秘書業務:</strong> 基本給5万円（税込5.5万円）<br>
-                            <strong>無明会:</strong> 基本給15万円（税込16.5万円）+ 会員数1割<br>
-                            <strong>瞑想事業:</strong> フロント商品・ファネル構築一式10万円（税込11万円）<br>
-                            <strong>なゆたX運用:</strong> 売上の1割をあやねえに<br>
-                            <em>※現在8-10月分前払い33万円適用中、以降新体系</em>
+                        <div class="card-link-title" style="font-weight: 700; color: #2d3748;">瞑想事業</div>
+                        <div style="margin-top: 8px; font-size: 0.85rem;">
+                            • <a href="https://ayaney03.github.io/smartphone-detox/" style="color: #007bff; text-decoration: none;">脱スマホ瞑想プログラム公式サイト</a><br>
+                            • <a href="01_瞑想事業/脱スマホ瞑想プログラム/00_脱スマホ瞑想プログラム_ハブ.html" style="color: #007bff; text-decoration: none;">プロジェクトハブ（内部管理）</a><br>
+                            • <a href="01_瞑想事業/瞑想YouTube/medi-daihon.html" style="color: #007bff; text-decoration: none;">瞑想YouTube運用ガイド</a><br>
+                            • <a href="01_瞑想事業/アメブロ/README.md" style="color: #007bff; text-decoration: none;">アメブロ運用ガイド</a><br>
+                            • <a href="01_瞑想事業/Google_Drive共有手順.md" style="color: #007bff; text-decoration: none;">Google Drive共有手順</a><br>
+                            • <a href="https://discord.gg/zEKvaju8" style="color: #007bff; text-decoration: none;">瞑想コミュニティ Discord</a>
                         </div>
                     </div>
                 </div>
-
+                <div class="card-link" style="background: #f0e6ff; border-left: 4px solid #6f42c1; cursor: default; margin-bottom: 20px;">
+                    <div class="card-link-icon">💫</div>
+                    <div class="card-link-text">
+                        <div class="card-link-title" style="font-weight: 700; color: #2d3748;">なゆた関連事業</div>
+                        <div style="margin-top: 8px; font-size: 0.85rem;">
+                            • <a href="02_なゆた関連/五大資産_ライフスタイル設計レッスン.html" style="color: #007bff; text-decoration: none;">五大資産レッスン</a><br>
+                            • <a href="02_なゆた関連/UTAGE設定ガイド_30代女性向けメルマガ.md" style="color: #007bff; text-decoration: none;">UTAGE設定ガイド</a><br>
+                            • <a href="02_なゆた関連/メルマガ_30代女性向け.html" style="color: #007bff; text-decoration: none;">メルマガテンプレート</a><br>
+                            • <a href="https://discord.com/channels/924998859602657280/1183759996429815868" style="color: #007bff; text-decoration: none;">ユートピアサロン Discord</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-link" style="background: #fff3cd; border-left: 4px solid #ffc107; cursor: default; margin-bottom: 20px;">
+                    <div class="card-link-icon">🏢</div>
+                    <div class="card-link-text">
+                        <div class="card-link-title" style="font-weight: 700; color: #2d3748;">会社情報・管理資料</div>
+                        <div style="margin-top: 8px; font-size: 0.85rem;">
+                            • <a href="00_会社情報・特許/会社情報.md" style="color: #007bff; text-decoration: none;">会社基本情報（特許庁識別番号525313409含む）</a><br>
+                            • <a href="99_資料管理ハブ/天郷事業_資料管理ハブ.md" style="color: #007bff; text-decoration: none;">資料管理ハブ</a><br>
+                            • <a href="https://drive.google.com/drive/folders/1_JaXzIP6R3HHR4633kQaeiXLQg4GI6jZ" style="color: #007bff; text-decoration: none;">宣材写真（Google Drive）</a><br>
+                            • <a href="../あやねえ契約・報酬体系.md" style="color: #007bff; text-decoration: none;">あやねえ契約・報酬体系</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-link" style="background: #e8f4fd; border-left: 4px solid #17a2b8; cursor: default;">
+                    <div class="card-link-icon">📝</div>
+                    <div class="card-link-text">
+                        <div class="card-link-title" style="font-weight: 700; color: #2d3748;">よく使うリンク</div>
+                        <div style="margin-top: 8px; font-size: 0.85rem;">
+                            • <a href="なゆたさんのやることリスト.md" style="color: #007bff; text-decoration: none;">やることリスト</a><br>
+                            • <a href="01_瞑想事業/なゆたさん向け_簡単共有ガイド.md" style="color: #007bff; text-decoration: none;">共有ガイド</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+
 
         <div class="footer-info">
             <p><strong>天郷株式会社</strong></p>
